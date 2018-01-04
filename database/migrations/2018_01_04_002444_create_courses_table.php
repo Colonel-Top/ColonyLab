@@ -14,10 +14,13 @@ class CreateCoursesTable extends Migration
     public function up()
     {
         Schema::create('courses', function (Blueprint $table) {
-             $table->increments('id');
-            $table->string('cname')->nullable();
-            $table->string('semester')->nullable();
-            $table->string('year')
+            $table->increments('id');
+            $table->string("coursename");
+            $table->string("password");
+            $table->dateTime("created");
+            $table->dateTime("modified");
+            $table->string("createby");
+            $table->boolean("allowregister");
             $table->timestamps();
         });
     }

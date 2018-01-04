@@ -134,7 +134,6 @@
         //making the canvas full screen
         c.height = window.innerHeight;
         c.width = window.innerWidth;
-
         //chinese characters - taken from the unicode charset
         var matrix = "COLONEL CN302 0     ";
         //converting the string into an array of single characters
