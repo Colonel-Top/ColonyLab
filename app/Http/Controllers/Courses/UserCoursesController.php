@@ -35,16 +35,42 @@ class UserCoursesController extends Controller
     }
 	public function index()
 	{
+		$ids = 0;
 	//	Session::flash('success_msg','Authorized Successfully!');
 		$courses = Courses::orderBy('created','desc')->get();
-		return view('courses.courselist',['courses' => $courses]);
+		$chkid = Auth::user()->noid;
+		$amount = DB::table('courses_user')->select('courses_id')->where('user_id',$chkid)->get('courses_id');
+		foreach($amount as $data)
+		{
+		//echo($data->courses_id);
+		
+			if($data->courses_id)
+			{
+				$ids = 1;
+			}
+		}
+		//echo($amount);
+		
+		return view('courses.courselist',['courses' => $courses],['targetc' => $amount]);
 	}
 
 	public function details($id)
 	{
+		$ids = 0;
 		$courses = Courses::find($id);
-
-		return view('courses.detailsuser',['courses' => $courses]);
+		$chkid = Auth::user()->noid;
+		$amount = DB::table('courses_user')->select('courses_id')->where('user_id',$chkid)->get('courses_id');
+		foreach($amount as $data)
+		{
+		//echo($data->courses_id);
+		
+			if($data->courses_id == $id)
+			{
+				$ids = 1;
+			}
+		}
+		//echo($ids);
+		return view('courses.detailsuser',['courses' => $courses],['noid' => $ids]);
 	}
 	public function enroll($id,Request $request)
 	{
@@ -56,16 +82,17 @@ class UserCoursesController extends Controller
 		
 			if (Hash::check($request->password,$passlala) && $allowreg== 1)
 			{
-				Session::flash('message1','Authorized Successfully!');
+				Session::flash('message1','Authorized Enroll Course Successfully!');
 				$course = Courses::find($request->ider);
+       			
        			$course->users()->attach([Auth::user()->noid]);
-       			echo($course);
+       			/*echo($course);
        			 $res = \App\User::with('courses')->get(); 
-       			echo($res);
+       			echo($res);*/
  
        			 //load form view
        			$courses = Courses::orderBy('created','desc')->get();
-        		//return redirect('/courses/courselist');
+        		return redirect('/user/courses/courselist');
 
 			}
 			else if($allowreg ==0)
@@ -83,9 +110,25 @@ class UserCoursesController extends Controller
 	}
 	public function request($id)
     {
-
+    	$ids = 0;
+    	$chkid = Auth::user()->noid;
+    	$amount = DB::table('courses_user')->select('courses_id')->where('user_id',$chkid)->get('courses_id');
+		foreach($amount as $data)
+		{
+		//echo($data->courses_id);
+		
+			if($data->courses_id == $id)
+			{
+				$ids = 1;
+			}
+		}
+		if($ids == 1)
+		{
+			Session::flash('error','You already Enroll this Course !');
+			return redirect()->back();
+		}
     	$course = Courses::find($id);
-    		return view('courses.enroll', ['ids' => $course]);
+    	return view('courses.enroll', ['ids' => $course]);
     }
 
 }

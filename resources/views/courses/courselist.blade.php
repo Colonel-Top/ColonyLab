@@ -6,6 +6,9 @@
    @if (Session::has('message1'))
     <div class="alert alert-info">{{ Session::get('message1') }}</div>
     @endif
+    @if (Session::has('error'))
+    <div class="alert alert-warning">{{ Session::get('error') }}</div>
+    @endif
     <!-- courses list -->
     @if(!empty($courses))
         <div class="row">
@@ -29,6 +32,7 @@
                     <!-- Table Body -->
                     <tbody>
                     @foreach($courses as $post)
+                      
                         <tr>
                             <td class="table-text">
                                 <div>{{$post->coursename}}</div>
@@ -41,8 +45,10 @@
                             </td>
                             <td>
                                 <a href="{{ route('user.courses.details', $post->id) }}" class="label label-success">Details</a>
-                                <a href="{{ route('user.courses.request', $post->id) }}" class="label label-success">Enroll</a>
-                               
+                              
+                                 <a href="{{ route('user.courses.request', $post->id) }}" class="label label-success">Enroll</a>
+                             
+                            
                             </td>
                         </tr>
                     @endforeach

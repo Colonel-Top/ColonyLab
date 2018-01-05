@@ -32,6 +32,9 @@ Route::get('/courses/courselist', 'Courses\UserCoursesController@index')->name('
 Route::get('/courses/details/{id}', 'Courses\UserCoursesController@details')->name('user.courses.details');
 Route::post('/courses/enroll/{id}', 'Courses\UserCoursesController@enroll')->name('user.courses.enroll');
 Route::get('/courses/request/{id}', 'Courses\UserCoursesController@request')->name('user.courses.request');
+
+Route::post('/profile/update','UserProfileController@update')->name('user.profile.update');
+Route::get('/profile/request','UserProfileController@request')->name('user.profile.request');
 });
 
 Route::prefix('admin')->group(function(){

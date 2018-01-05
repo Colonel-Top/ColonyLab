@@ -8,10 +8,13 @@
                 <div class="panel-heading">Student Dashboard</div>
 
                 <div class="panel-body">
-                    @if (session('status'))
+                    @if (session('message1'))
                         <div class="alert alert-success">
-                            {{ session('status') }}
+                            {{ session('message1') }}
                         </div>
+                    @endif
+                    @if (session('error'))
+                        <div class="alert alert-warning">{{ Session::get('error') }}</div>
                     @endif
 
                     Welcome <{{Auth::user()->noid}}> logged in as {{Auth::user()->name }} {{Auth::user()->surname}}

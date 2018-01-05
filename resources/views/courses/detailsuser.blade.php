@@ -45,7 +45,11 @@
         <div class="form-group">
             <strong>Your Enroll Status for this Course:</strong>
              
-            {{Auth::user()->with('courses')->get()}}
+            @if($noid == 1)
+                <strong>Registered</strong>
+            @else
+                <strong>Unregistered</strong>
+            @endif
              
             
         </div>

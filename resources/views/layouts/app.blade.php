@@ -74,6 +74,10 @@
 
                                 <ul class="dropdown-menu">
                                     <li>
+                                        <a href="{{ route('user.profile.request') }}"">
+                                            Edit Profile
+                                        </a>
+
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
@@ -107,6 +111,9 @@
 
                                 <ul class="dropdown-menu">
                                     <li>
+                                        <a href="{{ route('user.profile.request') }}"">
+                                            Edit Profile
+                                        </a>
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
