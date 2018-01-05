@@ -13,6 +13,9 @@ class Courses extends Model
     ];
     const CREATED_AT = 'created';
     const UPDATED_AT = 'modified';
-
+    public function users()
+    {
+        return $this->belongsToMany('App\User','courses_user','courses_id','user_id');
+    }
 
 }

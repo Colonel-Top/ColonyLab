@@ -27,6 +27,13 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('dashboard');
 Route::get('/users/logout','Auth\LoginController@userLogout')->name('user.logout');
 
+Route::prefix('user')->group(function(){
+Route::get('/courses/courselist', 'Courses\UserCoursesController@index')->name('user.courses.index');
+Route::get('/courses/details/{id}', 'Courses\UserCoursesController@details')->name('user.courses.details');
+Route::post('/courses/enroll/{id}', 'Courses\UserCoursesController@enroll')->name('user.courses.enroll');
+Route::get('/courses/request/{id}', 'Courses\UserCoursesController@request')->name('user.courses.request');
+});
+
 Route::prefix('admin')->group(function(){
 	Route::get('/login','Auth\AdminLoginController@showLoginForm')->name('admin.login');
 	Route::post('/login','Auth\AdminLoginController@login')->name('admin.login.submit');

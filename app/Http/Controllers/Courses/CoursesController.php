@@ -117,7 +117,7 @@ class CoursesController extends Controller
 				Session::flash('message1','Wrong Password / Cannot Authorization');
 				return redirect()->back();
 			}
-		
+		/*
 
 		Session::flash('success_msg','Courses Checking');
     
@@ -143,7 +143,7 @@ class CoursesController extends Controller
 				//return redirect()->back();
 			}
 
-       /* 
+       
         $course = Courses::find($id);
         
         //load form view
@@ -164,7 +164,8 @@ class CoursesController extends Controller
    			$request['allowregister'] = "0";
 		} 
 		
-	
+		$hashpass = bcrypt($request['password']);
+		$request['password'] = $hashpass;
 		$request['createby'] = $this->user;
 		$postData = $request->all();
 		Courses::find($id)->update($postData);
