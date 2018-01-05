@@ -53,6 +53,35 @@ class UserCoursesController extends Controller
 		
 		return view('courses.courselist',['courses' => $courses],['targetc' => $amount]);
 	}
+	public function indexmy()
+	{
+		$ids = 0;
+	//	Session::flash('success_msg','Authorized Successfully!');
+		$courses = Courses::orderBy('created','desc')->get();
+		$chkid = Auth::user()->noid;
+		$amount = DB::table('courses_user')->select('courses_id')->where('user_id',$chkid)->get('courses_id');
+		//$pull = DB::table('courses')->where('id',)->get();
+
+
+		
+                $pull = array();
+                foreach($courses as $hostel) { 
+                    $pull[] = DB::table('courses')->where('id', $hostel->id)
+                                    ->get();
+                }
+
+		foreach($amount as $data)
+		{
+		//echo($data->courses_id);
+		
+			
+				$ids++;
+			
+		}
+		//echo($amount);
+		
+		return view('courses.mycourses',['courses' => $pull],['amount' => $ids]);
+	}
 
 	public function details($id)
 	{

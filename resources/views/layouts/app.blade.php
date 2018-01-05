@@ -96,7 +96,10 @@
                                     <a href="{{route('dashboard')}}">Dashboard</a>
                                 </li>
                                 <li >
-                                    <a href="{{route('user.courses.index')}}">My Courses</a>
+                                    <a href="{{route('user.courses.index')}}">Courses List</a>
+                                </li>
+                                <li >
+                                    <a href="{{route('user.courses.my')}}">My Courses</a>
                                 </li>
                                 <li>
                                     <a href="#0">Assignment</a>

@@ -7,7 +7,7 @@
             <h2>Course Info</h2>
         </div>
         <div class="pull-right">
-            <a href="{{ route('user.courses.index') }}" class="label label-primary pull-right"> Back</a>
+            <a href="{{ URL::previous() }}" class="label label-primary pull-right"> Back</a>
         </div>
     </div>
 </div>
