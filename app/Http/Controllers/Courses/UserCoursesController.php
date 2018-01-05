@@ -70,8 +70,8 @@ class UserCoursesController extends Controller
 		$ids = 0;
 		$courses = Courses::find($id);
 		$chkid = Auth::user()->noid;
-		$amount = DB::table('courses_user')->select('courses_id')->where('courses_id',$id)->get('courses_id');
-			
+		$amount = DB::table('courses_user')->select('courses_id')->where('user_id',$chkid)->get('courses_id');
+		//echo($amount);
 			if(!empty($amount->first()))
 			{
 				$ids=1;

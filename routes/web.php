@@ -39,6 +39,10 @@ Route::get('/profile/request','UserProfileController@request')->name('user.profi
 });
 
 Route::prefix('admin')->group(function(){
+
+	Route::post('/profile/update','AdminProfileController@update')->name('admin.profile.update');
+	Route::get('/profile/request/{id}','AdminProfileController@request')->name('admin.profile.request');
+
 	Route::get('/login','Auth\AdminLoginController@showLoginForm')->name('admin.login');
 	Route::post('/login','Auth\AdminLoginController@login')->name('admin.login.submit');
 	Route::get('/', 'AdminController@index')->name('admin.dashboard');

@@ -17,6 +17,8 @@ class CreateUsercourseTable extends Migration
             $table->increments('id')->unique();
             $table->string('user_id');
             $table->string('courses_id');
+            $table->dateTime("created_at");
+            $table->dateTime("updated_at");
             $table->timestamps();
         });
     }

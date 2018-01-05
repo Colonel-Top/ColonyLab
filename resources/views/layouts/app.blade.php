@@ -59,7 +59,7 @@
                                     <a href="{{route('admin.dashboard')}}">Dashboard</a>
                                 </li>
                                 <li >
-                                    <a href="{{route('admin.courses.index')}}">All Courses</a>
+                                    <a href="{{route('admin.courses.index')}}">Courses Manager</a>
                                 </li>
                                 <li>
                                     <a href="#0">Assignment Management</a>

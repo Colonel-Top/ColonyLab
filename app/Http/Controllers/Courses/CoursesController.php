@@ -41,12 +41,25 @@ class CoursesController extends Controller
 
 		return view(' courses.index',['courses' => $courses]);
 	}
-
+	public function getUserByName($slug){      
+	    $user = User::where('name', $slug)->first();        
+	    return $user;
+	}
 	public function details($id)
 	{
 		$courses = Courses::find($id);
-
-		return view('courses.details',['courses' => $courses]);
+		$users = DB::table('courses_user')->select('user_id')->where('courses_id',$id)->get('user_id');
+		$block = \App\User::all();
+		//echo($users);
+		$data=[
+'courses'=>$courses,
+'users'=>$users,
+      ];
+     /* foreach($block as $uo)
+		echo($uo->id);*/
+      return view('courses.details',['data' => $data],['block'=>$block]);
+		//return view('courses.details',['courses' => $courses],['alluser' => $users],['all'=>$block]);
+		//return view('courses.details', compact('courses', 'users','block'));
 	}
 	
 	public function add()

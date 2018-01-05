@@ -10,11 +10,11 @@ use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
 use Illuminate\Http\Request;
-class UserProfileController extends Controller
+class AdminProfileController extends Controller
 {
     /*
     |--------------------------------------------------------------------------
-    | Register Controller
+    | Admin Controller
     |--------------------------------------------------------------------------
     |
     | This controller handles the registration of new users as well as their
@@ -39,7 +39,7 @@ class UserProfileController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth:admin');
     }
 
     /**
@@ -55,7 +55,6 @@ class UserProfileController extends Controller
             'name' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
-            'password' => 'required|string|min:6|confirmed',
         ]);
     }
 
@@ -65,9 +64,14 @@ class UserProfileController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    public function request()
+    public function request($id)
     {
-        return view('profile.updateprofile');
+      $user = User::where('noid',$id)->get();
+    
+
+      return view('profile.adminupdateprofile',['user'=>$user->first()]);
+
+  
     }
 
 
@@ -77,7 +81,6 @@ class UserProfileController extends Controller
         	'noid' => 'required|max:40',
             'name' => 'required|max:40',
             'surname' => 'required|max:40',
-            'oldpass' => 'required|string|min:1',
             'email' => 'required',
         ]);
       
@@ -87,44 +90,57 @@ class UserProfileController extends Controller
         //$user = User::where('noid', $request['noid']);
         
       //  echo($request);
-        $passSDB = DB::table('users')->select('password')->where('noid',$request->noid)->pluck('password');
-        $passlala = $passSDB[0];
+       // $passSDB = DB::table('users')->select('password')->where('noid',$request->noid)->pluck('password');
+       // $passlala = $passSDB[0];
 
-       	if (Hash::check($request->oldpass,$passlala) )
-       	{
+        $ids =$request->newid;
+        if(empty($request->newid))
+        {
+            $ids = $request->noid;
+        }
        		if(!empty($request->password) && !empty($request->confirm))
-          {
+       		{
             if($request->password == $request->confirm)
-              $hashpass = bcrypt($request->password);
+            {
+       			  $hashpass = bcrypt($request->password);
+                  DB::beginTransaction();
+                  $test = 
+                  DB::update
+                  ('update users set  noid = ? , name = ? , surname = ? , email = ? , password = ? where noid = ?',  
+                    [$ids,$request->name,$request->surname,$request->email,$hashpass,$request->noid]);
+
+              DB::commit();
+            }
             else
             {
-              Session::flash('error','Invalid Password & Confirm not similar');
+       			  Session::flash('error','Invalid Password & Confirm not similar');
             return redirect()->back()->withInput($request->only('noid','name','surname','email'));
             }
-          //   echo($hashpass);
-          }
-       	}
-       	else
-       	{
-       		Session::flash('error','Wrong Current Password');
-        	return redirect()->back();
-       	}
-    
-       	DB::beginTransaction();
-      	$test = DB::update('update users set name = ? , surname = ? , email = ? , password = ? where noid = ?', [
-      		$request->name,$request->surname,$request->email,$hashpass,$request->noid
-      	]);
+       		//	 echo($hashpass);
+       		}
+          else
+          {
+            DB::beginTransaction();
+        $test = 
+        DB::update
+        ('update users set  noid = ? , name = ? , surname = ? , email = ? where noid = ?',  
+          [$ids,$request->name,$request->surname,$request->email,$request->noid]);
 
- 		DB::commit();
+    DB::commit();
+          }
+       
+       
+    
+       	
        /* $user->name = $request->name;
         $user->surname = $request->surname;
         $user->password = $hashpass;
         $user->email = $request->email;
         $user->users()->attach($noid);*/
-		if($test == 1)
+		  if($test == 1)
 		{
 			Session::flash('message1','Profile Update Successfully');
-       		return redirect('home');
+       		return redirect('/admin/courses');
         }
         else
         {
