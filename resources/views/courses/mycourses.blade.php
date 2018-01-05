@@ -15,7 +15,12 @@
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
                     <h2>My Enrolled Course List </h2>
-                    <h3>{{$amount}} Courses</h3>
+                    @if (count($amount) > 0)
+                        <h3>{{count($amount)}} Courses</h3>
+                    @else
+                        <h3>No Course Enroll</h3>
+                    @endif
+                    
                 </div>
             </div>
         </div>
@@ -33,25 +38,24 @@
                     <!-- Table Body -->
                     <tbody>
                     @foreach($courses as $post)
-                      
-                        <tr>
-                            <td class="table-text">
-                                <div>{{$post->coursename}}</div>
-                            </td>
-                            <td class="table-text">
-                                <div>{{$post->createby}}</div>
-                            </td>
+                        @foreach($amount as $data)
+                        @if($data->courses_id == $post->id)
+                            <tr>
                                 <td class="table-text">
-                                <div>{{$post->created}}</div>
-                            </td>
-                            <td>
-                                <a href="{{ route('user.courses.details', $post->id) }}" class="label label-success">Details</a>
-                              
-                                 
-                             
-                            
-                            </td>
-                        </tr>
+                                    <div>{{$post->coursename}}</div>
+                                </td>
+                                <td class="table-text">
+                                    <div>{{$post->createby}}</div>
+                                </td>
+                                    <td class="table-text">
+                                    <div>{{$post->created}}</div>
+                                </td>
+                                <td>
+                                    <a href="{{ route('user.courses.details', $post->id) }}" class="label label-success">Details</a>   
+                                </td>
+                            </tr>
+                         @endif
+                        @endforeach
                     @endforeach
                     </tbody>
                 </table>

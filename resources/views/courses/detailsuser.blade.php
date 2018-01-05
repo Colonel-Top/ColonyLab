@@ -45,7 +45,7 @@
         <div class="form-group">
             <strong>Your Enroll Status for this Course:</strong>
              
-            @if($noid == 1)
+            @if($noid >= 1)
                 <strong>Registered</strong>
             @else
                 <strong>Unregistered</strong>

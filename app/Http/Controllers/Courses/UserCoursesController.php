@@ -60,27 +60,9 @@ class UserCoursesController extends Controller
 		$courses = Courses::orderBy('created','desc')->get();
 		$chkid = Auth::user()->noid;
 		$amount = DB::table('courses_user')->select('courses_id')->where('user_id',$chkid)->get('courses_id');
-		//$pull = DB::table('courses')->where('id',)->get();
-
-
+	
 		
-                $pull = array();
-                foreach($courses as $hostel) { 
-                    $pull[] = DB::table('courses')->where('id', $hostel->id)
-                                    ->get();
-                }
-
-		foreach($amount as $data)
-		{
-		//echo($data->courses_id);
-		
-			
-				$ids++;
-			
-		}
-		//echo($amount);
-		
-		return view('courses.mycourses',['courses' => $pull],['amount' => $ids]);
+		return view('courses.mycourses',['courses' => $courses],['amount' => $amount]);
 	}
 
 	public function details($id)
@@ -88,16 +70,14 @@ class UserCoursesController extends Controller
 		$ids = 0;
 		$courses = Courses::find($id);
 		$chkid = Auth::user()->noid;
-		$amount = DB::table('courses_user')->select('courses_id')->where('user_id',$chkid)->get('courses_id');
-		foreach($amount as $data)
-		{
-		//echo($data->courses_id);
-		
-			if($data->courses_id == $id)
+		$amount = DB::table('courses_user')->select('courses_id')->where('courses_id',$id)->get('courses_id');
+			
+			if(!empty($amount->first()))
 			{
-				$ids = 1;
+				$ids=1;
 			}
-		}
+		
+
 		//echo($ids);
 		return view('courses.detailsuser',['courses' => $courses],['noid' => $ids]);
 	}
