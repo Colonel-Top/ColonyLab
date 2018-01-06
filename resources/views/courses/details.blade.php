@@ -94,7 +94,11 @@
                                 </td>
                                <td>
                                     <a href="{{ route('admin.profile.request', $value) }}" class="label label-success">Configure</a>   
+                                  
+
+                                    <a href="{{ route('admin.profile.drop', $value) }}" class="label label-danger" onclick= "return confirm('Are you sure to drop this user {{$value}}? Once you done you cannot undo')" ; style="color: #fff;">Drop User</a>
                                 </td>
+
                             </tr>
                        
                                 @endif

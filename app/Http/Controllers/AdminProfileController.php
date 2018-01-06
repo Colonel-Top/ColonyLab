@@ -42,6 +42,47 @@ class AdminProfileController extends Controller
         $this->middleware('auth:admin');
     }
 
+   /* public function confirm($user,$id,Request $request)
+    {
+      $results = DB::table('courses')->select('password')->where('id',$request->ider)->pluck('password');
+    $passlala = $results[0];
+    
+    $hashpass = bcrypt($request->password);
+    
+    
+  
+    if (Hash::check($request->password,$passlala))
+      {
+        Session::flash('message1','Authorized Successfully!');
+       
+       
+             //load form view
+            return drop($user);
+      }
+      else
+      {
+        //echo("BULLSHIT");
+        Session::flash('message1','Wrong Password / Cannot Authorization');
+        return redirect()->back();
+      }
+    }*/
+    public function drop($id)
+    {
+
+      $results = DB::table('courses_user')->where('user_id',$id)->delete();
+      //echo($results);
+    
+      if($results)
+      {
+        Session::flash('message1','Drop User Successfully!');
+        return redirect()->back();
+      }
+      else
+      {
+        Session::flash('error','Drop User Faild');
+        return redirect()->back();
+      }
+    }
     /**
      * Get a validator for an incoming registration request.
      *

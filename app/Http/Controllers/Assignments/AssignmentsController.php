@@ -1,6 +1,7 @@
 <?php
-namespace App\Http\Controllers\Courses;
-use App\Courses;
+namespace App\Http\Controllers\Assignments;
+
+use App\Assignments;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -8,7 +9,7 @@ use Illuminate\Support\Facades\Input;
 use Session;
 use DB;
 use Hash;
-class CoursesController extends Controller
+class AssignmentsController extends Controller
 {
 	 protected $user;
 
@@ -34,13 +35,24 @@ class CoursesController extends Controller
     
     }
     
-	public function index()
+	public function index($id)
 	{
-	//	Session::flash('success_msg','Authorized Successfully!');
-		$courses = Courses::orderBy('created','desc')->get();
+		
+		$asn = \App\User::all();
 
-
-		return view(' courses.index',['courses' => $courses]);
+		echo($asn);
+		/*$asn = DB::table('assignment_user')->select('assignment_id')->where('courses_id',$id)->get('assignment_id');
+		$pool = array();
+		foreach($asn as $assignmentid)
+		{
+			$pool[] = DB::table('assignments')->select()->where('id',$asn)->get();
+		}
+		foreach($pool as $res)
+		{
+			echo($pool);
+		}*/
+		 
+		//return view(' assignment.index',['courses' => $courses]);
 	}
 	public function getUserByName($slug){      
 	    $user = User::where('name', $slug)->first();        
@@ -48,7 +60,6 @@ class CoursesController extends Controller
 	}
 	public function details($id)
 	{
-		
 		$courses = Courses::find($id);
 		$users = DB::table('courses_user')->select('user_id')->where('courses_id',$id)->get('user_id');
 		$block = \App\User::all();

@@ -42,11 +42,15 @@ Route::prefix('admin')->group(function(){
 
 	Route::post('/profile/update','AdminProfileController@update')->name('admin.profile.update');
 	Route::get('/profile/request/{id}','AdminProfileController@request')->name('admin.profile.request');
+	Route::get('/profile/drop/{id}','AdminProfileController@drop')->name('admin.profile.drop');
+
 
 	Route::get('/login','Auth\AdminLoginController@showLoginForm')->name('admin.login');
 	Route::post('/login','Auth\AdminLoginController@login')->name('admin.login.submit');
 	Route::get('/', 'AdminController@index')->name('admin.dashboard');
 	Route::get('/logout','Auth\AdminLoginController@logout')->name('admin.logout');
+
+	Route::get('/assignment/{id}', 'Assignments\AssignmentsController@index')->name('admin.assignments.index');
 
 	Route::get('/courses', 'Courses\CoursesController@index')->name('admin.courses.index');
 	Route::get('/courses/details/{id}', 'Courses\CoursesController@details')->name('admin.courses.details');

@@ -62,9 +62,6 @@
                                     <a href="{{route('admin.courses.index')}}">Courses Manager</a>
                                 </li>
                                 <li>
-                                    <a href="#0">Assignment Management</a>
-                                </li>
-                                <li>
                                     <a href="#0">Remarks Management</a>
                                 </li>
                           <li class="dropdown">

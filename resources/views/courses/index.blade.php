@@ -45,6 +45,7 @@
                             <td>
                                 <a href="{{ route('admin.courses.details', $post->id) }}" class="label label-success">Details</a>
                                 <a href="{{ route('admin.courses.request', $post->id) }}" class="label label-warning">Edit</a>
+                                <a href="{{ route('admin.assignments.index', $post->id) }}" class="label label-success">Assignment Management</a>
                                
                             </td>
                         </tr>

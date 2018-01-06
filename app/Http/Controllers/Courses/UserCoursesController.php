@@ -93,15 +93,19 @@ class UserCoursesController extends Controller
 			{
 				Session::flash('message1','Authorized Enroll Course Successfully!');
 				$course = Courses::find($request->ider);
-       			
-       			$course->users()->attach([Auth::user()->noid]);
-       			/*echo($course);
+				echo($course);
+       			//male changes here
+       			$course->users()->attach(Auth::user()->noid);
+       			echo($course);
+       			$user = \App\User::all();
+       			echo($user);/*
+
        			 $res = \App\User::with('courses')->get(); 
        			echo($res);*/
  
        			 //load form view
        			$courses = Courses::orderBy('created','desc')->get();
-        		return redirect('/user/courses/courselist');
+        	//	return redirect('/user/courses/courselist');
 
 			}
 			else if($allowreg ==0)
