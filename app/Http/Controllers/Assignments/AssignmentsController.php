@@ -56,6 +56,7 @@ class AssignmentsController extends Controller
 		$asn = Assignments::FindOrFail($id);
 		//echo($asn->fpath);
 	//	exit();
+		
 		return response()->file($asn->fpath);
     	//return view('assignments.details',['data' => $data]);
 	
@@ -86,7 +87,7 @@ class AssignmentsController extends Controller
 	public function insert(Request $request)
 	{
 		
-		
+	
 		$this->validate($request,[
 			'name' => 'required|max:40',
 			'fullscore' => 'required|string|min:1',
@@ -108,21 +109,43 @@ class AssignmentsController extends Controller
 		if(empty($request['createby']))
     		$request['createby'] = $this->user;
 
-		$request['startdate'] = date('Y-m-d H:i:s', strtotime("$request->startdate $request->starttime"));
-		$request['enddate'] = date('Y-m-d H:i:s', strtotime("$request->enddate $request->endtime"));
+		//$request['startdate'] = date('Y-m-d H:i:s', strtotime("$request->startdate $request->starttime"));
+		//$request['enddate'] = date('Y-m-d H:i:s', strtotime("$request->enddate $request->endtime"));
 		//print_r($request->createby);
-		
+		$final="";
 		$postData = $request->all();
-		$file = $request->hasFile('fpath');
-		
-		if($file)
+		if ($file = $request->hasFile('fpath')) 
 		{
-			$request->fpath = $request->fpath->store('storage/uploads/assignments/'.$request->idc,'public');
-
-		}
+            $file = $request->file('fpath');
+            $filename =$file->getClientOriginalName();
+            $destinationPath = storage_path() . '\\assignments\\'.$request->idc;
+            $file->move($destinationPath, $filename);
+             $final = $destinationPath.'\\'.$filename;        
+            //echo($final);
+              
+           
+            //echo($request->fpath);
+            
+        }
+        $final2="";
+        $postData = $request->all();
+		if ($file = $request->hasFile('foutput')) 
+		{
+            $file = $request->file('foutput');
+            $filename =$file->getClientOriginalName();
+            $destinationPath = storage_path() . '\\assignments\\'.$request->idc.'\\master\\';
+            $file->move($destinationPath, $filename);
+             $final2 = $destinationPath.'\\'.$filename;        
+            //echo($final);
+              
+           
+            //echo($request->fpath);
+            
+        }
 		$res = Assignments::create($postData);
-		$res->courses()->attach($res->id);
-		
+
+		$res->courses()->attach($res->courses_id);
+		Assignments::FindOrFail($res->id)->update(['fpath'=>$final,'foutput'=>$final2]);
 		
 
 		
@@ -133,84 +156,84 @@ class AssignmentsController extends Controller
 		return view(' assignments.index',['asn' => $asn,'course'=>$coursename]);
 
 	}
-	public function edit(Request $request){
-		
-		$results = DB::table('courses')->select('password')->where('id',$request->ider)->pluck('password');
-		$passlala = $results[0];
-		
-		$hashpass = bcrypt($request->password);
-		
-		
-	
-		if (Hash::check($request->password,$passlala))
-			{
-				Session::flash('message1','Authorized Successfully!');
-				 $course = Courses::find($request->ider);
-       
-       			 //load form view
-        		return view('courses.edit', ['courses' => $course]);
-			}
-			else
-			{
-				//echo("BULLSHIT");
-				Session::flash('message1','Wrong Password / Cannot Authorization');
-				return redirect()->back();
-			}
-		/*
+	public function edit($id){
+		$asn = Assignments::find($id);
 
-		Session::flash('success_msg','Courses Checking');
-    
-    	$this->validate($request,[
-			'password' => 'required|string|min:1',
-			
-		]);
-             $results = DB::select('select * from courses where id = :name', ['name' => $request->id]);
-
-			if ($results && Hash::check($request['password'],$results->password)) 
-			{
-				Session::flash('success_msg','Courses OK');
-				 $course = Courses::find($request['ider']);
-       
-       			 //load form view
-        			//return view('courses.edit', ['courses' => $course]);
-				
-			}
-			else
-			{
-				echo("BULLSHIT");
-				Session::flash('warning','Courses Fuckup');
-				//return redirect()->back();
-			}
-
-       
-        $course = Courses::find($id);
-        
-        //load form view
-        return view('courses.edit', ['courses' => $course]);*/
+		return view('assignments.edit',['ids'=>$asn]);
     }
    
-    public function update($id,Request $request)
+    public function update(Request $request)
 	{
+	
 		$this->validate($request,[
-			'coursename' => 'required|max:40',
-			'password' => 'required|string|min:1',
-			'createby' =>  $this->user,
+			'name' => 'required|max:40',
+			'fullscore' => 'required|string|min:1',
+			'courses_id' => 'required|min:1',
+			'fpath' => 'required|min:1'
 			
 		]);
-		$checkregis = $request['allowregister'];
+
+		$deleteold = Assignments::FindOrFail($request->idc);
+		if(file_exists($request->fname))
+			unlink($deleteold->fpath);
+		$checkregis = $request['allow_send'];
+		
 		if(!$checkregis)
 		{
-   			$request['allowregister'] = "0";
+   			$request['allow_send'] = "0";
 		} 
+		$request['courses_id'] = $request->courses_id;
 		
-		$hashpass = bcrypt($request['password']);
-		$request['password'] = $hashpass;
-		$request['createby'] = $this->user;
+	//	$request['createby']= $this->user;
+       // echo($request['createby']);
+		
+		/*if(!empty($request->startdate) && !empty($request->starttime))
+			$request['startdate'] = date('Y-m-d H:i:s', strtotime("$request->startdate $request->starttime"));
+		if(!empty($request->enddate)&& !empty($request->endtime))
+			$request['enddate'] = date('Y-m-d H:i:s', strtotime("$request->enddate $request->endtime"));
+		*/
+		//print_r($request->createby);
+		$final =$request->oldpass;
 		$postData = $request->all();
-		Courses::find($id)->update($postData);
-		Session::flash('message1','Courses Updated');
-		return redirect()->intended(route('admin.courses.index'));
+		if ($file = $request->hasFile('fpath')) 
+		{
 
+            $file = $request->file('fpath');
+            $filename =$file->getClientOriginalName();
+            $destinationPath = storage_path() . '\\assignments\\'.$request->idc;
+            $file->move($destinationPath, $filename);
+             $final = $destinationPath.'\\'.$filename;        
+       
+           
+        }
+       
+        $final2="";
+        $postData = $request->all();
+		if ($file = $request->hasFile('foutput')) 
+		{
+            $file = $request->file('foutput');
+            $filename =$file->getClientOriginalName();
+            $destinationPath = storage_path() . '\\assignments\\'.$request->idc.'\\master\\';
+            $file->move($destinationPath, $filename);
+             $final2 = $destinationPath.'\\'.$filename;        
+            //echo($final);
+              
+           
+            //echo($request->fpath);
+            
+        }
+
+		Assignments::find($request->idc)->update($postData);
+		if ($file = $request->hasFile('fpath')) 
+		{
+			
+			Assignments::FindOrFail($request->idc)->update(['fpath'=>$final,'foutput'=>$foutput]);
+		}
+		$idg = $request->courses_id;
+		
+		$coursename = Courses::find($idg);
+		$asn = Assignments::where('courses_id',$idg)->get();
+		return view(' assignments.index',['asn' => $asn,'course'=>$coursename]);
 	}
 	public function drop($id)
 	 {
@@ -218,6 +241,8 @@ class AssignmentsController extends Controller
        // $account = Courses::where('courses_id', $id)->firstOrFail()->courses()->detach();
    		$asn = Assignments::FindOrFail($id);
    		$idg = $asn->courses_id;
+   		if(file_exists($asn->fpath))
+   			unlink($asn->fpath);
         $asn->courses()->detach();
         $asn->delete();
        // $courses->delete();

@@ -19,7 +19,7 @@ class Courses extends Model
     }
     public function assignments()
     {
-        return $this->belongsToMany('App\Assignments','enrollment','courses_id','assignments_id');
+        return $this->belongsToMany('App\Assignments','enrollment','assignments_id','courses_ide');
     }
 
 }

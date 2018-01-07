@@ -56,8 +56,9 @@ Route::prefix('admin')->group(function(){
 
 	Route::get('assignment/drop/{id}','Assignments\AssignmentsController@drop')->name('admin.assignments.drop');
 	Route::post('/assignment/{id}', 'Assignments\AssignmentsController@index')->name('admin.assignments.index');
-	
 
+	Route::post('/assignment/editreq/update','Assignments\AssignmentsController@update')->name('admin.assignments.update');
+	Route::get('/assignment/editreq/{id}','Assignments\AssignmentsController@edit')->name('admin.assignments.editreq');
 	Route::get('/assignment/request/{id}','Assignments\AssignmentsController@request')->name('admin.assignments.request');
 
 	

@@ -8,7 +8,7 @@ class Assignments extends Model
 {
     //
     protected $fillable = [
-           'name','language','fullscore','getscore','attempts','fpath','allow_send','createby','courses_id','fpath',
+           'name','language','fullscore','getscore','attempts','fpath','allow_send','createby','courses_id','foutput',
           
 	];
    /* protected $hidden = [
@@ -17,7 +17,7 @@ class Assignments extends Model
 
     public function courses()
     {
-        return $this->belongsToMany('App\Courses','enrollment','courses_id','assignments_id');
+        return $this->belongsToMany('App\Courses','enrollment','assignments_id','courses_id');
     }
     public function users()
     {

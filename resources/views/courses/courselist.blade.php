@@ -38,7 +38,7 @@
                                 <div>{{$post->coursename}}</div>
                             </td>
                             <td class="table-text">
-                                <div>{{$post->createby}}</div>
+                                <div>{{$post->createby}} </div>
                             </td>
                                 <td class="table-text">
                                 <div>{{$post->created}}</div>
@@ -46,7 +46,7 @@
                             <td>
                                 <a href="{{ route('user.courses.details', $post->id) }}" class="label label-success">Details</a>
                               
-                                 <a href="{{ route('user.courses.request', $post->id) }}" class="label label-success">Enroll</a>
+                                 <a href="{{ route('user.courses.request', $post->id) }}" class="label label-warning">Enroll</a>
                              
                             
                             </td>
