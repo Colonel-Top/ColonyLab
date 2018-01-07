@@ -9,6 +9,16 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>  
+  <script type="text/javascript">
+  $('#starttime').datetimepicker({
+    format: 'YY-MM-DD HH:mm:ss'
+
+  });
+   $('#endtime').datetimepicker({
+    format: 'YY-MM-DD HH:mm:ss'
+  });
+
+</script> 
 <style>
 .hideplz
 {
@@ -52,12 +62,19 @@
                         <label class="col-md-4 control-label" >Compile language* </label>
                         &nbsp;
                         <select name="language" id="language" value="{{$ids->language}}">
+
                             <option value="c">GCC C</option>
                             <option value="java">JAVA JDK</option>
                             <option value="python">Python py</option>
                         </select>
                     </div>
+                     <div class="form-group">
+                        <label class="col-md-4 control-label" >Max Attempts</label>
 
+                        <div class="col-md-1">
+                            <input type="integer" name="max_attempts" id="max_attempts" class="form-control" value="{{$ids->max_attempts}}" >
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label class="col-md-4 control-label" >Full Score* </label>
 
@@ -69,7 +86,7 @@
                         <label class="col-md-4 control-label" >Allow Send Now ? </label>
 
                         <div class="col-md-6">
-                              <input name="allow_send" type="checkbox" value="1" value="{{$ids->allow_send}}">
+                              <input name="allow_send" type="checkbox" value="{{$ids->allow_send}}">
                         </div>
                     </div>
 
@@ -80,26 +97,35 @@
                              <input class="field" id = "fpath" name="fpath" type="file">
                         </div>
                     </div>
-
                     <div class="form-group">
-                        <label class="col-md-4 control-label" >Output File</label>
+                        <label class="col-md-4 control-label" >Input File</label>
+
+                        <div class="col-md-1">
+                             <input class="field" id = "finput" name="finput" type="file">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" >Output File (Key)</label>
 
                         <div class="col-md-1">
                              <input class="field" id = "foutput" name="foutput" type="file">
                         </div>
                     </div>
                    <div class="form-group">
-               
-                        <div class="col-sm-offset-3 col-md-4 input-group date" id="date">
-                           <label class="col-md-4 control-label" >Start Date-Time</label>
-                            <input type="text" class="form-control" id="startdate"/>  <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
-                               <label class="col-md-4 control-label" >End Date-Time</label>
-                                <input type="text" class="form-control" id="enddate"/>  <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
+               <div class="form-group">
+                <label class="col-md-4 control-label" >Start Date-Time</label>
+                        <div class="col-sm-offset-3 col-md-4 input-group date" id="starttime"  >
+
+                            <input type="text" class="form-control" id="starttime"/>  <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
                         </div>
                     </div>
 
-              
-
+              <div class="form-group">
+                <label class="col-md-4 control-label" >End Date-Time</label>
+                 <div class="col-sm-offset-3 col-md-4 input-group date" id="endtime"  >
+                            <input type="text" class="form-control" id="endtime"/>  <span class="input-group-addon" ><span class="glyphicon-calendar glyphicon"></span></span>
+                        </div>
+                        </div>
 
                       <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-10">
@@ -112,11 +138,6 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-  $('.date').datetimepicker({
-    format: 'YY-MM-DD HH:mm:ss'
-  });
 
-</script>  
 @endsection
 

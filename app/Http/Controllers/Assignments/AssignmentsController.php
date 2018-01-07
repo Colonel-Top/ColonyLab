@@ -8,8 +8,10 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use Session;
+use Carbon\Carbon;
 use DB;
 use Hash;
+use Response;
 class AssignmentsController extends Controller
 {
 	 protected $user;
@@ -42,20 +44,47 @@ class AssignmentsController extends Controller
 		
 		//$asn = $request->assignments()->courses;
 		$coursename = Courses::FindOrFail($id);
-		$asn = Assignments::where('courses_id',$id)->get();
+
+		$results = DB::table('courses')->select('password')->where('id',$request->ider)->pluck('password');
+		$passlala = $results[0];
+		
+		$hashpass = bcrypt($request->password);
+		
+		
+	
+		if (Hash::check($request->password,$passlala))
+
+			{
+				Session::flash('message1','Authorized Successfully!');
+				 $course = Courses::find($request->ider);
+       
+       			 //load form view
+        		$asn = Assignments::where('courses_id',$id)->get();
 		return view(' assignments.index',['asn' => $asn,'course'=>$coursename]);
+			}
+			else
+			{
+				Session::flash('message1','Wrong Password / Cannot Authorization');
+				return redirect()->back();
+			}
+		
+
+		
 	}
 	public function getUserByName($slug){      
 	    $user = User::where('name', $slug)->first();        
 	    return $user;
 	}
-	public function detail($id)
+	public function detail($id,Response $response)
 	{
 		
 		//echo($id);
 		$asn = Assignments::FindOrFail($id);
 		//echo($asn->fpath);
 	//	exit();
+		$name = $asn->name;
+		//$response->headers->set('name',$name);
+
 		
 		return response()->file($asn->fpath);
     	//return view('assignments.details',['data' => $data]);
@@ -86,8 +115,11 @@ class AssignmentsController extends Controller
 
 	public function insert(Request $request)
 	{
-		
+		$tmpstart = Carbon::parse($request->starttime);
+		$tmpend = Carbon::parse($request->endtime);
 	
+		$request['starttime'] = Carbon::parse($request->starttime);
+		$request['endtime'] = Carbon::parse($request->endtime);
 		$this->validate($request,[
 			'name' => 'required|max:40',
 			'fullscore' => 'required|string|min:1',
@@ -136,16 +168,22 @@ class AssignmentsController extends Controller
             $destinationPath = storage_path() . '\\assignments\\'.$request->idc.'\\master\\';
             $file->move($destinationPath, $filename);
              $final2 = $destinationPath.'\\'.$filename;        
-            //echo($final);
-              
-           
-            //echo($request->fpath);
+        }
+        $final3="";
+        $postData = $request->all();
+		if ($file = $request->hasFile('finput')) 
+		{
+            $file = $request->file('finput');
+            $filename =$file->getClientOriginalName();
+            $destinationPath = storage_path() . '\\assignments\\'.$request->idc.'\\input\\';
+            $file->move($destinationPath, $filename);
+             $final2 = $destinationPath.'\\'.$filename;        
             
         }
 		$res = Assignments::create($postData);
 
 		$res->courses()->attach($res->courses_id);
-		Assignments::FindOrFail($res->id)->update(['fpath'=>$final,'foutput'=>$final2]);
+		Assignments::FindOrFail($res->id)->update(['fpath'=>$final,'foutput'=>$final2,'finput'=>$final3]);
 		
 
 		
@@ -164,12 +202,24 @@ class AssignmentsController extends Controller
    
     public function update(Request $request)
 	{
-	
+		$tmp = Assignments::find($request->idc);
+		$tmpstart = Carbon::parse($request->mytime1);
+		$tmpend = Carbon::parse($request->mytime2);
+		echo($tmpend);exit();
+		if(!empty($tmpstart))
+			$request['starttime'] = $tmpstart;
+		else
+			$request['starttime'] = $tmp->starttime;
+		if(!empty($tmpstart))
+			$request['endtime'] = $tmpend ;
+		else
+			$request['endtime'] = $tmp->endtime;
+
 		$this->validate($request,[
 			'name' => 'required|max:40',
 			'fullscore' => 'required|string|min:1',
 			'courses_id' => 'required|min:1',
-			'fpath' => 'required|min:1'
+			//'starttime' => 'required'
 			
 		]);
 
@@ -216,18 +266,31 @@ class AssignmentsController extends Controller
             $destinationPath = storage_path() . '\\assignments\\'.$request->idc.'\\master\\';
             $file->move($destinationPath, $filename);
              $final2 = $destinationPath.'\\'.$filename;        
-            //echo($final);
-              
-           
-            //echo($request->fpath);
             
         }
-
+        $final3="";
+        $postData = $request->all();
+		if ($file = $request->hasFile('finput')) 
+		{
+            $file = $request->file('finput');
+            $filename =$file->getClientOriginalName();
+            $destinationPath = storage_path() . '\\assignments\\'.$request->idc.'\\input\\';
+            $file->move($destinationPath, $filename);
+             $final2 = $destinationPath.'\\'.$filename;        
+            
+        }
 		Assignments::find($request->idc)->update($postData);
 		if ($file = $request->hasFile('fpath')) 
 		{
-			
-			Assignments::FindOrFail($request->idc)->update(['fpath'=>$final,'foutput'=>$foutput]);
+			Assignments::FindOrFail($request->idc)->update(['fpath'=>$final]);
+		}
+		if ($file = $request->hasFile('foutput')) 
+		{
+			Assignments::FindOrFail($request->idc)->update(['foutput'=>$final2]);
+		}
+		if ($file = $request->hasFile('finput')) 
+		{
+			Assignments::FindOrFail($request->idc)->update(['finput'=>$final3]);
 		}
 		$idg = $request->courses_id;
 		

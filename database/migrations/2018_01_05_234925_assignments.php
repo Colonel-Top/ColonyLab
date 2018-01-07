@@ -24,6 +24,7 @@ class Assignments extends Migration
             //$table->integer('getscore')->nullable();
             $table->integer('max_attempts')->nullable();
             $table->string("fpath")->nullable();
+            $table->string("input")->nullable();
             $table->string("foutput")->nullable();
             $table->string("createby");
             $table->boolean("allow_send");

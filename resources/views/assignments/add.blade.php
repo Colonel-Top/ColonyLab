@@ -9,6 +9,15 @@
   <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/css/bootstrap-datetimepicker.min.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap-datetimepicker/4.17.37/js/bootstrap-datetimepicker.min.js"></script>  
+  <script type="text/javascript">
+  $('#starttime').datetimepicker({
+    format: 'YY-MM-DD HH:mm:ss'
+  });
+   $('#endtime').datetimepicker({
+    format: 'YY-MM-DD HH:mm:ss'
+  });
+
+</script>  
 <style>
 .hideplz
 {
@@ -56,7 +65,13 @@
                             <option value="python">Python py</option>
                         </select>
                     </div>
+                     <div class="form-group">
+                        <label class="col-md-4 control-label" >Max Attempts</label>
 
+                        <div class="col-md-1">
+                            <input type="integer" name="max_attempts" id="max_attempts" class="form-control" >
+                        </div>
+                    </div>
                     <div class="form-group">
                         <label class="col-md-4 control-label" >Full Score* </label>
 
@@ -79,9 +94,15 @@
                              <input class="field" id = "fpath" name="fpath" type="file" required>
                         </div>
                     </div>
+                     <div class="form-group">
+                        <label class="col-md-4 control-label" >Input File</label>
 
+                        <div class="col-md-1">
+                             <input class="field" id = "finput" name="finput" type="file">
+                        </div>
+                    </div>
                     <div class="form-group">
-                        <label class="col-md-4 control-label" >Output File</label>
+                        <label class="col-md-4 control-label" >Output File (Key)</label>
 
                         <div class="col-md-1">
                              <input class="field" id = "foutput" name="foutput" type="file">
@@ -91,16 +112,17 @@
                      
                <div class="form-group">
                 <label class="col-md-4 control-label" >Start Date-Time</label>
-                        <div class="col-sm-offset-3 col-md-4 input-group date" id="datetimepicker1">
-                            <input type="text" class="form-control" id="startdate"/>  <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
+                        <div class="col-sm-offset-3 col-md-4 input-group date" id="starttime">
+                            <input type="text" class="form-control" id="mytime1" />  <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
                         </div>
                     </div>
 
-<div class="form-group">
+            <div class="form-group">
                 <label class="col-md-4 control-label" >End Date-Time</label>
-                        <div class="col-sm-offset-3 col-md-4 input-group date" id="datetimepicker1">
-                            <input type="text" class="form-control" id="enddate"/>  <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
+                 <div class="col-sm-offset-3 col-md-4 input-group date" id="endtime">
+                            <input type="text" class="form-control" id="mytime2"/>  <span class="input-group-addon"><span class="glyphicon-calendar glyphicon"></span></span>
                         </div>
+                     
                     </div>
 
 
@@ -115,11 +137,6 @@
         </div>
     </div>
 </div>
-<script type="text/javascript">
-  $('#datetimepicker1').datetimepicker({
-    format: 'YY-MM-DD HH:mm:ss'
-  });
-
-</script>   
+ 
 @endsection
 

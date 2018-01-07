@@ -8,7 +8,7 @@ class Assignments extends Model
 {
     //
     protected $fillable = [
-           'name','language','fullscore','getscore','attempts','fpath','allow_send','createby','courses_id','foutput',
+           'name','language','fullscore','getscore','attempts','fpath','allow_send','createby','courses_id','foutput','finput','max_attempts','starttime','endtime','mytime1','mytime2','mytime'
           
 	];
    /* protected $hidden = [
