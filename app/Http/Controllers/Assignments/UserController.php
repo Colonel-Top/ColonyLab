@@ -36,12 +36,12 @@ public function push(Request $request)
 		//echo($asn);exit();
 		$final ="";
 		$filename="";
-		$destinationPath = storage_path() . '\\assignments\\'.$asn->id.'\\user_upload\\';
+		$destinationPath = storage_path() . '//assignments//'.$asn->id.'//user_upload//';
 		if ($file = $request->hasFile('users_ans')) 
 		{
             $file = $request->file('users_ans');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '\\assignments\\'.$asn->id.'\\user_upload\\';
+            $destinationPath = storage_path() . '//assignments//'.$asn->id.'//user_upload//';
             $file->move($destinationPath, $filename);
              $final = $destinationPath.$filename;       
             // echo($final) ;
@@ -60,16 +60,16 @@ public function push(Request $request)
         else if($command == "java")
         {
         	//echo("JAVA");
-        	$destinationPath2 = storage_path() . '\\assignments\\'.$asn->id.'\\user_upload\\';
+        	$destinationPath2 = storage_path() . '//assignments//'.$asn->id.'//user_upload//';
         	$result = shell_exec('javac -d '.$destinationPath.' '.$final);
 			$filename = str_replace(".java","",$filename);
-			$inputpath = storage_path() . '\\assignments\\'.$request->idc.'\\input\\';
+			$inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
 			//dd($asn->finput);
 			$injection = 'java -cp '.$destinationPath2.' '.$filename.' < '.$asn->finput;
 			
         	$result = shell_exec($injection);
         	//dd($result);
-        	//$injector = storage_path() . '\\assignments\\'.$request->idc.'\\master\\';
+        	//$injector = storage_path() . '//assignments//'.$request->idc.'//master//';
 
         	$restore = File::get($asn->foutput);
         	$restore = str_replace('\r', '', $restore);

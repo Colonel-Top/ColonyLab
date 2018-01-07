@@ -149,9 +149,9 @@ class AssignmentsController extends Controller
 		{
             $file = $request->file('fpath');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '\\assignments\\'.$request->idc;
+            $destinationPath = storage_path() . '//assignments//'.$request->idc;
             $file->move($destinationPath, $filename);
-             $final = $destinationPath.'\\'.$filename;        
+             $final = $destinationPath.'//'.$filename;        
             //echo($final);
               
            
@@ -164,9 +164,9 @@ class AssignmentsController extends Controller
 		{
             $file = $request->file('foutput');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '\\assignments\\'.$request->idc.'\\master\\';
+            $destinationPath = storage_path() . '//assignments//'.$request->idc.'//master//';
             $file->move($destinationPath, $filename);
-             $final2 = $destinationPath.'\\'.$filename;        
+             $final2 = $destinationPath.'//'.$filename;        
         }
         $final3="";
         $postData = $request->all();
@@ -174,9 +174,9 @@ class AssignmentsController extends Controller
 		{
             $file = $request->file('finput');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '\\assignments\\'.$request->idc.'\\input\\';
+            $destinationPath = storage_path() . '//assignments//'.$request->idc.'//input//';
             $file->move($destinationPath, $filename);
-             $final3 = $destinationPath.'\\'.$filename;        
+             $final3 = $destinationPath.'//'.$filename;        
             
         }
 		$assignment = Assignments::create($postData);
@@ -256,9 +256,9 @@ class AssignmentsController extends Controller
 
             $file = $request->file('fpath');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '\\assignments\\'.$request->idc;
+            $destinationPath = storage_path() . '//assignments//'.$request->idc;
             $file->move($destinationPath, $filename);
-             $final = $destinationPath.'\\'.$filename;        
+             $final = $destinationPath.'//'.$filename;        
        
            
         }
@@ -269,9 +269,9 @@ class AssignmentsController extends Controller
 		{
             $file = $request->file('foutput');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '\\assignments\\'.$request->idc.'\\master\\';
+            $destinationPath = storage_path() . '//assignments//'.$request->idc.'//master//';
             $file->move($destinationPath, $filename);
-             $final2 = $destinationPath.'\\'.$filename;        
+             $final2 = $destinationPath.'//'.$filename;        
             
         }
         $final3="";
@@ -280,9 +280,9 @@ class AssignmentsController extends Controller
 		{
             $file = $request->file('finput');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '\\assignments\\'.$request->idc.'\\input\\';
+            $destinationPath = storage_path() . '//assignments//'.$request->idc.'//input//';
             $file->move($destinationPath, $filename);
-             $final3 = $destinationPath.'\\'.$filename;        
+             $final3 = $destinationPath.'//'.$filename;        
             
         }
 		Assignments::find($request->idc)->update($postData);
