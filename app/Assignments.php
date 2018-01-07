@@ -17,10 +17,10 @@ class Assignments extends Model
 
     public function courses()
     {
-        return $this->belongsToMany('App\Courses','enrollment','assignments_id','courses_id');
+        return $this->belongsTo('App\Courses');
     }
     public function users()
     {
-        return $this->belongsToMany('App\User','assignment_work','enrollments_id','assignments_id');
+        return $this->belongsToMany('App\User','assignment_work','assignments_id','enrollments_id');
     }
 }

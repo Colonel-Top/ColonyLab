@@ -15,11 +15,11 @@ class Courses extends Model
     const UPDATED_AT = 'modified';
     public function users()
     {
-        return $this->belongsToMany('App\User', 'courses_user', 'courses_id', 'users_id');
+        return $this->belongsToMany('App\User', 'enrollment', 'courses_id', 'users_id');
     }
     public function assignments()
     {
-        return $this->belongsToMany('App\Assignments','enrollment','assignments_id','courses_ide');
+        return $this->hasMany('App\Assignments');
     }
 
 }

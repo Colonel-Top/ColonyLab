@@ -61,7 +61,7 @@ class UserCoursesController extends Controller
 		/*
 		$courses = Courses::orderBy('created','desc')->get();
 		$chkid = Auth::user()->noid;
-		$amount = DB::table('courses_user')->select('courses_id')->where('users_id',$chkid)->get('courses_id');
+		$amount = DB::table('enrollment')->select('courses_id')->where('users_id',$chkid)->get('courses_id');
 		*/
 		$courses = $request->user()->courses;
 		
@@ -118,7 +118,7 @@ class UserCoursesController extends Controller
     {
     	$ids = 0;
     	$chkid = Auth::user()->noid;
-    	$amount = DB::table('courses_user')->select('courses_id')->where('users_id',$chkid)->get('courses_id');
+    	$amount = DB::table('enrollment')->select('courses_id')->where('users_id',$chkid)->get('courses_id');
 		foreach($amount as $data)
 		{
 		//echo($data->courses_id);

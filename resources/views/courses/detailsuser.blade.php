@@ -45,8 +45,11 @@
         <div class="form-group">
             <strong>Your Enroll Status for this Course:</strong>
              
-            @if($isregis >= 1)                 <strong>Registered</strong>
-@else                 <strong>Unregistered</strong>             @endif
+            @if($isregis >= 1)                 
+            <strong>Registered</strong>
+            @   else                 
+                <strong>Unregistered</strong>             
+            @endif
              
             
         </div>

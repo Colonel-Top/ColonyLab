@@ -99,8 +99,7 @@
                                     <a href="{{route('user.courses.my')}}">My Courses</a>
                                 </li>
                                 <li>
-                                    <a href="#0">Assignment</a>
-                                </li>
+                                    
                                 <li>
                                     <a href="#0">Remarks</a>
                                 </li>

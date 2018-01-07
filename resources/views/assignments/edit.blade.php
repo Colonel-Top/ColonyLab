@@ -12,12 +12,10 @@
   <script type="text/javascript">
   $('#starttime').datetimepicker({
     format: 'YY-MM-DD HH:mm:ss'
-
   });
    $('#endtime').datetimepicker({
     format: 'YY-MM-DD HH:mm:ss'
   });
-
 </script> 
 <style>
 .hideplz
@@ -86,7 +84,7 @@
                         <label class="col-md-4 control-label" >Allow Send Now ? </label>
 
                         <div class="col-md-6">
-                              <input name="allow_send" type="checkbox" value="{{$ids->allow_send}}">
+                              <input name="allow_send" id="allow_send" type="checkbox" >
                         </div>
                     </div>
 
@@ -140,4 +138,3 @@
 </div>
 
 @endsection
-

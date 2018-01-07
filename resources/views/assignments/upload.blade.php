@@ -55,42 +55,9 @@
             .semititle{
                 font-size: 30px;
                 color:#00000;
+                font-weight: 600;
             }
-.button {
-    position: relative;
-    background-color: #4CAF50;
-    border: none;
-    font-size: 28px;
-    color: #FFFFFF;
-    padding: 20px;
-    width: 200px;
-    text-align: center;
-    -webkit-transition-duration: 0.4s; /* Safari */
-    transition-duration: 0.4s;
-    text-decoration: none;
-    overflow: hidden;
-    cursor: pointer;
-}
 
-.button:after {
-    content: "";
-    background: #90EE90;
-    display: block;
-    position: absolute;
-    padding-top: 300%;
-    padding-left: 350%;
-    margin-left: -20px!important;
-    margin-top: -120%;
-    opacity: 0;
-    transition: all 0.8s
-}
-
-.button:active:after {
-    padding: 0;
-    margin: 0;
-    opacity: 1;
-    transition: 0s
-}
             .midupdown
             {
                 margin-top: 20px;
@@ -100,8 +67,47 @@
             {
                 margin-top: 100px;
                 font-size: 22px;
-                color:#C2C2C2;
+                color:#00000;
+                font-weight: 600;
             }
+            .button {
+
+  background-color: #4CAF50;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 22px;
+  padding: 2px;
+  
+  transition: all 0.5s;
+  cursor: pointer;
+
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.8s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
@@ -130,27 +136,30 @@
     <div class = "fixed"><canvas id="c" width="1366" height="1366"></canvas></div>
 
 <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
-                <div class="top-right links">
-                    @auth
-                        <a href="{{ url('/home') }}">Dashboard</a>
-                    @else
-                       <!--  <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a> -->
-                    @endauth
-                </div>
-            @endif
+            
 
             <div class="content">
                 <div class="title m-b-md">
-                    Colony lab
+                   Assignment
                 </div>
-                <div class = "midupdown semititle">Coding Lab Practice System</div>
-
-                <div class="links entersite">
-
-                 <a href="/home">Enter Site</a>
+                <div class="title m-b-md">
+                    {{$asn->name}}
                 </div>
+                <div class = "midupdown semititle">Max Attempts : {{$asn->max_attempts}}</div>
+                <div class = "midupdown semititle">
+                    <form action="{{ route('user.assignments.push') }}" method="POST" class="form-horizontal "enctype="multipart/form-data" >
+                         {{ csrf_field() }} 
+                 <input type="hidden" name="id" id="id" class="form-control" required value="{{$asn->id}}">
+                <input class="field" id = "users_ans" name="users_ans" type="file" required>
+                <div class="form-group">
+                        <div class="col-sm-offset-3 col-sm-10">
+                            <input type="submit" class="btn btn-default"  value="Upload Assignment" />
+                        </div>
+                    </div>
+                </form>
+                </div>
+              <!--  <a class="button" href="{{ route('user.assignments.push',$asn->id) }} "><span> Upload Assignment </span></button>-->
+
             </div>
 
         </div>
@@ -170,23 +179,8 @@
         c.width = window.innerWidth;
         //chinese characters - taken from the unicode charset
         var rand = Math.floor((Math.random() * 5) + 1);
-        var matrix = "♥  ";
-        switch (rand)
-        {
-            case 2:
-                matrix =" C N 3 0 2 0 ";
-                break;
-            case 1:
-             
-            matrix = "C O L O N E L";
-            break;
-            case 3:
-             matrix = " P I N  "
-             break;
-            default:
-            matrix = "♥   ";
-             break;
-        }
+        var matrix = "♥   A   ♥   A";
+      
         //var matrix = "COLONEL CN302 0     ";
         
         //converting the string into an array of single characters
@@ -209,8 +203,8 @@
             ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
             ctx.fillRect(0, 0, c.width, c.height);
 
-            ctx.fillStyle = "#FFFFFF"; //green text
-            ///ctx.fillStyle = "#0F0"; //green text
+            //ctx.fillStyle = "#FFFFFF"; //green text
+            ctx.fillStyle = "#0F0"; //green text
             ctx.font = font_size + "px arial";
             //looping over drops
             for( var i = 0; i < drops.length; i++ )

@@ -13,7 +13,7 @@ class CreateUsercourseTable extends Migration
      */
     public function up()
     {
-        Schema::create('courses_user', function (Blueprint $table) {
+        Schema::create('enrollment', function (Blueprint $table) {
             $table->increments('id')->unique();
             $table->string('users_id');
             $table->string('courses_id');

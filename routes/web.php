@@ -34,6 +34,11 @@ Route::get('/courses/details/{id}', 'Courses\UserCoursesController@details')->na
 Route::post('/courses/enroll/{id}', 'Courses\UserCoursesController@enroll')->name('user.courses.enroll');
 Route::get('/courses/request/{id}', 'Courses\UserCoursesController@request')->name('user.courses.request');
 
+Route::get('/assignment/{id}','Assignments\UserController@indexmy')->name('user.assignments.indexmy');
+Route::get('/score/{id}','Assignments\UserController@score')->name('user.assignments.score');
+Route::get('/details/{id}','Assignments\UserController@detail')->name('user.assignments.detail');
+Route::get('/submit/{id}','Assignments\UserController@submit')->name('user.assignments.submit');
+Route::post('/push','Assignments\UserController@push')->name('user.assignments.push');
 Route::post('/profile/update','UserProfileController@update')->name('user.profile.update');
 Route::get('/profile/request','UserProfileController@request')->name('user.profile.request');
 });

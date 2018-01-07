@@ -128,13 +128,12 @@ class AssignmentsController extends Controller
 			
 		]);
 		$checkregis = $request['allow_send'];
-		
-		if(!$checkregis)
+		if(($checkregis) == "on")
 		{
-   			$request['allow_send'] = "0";
+   			$request['allow_send'] = "1";
 		} 
-		$request['courses_id'] = $request->idc;
-		
+		else
+			$request['allow_send'] = "0";
 		
 	//	$request['createby']= $this->user;
        // echo($request['createby']);
@@ -177,13 +176,16 @@ class AssignmentsController extends Controller
             $filename =$file->getClientOriginalName();
             $destinationPath = storage_path() . '\\assignments\\'.$request->idc.'\\input\\';
             $file->move($destinationPath, $filename);
-             $final2 = $destinationPath.'\\'.$filename;        
+             $final3 = $destinationPath.'\\'.$filename;        
             
         }
-		$res = Assignments::create($postData);
+		$assignment = Assignments::create($postData);
+		$assignment->fpath = $final;
+		$assignment->foutput = $final2;
+		$assignment->finput = $final3;
+		$assignment->save();
 
-		$res->courses()->attach($res->courses_id);
-		Assignments::FindOrFail($res->id)->update(['fpath'=>$final,'foutput'=>$final2,'finput'=>$final3]);
+		
 		
 
 		
@@ -202,10 +204,12 @@ class AssignmentsController extends Controller
    
     public function update(Request $request)
 	{
-		$tmp = Assignments::find($request->idc);
-		$tmpstart = Carbon::parse($request->mytime1);
-		$tmpend = Carbon::parse($request->mytime2);
-		echo($tmpend);exit();
+	//	echo($request->allow_send);exit();
+		/*$tmp = Assignments::find($request->idc);
+		$tmpstart = Carbon::parse($request->starttime);
+		$tmpend = Carbon::parse($request->endtime);
+		dd($tmpstart);dd($tmpend);exit();
+		/*
 		if(!empty($tmpstart))
 			$request['starttime'] = $tmpstart;
 		else
@@ -214,7 +218,7 @@ class AssignmentsController extends Controller
 			$request['endtime'] = $tmpend ;
 		else
 			$request['endtime'] = $tmp->endtime;
-
+*/
 		$this->validate($request,[
 			'name' => 'required|max:40',
 			'fullscore' => 'required|string|min:1',
@@ -228,10 +232,12 @@ class AssignmentsController extends Controller
 			unlink($deleteold->fpath);
 		$checkregis = $request['allow_send'];
 		
-		if(!$checkregis)
+		if(($checkregis) == "on")
 		{
-   			$request['allow_send'] = "0";
+   			$request['allow_send'] = "1";
 		} 
+		else
+			$request['allow_send'] = "0";
 		$request['courses_id'] = $request->courses_id;
 		
 	//	$request['createby']= $this->user;
@@ -276,7 +282,7 @@ class AssignmentsController extends Controller
             $filename =$file->getClientOriginalName();
             $destinationPath = storage_path() . '\\assignments\\'.$request->idc.'\\input\\';
             $file->move($destinationPath, $filename);
-             $final2 = $destinationPath.'\\'.$filename;        
+             $final3 = $destinationPath.'\\'.$filename;        
             
         }
 		Assignments::find($request->idc)->update($postData);
@@ -291,6 +297,7 @@ class AssignmentsController extends Controller
 		if ($file = $request->hasFile('finput')) 
 		{
 			Assignments::FindOrFail($request->idc)->update(['finput'=>$final3]);
+			//dd($final3);
 		}
 		$idg = $request->courses_id;
 		
@@ -306,7 +313,7 @@ class AssignmentsController extends Controller
    		$idg = $asn->courses_id;
    		if(file_exists($asn->fpath))
    			unlink($asn->fpath);
-        $asn->courses()->detach();
+        //$asn->courses()->detach([$id]);
         $asn->delete();
        // $courses->delete();
        

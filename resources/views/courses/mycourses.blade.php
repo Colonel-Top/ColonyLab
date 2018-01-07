@@ -51,6 +51,7 @@
                                 </td>
                                 <td>
                                     <a href="{{ route('user.courses.details', $course->id) }}" class="label label-success">Details</a>   
+                                    <a href=" {{route('user.assignments.indexmy',$course->id)}}" class="label label-warning">Assignment</a>   
                                 </td>
                             </tr>
                      

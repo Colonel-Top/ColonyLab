@@ -126,20 +126,23 @@ class AdminProfileController extends Controller
             'surname' => 'required|max:40',
             'email' => 'required',
         ]);
-      
-        $hashpass = bcrypt($request['oldpass']);
+        $getold = User::where('pinid',$request->pinid)->first();
+        
+        $hashpass = $getold->password;
         $ids =$request->newid;
         if(empty($request->newid))
         {
             $ids = $request->pinid;
         }
-       		if(!empty($request->password) && !empty($request->confirm))
+       		if(!empty($request->password) || !empty($request->confirm))
        		{
             if($request->password == $request->confirm)
             {
        			  $request['password'] = bcrypt($request->password);
             }
        		}
+          else if(empty($request->password) || empty($request->confirm))
+            $request['password'] = $hashpass;
           else
             $request['password'] = $hashpass;
          $postData = $request->all();
