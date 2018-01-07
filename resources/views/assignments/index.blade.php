@@ -6,15 +6,18 @@
    @if (Session::has('message1'))
     <div class="alert alert-info">{{ Session::get('message1') }}</div>
     @endif
-    @if (Session::has('error'))
-    <div class="alert alert-warning">{{ Session::get('error') }}</div>
-    @endif
     <!-- courses list -->
-    @if(!empty($allCourses))
+    @if(!empty($asn))
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
-                    <h2>All Courses List </h2>
+                    <h2>Assignment List of {{$course->coursename}}</h2>
+                    
+                </div>
+                <div class="pull-right">
+
+                    <a class="btn btn-success" href="{{ route('admin.assignments.add',$course->id) }}"> Add New</a>
+                    
                 </div>
             </div>
         </div>
@@ -23,7 +26,7 @@
                 <table class="table table-striped task-table">
                     <!-- Table Headings -->
                     <thead>
-                        <th width="40%">Course Name</th>
+                        <th width="40%">Assignment Name</th>
                         <th width="25%">Modified By</th>
                         <th width="15%">Created</th>
                         <th width="20%">Action</th>
@@ -31,11 +34,10 @@
     
                     <!-- Table Body -->
                     <tbody>
-                    @foreach($allCourses as $post)
-                      
+                    @foreach($asn as $post)
                         <tr>
                             <td class="table-text">
-                                <div>{{$post->coursename}}</div>
+                                <div>{{$post->name}}</div>
                             </td>
                             <td class="table-text">
                                 <div>{{$post->createby}}</div>
@@ -44,11 +46,10 @@
                                 <div>{{$post->created}}</div>
                             </td>
                             <td>
-                                <a href="{{ route('user.courses.details', $post->id) }}" class="label label-success">Details</a>
-                              
-                                 <a href="{{ route('user.courses.request', $post->id) }}" class="label label-success">Enroll</a>
-                             
+                                <a href="{{ route('admin.assignments.detail', $post->id) }}" class="label label-success">Details</a>
+                                 <a href="{{ route('admin.assignments.drop', $post->id) }}" class="label label-danger" onclick= "return confirm('Are you sure to drop this Assignment ? {{$post->name}} ? Once you done you cannot undo')" ; style="color: #fff;">Delete Assignment</a>
                             
+                               
                             </td>
                         </tr>
                     @endforeach

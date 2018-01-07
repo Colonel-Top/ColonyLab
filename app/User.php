@@ -2,6 +2,7 @@
 
 namespace App;
 
+use App\Courses;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Database\Eloquent\Model;
@@ -16,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name','surname','noid', 'email', 'password','ider'
+        'name','surname','pinid', 'email', 'password','ider'
     ];
 
     /**
@@ -29,11 +30,11 @@ class User extends Authenticatable
     ];
     public function courses()
     {
-        return $this->belongsToMany('App\Courses','courses_user');
+        return $this->belongsToMany(Courses::class, 'courses_user', 'users_id', 'courses_id');
     }
     public function assignments()
     {
-        return $this->belongsToMany('App\Assignments','courses_user');
+        return $this->belongsToMany('App\Assignments','assignment_work','enrollments_id','assignments_id');
     }
 
 }

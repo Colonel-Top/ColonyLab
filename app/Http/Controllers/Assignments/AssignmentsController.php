@@ -2,6 +2,7 @@
 namespace App\Http\Controllers\Assignments;
 
 use App\Assignments;
+use App\Courses;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Http\Request;
@@ -35,49 +36,35 @@ class AssignmentsController extends Controller
     
     }
     
-	public function index($id)
+	public function index($id,Request $request)
 	{
 		
-		$asn = \App\User::all();
-
-		echo($asn);
-		/*$asn = DB::table('assignment_user')->select('assignment_id')->where('courses_id',$id)->get('assignment_id');
-		$pool = array();
-		foreach($asn as $assignmentid)
-		{
-			$pool[] = DB::table('assignments')->select()->where('id',$asn)->get();
-		}
-		foreach($pool as $res)
-		{
-			echo($pool);
-		}*/
-		 
-		//return view(' assignment.index',['courses' => $courses]);
+		
+		//$asn = $request->assignments()->courses;
+		$coursename = Courses::FindOrFail($id);
+		$asn = Assignments::where('courses_id',$id)->get();
+		return view(' assignments.index',['asn' => $asn,'course'=>$coursename]);
 	}
 	public function getUserByName($slug){      
 	    $user = User::where('name', $slug)->first();        
 	    return $user;
 	}
-	public function details($id)
+	public function detail($id)
 	{
-		$courses = Courses::find($id);
-		$users = DB::table('courses_user')->select('user_id')->where('courses_id',$id)->get('user_id');
-		$block = \App\User::all();
-		//echo($users);
-		$data=[
-'courses'=>$courses,
-'users'=>$users,
-      ];
-     /* foreach($block as $uo)
-		echo($uo->id);*/
-      return view('courses.details',['data' => $data],['block'=>$block]);
-		//return view('courses.details',['courses' => $courses],['alluser' => $users],['all'=>$block]);
-		//return view('courses.details', compact('courses', 'users','block'));
+		
+		//echo($id);
+		$asn = Assignments::FindOrFail($id);
+		//echo($asn->fpath);
+	//	exit();
+		return response()->file($asn->fpath);
+    	//return view('assignments.details',['data' => $data]);
+	
 	}
 	
-	public function add()
+	public function add($id)
 	{
-		return view ('courses.add');
+		//echo("BULLSHIT");
+		return view ('assignments.add',['id'=>$id]);
 	}
 	 protected function validator(array $data)
     {
@@ -99,25 +86,51 @@ class AssignmentsController extends Controller
 	public function insert(Request $request)
 	{
 		
-	
+		
 		$this->validate($request,[
-			'coursename' => 'required|max:40',
-			'password' => 'required|string|confirmed|min:1',
-			'createby' => $this->user,
+			'name' => 'required|max:40',
+			'fullscore' => 'required|string|min:1',
+			'fpath' => 'required|min:1',
+		
 			
 		]);
-		$checkregis = $request['allowregister'];
+		$checkregis = $request['allow_send'];
+		
 		if(!$checkregis)
 		{
-   			$request['allowregister'] = "0";
+   			$request['allow_send'] = "0";
 		} 
-		$hashpass = bcrypt($request['password']);
-		$request['password'] = $hashpass;
-		$request['createby'] = $this->user;
-        $postData = $request->all();
-		Courses::create($postData);
-		Session::flash('message1','Courses Added');
-		return redirect()->intended(route('admin.courses.index'));
+		$request['courses_id'] = $request->idc;
+		
+		
+	//	$request['createby']= $this->user;
+       // echo($request['createby']);
+		if(empty($request['createby']))
+    		$request['createby'] = $this->user;
+
+		$request['startdate'] = date('Y-m-d H:i:s', strtotime("$request->startdate $request->starttime"));
+		$request['enddate'] = date('Y-m-d H:i:s', strtotime("$request->enddate $request->endtime"));
+		//print_r($request->createby);
+		
+		$postData = $request->all();
+		$file = $request->hasFile('fpath');
+		
+		if($file)
+		{
+			$request->fpath = $request->fpath->store('storage/uploads/assignments/'.$request->idc,'public');
+
+		}
+		$res = Assignments::create($postData);
+		$res->courses()->attach($res->id);
+		
+		
+
+		
+		//$asn = Assignments::FindOrFail
+		Session::flash('message1','Assignment Added');
+		$coursename = Courses::FindOrFail($request->idc);
+		$asn = Assignments::where('courses_id',$request->idc)->get();
+		return view(' assignments.index',['asn' => $asn,'course'=>$coursename]);
 
 	}
 	public function edit(Request $request){
@@ -199,21 +212,28 @@ class AssignmentsController extends Controller
 		return redirect()->intended(route('admin.courses.index'));
 
 	}
-	 public function delete($id)
+	public function drop($id)
 	 {
         //update post data
-        Courses::find($id)->delete();
-        
+       // $account = Courses::where('courses_id', $id)->firstOrFail()->courses()->detach();
+   		$asn = Assignments::FindOrFail($id);
+   		$idg = $asn->courses_id;
+        $asn->courses()->detach();
+        $asn->delete();
+       // $courses->delete();
+       
         //store status message
-        Session::flash('message1', 'Course deleted');
+        Session::flash('message1', 'Assignment deleted');
 
-        return redirect()->route('admin.courses.index');
+        $coursename = Courses::find($idg);
+		$asn = Assignments::where('courses_id',$idg)->get();
+		return view(' assignments.index',['asn' => $asn,'course'=>$coursename]);
     }
     
     public function request($id)
     {
-
-    	$course = Courses::find($id);
-    		return view('courses.checkowner', ['ids' => $course]);
+    //	echo($id);
+    	$course = \App\Courses::find($id);
+    	return view('assignments.checkowner', ['ids' => $course]);
     }
 }

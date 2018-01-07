@@ -135,7 +135,26 @@
         c.height = window.innerHeight;
         c.width = window.innerWidth;
         //chinese characters - taken from the unicode charset
-        var matrix = "COLONEL CN302 0     ";
+        var rand = Math.floor((Math.random() * 5) + 1);
+        var matrix = "♥  ";
+        switch (rand)
+        {
+            case 2:
+                matrix =" C N 3 0 2 0 ";
+                break;
+            case 1:
+             
+            matrix = "C O L O N E L";
+            break;
+            case 3:
+             matrix = " P I N  "
+             break;
+            default:
+            matrix = "♥   ";
+             break;
+        }
+        //var matrix = "COLONEL CN302 0     ";
+        
         //converting the string into an array of single characters
         matrix = matrix.split("");
 
@@ -177,7 +196,8 @@
             }
         }
 
-        setInterval( draw, 35 );
+        //setInterval( draw, 35 );
+        setInterval( draw, 44 );
 
         </script>
     </body>

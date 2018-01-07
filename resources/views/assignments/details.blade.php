@@ -14,32 +14,32 @@
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
-                    <h2>Course Information</h2>
+                    <h2>Assignment Information</h2>
                 </div>
             </div>
 <br></br>
                     <div class= "col-md-8 ">
                 <div class="form-group">
-                    <strong>Course Name:</strong>
-                    {{  $course->coursename }}
+                    <strong>Assignment Name:</strong>
+                    {{  $data->name}}
                 </div>
             </div>
             <div class="col-md-8 ">
                 <div class="form-group">
                     <strong>Create By:</strong>
-                    {{ $course->createby }}
+                    {{ $data->createby }}
                 </div>
             </div>
             <div class="col-md-8">
                 <div class="form-group">
                     <strong>Created On:</strong>
-                    {{ $course->created }}
+                    {{ $data->created}}
                 </div>
             </div>
             <div class="col-md-8 ">
                 <div class="form-group">
-                    <strong>Allow Register:</strong>
-                    @if( $course->allow_register == 1)
+                    <strong>Allow Send:</strong>
+                    @if( $data->allow_send == 1)
                         Allowed Register
                     @else
                         Disallowed Register
@@ -66,15 +66,19 @@
     
                     <!-- Table Body -->
                     <tbody>
-                       
+                    @foreach($data['users'] as $k => $v)
+                        
+                        @foreach($v as $key => $value)       
                          
                             <tr>
                                
                               
                               
                           
-                        @foreach($users as $euler)
-                          
+                        @foreach($block as $euler)
+                         
+                            @if($euler->noid == $value)
+                            
                                 <td class="table-text">
                                     <div>{{$euler->name}}</div>
                                 </td>
@@ -86,18 +90,21 @@
                                     <div>{{$euler->surname}}</div>
                                 </td>
                                <td class="table-text">
-                                    <div>{{$euler->pinid}}</div>
+                                    <div>{{$value}}</div>
                                 </td>
                                <td>
-                                    <a href="{{ route('admin.profile.request', $euler->pinid) }}" class="label label-success">Configure</a>   
+                                    <a href="{{ route('admin.profile.request', $value) }}" class="label label-success">Configure</a>   
                                   
 
-                                    <a href="{{ route('admin.profile.drop', $euler->pinid) }}" class="label label-danger" onclick= "return confirm('Are you sure to drop this user {{$euler->pinid}} ? Once you done you cannot undo')" ; style="color: #fff;">Drop User</a>
+                                    <a href="{{ route('admin.profile.drop', $value) }}" class="label label-danger" onclick= "return confirm('Are you sure to drop this user {{$value}}? Once you done you cannot undo')" ; style="color: #fff;">Drop User</a>
                                 </td>
 
                             </tr>
                        
-                  
+                                @endif
+                                
+                        @endforeach 
+                        @endforeach 
                          
                      @endforeach
                     </tbody>

@@ -14,9 +14,9 @@
                             <label for="noid" class="col-md-4 control-label">ID</label>
 
                             <div class="col-md-6">
-                                <input id="noid" type="string" class="form-control" name="noid" value="{{ old('noid') }}" required autofocus>
+                                <input id="pinid" type="string" class="form-control" name="pinid" value="{{ old('pinid') }}" required autofocus>
 
-                                @if ($errors->has('noid'))
+                                @if ($errors->has('pinid'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('noid') }}</strong>
                                     </span>

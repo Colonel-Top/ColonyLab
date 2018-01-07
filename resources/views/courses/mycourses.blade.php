@@ -10,13 +10,12 @@
     <div class="alert alert-warning">{{ Session::get('error') }}</div>
     @endif
     <!-- courses list -->
-    @if(!empty($courses))
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
                     <h2>My Enrolled Course List </h2>
-                    @if (count($amount) > 0)
-                        <h3>{{count($amount)}} Courses</h3>
+                    @if (sizeof($courses) > 0)
+                        <h3>{{sizeof($courses)}} Courses</h3>
                     @else
                         <h3>No Course Enroll</h3>
                     @endif
@@ -37,31 +36,31 @@
     
                     <!-- Table Body -->
                     <tbody>
-                    @foreach($courses as $post)
-                        @foreach($amount as $data)
-                        @if($data->courses_id == $post->id)
+                    @foreach($courses as $course)
+                        
+                       
                             <tr>
                                 <td class="table-text">
-                                    <div>{{$post->coursename}}</div>
+                                    <div>{{$course->coursename}}</div>
                                 </td>
                                 <td class="table-text">
-                                    <div>{{$post->createby}}</div>
+                                    <div>{{$course->createby}}</div>
                                 </td>
                                     <td class="table-text">
-                                    <div>{{$post->created}}</div>
+                                    <div>{{$course->created}}</div>
                                 </td>
                                 <td>
-                                    <a href="{{ route('user.courses.details', $post->id) }}" class="label label-success">Details</a>   
+                                    <a href="{{ route('user.courses.details', $course->id) }}" class="label label-success">Details</a>   
                                 </td>
                             </tr>
-                         @endif
-                        @endforeach
+                     
+                   
                     @endforeach
                     </tbody>
                 </table>
             </div>
         </div>
-    @endif
+
     </div>
 </div>
 @endsection

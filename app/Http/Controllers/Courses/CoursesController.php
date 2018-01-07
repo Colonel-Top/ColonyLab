@@ -1,5 +1,7 @@
 <?php
 namespace App\Http\Controllers\Courses;
+
+use App\User;
 use App\Courses;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Auth;
@@ -48,20 +50,13 @@ class CoursesController extends Controller
 	}
 	public function details($id)
 	{
-		
-		$courses = Courses::find($id);
-		$users = DB::table('courses_user')->select('user_id')->where('courses_id',$id)->get('user_id');
-		$block = \App\User::all();
-		//echo($users);
-		$data=[
-'courses'=>$courses,
-'users'=>$users,
-      ];
-     /* foreach($block as $uo)
-		echo($uo->id);*/
-      return view('courses.details',['data' => $data],['block'=>$block]);
-		//return view('courses.details',['courses' => $courses],['alluser' => $users],['all'=>$block]);
-		//return view('courses.details', compact('courses', 'users','block'));
+		try {
+			$courses = Courses::findOrFail($id);
+			$users = $courses->users;
+		} catch (ModelNotFoundException $e) {
+			App::error(404, 'Not found');
+		}
+		return view('courses.details',['course'=> $courses,'users'=>$users]);
 	}
 	
 	public function add()
@@ -128,42 +123,10 @@ class CoursesController extends Controller
 			}
 			else
 			{
-				//echo("BULLSHIT");
 				Session::flash('message1','Wrong Password / Cannot Authorization');
 				return redirect()->back();
 			}
-		/*
-
-		Session::flash('success_msg','Courses Checking');
-    
-    	$this->validate($request,[
-			'password' => 'required|string|min:1',
-			
-		]);
-             $results = DB::select('select * from courses where id = :name', ['name' => $request->id]);
-
-			if ($results && Hash::check($request['password'],$results->password)) 
-			{
-				Session::flash('success_msg','Courses OK');
-				 $course = Courses::find($request['ider']);
-       
-       			 //load form view
-        			//return view('courses.edit', ['courses' => $course]);
-				
-			}
-			else
-			{
-				echo("BULLSHIT");
-				Session::flash('warning','Courses Fuckup');
-				//return redirect()->back();
-			}
-
-       
-        $course = Courses::find($id);
-        
-        //load form view
-        return view('courses.edit', ['courses' => $course]);*/
-    }
+		}
    
     public function update($id,Request $request)
 	{
@@ -191,8 +154,12 @@ class CoursesController extends Controller
 	 public function delete($id)
 	 {
         //update post data
-        Courses::find($id)->delete();
-        
+       // $account = Courses::where('courses_id', $id)->firstOrFail()->courses()->detach();
+   		$courses = Courses::find($id);
+        $courses->users()->detach();
+        $courses->delete();
+       // $courses->delete();
+       
         //store status message
         Session::flash('message1', 'Course deleted');
 

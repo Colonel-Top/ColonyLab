@@ -33,56 +33,54 @@ class UserCoursesController extends Controller
         });
     
     }
-	public function index()
+	public function index(Request $request)
 	{
 		$ids = 0;
 	//	Session::flash('success_msg','Authorized Successfully!');
 		$courses = Courses::orderBy('created','desc')->get();
 		$chkid = Auth::user()->noid;
-		$amount = DB::table('courses_user')->select('courses_id')->where('user_id',$chkid)->get('courses_id');
-		foreach($amount as $data)
-		{
-		//echo($data->courses_id);
-		
-			if($data->courses_id)
-			{
-				$ids = 1;
-			}
-		}
-		//echo($amount);
-		
-		return view('courses.courselist',['courses' => $courses],['targetc' => $amount]);
+
+		//$user = Auth::user();
+		$user = $request->user();
+		$courses = $user->courses;
+
+		$allCourses = Courses::all();
+
+
+
+		return view('courses.courselist',[
+			
+			'allCourses' => $allCourses
+
+		]);
 	}
-	public function indexmy()
+	public function indexmy(Request $request)
 	{
 		$ids = 0;
 	//	Session::flash('success_msg','Authorized Successfully!');
+		/*
 		$courses = Courses::orderBy('created','desc')->get();
 		$chkid = Auth::user()->noid;
-		$amount = DB::table('courses_user')->select('courses_id')->where('user_id',$chkid)->get('courses_id');
-	
+		$amount = DB::table('courses_user')->select('courses_id')->where('users_id',$chkid)->get('courses_id');
+		*/
+		$courses = $request->user()->courses;
 		
-		return view('courses.mycourses',['courses' => $courses],['amount' => $amount]);
+		
+		return view('courses.mycourses',['courses' => $courses]);
 	}
 
 	public function details($id)
 	{
-		$ids = 0;
-		$courses = Courses::find($id);
-		$chkid = Auth::user()->noid;
-		$amount = DB::table('courses_user')->select('courses_id')->where('user_id',$chkid)->get('courses_id');
-		//echo($amount);
-			if(!empty($amount->first()))
-			{
-				$ids=1;
-			}
+	
+		$courses = Courses::FindOrFail($id);
+		$user = $courses->users;
+		$register = count($user) ? "1":"0";
 		
-
-		//echo($ids);
-		return view('courses.detailsuser',['courses' => $courses],['noid' => $ids]);
+			return view('courses.detailsuser',['courses' => $courses,'isregis'=>$register]);
 	}
 	public function enroll($id,Request $request)
 	{
+
 		$results = DB::table('courses')->select('password')->where('id',$request->ider)->pluck('password');
 		$passlala = $results[0];
 		$allowreg = DB::table('courses')->select('allowregister')->where('id',$request->ider)->pluck('allowregister');
@@ -93,19 +91,14 @@ class UserCoursesController extends Controller
 			{
 				Session::flash('message1','Authorized Enroll Course Successfully!');
 				$course = Courses::find($request->ider);
-				echo($course);
-       			//male changes here
-       			$course->users()->attach(Auth::user()->noid);
-       			echo($course);
-       			$user = \App\User::all();
-       			echo($user);/*
 
-       			 $res = \App\User::with('courses')->get(); 
-       			echo($res);*/
- 
-       			 //load form view
+
+
+				$user = $request->user();
+				$user->courses()->attach($course->id);	
+			
        			$courses = Courses::orderBy('created','desc')->get();
-        	//	return redirect('/user/courses/courselist');
+        		return redirect('/user/courses/courselist');
 
 			}
 			else if($allowreg ==0)
@@ -125,7 +118,7 @@ class UserCoursesController extends Controller
     {
     	$ids = 0;
     	$chkid = Auth::user()->noid;
-    	$amount = DB::table('courses_user')->select('courses_id')->where('user_id',$chkid)->get('courses_id');
+    	$amount = DB::table('courses_user')->select('courses_id')->where('users_id',$chkid)->get('courses_id');
 		foreach($amount as $data)
 		{
 		//echo($data->courses_id);

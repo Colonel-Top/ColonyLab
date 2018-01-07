@@ -15,10 +15,8 @@ class CreateUsercourseTable extends Migration
     {
         Schema::create('courses_user', function (Blueprint $table) {
             $table->increments('id')->unique();
-            $table->string('user_id');
+            $table->string('users_id');
             $table->string('courses_id');
-            $table->dateTime("created_at");
-            $table->dateTime("updated_at");
             $table->timestamps();
         });
     }

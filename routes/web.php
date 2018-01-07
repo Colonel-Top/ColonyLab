@@ -50,8 +50,17 @@ Route::prefix('admin')->group(function(){
 	Route::get('/', 'AdminController@index')->name('admin.dashboard');
 	Route::get('/logout','Auth\AdminLoginController@logout')->name('admin.logout');
 
-	Route::get('/assignment/{id}', 'Assignments\AssignmentsController@index')->name('admin.assignments.index');
+	Route::get('/assignment/add/{id}', 'Assignments\AssignmentsController@add')->name('admin.assignments.add');
+	Route::get('/assignment/detail/{id}','Assignments\AssignmentsController@detail')->name('admin.assignments.detail');
+	Route::post('assignment/create','Assignments\AssignmentsController@insert')->name('admin.assignments.create');
 
+	Route::get('assignment/drop/{id}','Assignments\AssignmentsController@drop')->name('admin.assignments.drop');
+	Route::post('/assignment/{id}', 'Assignments\AssignmentsController@index')->name('admin.assignments.index');
+	
+
+	Route::get('/assignment/request/{id}','Assignments\AssignmentsController@request')->name('admin.assignments.request');
+
+	
 	Route::get('/courses', 'Courses\CoursesController@index')->name('admin.courses.index');
 	Route::get('/courses/details/{id}', 'Courses\CoursesController@details')->name('admin.courses.details');
 	Route::get('/courses/add', 'Courses\CoursesController@add')->name('admin.courses.add');

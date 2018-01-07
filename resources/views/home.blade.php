@@ -17,7 +17,7 @@
                         <div class="alert alert-warning">{{ Session::get('error') }}</div>
                     @endif
 
-                    Welcome <{{Auth::user()->noid}}> logged in as {{Auth::user()->name }} {{Auth::user()->surname}}
+                    Welcome {{Auth::user()->pinid}} logged in as {{Auth::user()->name }} {{Auth::user()->surname}}
                 </div>
             </div>
         </div>

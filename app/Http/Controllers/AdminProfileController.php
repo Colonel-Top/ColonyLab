@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+use App\Courses;
 use App\User;
 use DB;
 use Session;
@@ -68,11 +68,13 @@ class AdminProfileController extends Controller
     }*/
     public function drop($id)
     {
+     // echo($id);
+      $account = User::where('pinid', $id)->firstOrFail()->courses()->detach();
+      //$account->find($id)->courses()->detach();
 
-      $results = DB::table('courses_user')->where('user_id',$id)->delete();
-      //echo($results);
-    
-      if($results)
+// delete the record from the account table.
+     // $account->delete($id);
+      if($account)
       {
         Session::flash('message1','Drop User Successfully!');
         return redirect()->back();
@@ -107,7 +109,7 @@ class AdminProfileController extends Controller
      */
     public function request($id)
     {
-      $user = User::where('noid',$id)->get();
+      $user = User::where('pinid',$id)->get();
     
 
       return view('profile.adminupdateprofile',['user'=>$user->first()]);
@@ -119,81 +121,34 @@ class AdminProfileController extends Controller
      public function update(Request $request)
     {
         $this->validate($request,[
-        	'noid' => 'required|max:40',
+        	'pinid' => 'required|max:40',
             'name' => 'required|max:40',
             'surname' => 'required|max:40',
             'email' => 'required',
         ]);
       
         $hashpass = bcrypt($request['oldpass']);
-      //  echo($hashpass);
-
-        //$user = User::where('noid', $request['noid']);
-        
-      //  echo($request);
-       // $passSDB = DB::table('users')->select('password')->where('noid',$request->noid)->pluck('password');
-       // $passlala = $passSDB[0];
-
         $ids =$request->newid;
         if(empty($request->newid))
         {
-            $ids = $request->noid;
+            $ids = $request->pinid;
         }
        		if(!empty($request->password) && !empty($request->confirm))
        		{
             if($request->password == $request->confirm)
             {
-       			  $hashpass = bcrypt($request->password);
-                  DB::beginTransaction();
-                  $test = 
-                  DB::update
-                  ('update users set  noid = ? , name = ? , surname = ? , email = ? , password = ? where noid = ?',  
-                    [$ids,$request->name,$request->surname,$request->email,$hashpass,$request->noid]);
-
-              DB::commit();
+       			  $request['password'] = bcrypt($request->password);
             }
-            else
-            {
-       			  Session::flash('error','Invalid Password & Confirm not similar');
-            return redirect()->back()->withInput($request->only('noid','name','surname','email'));
-            }
-       		//	 echo($hashpass);
        		}
           else
-          {
-            DB::beginTransaction();
-        $test = 
-        DB::update
-        ('update users set  noid = ? , name = ? , surname = ? , email = ? where noid = ?',  
-          [$ids,$request->name,$request->surname,$request->email,$request->noid]);
+            $request['password'] = $hashpass;
+         $postData = $request->all();
+         
+        User::where('pinid', $request->pinid)->firstOrFail()->update($postData);
+         /*
+              User::find($request->pinid)->update($postData);*/
+              Session::flash('message1','User Profile Updated');
 
-    DB::commit();
-          }
-       
-       
-    
-       	
-       /* $user->name = $request->name;
-        $user->surname = $request->surname;
-        $user->password = $hashpass;
-        $user->email = $request->email;
-        $user->users()->attach($noid);*/
-		  if($test == 1)
-		{
-			Session::flash('message1','Profile Update Successfully');
-       		return redirect('/admin/courses');
+          return redirect('/admin/courses');
         }
-        else
-        {
-        	echo($request->name);
-        	Session::flash('error','Profile Update unsuccessfull contact administrator');
-        	return redirect()->back()->withInput($request->only('name','surname','email'));
-        }
-		/*$postData = $request->all();
-		echo($postData->noid);
-
-		User::find($request->noid)->update($postData);*/
-        
-
-    }
 }

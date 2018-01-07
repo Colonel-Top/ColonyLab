@@ -17,7 +17,7 @@
         @endif
         <div class="panel panel-default">
             <div class="panel-heading">
-                Add a New Post <a href="{{ route('admin.courses.index') }}" class="label label-primary pull-right">Back</a>
+                Add a New Course <a href="{{ route('admin.courses.index') }}" class="label label-primary pull-right">Back</a>
             </div>
             <div class="panel-body">
                 

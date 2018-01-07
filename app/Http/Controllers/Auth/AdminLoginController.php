@@ -22,13 +22,13 @@ class AdminLoginController extends Controller
     {
     	//Validate the form Data
     	$this->validate($request,[
-    		'noid' => 'required|max:40',
+    		'pinid' => 'required|max:40',
     		'password' => 'required|min:1'
     	]);
 
     	// Attempt to Log user in
 
-    	if(Auth::guard('admin')->attempt(['noid'=>$request->noid,'password' => $request->password],$request->remember))
+    	if(Auth::guard('admin')->attempt(['pinid'=>$request->pinid,'password' => $request->password],$request->remember))
     	{
     		// if successful then redirect to some place
     		return redirect()->intended(route('admin.dashboard'));

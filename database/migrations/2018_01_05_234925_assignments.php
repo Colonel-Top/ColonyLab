@@ -16,17 +16,17 @@ class Assignments extends Migration
          Schema::create('assignments', function (Blueprint $table) {
             $table->increments('id');
             $table->string("name");
+            $table->string("courses_id");
             $table->string("language");
-            $table->dateTime("startlaunch");
-            $table->dateTime("endlaunch");
-            $table->integer('fullscore');
-            $table->integer('getscore');
-            $table->integer('attempts');
-            $table->string("fpath");
+            $table->dateTime("starttime")->nullable();
+            $table->dateTime("endtime")->nullable();
+            $table->integer('fullscore')->nullable();
+            //$table->integer('getscore')->nullable();
+            $table->integer('max_attempts')->nullable();
+            $table->string("fpath")->nullable();
+            $table->string("foutput")->nullable();
             $table->string("createby");
             $table->boolean("allow_send");
-            $table->dateTime("created");
-            $table->dateTime("modified");
             $table->timestamps();
         });
     }

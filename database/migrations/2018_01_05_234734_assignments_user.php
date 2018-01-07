@@ -13,12 +13,12 @@ class AssignmentsUser extends Migration
      */
     public function up()
     {
-        Schema::create('assignments_user', function (Blueprint $table) {
+        Schema::create('enrollment', function (Blueprint $table) {
             $table->increments('id')->unique();
-            $table->string('user_id');
+            //$table->string('user_id');
             $table->string('courses_id');
-            $table->string('assignment_id');
-           
+            $table->string('assignments_id');
+            
             $table->timestamps();
         });
     }

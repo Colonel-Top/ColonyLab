@@ -26,14 +26,14 @@
                         {{ csrf_field() }}
                   
                  
-                         <div class="form-group{{ $errors->has('noid') ? ' has-error' : '' }}">
+                         <div class="form-group{{ $errors->has('pinid') ? ' has-error' : '' }}">
                            
                             <div class="col-md-6">
-                                <input id="noid" type="hidden" class="form-control" name="noid" value="{{ $user->noid}}" required autofocus>
+                                <input id="pinid" type="hidden" class="form-control" name="pinid" value="{{ $user->pinid}}" required >
 
-                                @if ($errors->has('noid'))
+                                @if ($errors->has('pinid'))
                                     <span class="help-block">
-                                        <strong>{{ $errors->first('noid') }}</strong>
+                                        <strong>{{ $errors->first('pinid') }}</strong>
                                     </span>
                                 @endif
                             </div>
