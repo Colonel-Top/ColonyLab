@@ -47,7 +47,7 @@
              
             @if($isregis >= 1)                 
             <strong>Registered</strong>
-            @   else                 
+            @else                 
                 <strong>Unregistered</strong>             
             @endif
              

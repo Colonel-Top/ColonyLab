@@ -39,7 +39,7 @@
             <div class="col-md-8 ">
                 <div class="form-group">
                     <strong>Allow Register:</strong>
-                    @if( $course->allow_register == 1)
+                    @if( $course->allowregister == 1)
                         Allowed Register
                     @else
                         Disallowed Register

@@ -115,6 +115,7 @@ class AssignmentsController extends Controller
 
 	public function insert(Request $request)
 	{
+		//dd($request->courses_id);
 		$tmpstart = Carbon::parse($request->starttime);
 		$tmpend = Carbon::parse($request->endtime);
 	
@@ -127,6 +128,8 @@ class AssignmentsController extends Controller
 		
 			
 		]);
+		
+       // print_r($request->courses_id);exit();
 		$checkregis = $request['allow_send'];
 		if(($checkregis) == "on")
 		{
@@ -158,6 +161,7 @@ class AssignmentsController extends Controller
             //echo($request->fpath);
             
         }
+
         $final2="";
         $postData = $request->all();
 		if ($file = $request->hasFile('foutput')) 
@@ -169,6 +173,7 @@ class AssignmentsController extends Controller
              $final2 = $destinationPath.'//'.$filename;        
         }
         $final3="";
+
         $postData = $request->all();
 		if ($file = $request->hasFile('finput')) 
 		{
@@ -191,8 +196,8 @@ class AssignmentsController extends Controller
 		
 		//$asn = Assignments::FindOrFail
 		Session::flash('message1','Assignment Added');
-		$coursename = Courses::FindOrFail($request->idc);
-		$asn = Assignments::where('courses_id',$request->idc)->get();
+		$coursename = Courses::FindOrFail($request->courses_id);
+		$asn = Assignments::where('courses_id',$request->courses_id)->get();
 		return view(' assignments.index',['asn' => $asn,'course'=>$coursename]);
 
 	}

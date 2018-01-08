@@ -17,6 +17,9 @@
                     @if (Session::has('message1'))
                         <div class="alert alert-info">{{ Session::get('message1') }}</div>
                     @endif
+                     @if (Session::has('error'))
+                        <div class="alert alert-danger">{{ Session::get('error') }}</div>
+                    @endif
             <div class="panel panel-default">
                   
                 <div class="panel-heading">Course Enroll Authorization</div>

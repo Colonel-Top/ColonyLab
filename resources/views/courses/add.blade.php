@@ -67,7 +67,7 @@
                         <label class="col-md-4 control-label" >Allow Register ?</label>
 
                         <div class="col-md-6">
-                              <input name="allowregister" type="checkbox" value="1">
+                              <input name="allowregister" type="checkbox" >
                         </div>
                     </div>
                     <div class="form-group">

@@ -50,7 +50,7 @@
                         <label class="col-md-4 control-label" >Assignment Name* </label>
 
                         <div class="col-md-6">
-                             <input type="hidden" name="idc" id="idc" class="form-control" required value="{{$id}}">
+                             <input type="hidden" name="courses_id" id="courses_id" class="form-control" required value="{{$id}}">
 
                             <input type="text" name="name" id="name" class="form-control" required>
                         </div>

@@ -91,10 +91,13 @@ class CoursesController extends Controller
 			
 		]);
 		$checkregis = $request['allowregister'];
-		if(!$checkregis)
+		if(($checkregis) == "on")
 		{
-   			$request['allowregister'] = "0";
+   			$request['allowregister'] = "1";
 		} 
+		else
+			$request['allowregister'] = "0";
+		
 		$hashpass = bcrypt($request['password']);
 		$request['password'] = $hashpass;
 		$request['createby'] = $this->user;
@@ -137,10 +140,12 @@ class CoursesController extends Controller
 			
 		]);
 		$checkregis = $request['allowregister'];
-		if(!$checkregis)
+		if(($checkregis) == "on")
 		{
-   			$request['allowregister'] = "0";
+   			$request['allowregister'] = "1";
 		} 
+		else
+			$request['allowregister'] = "0";
 		
 		$hashpass = bcrypt($request['password']);
 		$request['password'] = $hashpass;

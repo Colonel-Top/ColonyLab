@@ -89,15 +89,30 @@ class UserCoursesController extends Controller
 		
 			if (Hash::check($request->password,$passlala) && $allowreg== 1)
 			{
-				Session::flash('message1','Authorized Enroll Course Successfully!');
+				
 				$course = Courses::find($request->ider);
 
 
 
 				$user = $request->user();
+				$cc = $user->courses;
+				foreach($cc as $singlec)
+				{
+					$idchk = $cc;
+					foreach($idchk as $cid)
+					{
+						echo($cid->id);
+						echo($request->ider);
+						if($cid->id == $request->ider)	
+							return redirect()->back()->with(Session::flash('error','You already Enroll this course !'));
+					}
+					
+				}
+				exit(); 
 				$user->courses()->attach($course->id);	
 			
        			$courses = Courses::orderBy('created','desc')->get();
+       			Session::flash('message1','Authorized Enroll Course Successfully!');
         		return redirect('/user/courses/courselist');
 
 			}

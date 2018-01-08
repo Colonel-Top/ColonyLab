@@ -70,11 +70,15 @@ public function push(Request $request)
         	$result = shell_exec($injection);
         	//dd($result);
         	//$injector = storage_path() . '//assignments//'.$request->idc.'//master//';
-
+        	//dd($result);
         	$restore = File::get($asn->foutput);
-        	$restore = str_replace('\r', '', $restore);
-        	//dd($restore);
-       
+
+        	/*$restore = str_replace("\n\n", '<br>', $restore);
+        	$result = str_replace("\n\n", '<br>', $result);
+        	$restore = str_replace("\r\n", '<br>', $restore);
+        	$result = str_replace("\r\n", '<br>', $result);*/
+        	dd($result);
+       		//dd($restore);
         	$whatsap = strcmp($restore, $result);
         	dd($whatsap);
         		        	//$result = shell_exec('javac' .$soucejavafile. '2>&1');
