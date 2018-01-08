@@ -145,7 +145,7 @@
                 <div class="title m-b-md">
                     Colony lab
                 </div>
-                <div class = "midupdown semititle">Coding Lab Practice System</div>
+                <div class = "midupdown semititle">Coding Lab Practice System<div class =links><a href="/admin">-</a></div></div>
 
                 <div class="links entersite">
 

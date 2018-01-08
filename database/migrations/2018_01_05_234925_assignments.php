@@ -16,7 +16,7 @@ class Assignments extends Migration
          Schema::create('assignments', function (Blueprint $table) {
             $table->increments('id');
             $table->string("name");
-            $table->string("courses_id");
+            $table->integer("courses_id")->unsigned();
             $table->string("language");
             $table->dateTime("starttime")->nullable();
             $table->dateTime("endtime")->nullable();
@@ -25,7 +25,15 @@ class Assignments extends Migration
             $table->integer('max_attempts')->nullable();
             $table->string("fpath")->nullable();
             $table->string("input")->nullable();
+            $table->string("input2")->nullable();
+            $table->string("input3")->nullable();
+            $table->string("input4")->nullable();
+            $table->string("input5")->nullable();
             $table->string("foutput")->nullable();
+            $table->string("foutput2")->nullable();
+            $table->string("foutput3")->nullable();
+            $table->string("foutput4")->nullable();
+            $table->string("foutput5")->nullable();
             $table->string("createby");
             $table->boolean("allow_send");
             $table->timestamps();

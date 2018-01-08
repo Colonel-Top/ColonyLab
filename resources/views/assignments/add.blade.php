@@ -83,7 +83,7 @@
                         <label class="col-md-4 control-label" >Allow Send Now ? </label>
 
                         <div class="col-md-6">
-                              <input name="allow_send" type="checkbox" value="1">
+                              <input name="allow_send" type="checkbox" >
                         </div>
                     </div>
 
@@ -95,17 +95,73 @@
                         </div>
                     </div>
                      <div class="form-group">
-                        <label class="col-md-4 control-label" >Input File</label>
+                        <label class="col-md-4 control-label" >Input File Set 1</label>
 
                         <div class="col-md-1">
                              <input class="field" id = "finput" name="finput" type="file">
                         </div>
                     </div>
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" >Input File Set 2</label>
+
+                        <div class="col-md-1">
+                             <input class="field" id = "finput2" name="finput2" type="file">
+                        </div>
+                    </div>
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" >Input File Set 3</label>
+
+                        <div class="col-md-1">
+                             <input class="field" id = "finput3" name="finput3" type="file">
+                        </div>
+                    </div>
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" >Input File Set 4</label>
+
+                        <div class="col-md-1">
+                             <input class="field" id = "finput4" name="finput4" type="file">
+                        </div>
+                    </div>
+                      <div class="form-group">
+                        <label class="col-md-4 control-label" >Input File Set 5</label>
+
+                        <div class="col-md-1">
+                             <input class="field" id = "finput5" name="finput5" type="file">
+                        </div>
+                    </div>
                     <div class="form-group">
-                        <label class="col-md-4 control-label" >Output File (Key)</label>
+                        <label class="col-md-4 control-label" >Output File (Key) Set 1</label>
 
                         <div class="col-md-1">
                              <input class="field" id = "foutput" name="foutput" type="file">
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label class="col-md-4 control-label" >Output File (Key) Set 2</label>
+
+                        <div class="col-md-1">
+                             <input class="field" id = "foutput2" name="foutput2" type="file">
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label class="col-md-4 control-label" >Output File (Key) Set 3</label>
+
+                        <div class="col-md-1">
+                             <input class="field" id = "foutput3" name="foutput3" type="file">
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label class="col-md-4 control-label" >Output File (Key) Set 4</label>
+
+                        <div class="col-md-1">
+                             <input class="field" id = "foutput4" name="foutput4" type="file">
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label class="col-md-4 control-label" >Output File (Key) Set 5</label>
+
+                        <div class="col-md-1">
+                             <input class="field" id = "foutput5" name="foutput5" type="file">
                         </div>
                     </div>
                     

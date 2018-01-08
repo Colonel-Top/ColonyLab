@@ -46,9 +46,10 @@
                                 <div>{{$post->created_at}}</div>
                             </td>
                             <td>
+                                 <a href="{{ route('admin.assignments.show', $post->id) }}" class="label label-success">Detail</a>
                                 <a href="{{ route('admin.assignments.editreq', $post->id) }}" class="label label-success">Edit</a>
                                 <a href="{{ route('admin.assignments.detail', $post->id) }}" class="label label-warning">Question</a>
-                                 <a href="{{ route('admin.assignments.drop', $post->id) }}" class="label label-danger" onclick= "return confirm('Are you sure to drop this Assignment ? {{$post->name}} ? Once you done you cannot undo')" ; style="color: #fff;">Delete Assignment</a>
+                                 <a href="{{ route('admin.assignments.drop', $post->id) }}" class="label label-danger" onclick= "return confirm('Are you sure to drop this Assignment ? {{$post->name}} ? Once you done you cannot undo')" ; style="color: #fff;">Delete</a>
                             
                                
                             </td>

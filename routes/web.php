@@ -56,7 +56,23 @@ Route::prefix('admin')->group(function(){
 	Route::get('/logout','Auth\AdminLoginController@logout')->name('admin.logout');
 
 	Route::get('/assignment/add/{id}', 'Assignments\AssignmentsController@add')->name('admin.assignments.add');
+	Route::get('/assignment/callpath/{id}','Assignments\AssignmentsController@callpath')->name('admin.assignments.callpath');
+
+	Route::get('/assignment/callmaster1/{id}','Assignments\AssignmentsController@callmaster1')->name('admin.assignments.callmaster1');
+	Route::get('/assignment/callout1/{id}','Assignments\AssignmentsController@callout1')->name('admin.assignments.callout1');
+
+
+	Route::get('/assignment/callmaster2/{id}','Assignments\AssignmentsController@callmaster2')->name('admin.assignments.callmaster2');
+	Route::get('/assignment/callout2/{id}','Assignments\AssignmentsController@callout2')->name('admin.assignments.callout2');
+	
+	Route::get('/assignment/callmaster3/{id}','Assignments\AssignmentsController@callmaster3')->name('admin.assignments.callmaster3'); Route::get('/assignment/callout3/{id}','Assignments\AssignmentsController@callout3')->name('admin.assignments.callout3');
+Route::get('/assignment/callmaster4/{id}','Assignments\AssignmentsController@callmaster4')->name('admin.assignments.callmaster4'); Route::get('/assignment/callout4/{id}','Assignments\AssignmentsController@callout4')->name('admin.assignments.callout4');
+Route::get('/assignment/callmaster5/{id}','Assignments\AssignmentsController@callmaster5')->name('admin.assignments.callmaster5'); Route::get('/assignment/callout5/{id}','Assignments\AssignmentsController@callout5')->name('admin.assignments.callout5');
+
+
 	Route::get('/assignment/detail/{id}','Assignments\AssignmentsController@detail')->name('admin.assignments.detail');
+	Route::get('/assignment/droper/{id}','Assignments\AssignmentsController@droper')->name('admin.assignments.droper');
+	Route::get('/assignment/show/{id}','Assignments\AssignmentsController@show')->name('admin.assignments.show');
 	Route::post('assignment/create','Assignments\AssignmentsController@insert')->name('admin.assignments.create');
 
 	Route::get('assignment/drop/{id}','Assignments\AssignmentsController@drop')->name('admin.assignments.drop');
