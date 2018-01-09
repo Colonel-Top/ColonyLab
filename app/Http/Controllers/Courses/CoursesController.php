@@ -39,7 +39,7 @@ class CoursesController extends Controller
 	public function index()
 	{
 	//	Session::flash('success_msg','Authorized Successfully!');
-		$courses = Courses::orderBy('created','desc')->get();
+		$courses = Courses::all();
 
 
 		return view(' courses.index',['courses' => $courses]);
