@@ -104,7 +104,10 @@ class CoursesController extends Controller
         $postData = $request->all();
 		Courses::create($postData);
 		Session::flash('message1','Courses Added');
-		return redirect()->intended(route('admin.courses.index'));
+		$courses = Courses::all();
+
+
+		return view(' courses.index',['courses' => $courses]);
 
 	}
 	public function edit(Request $request){
