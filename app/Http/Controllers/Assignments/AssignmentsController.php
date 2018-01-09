@@ -399,7 +399,7 @@ class AssignmentsController extends Controller
 
         $postData = $request->all();
 		$assignment = Assignments::create($postData);
-		$assignment->touch();
+
 		$assignment->fpath = $final;
 		$assignment->foutput = $final2;
 		$assignment->finput = $final3;
@@ -603,7 +603,7 @@ class AssignmentsController extends Controller
         }
         $postData = $request->all();
         
-		Assignments::find($request->idc)->update($postData)->touch();
+		Assignments::find($request->idc)->update($postData);
 		if ($file = $request->hasFile('fpath')) 
 		{
 			Assignments::FindOrFail($request->idc)->update(['fpath'=>$final]);
