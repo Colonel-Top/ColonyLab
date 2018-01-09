@@ -55,46 +55,7 @@
                     {{ $asninfo->max_attempts }}
                 </div>
             </div>
-            <div class="col-md-8 ">
-                <div class="form-group">
-                    <strong>File Path Set 1</strong>
-
-                     <a href="{{ route('admin.assignments.callmaster1', $asninfo->id) }}" class="label label-warning">Input</a>
-                     <a href="{{ route('admin.assignments.callout1', $asninfo->id) }}" class="label label-warning">Output</a>
-                </div>
-            </div>
-            <div class="col-md-8 ">
-                <div class="form-group">
-                    <strong>File Path Set 2</strong>
-
-                     <a href="{{ route('admin.assignments.callmaster2', $asninfo->id) }}" class="label label-warning">Input</a>
-                     <a href="{{ route('admin.assignments.callout2', $asninfo->id) }}" class="label label-warning">Output</a>
-                </div>
-            </div>
-            <div class="col-md-8 ">
-                <div class="form-group">
-                    <strong>File Path Set 3</strong>
-
-                     <a href="{{ route('admin.assignments.callmaster3', $asninfo->id) }}" class="label label-warning">Input</a>
-                     <a href="{{ route('admin.assignments.callout3', $asninfo->id) }}" class="label label-warning">Output</a>
-                </div>
-            </div>
-            <div class="col-md-8 ">
-                <div class="form-group">
-                    <strong>File Path Set 4</strong>
-
-                     <a href="{{ route('admin.assignments.callmaster4', $asninfo->id) }}" class="label label-warning">Input</a>
-                     <a href="{{ route('admin.assignments.callout4', $asninfo->id) }}" class="label label-warning">Output</a>
-                </div>
-            </div>
-            <div class="col-md-8 ">
-                <div class="form-group">
-                    <strong>File Path Set 5</strong>
-
-                     <a href="{{ route('admin.assignments.callmaster5', $asninfo->id) }}" class="label label-warning">Input</a>
-                     <a href="{{ route('admin.assignments.callout5', $asninfo->id) }}" class="label label-warning">Output</a>
-                </div>
-            </div>
+            
             <div class="col-md-8 ">
                 <div class="form-group">
                     <strong>Create By:</strong>
@@ -109,7 +70,7 @@
             </div>
             <div class="col-md-8 ">
                 <div class="form-group">
-                    <strong>Allow Send:</strong>
+                    <strong>Status for send now:</strong>
                     @if( $asninfo->allow_send == 1)
                         Allowed Send
                     @else
@@ -164,8 +125,8 @@
                           
                           
                                
-                                 <a href="{{ route('admin.assignments.callpath', $euler->id) }}" class="label label-success">Show</a>   
-                                  <a href="{{ route('admin.assignments.droper', $euler->id) }}" class="label label-danger">Drop Assignment</a>   
+                                 <a href="{{ route('user.assignments.callpath', $euler->id) }}" class="btn btn-success">Show</a>   
+              
 
                                 </td>
 

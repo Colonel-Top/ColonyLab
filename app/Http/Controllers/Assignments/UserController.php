@@ -28,14 +28,30 @@ class UserController extends Controller
 
 		return view('assignments.main',['asn'=>$asn,'course'=>$course]);
 	}
-	public function score(Request $request)
-	{
+    public function callpath($id)
+    {
 
+        $filep = DB::table('assignment_work')->select('users_ans')->where('id',$id)->first();
+        return response()->file($filep->users_ans);
+    }
+	public function score($id,Request $request)
+	{
+        //$score = DB::table('assignment_work')->where('id',$id)
+       
+        
+       // dd(Auth::user()->pinid);
+        $asninfo = Assignments::FindOrFail($id);
+        $data = DB::table('assignment_work')->select()->where([['assignments_id',$id],['pinid',Auth::user()->pinid]])->get();
+
+        $blah = Assignments::with('courses.users')->where('id',$asninfo->id)->get();
+        return view('assignments.showcustom',['asninfo'=>$asninfo,'data'=>$data,'userdetails'=>$blah]);
+    
+    
 	}
 public function push(Request $request)
 	{
 		$asn = Assignments::find($request->id);
-       
+       // echo(Auth::user()->pinid);
 		//echo($asn);exit();
 		$final ="";
         $filename="";
@@ -64,15 +80,15 @@ public function push(Request $request)
         {
         	$allscore = $asn->fullscore;
         	$requireamount = 0;
-        	if(!is_null($asn->finput))
+        	if(!empty($asn->finput))
         		$requireamount++;
-        	if(!is_null($asn->finput2))
+        	if(!empty($asn->finput2))
         		$requireamount++;
-        	if(!is_null($asn->finput3))
+        	if(!empty($asn->finput3))
         		$requireamount++;
-        	if(!is_null($asn->finput4))
+        	if(!empty($asn->finput4))
         		$requireamount++;
-        	if(!is_null($asn->finput5))
+        	if(!empty($asn->finput5))
         		$requireamount++;
         	$per_asn = $asn->fullscore/$requireamount;
         	$sum = 0;
@@ -105,10 +121,13 @@ public function push(Request $request)
         	$whatsap = strcmp($restore, $geter);
             if($whatsap == 0)
                 $sum+=$per_asn;
+//print_r($whatsap);
+            //echo($sum);
         	//dd($whatsap);
         		        	//$result = shell_exec('javac' .$soucejavafile. '2>&1');
         	//$result= shell_exec('java' .$classfile. '2>&1');
-
+    if (!empty($asn->finput2)) 
+    {
         	   //--------------------------
         		$destinationPath2 = storage_path() . '//assignments//'.$asn->id.'//user_upload//';
 	        	$result = shell_exec('javac -d '.$destinationPath.' '.$final);
@@ -117,11 +136,23 @@ public function push(Request $request)
 				$injection = 'java -cp '.$destinationPath2.' '.$filename.' < '.$asn->finput2.' > '.$destinationPath2.$filename.'.txt';
 	        	$result = shell_exec($injection);
 	        	$getject = $destinationPath2.$filename.'.txt';
-	        	$geter = File::get($asn->foutput2);
+
+	        	$restore = File::get($asn->foutput2);
+                $geter = File::get($getject);
+
 	        	$whatsap = strcmp($restore, $geter);
+               // echo(" YYY ");
+               // print_r($restore);
+               // echo(" YYY ");
+               // print_r($geter);
+               // echo(" YYY ");
+               // print_r($whatsap);
                 if($whatsap == 0)
                 $sum+=$per_asn;
-
+           // echo($sum);
+        }
+    if (!empty($asn->finput3)) 
+    {
             $destinationPath3 = storage_path() . '//assignments//'.$asn->id.'//user_upload//';
                 $result = shell_exec('javac -d '.$destinationPath.' '.$final);
                 $filename = str_replace(".java","",$filename);
@@ -129,33 +160,47 @@ public function push(Request $request)
                 $injection = 'java -cp '.$destinationPath3.' '.$filename.' < '.$asn->finput3.' > '.$destinationPath3.$filename.'.txt';
                 $result = shell_exec($injection);
                 $getject = $destinationPath3.$filename.'.txt';
-                $geter = File::get($asn->foutput3);
+                $restore = File::get($asn->foutput3);
+                $geter = File::get($getject);
                 $whatsap = strcmp($restore, $geter);
                 if($whatsap == 0)
                 $sum+=$per_asn;
-$destinationPath4 = storage_path() . '//assignments//'.$asn->id.'//user_upload//';
+           // echo($sum);
+    }
+            if(!empty($asn->finput4))
+            {
+                $destinationPath4 = storage_path() . '//assignments//'.$asn->id.'//user_upload//';
                 $result = shell_exec('javac -d '.$destinationPath.' '.$final);
                 $filename = str_replace(".java","",$filename);
                 $inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
                 $injection = 'java -cp '.$destinationPath4.' '.$filename.' < '.$asn->finput4.' > '.$destinationPath4.$filename.'.txt';
                 $result = shell_exec($injection);
                 $getject = $destinationPath4.$filename.'.txt';
-                $geter = File::get($asn->foutput4);
+                $restore = File::get($asn->foutput4);
+                $geter = File::get($getject);
                 $whatsap = strcmp($restore, $geter);
                 if($whatsap == 0)
                 $sum+=$per_asn;
-$destinationPath5 = storage_path() . '//assignments//'.$asn->id.'//user_upload//';
+            //echo($sum);
+            }
+            if(!empty($asn->finput5))
+            {
+                $destinationPath5 = storage_path() . '//assignments//'.$asn->id.'//user_upload//';
                 $result = shell_exec('javac -d '.$destinationPath.' '.$final);
                 $filename = str_replace(".java","",$filename);
                 $inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
                 $injection = 'java -cp '.$destinationPath5.' '.$filename.' < '.$asn->finput5.' > '.$destinationPath5.$filename.'.txt';
                 $result = shell_exec($injection);
                 $getject = $destinationPath5.$filename.'.txt';
-                $geter = File::get($asn->foutput5);
+                $restore = File::get($asn->foutput5);
+                $geter = File::get($getject);
                 $whatsap = strcmp($restore, $geter);
                 if($whatsap == 0)
                 $sum+=$per_asn;
+            //echo($sum);
+            }
                 //dd($sum);
+            //echo($sum);
         	   //--------------------------
                /* $takeq = DB::table('enrollment')->select('id')->where('courses_id',$asn->courses_id)->first();
                 $query = DB::table('assignment_work')->insert([
@@ -165,7 +210,7 @@ $destinationPath5 = storage_path() . '//assignments//'.$asn->id.'//user_upload//
                     'enrollments_id' => $takeq->id
                 ]);*/
                 $users_id = Auth::user()->id;
-                $asn->users()->attach($users_id,['scores'=>$sum,'users_ans'=>$final]);
+                $asn->users()->attach($users_id,['scores'=>$sum,'users_ans'=>$final,'pinid'=>Auth::user()->pinid,'name'=>Auth::user()->name]);
                 //
 
         /*$user = $request->user();

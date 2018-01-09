@@ -14,11 +14,7 @@
                     <h2>Assignment List of {{$course}}</h2>
                     
                 </div>
-                <div class="pull-right">
-
-                    <a class="btn btn-danger" href="{{ route('logout') }}"> Logout</a>
-                    
-                </div>
+               
             </div>
         </div>
         <div class="row">

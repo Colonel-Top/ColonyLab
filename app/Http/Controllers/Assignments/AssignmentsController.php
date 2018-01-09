@@ -82,6 +82,7 @@ class AssignmentsController extends Controller
 		//echo($id);
 		$asninfo = Assignments::FindOrFail($id);
 		$data = DB::table('assignment_work')->select()->where('assignments_id',$id)->get();
+	//	dd($data);
 		//$course = $asninfo->courses();
 
 		//$blah = Assignments::with('courses.users')->where('id',$id)->get();
@@ -122,25 +123,35 @@ class AssignmentsController extends Controller
 	}
 	public function droper($id)
 	{
-		unlink($id->users_ans);
-		return redirect()->back()->with(Session::flash('message1','Delete Assignment Successfully'));
+		//dd($id);
+		//$users_id = Auth::user()->id;
+        $filep = DB::table('assignment_work')->where('id',$id)->delete();
+		if($filep)
+			return redirect()->back()->with(Session::flash('message1','Delete Assignment Successfully'));
+		return redirect()->back()->with(Session::flash('error','Delete Assignment FAILD'));
 	}
 	public function callmaster1($id)
 	{
 		$asn = Assignments::FindOrFail($id);
 		$name = $asn->finput;
+		if(empty($name))
+			return redirect()->back()->with(Session::flash('error','There\'s Empty Files'));
 		return response()->file($name);
 	}
 	public function callout1($id)
 	{
 		$asn = Assignments::FindOrFail($id);
 		$name = $asn->foutput;
+		if(empty($name))
+			return redirect()->back()->with(Session::flash('error','There\'s Empty Files'));
 		return response()->file($name);
 	}
 	public function callmaster2($id)
 	{
 		$asn = Assignments::FindOrFail($id);
 		$name = $asn->finput2;
+		if(empty($name))
+			return redirect()->back()->with(Session::flash('error','There\'s Empty Files'));
 		return response()->file($name);
 	}
 
@@ -148,57 +159,64 @@ class AssignmentsController extends Controller
 	{
 		$asn = Assignments::FindOrFail($id);
 		$name = $asn->foutput2;
+		if(empty($name))
+			return redirect()->back()->with(Session::flash('error','There\'s Empty Files'));
 		return response()->file($name);
 	}
 	public function callmaster3($id)
     {
         $asn = Assignments::FindOrFail($id);
         $name = $asn->finput3;
+        if(empty($name))
+			return redirect()->back()->with(Session::flash('error','There\'s Empty Files'));
         return response()->file($name);
     }
     public function callout3($id)
     {
         $asn = Assignments::FindOrFail($id);
         $name = $asn->foutput3;
+        if(empty($name))
+			return redirect()->back()->with(Session::flash('error','There\'s Empty Files'));
         return response()->file($name);
     }
     public function callmaster4($id)
     {
         $asn = Assignments::FindOrFail($id);
         $name = $asn->finput4;
+        if(empty($name))
+			return redirect()->back()->with(Session::flash('error','There\'s Empty Files'));
         return response()->file($name);
     }
     public function callout4($id)
     {
         $asn = Assignments::FindOrFail($id);
         $name = $asn->foutput4;
+        if(empty($name))
+			return redirect()->back()->with(Session::flash('error','There\'s Empty Files'));
         return response()->file($name);
     }
     public function callmaster5($id)
     {
         $asn = Assignments::FindOrFail($id);
         $name = $asn->finput5;
+        if(empty($name))
+			return redirect()->back()->with(Session::flash('error','There\'s Empty Files'));
         return response()->file($name);
     }
     public function callout5($id)
     {
         $asn = Assignments::FindOrFail($id);
         $name = $asn->foutput5;
+        if(empty($name))
+			return redirect()->back()->with(Session::flash('error','There\'s Empty Files'));
         return response()->file($name);
     }
 	public function callpath($id)
 	{
 		
-	//	echo($id);
-	/*	$asn = Assignments::FindOrFail($id);
-		//echo($asn->fpath);
-	//	exit();
-		$name = $asn->name;
-		//$response->headers->set('name',$name);
-		
-		*/
-		//$filep = DB::table('assignment_work')->select('users_ans')->where('id',$id)->first();
-	//	return response()->file($filep);
+		$filep = DB::table('assignment_work')->select('users_ans')->where('id',$id)->first();
+		;
+		return response()->file($filep->users_ans);
     	//return view('assignments.details',['data' => $data]);
 	
 	}
@@ -381,6 +399,7 @@ class AssignmentsController extends Controller
 
         $postData = $request->all();
 		$assignment = Assignments::create($postData);
+		$assignment->touch();
 		$assignment->fpath = $final;
 		$assignment->foutput = $final2;
 		$assignment->finput = $final3;
@@ -394,7 +413,8 @@ class AssignmentsController extends Controller
 		$assignment->foutput5 = $final11;
 		if(empty($request->max_attempts))
 			$assignment->max_attempts = 0;
-		print_r($assignment);
+		//print_r($assignment);
+
 		$assignment->save();
 
 		
@@ -583,7 +603,7 @@ class AssignmentsController extends Controller
         }
         $postData = $request->all();
         
-		Assignments::find($request->idc)->update($postData);
+		Assignments::find($request->idc)->update($postData)->touch();
 		if ($file = $request->hasFile('fpath')) 
 		{
 			Assignments::FindOrFail($request->idc)->update(['fpath'=>$final]);
@@ -624,7 +644,7 @@ class AssignmentsController extends Controller
    		$idg = $asn->courses_id;
    		if(file_exists($asn->fpath))
    			unlink($asn->fpath);
-        //$asn->courses()->detach([$id]);
+        $asn->courses()->dissociate();
         $asn->delete();
        // $courses->delete();
        

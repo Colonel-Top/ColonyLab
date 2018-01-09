@@ -36,5 +36,6 @@ class User extends Authenticatable
     {
         return $this->belongsToMany('App\Assignments','assignment_work','assignments_id','users_id');
     }
+   
 
 }

@@ -11,8 +11,7 @@ class Courses extends Model
     protected $hidden = [
         'password',
     ];
-    const CREATED_AT = 'created';
-    const UPDATED_AT = 'modified';
+  
     public function users()
     {
         return $this->belongsToMany('App\User', 'enrollment', 'courses_id', 'users_id');

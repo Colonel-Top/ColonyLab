@@ -101,14 +101,14 @@ class UserCoursesController extends Controller
 					$idchk = $cc;
 					foreach($idchk as $cid)
 					{
-						echo($cid->id);
-						echo($request->ider);
+						//echo($cid->id);
+						//echo($request->ider);
 						if($cid->id == $request->ider)	
 							return redirect()->back()->with(Session::flash('error','You already Enroll this course !'));
 					}
 					
 				}
-				exit(); 
+				//exit(); 
 				$user->courses()->attach($course->id);	
 			
        			$courses = Courses::orderBy('created','desc')->get();

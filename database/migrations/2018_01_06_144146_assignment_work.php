@@ -16,11 +16,11 @@ class AssignmentWork extends Migration
         //
          Schema::create('assignment_work', function (Blueprint $table) {
             $table->increments('id')->unique();
+            $table->string('pinid');
             $table->string('scores');
             $table->string('users_ans');
             $table->string('assignments_id');
             $table->string('enrollments_id');
-            
             $table->timestamps();
         });
     }
