@@ -24,11 +24,11 @@ class Assignments extends Migration
             //$table->integer('getscore')->nullable();
             $table->integer('max_attempts')->nullable();
             $table->string("fpath")->nullable();
-            $table->string("input")->nullable();
-            $table->string("input2")->nullable();
-            $table->string("input3")->nullable();
-            $table->string("input4")->nullable();
-            $table->string("input5")->nullable();
+            $table->string("finput")->nullable();
+            $table->string("finput2")->nullable();
+            $table->string("finput3")->nullable();
+            $table->string("finput4")->nullable();
+            $table->string("finput5")->nullable();
             $table->string("foutput")->nullable();
             $table->string("foutput2")->nullable();
             $table->string("foutput3")->nullable();
