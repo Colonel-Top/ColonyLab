@@ -233,6 +233,15 @@ public function push(Request $request)
             $process = $process = proc_open($injection, $descriptorspec, $pipes, $cwd);
             $pid = (proc_get_status($process));
             $pid = $pid['pid'];
+            $handle = exec("ps -p $pid", $output);
+            if (count($output) > 1) {
+                    echo("yes");
+                     proc_terminate($process) ;
+                     exit();
+            }
+            dd("Empty ua");
+            exit();
+
             while(posix_getpgid($pid))
             {
                 usleep(100000);
