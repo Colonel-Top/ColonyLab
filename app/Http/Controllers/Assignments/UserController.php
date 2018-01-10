@@ -163,6 +163,7 @@ public function push(Request $request)
           //  dd($result);
        //     return view('assignments.infinity');
             $checkpath = $destinationPath2.' '.$filename.'.class';
+            dd($checkpath);
             if(!file_exists($checkpath))
                 return view('assignments.infinity');
 
