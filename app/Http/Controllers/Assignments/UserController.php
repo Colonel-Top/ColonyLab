@@ -241,7 +241,7 @@ public function push(Request $request)
                 {
                     if(posix_getpgid($pid))
                     {
-                        posix_kill ($pid);
+                        proc_terminate($process) ;
                         return view('assignments.infinity');
                     }
                 }
