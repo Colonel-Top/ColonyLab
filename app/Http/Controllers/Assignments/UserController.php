@@ -237,8 +237,8 @@ public function push(Request $request)
             $output = array();
             $handle =  (proc_get_status($process));
             print_r($handle);
-            $handle = $handle['signaled'];
-
+            $handle = $handle['running'];
+            print_r("<br>");
             while(!$handle)
             {
                 usleep(1000000);
@@ -253,7 +253,7 @@ public function push(Request $request)
                     
                 }
                 $handle =  (proc_get_status($process));
-                $handle = $handle['signaled'];
+                $handle = $handle['running'];
             }
             //posix_getpgid($pid);
            
