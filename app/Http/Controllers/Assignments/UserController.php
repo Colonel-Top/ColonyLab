@@ -174,8 +174,8 @@ public function push(Request $request)
 			$inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
 			//dd($asn->finput);
 			$injection = '\"java -cp '.$destinationPath2.' '.$filename.' < '.$asn->finput.' > '.$destinationPath2.$filename.'.txt\"';
-           // dd($injection);
-            $result = shell_exec('/bin/bash storage_path() $injection echo$?');
+            dd($injection);
+            $result = shell_exec('/bin/bash storage_path() $injection');
             dd($result);exit();
             //shell_exec($injection)
 			//dd($injection);
