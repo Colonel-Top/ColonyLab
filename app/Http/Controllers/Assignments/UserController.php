@@ -151,7 +151,7 @@ public function push(Request $request)
            // $pid = $status_process['pid'];
             $seconds = $maxsecond*1000000;
             $tick = 0;
-/*
+
             $pid = pcntl_fork();
             if ($pid == -1) 
             {
@@ -169,8 +169,8 @@ public function push(Request $request)
                 //pcntl_alarm( 600 );
                // pcntl_signal(SIGALARM, term_proc);
                 
-            }*/
-            /*
+            }
+            
             while(1)
                 {
                     $check = pcntl_waitpid($pid, $status, WNOHANG | WUNTRACED);
@@ -185,7 +185,7 @@ public function push(Request $request)
                     case 0:
                        //busy, with WNOHANG
                         echo("PID BUSY NOW");
-                       if( ( $tick  + $maxruntime ) >= time() /*|| pcntl_wifstopped( $status ))
+                       if( ( $tick  + $maxruntime ) >= time() /*|| pcntl_wifstopped( $status )*/)
                        {
                            //Killing Process
                        
@@ -229,7 +229,7 @@ public function push(Request $request)
                 } else {
                     return proc_terminate($process);
                 }
-            }*/
+            }*//*
             $process = $process = proc_open($injection, $descriptorspec, $pipes, $cwd);
             $pid = (proc_get_status($process));
 
@@ -257,8 +257,7 @@ public function push(Request $request)
             }
             //posix_getpgid($pid);
            
-                
-            
+                */
 
             
             
