@@ -234,11 +234,12 @@ public function push(Request $request)
             $pid = (proc_get_status($process));
             $pid = $pid['pid'];
             $handle = exec("ps -p $pid", $output);
-            echo($output);
+          //  print_r($output);
             //exit();
             if (count($output) > 1) {
                 $tmp =(count($output));
-                echo($output);
+                print_r($output);
+                print_r($tmp);
                     echo("yes");
                      proc_terminate($process) ;
                      exit();
