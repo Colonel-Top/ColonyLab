@@ -234,31 +234,20 @@ public function push(Request $request)
             $pid = (proc_get_status($process));
             $pid = $pid['pid'];
             $handle = exec("ps -p $pid", $output);
-          //  print_r($output);
-            //exit();
-            if (count($output) > 1) {
-                $tmp =(count($output));
-                print_r($output);
-                print_r($tmp);
-                    echo("yes");
-                     proc_terminate($process) ;
-                     exit();
-            }
-            dd("Empty ua");
-            exit();
-
-            while(posix_getpgid($pid))
+            while(count($output) > 1)
             {
                 usleep(100000);
                 $tick += 100000;
                 if($tick >= $seconds)
                 {
-                    if(posix_getpgid($pid))
+                    $handle = exec("ps -p $pid", $output);
+                    if (count($output) > 1)
                     {
                         proc_terminate($process) ;
                         return view('assignments.infinity');
                     }
                 }
+                $handle = exec("ps -p $pid", $output);
             }
             //posix_getpgid($pid);
            
