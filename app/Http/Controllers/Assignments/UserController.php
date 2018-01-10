@@ -167,7 +167,7 @@ public function push(Request $request)
 			$filename = str_replace(".java","",$filename);
 
             $checkpath = $destinationPath2.$filename.'.class';
-           dd($checkpath);
+           //dd($checkpath);
             if(!file_exists($checkpath))
                 return view('assignments.infinity');
 
