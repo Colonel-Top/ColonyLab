@@ -236,12 +236,12 @@ public function push(Request $request)
             $pid = $pid['pid'];
             $output = array();
             $handle =  (proc_get_status($process));
-            $handle = $handle['stopped'];
+            $handle = $handle['signaled'];
 
             while(!$handle)
             {
-                usleep(100000);
-                $tick += 100000;
+                usleep(1000000);
+                $tick += 1000000;
                 if($tick >= $seconds)
                 {
                    // $handle = exec("ps -p $pid", $output);
@@ -251,7 +251,7 @@ public function push(Request $request)
                     
                 }
                 $handle =  (proc_get_status($process));
-            $handle = $handle['stopped'];
+                $handle = $handle['signaled'];
             }
             //posix_getpgid($pid);
            
