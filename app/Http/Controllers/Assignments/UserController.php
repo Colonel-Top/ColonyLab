@@ -164,7 +164,7 @@ public function push(Request $request)
        //     return view('assignments.infinity');
             $checkpath = $destinationPath2.' '.$filename.'.class';
             if(!file_exists($checkpath))
-                return view('assignments.compileerror');
+                return view('assignments.infinity');
 
 			$filename = str_replace(".java","",$filename);
 			$inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
