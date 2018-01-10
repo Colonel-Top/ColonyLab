@@ -37,7 +37,8 @@ class UserCoursesController extends Controller
 	{
 		$ids = 0;
 	//	Session::flash('success_msg','Authorized Successfully!');
-		$courses = Courses::orderBy('created','desc')->get();
+		///$courses = Courses::orderBy('created','desc')->get();
+		$courses = Courses::all();
 		$chkid = Auth::user()->noid;
 
 		//$user = Auth::user();
