@@ -112,7 +112,7 @@ class UserCoursesController extends Controller
 				//exit(); 
 				$user->courses()->attach($course->id);	
 			
-       			$courses = Courses::orderBy('created','desc')->get();
+       			$courses = Courses::all();
        			Session::flash('message1','Authorized Enroll Course Successfully!');
         		return redirect('/user/courses/courselist');
 
