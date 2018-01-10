@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Upload Assignment {{$asn->name}}</title>
+        <title>ERROR PAGE</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -147,16 +147,7 @@
                 </div>
                 <div class = "midupdown semititle">Max Attempts : {{$asn->max_attempts}}</div>
                 <div class = "midupdown semititle">
-                    <form action="{{ route('user.assignments.push') }}" method="POST" class="form-horizontal "enctype="multipart/form-data" >
-                         {{ csrf_field() }} 
-                 <input type="hidden" name="id" id="id" class="form-control" required value="{{$asn->id}}">
-                <input class="field" id = "users_ans" name="users_ans" type="file" required>
-                <div class="form-group">
-                        <div class="col-sm-offset-3 col-sm-10">
-                            <input type="submit" class="btn btn-default"  value="Upload Assignment" />
-                        </div>
-                    </div>
-                </form>
+                  ERROR
                 </div>
               <!--  <a class="button" href="{{ route('user.assignments.push',$asn->id) }} "><span> Upload Assignment </span></button>-->
 

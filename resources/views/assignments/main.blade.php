@@ -44,8 +44,9 @@
                             <td>
                                 <a href="{{ route('user.assignments.score', $post->id) }}" class="btn btn-danger">Score</a>
                                 <a href="{{ route('user.assignments.detail', $post->id) }}" class="btn btn-warning">Question</a>
+                                @if($post->allow_send == 1)
                                 <a href="{{ route('user.assignments.submit',$post->id) }}" class="btn btn-success">Submit</a>
-                            
+                                @endif
                                
                             </td>
                         </tr>

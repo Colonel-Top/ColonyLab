@@ -246,11 +246,8 @@ class AssignmentsController extends Controller
 	public function insert(Request $request)
 	{
 		//dd($request->courses_id);
-		$tmpstart = Carbon::parse($request->starttime);
-		$tmpend = Carbon::parse($request->endtime);
-	
-		$request['starttime'] = Carbon::parse($request->starttime);
-		$request['endtime'] = Carbon::parse($request->endtime);
+		
+		
 		$this->validate($request,[
 			'name' => 'required|max:40',
 			'fullscore' => 'required|string|min:1',
@@ -397,9 +394,21 @@ class AssignmentsController extends Controller
              $final11 = $destinationPath.'//'.$filename;        
         }
 
-        $postData = $request->all();
+        //$postData = $request->all();
+		
+		//2018-01-06 12:43:45
+		
+			
+		$starttime = $request->SYear.'-'.$request->SMonth.'-'.$request->SDay.' '.$request->SHour.':'.$request->SMinute.':'.$request->SSecond;
+		$endtime = $request->EYear.'-'.$request->EMonth.'-'.$request->EDay.' '.$request->EHour.':'.$request->EMinute.':'.$request->ESecond;
+		 $starttime = date('Y-m-d H:i:s', strtotime("$starttime"));
+		 $endtime = date('Y-m-d H:i:s', strtotime("$endtime"));
+		//echo($request->starttime);exit();
+	
+		$postData = $request->except('SHour','SMinute','SSecond','SDay','SMonth','SYear','EHour','EMonth','EYear','EMinute','ESecond');
 		$assignment = Assignments::create($postData);
-
+		$assignment->starttime = $starttime;
+		$assignment->endtime = $endtime;
 		$assignment->fpath = $final;
 		$assignment->foutput = $final2;
 		$assignment->finput = $final3;
@@ -601,9 +610,26 @@ class AssignmentsController extends Controller
             $file->move($destinationPath, $filename);
              $final11 = $destinationPath.'//'.$filename;        
         }
-        $postData = $request->all();
         
+        
+		
+		if($request->editdate == "on")
+		{
+			
+		$starttime = $request->SYear.'-'.$request->SMonth.'-'.$request->SDay.' '.$request->SHour.':'.$request->SMinute.':'.$request->SSecond;
+		$endtime = $request->EYear.'-'.$request->EMonth.'-'.$request->EDay.' '.$request->EHour.':'.$request->EMinute.':'.$request->ESecond;
+		 $request->starttime = date('Y-m-d H:i:s', strtotime("$starttime"));
+		 $request->endtime = date('Y-m-d H:i:s', strtotime("$endtime"));
+		//echo($request->starttime);exit();
+		}
+		$postData = $request->except('SHour','SMinute','SSecond','SDay','SMonth','SYear','EHour','EMonth','EYear','EMinute','ESecond');
+		
 		Assignments::find($request->idc)->update($postData);
+		if($request->editdate == "on")
+		{
+		Assignments::find($request->idc)->update(['starttime'=>$request->starttime]);
+		Assignments::find($request->idc)->update(['endtime'=>$request->endtime]);
+		}
 		if ($file = $request->hasFile('fpath')) 
 		{
 			Assignments::FindOrFail($request->idc)->update(['fpath'=>$final]);

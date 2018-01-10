@@ -1,5 +1,7 @@
 <?php
+
 namespace App\Http\Controllers\Assignments;
+
 use App\Courses;
 use App\User;
 use App\Assignments;
@@ -9,6 +11,7 @@ use Session;
 use Hash;
 use Response;
 use Auth;
+use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
@@ -50,7 +53,29 @@ class UserController extends Controller
 	}
 public function push(Request $request)
 	{
+        $maxsecond = 6;
 		$asn = Assignments::find($request->id);
+        $ex_s = Carbon::now();
+
+        $get = $asn->endtime;
+
+        $nowY = date('Y', strtotime("$ex_s"));
+        $nowM = date('m', strtotime("$ex_s"));
+        $nowD = date('d', strtotime("$ex_s"));
+        $nowH = date('H', strtotime("$ex_s"));
+        $nowI = date('i', strtotime("$ex_s"));
+        $nowS = date('s', strtotime("$ex_s"));
+
+        $gyear = date('Y', strtotime("$get"));
+        $gmonth = date('m', strtotime("$get"));
+        $gday = date('d', strtotime("$get"));
+        $ghour = date('H', strtotime("$get"));
+        $gmin = date('i', strtotime("$get"));
+        $gsecond = date('s', strtotime("$get"));
+        
+        if(!(($nowY <= $gyear) && ($nowM <= $gmonth) && ($nowD <= $gday) && ($nowH <= $ghour) && ($nowI <= $gmin) && ($nowS <= $gsecond) && ($asn->allow_send == 1)))
+            view('assignments.error');
+
        // echo(Auth::user()->pinid);
 		//echo($asn);exit();
 		$final ="";
@@ -101,7 +126,202 @@ public function push(Request $request)
 			//dd($asn->finput);
 			$injection = 'java -cp '.$destinationPath2.' '.$filename.' < '.$asn->finput.' > '.$destinationPath2.$filename.'.txt';
 			//dd($injection);
+            //INJECTIN ZONE
 
+
+
+            $descriptorspec = array(
+               0 => array("pipe", "r"),  // stdin is a pipe that the child will read from
+               1 => array("pipe", "w"),  // stdout is a pipe that the child will write to
+              // 2 => array("file", storage_path(), "a") // stderr is a file to write to
+            );
+            $maxruntime = 6;
+            $cwd = storage_path().'//assignments';
+            
+            
+
+            //$process_time = time();
+           
+
+           // $status_process = (proc_get_status($process));
+           
+        
+       
+
+           // $pid = $status_process['pid'];
+            $seconds = $maxsecond*1000000;
+            $tick = 0;
+
+            $pid = pcntl_fork();
+            if ($pid == -1) 
+            {
+                die('could not fork');
+            } 
+            else if ($pid) 
+            {
+             // we are the parent
+                $tick = time();
+
+            } 
+            else 
+            {
+               shell_exec($injection);
+                //pcntl_alarm( 600 );
+               // pcntl_signal(SIGALARM, term_proc);
+                
+            }
+            while(1)
+                {
+                    $check = pcntl_waitpid($pid, $status, WNOHANG | WUNTRACED);
+                    switch($check)
+                    {
+                    case $pid:
+                        echo("PID done ok");
+                        exit();
+                       //ended successfully
+                       //unset($this->children[$pid];
+                       break;
+                    case 0:
+                       //busy, with WNOHANG
+                        echo("PID BUSY NOW");
+                       if( ( $tick  + $maxruntime ) >= time() /*|| pcntl_wifstopped( $status )*/ )
+                       {
+                           //Killing Process
+                       
+                       
+                        
+                           // echo 'This is a server not using Windows!';
+                            if(!posix_kill($pid,SIGKILL))
+                           {
+
+                               trigger_error('Failed to kill '.$pid.': '.posix_strerror(posix_get_last_error()), E_USER_WARNING);
+
+                           }
+                           else
+                           {
+                            return view ('assignments.infinity');
+                           }
+                           //view successfully done
+                        
+                          
+                          // unset($this->children[$pid];
+                       }
+                       break;
+                    case -1:
+                    default:
+                       trigger_error('Something went terribly wrong with process '.$pid, E_USER_WARNING);
+                       // unclear how to proceed: you could try a posix_kill,
+                       // simply unsetting it from $this->children[$pid]
+                       // or dying here with fatal error. Most likely cause would be 
+                       // $pid is not a child of this process.
+                       break;
+
+                    }
+                }
+                echo("All done");
+                exit();
+                        /*while($tick <= $seconds)
+            {
+                 if (strncasecmp(PHP_OS, 'WIN', 3) == 0) {
+                    $status = proc_get_status($process);
+                    return exec('taskkill /F /T /PID '.$status['pid']);
+                } else {
+                    return proc_terminate($process);
+                }
+            }
+            /*
+            while(posix_getpgid($pid))
+            {
+                usleep(100000);
+                $tick += 100000;
+                if($tick >= $seconds)
+                {
+                    if(posix_getpgid($pid))
+                    {
+                        proc_terminate($process);
+                        return view('assignments.infinity');
+                    }
+                }
+            }
+            //posix_getpgid($pid);
+          */
+                
+            
+
+            
+            
+            echo("<br>DONE");
+            exit();
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+            // INJECTION ZONE
         	$result = shell_exec($injection);
         	//dd($result);
         	//$injector = storage_path() . '//assignments//'.$request->idc.'//master//';
@@ -224,6 +444,7 @@ public function push(Request $request)
 
             //Done Compile All
            
+        
         }
         else
         {
@@ -250,6 +471,41 @@ public function push(Request $request)
 			Session::flash('message1','Error This Assignment not available to upload anymore !');
 			return redirect()->back();
 		}
+        $get = $asn->endtime;
+        $ex_s = Carbon::now();
+        $nowY = date('Y', strtotime("$ex_s"));
+        $nowM = date('m', strtotime("$ex_s"));
+        $nowD = date('d', strtotime("$ex_s"));
+        $nowH = date('H', strtotime("$ex_s"));
+        $nowI = date('i', strtotime("$ex_s"));
+        $nowS = date('s', strtotime("$ex_s"));
+
+        $gyear = date('Y', strtotime("$get"));
+        $gmonth = date('m', strtotime("$get"));
+        $gday = date('d', strtotime("$get"));
+        $ghour = date('H', strtotime("$get"));
+        $gmin = date('i', strtotime("$get"));
+        $gsecond = date('s', strtotime("$get"));
+        //dd($gyear);
+       if($nowY <= $gyear)
+       {
+            if($nowM <= $gmonth)
+                if($nowD <= $gday)
+                    if($nowH <= $ghour)
+                        if($nowI <= $gmin)
+                            if($nowS  <= $gsecond)
+                            {
+                                Session::flash('message1','This Assignment ok!');
+                                 return redirect()->back();
+                            }
+           Session::flash('message1','Error This Assignment already remarks time is up !');
+           
+        }
+        else
+        {
+             Session::flash('message1','Error This Assignment already remarks time is up !');
+            return redirect()->back();
+        }
        
 		return view('assignments.upload',['asn'=>$asn]);
 	}

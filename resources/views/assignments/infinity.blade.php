@@ -6,7 +6,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Upload Assignment {{$asn->name}}</title>
+        <title>INFINITY LOOP DETECT</title>
 
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -50,6 +50,7 @@
 
             .title {
                 font-size: 84px;
+                color:#0F0;
             }
 
             .semititle{
@@ -70,25 +71,26 @@
                 color:#00000;
                 font-weight: 600;
             }
-            .button {
-
-  background-color: #4CAF50;
+           .button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #f4511e;
   border: none;
   color: #FFFFFF;
   text-align: center;
-  font-size: 22px;
-  padding: 2px;
-  
+  font-size: 23px;
+  padding: 20px;
+  width: 300px;
   transition: all 0.5s;
   cursor: pointer;
-
+  margin: 5px;
 }
 
 .button span {
   cursor: pointer;
   display: inline-block;
   position: relative;
-  transition: 0.8s;
+  transition: 0.5s;
 }
 
 .button span:after {
@@ -109,9 +111,10 @@
   right: 0;
 }
             .links > a {
-                color: #636b6f;
+                color: #0F0;
+                background-color: red;
                 padding: 0 25px;
-                font-size: 12px;
+                font-size: 19px;
                 font-weight: 600;
                 letter-spacing: .1rem;
                 text-decoration: none;
@@ -122,7 +125,7 @@
                 position: fixed;
                 color:#fff;
                 background: white;
-                opacity:0.21;
+                opacity:1;
             }
           
             .m-b-md {
@@ -140,25 +143,14 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                   Assignment
+                   ERROR INFINITY LOOP DETECTED !
                 </div>
-                <div class="title m-b-md">
-                    {{$asn->name}}
+               <div class = "entersite links">
+                <button class="button" style="vertical-align:middle" a href="{{ URL::previous() }}"><span> BRING ME BACK !  </span></button>
+                
+               </div>
                 </div>
-                <div class = "midupdown semititle">Max Attempts : {{$asn->max_attempts}}</div>
-                <div class = "midupdown semititle">
-                    <form action="{{ route('user.assignments.push') }}" method="POST" class="form-horizontal "enctype="multipart/form-data" >
-                         {{ csrf_field() }} 
-                 <input type="hidden" name="id" id="id" class="form-control" required value="{{$asn->id}}">
-                <input class="field" id = "users_ans" name="users_ans" type="file" required>
-                <div class="form-group">
-                        <div class="col-sm-offset-3 col-sm-10">
-                            <input type="submit" class="btn btn-default"  value="Upload Assignment" />
-                        </div>
-                    </div>
-                </form>
-                </div>
-              <!--  <a class="button" href="{{ route('user.assignments.push',$asn->id) }} "><span> Upload Assignment </span></button>-->
+           
 
             </div>
 
@@ -179,14 +171,14 @@
         c.width = window.innerWidth;
         //chinese characters - taken from the unicode charset
         var rand = Math.floor((Math.random() * 5) + 1);
-        var matrix = "♥   A   ♥   A";
+        var matrix = "E R R O R";
       
         //var matrix = "COLONEL CN302 0     ";
         
         //converting the string into an array of single characters
         matrix = matrix.split("");
 
-        var font_size = 10;
+        var font_size = 12;
         var columns = c.width / font_size; //number of columns for the rain
         //an array of drops - one per column
         var drops = [];
@@ -200,11 +192,11 @@
         {
             //Black BG for the canvas
             //translucent BG to show trail
-            ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
+            ctx.fillStyle = "rgba(0, 0, 0, 0.04)";
             ctx.fillRect(0, 0, c.width, c.height);
 
             //ctx.fillStyle = "#FFFFFF"; //green text
-            ctx.fillStyle = "#0F0"; //green text
+            ctx.fillStyle = "#DF0101"; //green text
             ctx.font = font_size + "px arial";
             //looping over drops
             for( var i = 0; i < drops.length; i++ )
@@ -225,7 +217,7 @@
         }
 
         //setInterval( draw, 35 );
-        setInterval( draw, 44 );
+        setInterval( draw, 25 );
 
         </script>
     </body>
