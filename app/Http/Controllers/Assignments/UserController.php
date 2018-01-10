@@ -236,6 +236,7 @@ public function push(Request $request)
             $pid = $pid['pid'];
             $output = array();
             $handle =  (proc_get_status($process));
+            print_r($handle);
             $handle = $handle['signaled'];
 
             while(!$handle)
@@ -245,8 +246,9 @@ public function push(Request $request)
                 if($tick >= $seconds)
                 {
                    // $handle = exec("ps -p $pid", $output);
-                    
-                        proc_terminate($process) ;
+                    $handle =  (proc_get_status($process));
+                    print_r($handle);
+                        proc_terminate($process) ;exit();
                         return view('assignments.infinity');
                     
                 }
