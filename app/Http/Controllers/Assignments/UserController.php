@@ -50,7 +50,46 @@ class UserController extends Controller
         return view('assignments.showcustom',['asninfo'=>$asninfo,'data'=>$data,'userdetails'=>$blah]);
     
     
+
 	}
+
+
+
+function ExecWaitTimeout($cmd, $timeout=5) {
+ 
+  $descriptorspec = array(
+      0 => array("pipe", "r"),
+      1 => array("pipe", "w"),
+      2 => array("pipe", "w")
+  );
+  $pipes = array();
+ 
+  $timeout += time();
+  $process = proc_open($cmd, $descriptorspec, $pipes);
+  if (!is_resource($process)) {
+    throw new Exception("proc_open failed on: " . $cmd);
+  }
+ 
+  $output = '';
+ 
+  do {
+    $timeleft = $timeout - time();
+    $read = array($pipes[1]);
+    stream_select($read, $write = NULL, $exeptions = NULL, $timeleft, NULL);
+ 
+    if (!empty($read)) {
+      $output .= fread($pipes[1], 8192);
+    }
+  } while (!feof($pipes[1]) && $timeleft > 0);
+ 
+  if ($timeleft <= 0) {
+    proc_terminate($process);
+    throw new Exception("command timeout on: " . $cmd);
+  } else {
+    return $output;
+  }
+}
+
 public function push(Request $request)
 	{
         $maxsecond = 6;
@@ -127,8 +166,10 @@ public function push(Request $request)
 			$injection = 'java -cp '.$destinationPath2.' '.$filename.' < '.$asn->finput.' > '.$destinationPath2.$filename.'.txt';
 			//dd($injection);
             //INJECTIN ZONE
+            $ticktock = ExecWaitTimeout($injection);
+            dd($ticktock);
 
-
+/*
 
             $descriptorspec = array(
                0 => array("pipe", "r"),  // stdin is a pipe that the child will read from
@@ -185,7 +226,7 @@ public function push(Request $request)
                     case 0:
                        //busy, with WNOHANG
                         echo("PID BUSY NOW");
-                       if( ( $tick  + $maxruntime ) >= time() /*|| pcntl_wifstopped( $status )*/)
+                       if( ( $tick  + $maxruntime ) >= time() /*|| pcntl_wifstopped( $status ))
                        {
                            //Killing Process
                        
