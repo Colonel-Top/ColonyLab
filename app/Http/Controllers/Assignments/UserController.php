@@ -233,7 +233,9 @@ public function push(Request $request)
             $process = $process = proc_open($injection, $descriptorspec, $pipes, $cwd);
             $pid = (proc_get_status($process));
             $pid = $pid['pid'];
+            $output = array();
             $handle = exec("ps -p $pid", $output);
+
             while(count($output) > 1)
             {
                 usleep(100000);
@@ -241,11 +243,10 @@ public function push(Request $request)
                 if($tick >= $seconds)
                 {
                     $handle = exec("ps -p $pid", $output);
-                    if (count($output) > 1)
-                    {
+                    
                         proc_terminate($process) ;
                         return view('assignments.infinity');
-                    }
+                    
                 }
                 $handle = exec("ps -p $pid", $output);
             }
