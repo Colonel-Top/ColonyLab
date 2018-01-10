@@ -175,7 +175,7 @@ public function push(Request $request)
 			//dd($asn->finput);
 			$injection = 'java -cp '.$destinationPath2.' '.$filename.' < '.$asn->finput.' > '.$destinationPath2.$filename.'.txt';
            // dd($injection);
-            $result = shell_exec('/bin/bash storage_path() $injection echo $?');
+            $result = shell_exec('/bin/bash storage_path() $injection');
             dd($result);exit();
             //shell_exec($injection)
 			//dd($injection);
