@@ -162,12 +162,15 @@ public function push(Request $request)
         	$result = shell_exec('javac -d '.$destinationPath.' '.$final);
           //  dd($result);
        //     return view('assignments.infinity');
+
+
+			$filename = str_replace(".java","",$filename);
+
             $checkpath = $destinationPath2.' '.$filename.'.class';
             dd($checkpath);
             if(!file_exists($checkpath))
                 return view('assignments.infinity');
-
-			$filename = str_replace(".java","",$filename);
+            
 			$inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
 			//dd($asn->finput);
 			$injection = 'java -cp '.$destinationPath2.' '.$filename.' < '.$asn->finput.' > '.$destinationPath2.$filename.'.txt';
