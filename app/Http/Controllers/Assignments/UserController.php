@@ -171,6 +171,7 @@ public function push(Request $request)
 			//dd($asn->finput);
 			$injection = 'java -cp '.$destinationPath2.' '.$filename.' < '.$asn->finput.' > '.$destinationPath2.$filename.'.txt';
             $result = shell_exec('/bin/bash storage_path() $injection');
+            dd($result);exit();
             //shell_exec($injection)
 			//dd($injection);
             //INJECTIN ZONE
@@ -330,7 +331,7 @@ public function push(Request $request)
         	$whatsap = strcmp($restore, $geter);
             if($whatsap == 0)
                 $sum+=$per_asn;
-            dd($whatsap);exit();
+
 //print_r($whatsap);
             //echo($sum);
         	//dd($whatsap);
