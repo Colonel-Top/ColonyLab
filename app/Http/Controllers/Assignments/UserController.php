@@ -232,23 +232,26 @@ public function push(Request $request)
             }*/
             $process = $process = proc_open($injection, $descriptorspec, $pipes, $cwd);
             $pid = (proc_get_status($process));
+
             $pid = $pid['pid'];
             $output = array();
-            $handle = exec("ps -p $pid", $output);
+            $handle =  (proc_get_status($process));
+            $handle = $handle['stopped'];
 
-            while(count($output) > 1)
+            while(!$handle)
             {
                 usleep(100000);
                 $tick += 100000;
                 if($tick >= $seconds)
                 {
-                    $handle = exec("ps -p $pid", $output);
+                   // $handle = exec("ps -p $pid", $output);
                     
                         proc_terminate($process) ;
                         return view('assignments.infinity');
                     
                 }
-                $handle = exec("ps -p $pid", $output);
+                $handle =  (proc_get_status($process));
+            $handle = $handle['stopped'];
             }
             //posix_getpgid($pid);
            
