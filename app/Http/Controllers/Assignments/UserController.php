@@ -55,40 +55,7 @@ class UserController extends Controller
 
 
 
-function ExecWaitTimeout($cmd, $timeout=5) {
- 
-  $descriptorspec = array(
-      0 => array("pipe", "r"),
-      1 => array("pipe", "w"),
-      2 => array("pipe", "w")
-  );
-  $pipes = array();
- 
-  $timeout += time();
-  $process = proc_open($cmd, $descriptorspec, $pipes);
-  if (!is_resource($process)) {
-    throw new Exception("proc_open failed on: " . $cmd);
-  }
- 
-  $output = '';
- 
-  do {
-    $timeleft = $timeout - time();
-    $read = array($pipes[1]);
-    stream_select($read, $write = NULL, $exeptions = NULL, $timeleft, NULL);
- 
-    if (!empty($read)) {
-      $output .= fread($pipes[1], 8192);
-    }
-  } while (!feof($pipes[1]) && $timeleft > 0);
- 
-  if ($timeleft <= 0) {
-    proc_terminate($process);
-    throw new Exception("command timeout on: " . $cmd);
-  } else {
-    return $output;
-  }
-}
+
 
 public function push(Request $request)
 	{
@@ -166,6 +133,40 @@ public function push(Request $request)
 			$injection = 'java -cp '.$destinationPath2.' '.$filename.' < '.$asn->finput.' > '.$destinationPath2.$filename.'.txt';
 			//dd($injection);
             //INJECTIN ZONE
+            function ExecWaitTimeout($cmd, $timeout=5) {
+ 
+  $descriptorspec = array(
+      0 => array("pipe", "r"),
+      1 => array("pipe", "w"),
+      2 => array("pipe", "w")
+  );
+  $pipes = array();
+ 
+  $timeout += time();
+  $process = proc_open($cmd, $descriptorspec, $pipes);
+  if (!is_resource($process)) {
+    throw new Exception("proc_open failed on: " . $cmd);
+  }
+ 
+  $output = '';
+ 
+  do {
+    $timeleft = $timeout - time();
+    $read = array($pipes[1]);
+    stream_select($read, $write = NULL, $exeptions = NULL, $timeleft, NULL);
+ 
+    if (!empty($read)) {
+      $output .= fread($pipes[1], 8192);
+    }
+  } while (!feof($pipes[1]) && $timeleft > 0);
+ 
+  if ($timeleft <= 0) {
+    proc_terminate($process);
+    throw new Exception("command timeout on: " . $cmd);
+  } else {
+    return $output;
+  }
+}
             $ticktock = ExecWaitTimeout($injection);
             dd($ticktock);
 
