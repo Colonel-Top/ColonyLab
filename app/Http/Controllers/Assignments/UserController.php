@@ -166,11 +166,11 @@ public function push(Request $request)
 
 			$filename = str_replace(".java","",$filename);
 
-            $checkpath = $destinationPath2.' '.$filename.'.class';
-            dd($checkpath);
+            $checkpath = $destinationPath2.$filename.'.class';
+           // dd($checkpath);
             if(!file_exists($checkpath))
                 return view('assignments.infinity');
-            
+
 			$inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
 			//dd($asn->finput);
 			$injection = 'java -cp '.$destinationPath2.' '.$filename.' < '.$asn->finput.' > '.$destinationPath2.$filename.'.txt';
