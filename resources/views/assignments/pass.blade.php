@@ -368,8 +368,8 @@
 			Congratulation
 		</div>
 		<div class="context sign-text-color">
-			WoW, Your File that send me to Compile <br>
-    seems it's worked !.
+			WoW, Your File that send me  <br>
+    I've Compile seems it's worked !.
 		</div>
 	</div>
 </div>
@@ -379,11 +379,11 @@
 	</div>
 	<div class="context primary-text-color">
 		<p>
-			You may want to head back to the assignment.<br>
+			You may want to head back to the assignment page.<br>
 		</p>
 	</div>
 	<div class="buttons-container">
-		<a class="border-button" href="{{ url('user/assignment/$course') }}&quot; f" ><span class="fa fa-home"></span> Send me back</a>
+		<a class="border-button" href="{{ url('user/assignment/$course->id') }}&quot; f" ><span class="fa fa-home"></span> Go back</a>
 	
 	</div>
 </div>

@@ -343,8 +343,8 @@ public function push(Request $request)
         /*$user = $request->user();
         $course = $user->courses;
 **/
-    
-        return view('assignments.pass',['scores'=>$sum,'course'=>$asn->courses_id]);
+        $coursething = Courses::find($asn->courses_id);
+        return view('assignments.pass',['scores'=>$sum,'course'=>$coursething);
 
             //Done Compile All
            
