@@ -173,19 +173,20 @@ public function push(Request $request)
 
 			$inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
 			//dd($asn->finput);
-			$injection = 'start /b java -cp '.$destinationPath2.' '.$filename.' < '.$asn->finput.' > '.$destinationPath2.$filename.'.txt';
-
-
+			$injection = '\"java -cp '.$destinationPath2.' '.$filename.' < '.$asn->finput.' > '.$destinationPath2.$filename.'.txt\"';
+            $result = shell_exec('python runtime.py $injection');
+            dd($result);
+            //Done
         /*    dd($injection);
             $result = shell_exec('/bin/bash storage_path() $injection');
             dd($result);exit();*/
             //shell_exec($injection)
-			dd($injection);
+		//	dd($injection);
             //INJECTIN ZONE
 
 
 
-
+/*
             $descriptorspec = array(
                0 => array("pipe", "r"),  // stdin is a pipe that the child will read from
                1 => array("pipe", "w"),  // stdout is a pipe that the child will write to
@@ -375,7 +376,7 @@ public function push(Request $request)
     {
         	   //--------------------------
         		$destinationPath2 = storage_path() . '//assignments//'.$asn->id.'//user_upload//';
-	        	$result = shell_exec('javac -d '.$destinationPath.' '.$final);
+	        	//$result = shell_exec('javac -d '.$destinationPath.' '.$final);
 				$filename = str_replace(".java","",$filename);
 				$inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
 				$injection = 'java -cp '.$destinationPath2.' '.$filename.' < '.$asn->finput2.' > '.$destinationPath2.$filename.'.txt';
@@ -399,7 +400,7 @@ public function push(Request $request)
     if (!empty($asn->finput3)) 
     {
             $destinationPath3 = storage_path() . '//assignments//'.$asn->id.'//user_upload//';
-                $result = shell_exec('javac -d '.$destinationPath.' '.$final);
+               // $result = shell_exec('javac -d '.$destinationPath.' '.$final);
                 $filename = str_replace(".java","",$filename);
                 $inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
                 $injection = 'java -cp '.$destinationPath3.' '.$filename.' < '.$asn->finput3.' > '.$destinationPath3.$filename.'.txt';
@@ -415,7 +416,7 @@ public function push(Request $request)
             if(!empty($asn->finput4))
             {
                 $destinationPath4 = storage_path() . '//assignments//'.$asn->id.'//user_upload//';
-                $result = shell_exec('javac -d '.$destinationPath.' '.$final);
+               // $result = shell_exec('javac -d '.$destinationPath.' '.$final);
                 $filename = str_replace(".java","",$filename);
                 $inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
                 $injection = 'java -cp '.$destinationPath4.' '.$filename.' < '.$asn->finput4.' > '.$destinationPath4.$filename.'.txt';
@@ -431,7 +432,7 @@ public function push(Request $request)
             if(!empty($asn->finput5))
             {
                 $destinationPath5 = storage_path() . '//assignments//'.$asn->id.'//user_upload//';
-                $result = shell_exec('javac -d '.$destinationPath.' '.$final);
+               // $result = shell_exec('javac -d '.$destinationPath.' '.$final);
                 $filename = str_replace(".java","",$filename);
                 $inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
                 $injection = 'java -cp '.$destinationPath5.' '.$filename.' < '.$asn->finput5.' > '.$destinationPath5.$filename.'.txt';

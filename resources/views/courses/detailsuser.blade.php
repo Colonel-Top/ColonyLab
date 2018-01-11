@@ -86,7 +86,7 @@
                 <div class="form-group">
                     @if(!empty($courses->coursepdf))
                     <strong>Course Outline:</strong>
-                    <a href="{{ route('user.courses.detail', $post->id) }}" class="btn btn-warning">Detail</a>
+                    <a href="{{ route('user.courses.detail', $courses->id) }}" class="btn btn-warning">Detail</a>
                     @endif
                 </div>
             </div>
