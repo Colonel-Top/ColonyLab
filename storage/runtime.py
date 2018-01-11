@@ -28,9 +28,7 @@ def main():
             count = count + FREQ
             #print(count)
             if count > MAX_RUNTIME:
-                proc.kill()
-                p = psutil.Process(pid)
-                p.terminate()  #or p.kill()
+                proc.terminate()
                 #print("NOT OK")
                 break
         if proc.poll() != None:
