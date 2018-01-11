@@ -34,7 +34,7 @@ def main():
             print("OK")
             return 0
     print("FINISH")
-    return 1'''
+    return 1
 
 if __name__ == "__main__":
     main()
