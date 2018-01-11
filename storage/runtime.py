@@ -19,8 +19,9 @@ def main():
     flag = False
     #execution = threading.Thread(target = runner,args = (MAX_RUNTIME,FREQ))
     #execution.start()
-    proc = subprocess.Popen(path)
+    proc = subprocess.Popen(path,shell=True)
     count = 0
+    pid = proc.pid
     while True:
         if proc.poll() is None:
             time.sleep(FREQ)
@@ -28,6 +29,8 @@ def main():
             #print(count)
             if count > MAX_RUNTIME:
                 proc.kill()
+                p = psutil.Process(pid)
+                p.terminate()  #or p.kill()
                 #print("NOT OK")
                 break
         if proc.poll() != None:
