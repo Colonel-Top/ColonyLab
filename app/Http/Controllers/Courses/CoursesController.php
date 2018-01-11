@@ -79,7 +79,14 @@ class CoursesController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-
+ public function outline($id)
+    {
+        $course = Courses::FindOrFail($id);
+        $name = $course->coursepdf;
+        if(empty($name))
+			return redirect()->back()->with(Session::flash('error','There\'s No Files'));
+        return response()->file($name);
+    }
 	public function insert(Request $request)
 	{
 		
@@ -97,12 +104,37 @@ class CoursesController extends Controller
 		} 
 		else
 			$request['allowregister'] = "0";
+		if ($file = $request->hasFile('coursepdf')) 
+		{
+
+            $file = $request->file('coursepdf');
+            $filename =$file->getClientOriginalName();
+            $destinationPath = storage_path() . '//courses//'.$request->coursename;
+            $file->move($destinationPath, $filename);
+             $final = $destinationPath.'//'.$filename;        
+             
+        }
+		if(empty($request['homework']))
+			$request['homework'] = 0;
+		if(empty($request['assignments']))
+			$request['assignments'] = 0;
+		if(empty($request['midterm']))
+			$request['midterm'] = 0;
+		if(empty($request['final']))
+			$request['final'] = 0;
+		if(empty($request['courseinfo']))
+			$request['courseinfo'] = "";
 		
 		$hashpass = bcrypt($request['password']);
 		$request['password'] = $hashpass;
 		$request['createby'] = $this->user;
         $postData = $request->all();
-		Courses::create($postData);
+		$courses = Courses::create($postData);
+		
+		if ($file = $request->hasFile('coursepdf')) 
+		{
+			Courses::find($courses->id)->update(['coursepdf'=>$final]);
+		}
 		Session::flash('message1','Courses Added');
 		$courses = Courses::all();
 
@@ -133,12 +165,17 @@ class CoursesController extends Controller
 				return redirect()->back();
 			}
 		}
-   
+   	public function routeremark()
+   	{	
+   		$courses = Courses::all();
+
+   		return view('courses.showremark',['courses' => $courses]);
+   	}
+
     public function update($id,Request $request)
 	{
 		$this->validate($request,[
 			'coursename' => 'required|max:40',
-			'password' => 'required|string|min:1',
 			'createby' =>  $this->user,
 			
 		]);
@@ -149,12 +186,58 @@ class CoursesController extends Controller
 		} 
 		else
 			$request['allowregister'] = "0";
-		
-		$hashpass = bcrypt($request['password']);
-		$request['password'] = $hashpass;
+		if ($file = $request->hasFile('coursepdf')) 
+		{
+
+            $file = $request->file('coursepdf');
+            $filename =$file->getClientOriginalName();
+            $destinationPath = storage_path() . '//courses//'.$request->idc;
+            $file->move($destinationPath, $filename);
+             $final = $destinationPath.'//'.$filename;        
+         
+        }
+        if(!empty($request['password-confirm'] && !empty($request['password'])))
+        {
+        	if($request->password != $request['password-confirm'])
+        		return redirect()->back()->with(Session::flash('message1','Error Password Confirmation not match'));
+        	else
+        		$request['password'] = bcrypt($request->password);
+        }
+        /*else
+        {
+        	$r2 = DB::table('courses')->select('password')->where('id',$request->id)->pluck('password');
+			$passlala = $r2[0];
+			 $hashpass = bcrypt($request->password);
+        	if (!Hash::check($request->password,$passlala) )
+			{
+				
+			
+			
+				return redirect()->back()->with(Session::flash('message1','Error Password not match to update'));		
+			}
+        }*/
+        $oldinfo = Courses::FindOrFail($id);
+        if(empty($request['password']))
+			$request['password'] = $oldinfo->password;
+		if(empty($request['homework']))
+			$request['homework'] = $oldinfo->homework;
+		if(empty($request['assignments']))
+			$request['assignments'] = $oldinfo->assignments;
+		if(empty($request['midterm']))
+			$request['midterm'] = $oldinfo->midterm;
+		if(empty($request['final']))
+			$request['final'] = $oldinfo->final;
+	
+
+		/*$hashpass = bcrypt($request['password']);
+		$request['password'] = $hashpass;*/
 		$request['createby'] = $this->user;
 		$postData = $request->all();
 		Courses::find($id)->update($postData);
+		if ($file = $request->hasFile('coursepdf')) 
+		{
+			Courses::find($id)->update(['coursepdf'=>$final]);
+		}
 		Session::flash('message1','Courses Updated');
 		return redirect()->intended(route('admin.courses.index'));
 

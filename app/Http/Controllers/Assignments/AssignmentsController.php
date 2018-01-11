@@ -235,6 +235,42 @@ class AssignmentsController extends Controller
 			'createby' =>   $this->user,
         ]);
     }
+    public function maxscoreshow($id)
+    {
+    	$asninfo = Assignments::FindOrFail($id);
+		$data = DB::table('assignment_work')->select()->where('assignments_id',$id)->get();
+
+
+	//problem	$data = DB::select('select * from assignment_work where assignments_id = :id, scores = (select max(scores) from users_id)  ',['id' => $id]);
+
+
+		
+		$blah = Assignments::with('courses.users')->where('id',$asninfo->id)->get();
+	
+		return view('assignments.show',['asninfo'=>$asninfo,'data'=>$data,'userdetails'=>$blah]);
+    }
+    public function showremark($id)
+    {/* // Using the Query Builder
+ DB::table('orders')->find(DB::table('orders')->max('id'));
+
+ // Using Eloquent
+ $order = Orders::find(DB::table('orders')->max('id'));*/
+				//Session::flash('message1','Authorized Successfully!');
+				 $course = Courses::find($id);
+       			$coursename = $course->name;
+       			 //load form view
+        		$asn = Assignments::where('courses_id',$id)->get();
+		return view(' assignments.mainremark',['asn' => $asn,'course'=>$coursename]);
+		//echo($id);
+ 	/*	$allcourse = Courses::FindOrFail($id);
+ 		$asninfo = Assignments::where('courses_id',$allcourse->id)->get();
+ 		//dd($asninfo);
+	//	$asninfo = Assignments::FindOrFail($id);
+		$data = DB::table('assignment_work')->select()->where('assignments_id',$id)->get();
+		$blah = Assignments::with('courses.users')->where('id',$asninfo->id)->get();
+		//dd($blah);
+		return view('assignments.mainremark',['asninfo'=>$asninfo,'data'=>$data,'userdetails'=>$blah]);*/
+    }
 
     /**
      * Create a new user instance after a valid registration.

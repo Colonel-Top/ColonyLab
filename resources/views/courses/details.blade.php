@@ -46,6 +46,46 @@
                     @endif
                 </div>
             </div>
+
+             <div class="col-md-8">
+                <div class="form-group">
+                    <strong>Homework:</strong>
+                    {{ $course->homework }}
+                </div>
+            </div>
+            <div class="col-md-8">
+                <div class="form-group">
+                    <strong>Assignments:</strong>
+                    {{ $course->assignments }}
+                </div>
+            </div>
+
+               <div class="col-md-8">
+                <div class="form-group">
+                    <strong>Midterm:</strong>
+                    {{ $course->midterm }}
+                </div>
+            </div>
+           
+               <div class="col-md-8">
+                <div class="form-group">
+                    <strong>Final:</strong>
+                    {{ $course->final }}
+                </div>
+            </div>
+
+
+             <div class="col-md-8">
+                <div class="form-group">
+                    @if(!empty($course->coursepdf))
+                    <strong>Course Outline:</strong>
+                    <a href="{{ route('user.courses.detail', $course->id) }}" class="btn btn-warning">Detail</a>
+                    @endif
+                </div>
+            </div>
+
+
+
         </div>
 
         <div class="row">

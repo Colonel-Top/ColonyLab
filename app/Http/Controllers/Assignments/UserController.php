@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Assignments;
-
+ini_set('max_execution_time', 300);
 use App\Courses;
 use App\User;
 use App\Assignments;
@@ -173,34 +173,60 @@ public function push(Request $request)
 
 			$inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
 			//dd($asn->finput);
-			$injection = '"java -cp '.$destinationPath2.' '.$filename.' < '.$asn->finput.' > '.$destinationPath2.$filename.'.txt"';
-            dd($injection);
+			$injection = 'exec java -cp '.$destinationPath2.' '.$filename.' < '.$asn->finput.' > '.$destinationPath2.$filename.'.txt';
+
+
+        /*    dd($injection);
             $result = shell_exec('/bin/bash storage_path() $injection');
-            dd($result);exit();
+            dd($result);exit();*/
             //shell_exec($injection)
-			//dd($injection);
+		//	dd($injection);
             //INJECTIN ZONE
 
 
-/*
+
 
             $descriptorspec = array(
                0 => array("pipe", "r"),  // stdin is a pipe that the child will read from
                1 => array("pipe", "w"),  // stdout is a pipe that the child will write to
               // 2 => array("file", storage_path(), "a") // stderr is a file to write to
             );
-            $maxruntime = 6;
+            $maxruntime = 10;
             $cwd = storage_path().'//assignments';
             
+            $bpy = array('bypass_shell'=>true);
+            $process = proc_open($injection,$descriptorspec,$pipes);
+           // dd($process);
+            //$process_time = time();
             
 
-            //$process_time = time();
-           
+            $status_process = (proc_get_status($process));
+            $pid = $status_process['pid'];
+            $tick = 0;
+         //   dd($status_process);
+            stream_set_blocking($pipes[1], 0);
+            echo($status_process['pid']);
+            while($tick <= $maxruntime)
+            {
+                sleep(1);
+                echo stream_get_contents($pipes[1]);
+                $tick+= 1;
+                $is_running = $status_process['running'];
+                echo($is_running);
+                echo("<br>");
+                if($is_running == 0)
+                {
+                    echo("Stopped");
+                    exit();
+                }
+            }
+            //exec("taskkill /F /T /PID $pid") ;
+            $returnp = proc_terminate($process);
 
-           // $status_process = (proc_get_status($process));
-           
+           // dd($returnp);
+           exit();
         
-       
+       /*
 
            // $pid = $status_process['pid'];
             $seconds = $maxsecond*1000000;
@@ -317,7 +343,7 @@ public function push(Request $request)
 
 
             // INJECTION ZONE
-        	//$result = shell_exec($injection);
+        	$result = shell_exec($injection);
         	//dd($result);
         	//$injector = storage_path() . '//assignments//'.$request->idc.'//master//';
         	//dd($result);
@@ -336,6 +362,7 @@ public function push(Request $request)
         	$whatsap = strcmp($restore, $geter);
             if($whatsap == 0)
                 $sum+=$per_asn;
+            unlink($checkpath);
 
 //print_r($whatsap);
             //echo($sum);

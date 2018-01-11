@@ -41,6 +41,7 @@ Route::get('/submit/{id}','Assignments\UserController@submit')->name('user.assig
 Route::post('/push','Assignments\UserController@push')->name('user.assignments.push');
 Route::post('/profile/update','UserProfileController@update')->name('user.profile.update');
 Route::get('/profile/request','UserProfileController@request')->name('user.profile.request');
+Route::get('/courses/outline/{id}','Courses\CoursesController@outline')->name('user.courses.detail');
 });
 
 Route::prefix('admin')->group(function(){
@@ -60,8 +61,8 @@ Route::prefix('admin')->group(function(){
 
 	Route::get('/assignment/callmaster1/{id}','Assignments\AssignmentsController@callmaster1')->name('admin.assignments.callmaster1');
 	Route::get('/assignment/callout1/{id}','Assignments\AssignmentsController@callout1')->name('admin.assignments.callout1');
-
-
+	Route::get('/remarks/explore/{id}','Assignments\AssignmentsController@maxscoreshow')->name('admin.assignments.maxscoreshow');
+	Route::get('/remarks/{id}','Assignments\AssignmentsController@showremark')->name('admin.assignments.showremark') ;
 	Route::get('/assignment/callmaster2/{id}','Assignments\AssignmentsController@callmaster2')->name('admin.assignments.callmaster2');
 	Route::get('/assignment/callout2/{id}','Assignments\AssignmentsController@callout2')->name('admin.assignments.callout2');
 	
@@ -82,7 +83,7 @@ Route::get('/assignment/callmaster5/{id}','Assignments\AssignmentsController@cal
 	Route::get('/assignment/editreq/{id}','Assignments\AssignmentsController@edit')->name('admin.assignments.editreq');
 	Route::get('/assignment/request/{id}','Assignments\AssignmentsController@request')->name('admin.assignments.request');
 
-	
+	Route::get('/remarks','Courses\CoursesController@routeremark')->name('admin.couses.routeremark');
 	Route::get('/courses', 'Courses\CoursesController@index')->name('admin.courses.index');
 	Route::get('/courses/details/{id}', 'Courses\CoursesController@details')->name('admin.courses.details');
 	Route::get('/courses/add', 'Courses\CoursesController@add')->name('admin.courses.add');

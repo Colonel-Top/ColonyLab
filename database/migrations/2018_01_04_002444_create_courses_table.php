@@ -19,6 +19,11 @@ class CreateCoursesTable extends Migration
             $table->string("password");
             $table->string("createby");
             $table->boolean("allowregister");
+            $table->string('coursepdf');
+            $table->string('homework');
+            $table->string('assignments');
+            $table->string('midterm');
+            $table->string('final');
             $table->timestamps();
         });
     }

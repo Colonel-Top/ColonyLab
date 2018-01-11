@@ -54,5 +54,44 @@
             
         </div>
     </div>
+
+             <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    <strong>Homework:</strong>
+                    {{ $courses->homework }}
+                </div>
+            </div>
+           <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    <strong>Assignments:</strong>
+                    {{ $courses->assignments }}
+                </div>
+            </div>
+
+             <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    <strong>Midterm:</strong>
+                    {{ $courses->midterm }}
+                </div>
+            </div>
+           
+              <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    <strong>Final:</strong>
+                    {{ $courses->final }}
+                </div>
+            </div>
+
+  <div class="col-md-8 col-md-offset-2">
+                <div class="form-group">
+                    @if(!empty($courses->coursepdf))
+                    <strong>Course Outline:</strong>
+                    <a href="{{ route('user.courses.detail', $post->id) }}" class="btn btn-warning">Detail</a>
+                    @endif
+                </div>
+            </div>
+
+
+
 </div>
 @endsection

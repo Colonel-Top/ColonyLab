@@ -21,7 +21,7 @@
             </div>
             <div class="panel-body">
                 
-                <form action="{{ route('admin.courses.insert') }}" method="POST" class="form-horizontal">
+                <form action="{{ route('admin.courses.insert') }}" method="POST" class="form-horizontal" enctype="multipart/form-data">
                     {{ csrf_field() }} 
               
               
@@ -70,6 +70,44 @@
                               <input name="allowregister" type="checkbox" >
                         </div>
                     </div>
+                     <div class="form-group">
+                        <label class="col-md-4 control-label" >Full Homework (Percents or Scores or Text)</label>
+
+                        <div class="col-md-1">
+                            <input type="text" name="homework" id="homework" class="form-control">
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label class="col-md-4 control-label" >Full assignments (Percents or Scores or Text) </label>
+
+                        <div class="col-md-1">
+                            <input type="text" name="assignments" id="assignments" class="form-control">
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label class="col-md-4 control-label" >Full Midterm (Percents or Scores or Text) </label>
+
+                        <div class="col-md-1">
+                            <input type="text" name="midterm" id="midterm" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" >Full Final (Percents or Scores or Text) </label>
+
+                        <div class="col-md-1">
+                            <input type="text" name="final" id="final" class="form-control">
+                        </div>
+                    </div>
+                   
+                 
+                   <div class="form-group">
+                        <label class="col-md-4 control-label" >Course Outline File</label>
+
+                        <div class="col-md-1">
+                             <input class="field" id = "coursepdf" name="coursepdf" type="file" >
+                        </div>
+                    </div>
+ 
                     <div class="form-group">
                         <div class="col-sm-offset-2 col-sm-10">
                             <input type="submit" class="btn btn-default" value="Add Course" />

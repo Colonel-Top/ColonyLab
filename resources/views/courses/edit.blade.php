@@ -18,7 +18,7 @@
                 @if (Session::has('message1'))
                         <div class="alert alert-info">{{ Session::get('message1') }}</div>
                     @endif
-                <form action="{{ route('admin.courses.update', $courses->id) }}" method="POST" class="form-horizontal">
+                <form action="{{ route('admin.courses.update', $courses->id) }}" method="POST" class="form-horizontal " enctype="multipart/form-data">
                     {{ csrf_field() }}
                     <div class="form-group">
                         <label class="control-label col-sm-4" >Course Name</label>
@@ -30,7 +30,7 @@
                             <label for="password" class="col-md-4 control-label">Course Password</label>
 
                             <div class="col-md-6">
-                                <input id="password" type="password" class="form-control" name="password" required>
+                                <input id="password" type="password" class="form-control" name="password">
 
                                 @if ($errors->has('password'))
                                     <span class="help-block">
@@ -43,7 +43,7 @@
                         <div class="form-group{{ $errors->has('password_confirmation') ? ' has-error' : '' }}">
                             <label for="password-confirm" class="col-md-4 control-label">Confirm Course Password</label>
                             <div class="col-md-6">
-                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation" required>
+                                <input id="password-confirm" type="password" class="form-control" name="password_confirmation">
 
                                 @if ($errors->has('password_confirmation'))
                                     <span class="help-block">
@@ -62,8 +62,43 @@
                         </div>
                     </div>
 
+ <div class="form-group">
+                        <label class="col-md-4 control-label" >Full Homework (Percents or Scores or Text)</label>
 
+                        <div class="col-md-1">
+                            <input type="text" name="homework" id="homework" class="form-control">
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label class="col-md-4 control-label" >Full assignments (Percents or Scores or Text) </label>
 
+                        <div class="col-md-1">
+                            <input type="text" name="assignments" id="assignments" class="form-control">
+                        </div>
+                    </div>
+                     <div class="form-group">
+                        <label class="col-md-4 control-label" >Full Midterm (Percents or Scores or Text) </label>
+
+                        <div class="col-md-1">
+                            <input type="text" name="midterm" id="midterm" class="form-control">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="col-md-4 control-label" >Full Final (Percents or Scores or Text) </label>
+
+                        <div class="col-md-1">
+                            <input type="text" name="final" id="final" class="form-control">
+                        </div>
+                    </div>
+                   
+                 
+                   <div class="form-group">
+                        <label class="col-md-4 control-label" >Course Outline File</label>
+
+                        <div class="col-md-1">
+                             <input class="field" id = "coursepdf" name="coursepdf" type="file" >
+                        </div>
+                    </div>
 
 
                     <div class="form-group">
