@@ -15,7 +15,7 @@ def main():
     path =  str(sys.argv[1])
     #path = "HI"
     MAX_RUNTIME = 3
-    FREQ = 0.1
+    FREQ = 1
     flag = False
     #execution = threading.Thread(target = runner,args = (MAX_RUNTIME,FREQ))
     #execution.start()
