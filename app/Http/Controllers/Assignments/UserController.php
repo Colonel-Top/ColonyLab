@@ -173,14 +173,14 @@ public function push(Request $request)
 
 			$inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
 			//dd($asn->finput);
-			$injection = 'exec java -cp '.$destinationPath2.' '.$filename.' < '.$asn->finput.' > '.$destinationPath2.$filename.'.txt';
+			$injection = 'start /b java -cp '.$destinationPath2.' '.$filename.' < '.$asn->finput.' > '.$destinationPath2.$filename.'.txt';
 
 
         /*    dd($injection);
             $result = shell_exec('/bin/bash storage_path() $injection');
             dd($result);exit();*/
             //shell_exec($injection)
-		//	dd($injection);
+			dd($injection);
             //INJECTIN ZONE
 
 
@@ -189,7 +189,7 @@ public function push(Request $request)
             $descriptorspec = array(
                0 => array("pipe", "r"),  // stdin is a pipe that the child will read from
                1 => array("pipe", "w"),  // stdout is a pipe that the child will write to
-              // 2 => array("file", storage_path(), "a") // stderr is a file to write to
+               2 => array("file", storage_path().'error.txt', "a") // stderr is a file to write to
             );
             $maxruntime = 10;
             $cwd = storage_path().'//assignments';
@@ -212,19 +212,19 @@ public function push(Request $request)
                 sleep(1);
                 echo stream_get_contents($pipes[1]);
                 $tick+= 1;
-                //$is_running = $status_process['running'];
-                $is_running = file_exists( "/proc/$pid" );
+                $is_running = $status_process['running'];
+               // $is_running = file_exists( "/proc/$pid" );
                 echo($is_running);
                 echo("<br> P");
-                if($is_running == 0)
+                if($is_running == false)
                 {
                     echo("Stopped");
                     exit();
                 }
             }
             //exec("taskkill /F /T /PID $pid") ;
-            $returnp = proc_terminate($process);
-            echo("Terminated");
+          //  $returnp = proc_terminate($process);
+         //   echo("Terminated");
            // dd($returnp);
            exit();
         
