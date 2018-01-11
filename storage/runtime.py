@@ -3,6 +3,7 @@
 from threading import Timer
 import time
 import sys
+import signal
 import os
 import subprocess
 def kill(p):
@@ -28,7 +29,7 @@ def main():
             count = count + FREQ
             #print(count)
             if count > MAX_RUNTIME:
-                proc.terminate()
+                os.kill(pid, signal.SIGTERM) #or signal.SIGKILL 
                 #print("NOT OK")
                 break
         if proc.poll() != None:
