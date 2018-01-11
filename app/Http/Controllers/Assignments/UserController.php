@@ -174,9 +174,11 @@ public function push(Request $request)
 			$inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
 			//dd($asn->finput);
 			$injection = '\"java -cp '.$destinationPath2.' '.$filename.' < '.$asn->finput.' > '.$destinationPath2.$filename.'.txt\"';
-            $result = exec('python storage_path()\runtime.py $injection 2>&1',$output,$returner);
-            print_r($output);
-            dd($returner);
+            $command = 'python '.storage_path().'/runtime.py '.$injection;
+            system($command, $return_value);
+           // $result = exec('python storage_path()\runtime.py $injection 2>&1',$output,$returner);
+            //print_r($output);
+            dd($return_value);
             //Done
         /*    dd($injection);
             $result = shell_exec('/bin/bash storage_path() $injection');
