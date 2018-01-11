@@ -19,7 +19,7 @@ def main():
     flag = False
     #execution = threading.Thread(target = runner,args = (MAX_RUNTIME,FREQ))
     #execution.start()
-    proc = subprocess.Popen(path,shell=True)
+    proc = subprocess.Popen(path)
     count = 0
     while True:
         if proc.poll() is None:
