@@ -32,9 +32,10 @@ def main():
                 break
         if proc.poll() != None:
             #print("OK")
-            return 0
-    #print("FINISH")
-    return 1
+            #print ("0")
+            sys.exit(0)
+    #print("1")
+    sys.exit(1)
 
 if __name__ == "__main__":
     main()
