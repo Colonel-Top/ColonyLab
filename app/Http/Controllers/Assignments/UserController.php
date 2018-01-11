@@ -206,12 +206,14 @@ public function push(Request $request)
          //   dd($status_process);
             stream_set_blocking($pipes[1], 0);
             echo($status_process['pid']);
+
             while($tick <= $maxruntime)
             {
                 sleep(1);
                 echo stream_get_contents($pipes[1]);
                 $tick+= 1;
-                $is_running = $status_process['running'];
+                //$is_running = $status_process['running'];
+                $is_running = file_exists( "/proc/$pid" );
                 echo($is_running);
                 echo("<br>");
                 if($is_running == 0)
@@ -222,7 +224,7 @@ public function push(Request $request)
             }
             //exec("taskkill /F /T /PID $pid") ;
             $returnp = proc_terminate($process);
-
+            echo("Terminated");
            // dd($returnp);
            exit();
         
