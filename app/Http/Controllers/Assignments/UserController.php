@@ -344,7 +344,7 @@ public function push(Request $request)
         $course = $user->courses;
 **/
     
-        return view('assignments.pass',['scores'=>$sum,'course'=>$asn->courses_id]));
+        return view('assignments.pass',['scores'=>$sum,'course'=>$asn->courses_id]);
 
             //Done Compile All
            
