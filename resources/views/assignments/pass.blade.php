@@ -375,7 +375,7 @@
 </div>
 <div class="text-container">
 	<div class="headline secondary-text-color">
-		{{scores}}
+		{{$scores}}
 	</div>
 	<div class="context primary-text-color">
 		<p>
