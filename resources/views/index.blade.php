@@ -2,12 +2,13 @@
 
 <html lang="{{ app()->getLocale() }}">
     <head>
+           <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Colony Lab</title>
-
+       
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
@@ -84,7 +85,37 @@
     opacity: 0;
     transition: all 0.8s
 }
+ .site__title {
 
+    font-size: 6rem;
+    line-height: 1;
+    color: #f35626;
+    background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: hue 60s infinite linear;
+    font-weight: 400;
+
+  
+  }
+
+.butt {
+  border: 2px solid #f35626;
+  line-height: 1.375;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+
+  font-weight: 700;
+
+  color: #f35626;
+
+  cursor: pointer;
+  -webkit-animation: hue 60s infinite linear;
+  padding: .75rem;
+    margin: .375rem;
+    background-color: transparent;
+    border-radius: 4px;
+}
 .button:active:after {
     padding: 0;
     margin: 0;
@@ -122,6 +153,7 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+          
         </style>
       
     </head>
@@ -143,13 +175,17 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                    Colony lab
+                    <div class = "animated bounceInUp site__title ">
+                    Colony lab</div>
                 </div>
-                <div class = "midupdown semititle">Coding Lab Practice System<div class =links><a href="/admin">-</a></div></div>
+                <div class = "midupdown semititle">
+                     <div class = "animated tada">Coding Lab Practice System
+                     </div>
+                     <div class =links><a href="/admin">-</a></div></div>
 
-                <div class="links entersite">
+                <div class="links entersite ">
 
-                 <a href="/home">Enter Site</a>
+                 <a a href="/home"><button  class = "butt js--triggerAnimation" >Enter Site</button></a>
                 </div>
             </div>
 

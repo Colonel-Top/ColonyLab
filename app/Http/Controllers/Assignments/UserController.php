@@ -119,12 +119,11 @@ public function push(Request $request)
 		//echo($asn);exit();
 		$final ="";
         $filename="";
-        $destinationPath = storage_path() . '//assignments//'.$asn->id.'//user_upload//';
+        $destinationPath = storage_path() . '//assignments//'.$asn->id.'//user_upload//'.Auth::user()->pinid.'//';
         if ($file = $request->hasFile('users_ans')) 
         {
             $file = $request->file('users_ans');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$asn->id.'//user_upload//';
             $file->move($destinationPath, $filename);
              $final = $destinationPath.$filename;       
             // echo($final) ;
@@ -137,8 +136,57 @@ public function push(Request $request)
         //echo($asn->finput);exit();
         if($command == "c")
         {
-        	$reject = 'gcc '.$final. ' 2>&1';
+        	
         //	$reject2 = 'gcc '.$final;
+            $allscore = $asn->fullscore;
+            $requireamount = 0;
+            if(!empty($asn->finput))
+                $requireamount++;
+            if(!empty($asn->finput2))
+                $requireamount++;
+            if(!empty($asn->finput3))
+                $requireamount++;
+            if(!empty($asn->finput4))
+                $requireamount++;
+            if(!empty($asn->finput5))
+                $requireamount++;
+            $per_asn = $asn->fullscore/$requireamount;
+            $sum = 0;
+            $filename = str_replace(".c","",$filename);
+
+            //gcc file.c -o directory/myOutput
+
+            $executeq = 'gcc -o '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
+           dd($executeq);
+            $result = shell_exec($executeq);    
+            $checkpath = $destinationPath.'error-'.$filename;
+           // dd($checkpath);
+            $errorpath = File::get($checkpath);
+           //dd($checkpath);
+            if(!empty($errorpath))
+                str_replace($destinationPath, "Compiler:", $errorpath);
+                return view('assignments.error',['errorpath'=>$errorpath]);
+
+            $inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
+
+            /* Checking Injection Zone */
+            $injection = '"java -cp '.$destinationPath.' '.$filename.' < '.$asn->finput.' > '.$destinationPath.$filename.'.txt"';
+
+            $command = 'python '.storage_path().'/runtime.py '.$injection;
+            exec($command, $output,$return_value);
+
+            if($return_value == 1)
+                return  view('assignments.infinity');
+            
+            $restore = File::get($asn->foutput);
+            $getject = $destinationPath.$filename.'.txt';
+            $geter = File::get($getject);
+            $whatsap = strcmp($restore, $geter);
+            if($whatsap == 0)
+                $sum+=$per_asn;
+            //unlink($checkpath);
+            unlink($getject);
+            /* Checking Injection Zone */
         }
         else if($command == "java")
         {
@@ -156,311 +204,140 @@ public function push(Request $request)
         		$requireamount++;
         	$per_asn = $asn->fullscore/$requireamount;
         	$sum = 0;
-        	//echo("JAVA");
-
-        	$destinationPath2 = storage_path() . '//assignments//'.$asn->id.'//user_upload//';
-        	$result = shell_exec('javac -d '.$destinationPath.' '.$final);
-          //  dd($result);
-       //     return view('assignments.infinity');
-
-
-			$filename = str_replace(".java","",$filename);
-
-            $checkpath = $destinationPath2.$filename.'.class';
+            $filename = str_replace(".java","",$filename);
+            $executeq = 'javac -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
+           // print_r($executeq);
+        	$result = shell_exec($executeq);	
+            $checkpath = $destinationPath.'error-'.$filename;
+           // dd($checkpath);
+            $errorpath = File::get($checkpath);
+            $classpath = file_exists($destinationPath.$filename.'.class');
            //dd($checkpath);
-            if(!file_exists($checkpath))
-                return view('assignments.infinity');
-
+            if(!empty($errorpath) && $classpath==0)
+            {
+                $tmper = str_replace("//",  "/", $destinationPath);
+                $showme = str_replace($tmper, "Compiler:", $errorpath);
+                return view('assignments.error',['errorpath'=>$showme]);
+            }
 			$inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
-			//dd($asn->finput);
-			$injection = '"java -cp '.$destinationPath2.' '.$filename.' < '.$asn->finput.' > '.$destinationPath2.$filename.'.txt"';
+
+            /* Checking Injection Zone */
+			$injection = '"java -cp '.$destinationPath.' '.$filename.' < '.$asn->finput.' > '.$destinationPath.$filename.'.txt"';
+
             $command = 'python '.storage_path().'/runtime.py '.$injection;
-           // dd($command);
             exec($command, $output,$return_value);
-           // $result = exec('python storage_path()\runtime.py $injection 2>&1',$output,$returner);
-            //print_r($output);
             dd($return_value);
-            //Done
-        /*    dd($injection);
-            $result = shell_exec('/bin/bash storage_path() $injection');
-            dd($result);exit();*/
-            //shell_exec($injection)
-		//	dd($injection);
-            //INJECTIN ZONE
-
-
-
-/*
-            $descriptorspec = array(
-               0 => array("pipe", "r"),  // stdin is a pipe that the child will read from
-               1 => array("pipe", "w"),  // stdout is a pipe that the child will write to
-               2 => array("file", storage_path().'error.txt', "a") // stderr is a file to write to
-            );
-            $maxruntime = 10;
-            $cwd = storage_path().'//assignments';
+            if($return_value == 1)
+                return  view('assignments.infinity');
             
-            $bpy = array('bypass_shell'=>true);
-            $process = proc_open($injection,$descriptorspec,$pipes);
-           // dd($process);
-            //$process_time = time();
-            
-
-            $status_process = (proc_get_status($process));
-            $pid = $status_process['pid'];
-            $tick = 0;
-         //   dd($status_process);
-            stream_set_blocking($pipes[1], 0);
-            echo($status_process['pid']);
-
-            while($tick <= $maxruntime)
-            {
-                sleep(1);
-                echo stream_get_contents($pipes[1]);
-                $tick+= 1;
-                $is_running = $status_process['running'];
-               // $is_running = file_exists( "/proc/$pid" );
-                echo($is_running);
-                echo("<br> P");
-                if($is_running == false)
-                {
-                    echo("Stopped");
-                    exit();
-                }
-            }
-            //exec("taskkill /F /T /PID $pid") ;
-          //  $returnp = proc_terminate($process);
-         //   echo("Terminated");
-           // dd($returnp);
-           exit();
-        
-       /*
-
-           // $pid = $status_process['pid'];
-            $seconds = $maxsecond*1000000;
-            $tick = 0;
-
-            $pid = pcntl_fork();
-            if ($pid == -1) 
-            {
-                die('could not fork');
-            } 
-            else if ($pid) 
-            {
-             // we are the parent
-                $tick = time();
-
-            } 
-            else 
-            {
-               shell_exec($injection);
-                //pcntl_alarm( 600 );
-               // pcntl_signal(SIGALARM, term_proc);
-                
-            }
-            
-            while(1)
-                {
-                    $check = pcntl_waitpid($pid, $status, WNOHANG | WUNTRACED);
-                    switch($check)
-                    {
-                    case $pid:
-                        echo("PID done ok");
-                        exit();
-                       //ended successfully
-                       //unset($this->children[$pid];
-                       break;
-                    case 0:
-                       //busy, with WNOHANG
-                        echo("PID BUSY NOW");
-                       if( ( $tick  + $maxruntime ) >= time() /*|| pcntl_wifstopped( $status ))
-                       {
-                           //Killing Process
-                       
-                       
-                        
-                           // echo 'This is a server not using Windows!';
-                            if(!posix_kill($pid,SIGKILL))
-                           {
-
-                               trigger_error('Failed to kill '.$pid.': '.posix_strerror(posix_get_last_error()), E_USER_WARNING);
-
-                           }
-                           else
-                           {
-                            return view ('assignments.infinity');
-                           }
-                           //view successfully done
-                        
-                          
-                          // unset($this->children[$pid];
-                       }
-                       break;
-                    case -1:
-                    default:
-                       trigger_error('Something went terribly wrong with process '.$pid, E_USER_WARNING);
-                       // unclear how to proceed: you could try a posix_kill,
-                       // simply unsetting it from $this->children[$pid]
-                       // or dying here with fatal error. Most likely cause would be 
-                       // $pid is not a child of this process.
-                       break;
-
-                    }
-                }
-                echo("All done");
-                exit();
-                        /*while($tick <= $seconds)
-            {
-                 if (strncasecmp(PHP_OS, 'WIN', 3) == 0) {
-                    $status = proc_get_status($process);
-                    return exec('taskkill /F /T /PID '.$status['pid']);
-                } else {
-                    return proc_terminate($process);
-                }
-            }*//*
-            $process = $process = proc_open($injection, $descriptorspec, $pipes, $cwd);
-            $pid = (proc_get_status($process));
-
-            $pid = $pid['pid'];
-            $output = array();
-            $handle =  (proc_get_status($process));
-            print_r($handle);
-            $handle = $handle['running'];
-            print_r("<br>");
-            while(!$handle)
-            {
-                usleep(1000000);
-                $tick += 1000000;
-                if($tick >= $seconds)
-                {
-                   // $handle = exec("ps -p $pid", $output);
-                    $handle =  (proc_get_status($process));
-                    print_r($handle);
-                        proc_terminate($process) ;exit();
-                        return view('assignments.infinity');
-                    
-                }
-                $handle =  (proc_get_status($process));
-                $handle = $handle['running'];
-            }
-            //posix_getpgid($pid);
-           
-                */
-
-            
-
-
-            // INJECTION ZONE
-        	$result = shell_exec($injection);
-        	//dd($result);
-        	//$injector = storage_path() . '//assignments//'.$request->idc.'//master//';
-        	//dd($result);
         	$restore = File::get($asn->foutput);
-        	$getject = $destinationPath2.$filename.'.txt';
-           // dd($getject);
+        	$getject = $destinationPath.$filename.'.txt';
         	$geter = File::get($getject);
-        	//dd($restore);
-        	//dd($geter);
-        	/*$restore = str_replace("\n\n", '<br>', $restore);
-        	$result = str_replace("\n\n", '<br>', $result);
-        	$restore = str_replace("\r\n", '<br>', $restore);
-        	$result = str_replace("\r\n", '<br>', $result);*/
-        	//dd($result);
-       		//dd($restore);
         	$whatsap = strcmp($restore, $geter);
             if($whatsap == 0)
                 $sum+=$per_asn;
             unlink($checkpath);
+            unlink($getject);
 
-//print_r($whatsap);
-            //echo($sum);
-        	//dd($whatsap);
-        		        	//$result = shell_exec('javac' .$soucejavafile. '2>&1');
-        	//$result= shell_exec('java' .$classfile. '2>&1');
-    if (!empty($asn->finput2)) 
-    {
-        	   //--------------------------
-        		$destinationPath2 = storage_path() . '//assignments//'.$asn->id.'//user_upload//';
-	        	//$result = shell_exec('javac -d '.$destinationPath.' '.$final);
-				$filename = str_replace(".java","",$filename);
-				$inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
-				$injection = 'java -cp '.$destinationPath2.' '.$filename.' < '.$asn->finput2.' > '.$destinationPath2.$filename.'.txt';
-	        	$result = shell_exec($injection);
-	        	$getject = $destinationPath2.$filename.'.txt';
+            /* Checking Injection Zone */
+        //--------------------------   
+        if (!empty($asn->finput2)) 
+        {
+        	   
+        		/* Checking Injection Zone */
+            $injection = '"java -cp '.$destinationPath.' '.$filename.' < '.$asn->finput2.' > '.$destinationPath.$filename.'.txt"';
 
-	        	$restore = File::get($asn->foutput2);
-                $geter = File::get($getject);
+            $command = 'python '.storage_path().'/runtime.py '.$injection;
+            exec($command, $output,$return_value);
 
-	        	$whatsap = strcmp($restore, $geter);
-               // echo(" YYY ");
-               // print_r($restore);
-               // echo(" YYY ");
-               // print_r($geter);
-               // echo(" YYY ");
-               // print_r($whatsap);
-                if($whatsap == 0)
+            if($return_value == 1)
+                return  view('assignments.infinity');
+            
+            $restore = File::get($asn->foutput2);
+            $getject = $destinationPath.$filename.'.txt';
+            $geter = File::get($getject);
+            $whatsap = strcmp($restore, $geter);
+            if($whatsap == 0)
                 $sum+=$per_asn;
-           // echo($sum);
+            //unlink($checkpath);
+            unlink($getject);
+            /* Checking Injection Zone */
         }
-    if (!empty($asn->finput3)) 
-    {
-            $destinationPath3 = storage_path() . '//assignments//'.$asn->id.'//user_upload//';
-               // $result = shell_exec('javac -d '.$destinationPath.' '.$final);
-                $filename = str_replace(".java","",$filename);
-                $inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
-                $injection = 'java -cp '.$destinationPath3.' '.$filename.' < '.$asn->finput3.' > '.$destinationPath3.$filename.'.txt';
-                $result = shell_exec($injection);
-                $getject = $destinationPath3.$filename.'.txt';
-                $restore = File::get($asn->foutput3);
-                $geter = File::get($getject);
-                $whatsap = strcmp($restore, $geter);
-                if($whatsap == 0)
+        //--------------------------   //--------------------------   
+        if (!empty($asn->finput3)) 
+        {
+               
+                /* Checking Injection Zone */
+            $injection = '"java -cp '.$destinationPath.' '.$filename.' < '.$asn->finput3.' > '.$destinationPath.$filename.'.txt"';
+
+            $command = 'python '.storage_path().'/runtime.py '.$injection;
+            exec($command, $output,$return_value);
+
+            if($return_value == 1)
+                return  view('assignments.infinity');
+            
+            $restore = File::get($asn->foutput3);
+            $getject = $destinationPath.$filename.'.txt';
+            $geter = File::get($getject);
+            $whatsap = strcmp($restore, $geter);
+            if($whatsap == 0)
                 $sum+=$per_asn;
-           // echo($sum);
-    }
-            if(!empty($asn->finput4))
-            {
-                $destinationPath4 = storage_path() . '//assignments//'.$asn->id.'//user_upload//';
-               // $result = shell_exec('javac -d '.$destinationPath.' '.$final);
-                $filename = str_replace(".java","",$filename);
-                $inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
-                $injection = 'java -cp '.$destinationPath4.' '.$filename.' < '.$asn->finput4.' > '.$destinationPath4.$filename.'.txt';
-                $result = shell_exec($injection);
-                $getject = $destinationPath4.$filename.'.txt';
-                $restore = File::get($asn->foutput4);
-                $geter = File::get($getject);
-                $whatsap = strcmp($restore, $geter);
-                if($whatsap == 0)
+           // unlink($checkpath);
+            unlink($getject);
+            /* Checking Injection Zone */
+        }
+        //--------------------------   
+        if (!empty($asn->finput4)) 
+        {
+               
+                /* Checking Injection Zone */
+            $injection = '"java -cp '.$destinationPath.' '.$filename.' < '.$asn->finput4.' > '.$destinationPath.$filename.'.txt"';
+
+            $command = 'python '.storage_path().'/runtime.py '.$injection;
+            exec($command, $output,$return_value);
+
+            if($return_value == 1)
+                return  view('assignments.infinity');
+            
+            $restore = File::get($asn->foutput4);
+            $getject = $destinationPath.$filename.'.txt';
+            $geter = File::get($getject);
+            $whatsap = strcmp($restore, $geter);
+            if($whatsap == 0)
                 $sum+=$per_asn;
-            //echo($sum);
-            }
-            if(!empty($asn->finput5))
-            {
-                $destinationPath5 = storage_path() . '//assignments//'.$asn->id.'//user_upload//';
-               // $result = shell_exec('javac -d '.$destinationPath.' '.$final);
-                $filename = str_replace(".java","",$filename);
-                $inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
-                $injection = 'java -cp '.$destinationPath5.' '.$filename.' < '.$asn->finput5.' > '.$destinationPath5.$filename.'.txt';
-                $result = shell_exec($injection);
-                $getject = $destinationPath5.$filename.'.txt';
-                $restore = File::get($asn->foutput5);
-                $geter = File::get($getject);
-                $whatsap = strcmp($restore, $geter);
-                if($whatsap == 0)
+            //unlink($checkpath);
+            unlink($getject);
+            /* Checking Injection Zone */
+        }
+        //--------------------------   
+        if (!empty($asn->finput5)) 
+        {
+               
+                /* Checking Injection Zone */
+            $injection = '"java -cp '.$destinationPath.' '.$filename.' < '.$asn->finput5.' > '.$destinationPath.$filename.'.txt"';
+
+            $command = 'python '.storage_path().'/runtime.py '.$injection;
+            exec($command, $output,$return_value);
+
+            if($return_value == 1)
+                return  view('assignments.infinity');
+            
+            $restore = File::get($asn->foutput5);
+            $getject = $destinationPath.$filename.'.txt';
+            $geter = File::get($getject);
+            $whatsap = strcmp($restore, $geter);
+            if($whatsap == 0)
                 $sum+=$per_asn;
-            //echo($sum);
-            }
-                //dd($sum);
-            //echo($sum);
-        	   //--------------------------
-               /* $takeq = DB::table('enrollment')->select('id')->where('courses_id',$asn->courses_id)->first();
-                $query = DB::table('assignment_work')->insert([
-                    'scores'=>$sum,
-                    'users_ans' => $destinationPath.$filename.'java',
-                    'assignments_id' => $asn->id,
-                    'enrollments_id' => $takeq->id
-                ]);*/
+            //unlink($checkpath);
+            unlink($getject);
+            /* Checking Injection Zone */
+        }
+        //--------------------------   
+        //--------------------------  
+        unlink($classpath); 
+        //--------------------------   
                 $users_id = Auth::user()->id;
-                $asn->users()->attach($users_id,['scores'=>$sum,'users_ans'=>$final,'pinid'=>Auth::user()->pinid,'name'=>Auth::user()->name]);
+                $asn->users()->attach($users_id,['scores'=>$sum,'users_ans'=>$final,'pinid'=>Auth::user()->pinid,'name'=>Auth::user()->name,'created_at'=>now()]);
                 //
 
         /*$user = $request->user();
