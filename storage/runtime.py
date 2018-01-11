@@ -20,7 +20,7 @@ def main():
     #execution = threading.Thread(target = runner,args = (MAX_RUNTIME,FREQ))
     #execution.start()
     proc = subprocess.Popen(path,shell=True)
-
+    count = 0
     while True:
         if proc.poll() is None:
             time.sleep(FREQ)
