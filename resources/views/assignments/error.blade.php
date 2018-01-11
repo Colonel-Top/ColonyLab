@@ -244,7 +244,7 @@
     </p>
 	</div>
 	<div class="buttons-container">
-		<a class="border-button" href="{{ URL::previous() }}" target="_blank">Try Again</a>
+		<a class="border-button" href="{{ URL::previous() }}" >Try Again</a>
 	<!--	<a class="border-button" href="mailto:#" target="_blank">Enough I'm back to homepage</a> -->
 	</div>
 </div>
