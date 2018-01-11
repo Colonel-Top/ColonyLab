@@ -215,7 +215,7 @@ public function push(Request $request)
                 //$is_running = $status_process['running'];
                 $is_running = file_exists( "/proc/$pid" );
                 echo($is_running);
-                echo("<br>");
+                echo("<br> P");
                 if($is_running == 0)
                 {
                     echo("Stopped");
