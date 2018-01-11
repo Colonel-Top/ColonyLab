@@ -1,6 +1,5 @@
 @extends('layouts.app')
 
-
 <html>
   <head>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
@@ -72,115 +71,245 @@
      }
     </style>
     <style>
-  .plain.error-page-wrapper {
+ .sign.error-page-wrapper {
     font-family: 'Source Sans Pro', sans-serif;
-    background-color:#6355bc;
-    padding:0 5%;
+    background-color: #179eca;
     position:relative;
   }
 
-  .plain.error-page-wrapper .content-container {
-    -webkit-transition: left .5s ease-out, opacity .5s ease-out;
-    -moz-transition: left .5s ease-out, opacity .5s ease-out;
-    -ms-transition: left .5s ease-out, opacity .5s ease-out;
-    -o-transition: left .5s ease-out, opacity .5s ease-out;
-    transition: left .5s ease-out, opacity .5s ease-out;
-    max-width:400px;
-    position:relative;
-    left:-30px;
-    opacity:0;
+ .sign.error-page-wrapper .sign-container {
+    width:450px;
+    height:415px;
+    margin:0 auto;
+    position: relative;
+    transform:rotate(-20deg);
+    text-indent:-20px;
   }
 
-  .plain.error-page-wrapper .content-container.in {
-    left: 0px;
-    opacity:1;
+
+ .sign.error-page-wrapper .sign-container .nob {
+    height:44px;
+    width:44px;
+    border-radius: 99px;
+    border:12px solid #343c3f;
+    position: absolute;
+    top:0px;
+    left:50%;
+    margin-left:-22px;
   }
 
-  .plain.error-page-wrapper .head-line {
-    transition: color .2s linear;
-    font-size:48px;
-    line-height:60px;
-    color:rgba(255,255,255,.2);
+ .sign.error-page-wrapper .sign-container .post {
+    transition:background-color .5s linear;
+    width: 190px;
+    height: 15px;
+    top: 71px;
+    background-color: #343c3f;
+  }
+
+ .sign.error-page-wrapper .sign-container .post.left {
+    position: absolute;
+    transform:rotate(-30deg);
+    left:35px;
+  }
+
+ .sign.error-page-wrapper .sign-container .post.right {
+    position: absolute;
+    transform:rotate(30deg);
+    right:35px;
+  }
+
+ .sign.error-page-wrapper .sign-container .pane {
+    transition:background-color .5s linear, border-color .5s linear;
+    box-shadow: 0 5px 0 rgba(0,0,0,.1) inset, 5px 0 0 rgba(0,0,0,.1) inset, 15px 15px 0 rgba(0,0,0,.1);
+    background-color: #fff;
+    border:20px solid #343c3f;
+    height:300px;
+    text-align: center;
+    position: absolute;
+    top: 115px;
+    left:0px;
+    right:0px;
+  }
+
+ .sign.error-page-wrapper .sign-container .pane .headline {
+    transition:color .5s linear;
+    margin-top:65px;
+    margin-bottom: 10px;
+    font-size:54px;
+    line-height:68px;
+    font-weight:600;
+    letter-spacing: -2px;
+    text-transform: uppercase;
+    color:#ffba00;
+  }
+
+ .sign.error-page-wrapper .sign-container .pane.just-header .headline {
+    margin-top:100px;
+  }
+
+ .sign.error-page-wrapper .sign-container .pane .context {
+    transition:color .5s linear;
+    color:#ffba00;
+    font-size:24px;
+    line-height: 32px;
+  }
+
+
+  @media screen and (max-width: 500px) {
+    .sign.error-page-wrapper {
+      padding-top:10%;
+    }
+    .sign.error-page-wrapper .sign-container {
+      width:280px;
+      top: 0px !important;
+    }
+    .sign.error-page-wrapper .sign-container .post {
+      width:100px;
+      top:50px;
+    }
+    .sign.error-page-wrapper .sign-container .pane {
+      top:70px;
+      height:220px;
+    }
+    .sign.error-page-wrapper .sign-container .pane .headline {
+      margin-top:20px;
+      font-size:45px;
+      margin-bottom: 6px;
+    }
+    .sign.error-page-wrapper .sign-container .pane.just-header .headline {
+      margin-top: 39px;
+      line-height: 55px;
+    }
+    .sign.error-page-wrapper .sign-container .pane .context {
+      font-size:20px;
+      line-height: 28px;
+    }
+  }
+
+
+
+
+ .sign.error-page-wrapper .text-container {
+    max-width:425px;
+    position: absolute;
+    bottom:20px;
+    left:35px;
+  }
+
+ .sign.error-page-wrapper .text-container .headline {
+    transition:color .5s linear;
+    font-size:40px;
+    line-height: 52px;
     letter-spacing: -1px;
     margin-bottom: 5px;
+    color:rgba(255,255,255,.3);
   }
-  .plain.error-page-wrapper .subheader {
-    transition: color .2s linear;
-    font-size:36px;
-    line-height:46px;
-    color:#fff;
-  }
-  .plain.error-page-wrapper hr {
-    height:1px;
-    background-color: rgba(255,255,255,.2);
-    border:none;
-    width:250px;
-    margin:35px 0;
-  }
-  .plain.error-page-wrapper .context {
-    transition: color .2s linear;
+ .sign.error-page-wrapper .text-container .context {
+    transition:color .5s linear;
     font-size:18px;
     line-height:27px;
     color:#fff;
   }
-  .plain.error-page-wrapper .context p {
+ .sign.error-page-wrapper .text-container .context p {
     margin:0;
   }
-  .plain.error-page-wrapper .context p:nth-child(n+2) {
-    margin-top:12px;
+ .sign.error-page-wrapper .text-container .context p + p {
+    margin-top:10px;
   }
-  .plain.error-page-wrapper .buttons-container {
-    margin-top: 45px;
-    overflow: hidden;
+ .sign.error-page-wrapper .buttons-container {
+    margin-top: 20px;
   }
-  .plain.error-page-wrapper .buttons-container a {
-    transition: color .2s linear, border-color .2s linear;
-    font-size:14px;
+
+ .sign.error-page-wrapper .buttons-container a {
+    transition: text-indent .2s linear, color .5s linear, border-color .5s linear;
+    font-size:16px;
     text-transform: uppercase;
     text-decoration: none;
     color:#fff;
     border:2px solid white;
     border-radius: 99px;
-    padding:8px 30px 9px;
-    display: inline-block;
-    float:left;
+    padding:9px 0 10px;
+    width:195px;
+    overflow: hidden;
+    text-align:center;
+    display:inline-block;
+    position: relative;
   }
-  .plain.error-page-wrapper .buttons-container a:hover {
-    background-color:rgba(255,255,255,.05);
+
+ .sign.error-page-wrapper .buttons-container a:hover {
+    background-color:rgba(255,255,255,.1);
+    text-indent: 17px;
   }
-  .plain.error-page-wrapper .buttons-container a:first-child {
+
+ .sign.error-page-wrapper .buttons-container a:first-child {
     margin-right:25px;
   }
 
-  @media screen and (max-width: 485px) {
-    .plain.error-page-wrapper .header {
-      font-size:36px;
-     }
-    .plain.error-page-wrapper .subheader {
-      font-size:27px;
-      line-height:38px;
-     }
-    .plain.error-page-wrapper hr {
-      width:185px;
-      margin:25px 0;
-     }
+ .sign.error-page-wrapper .buttons-container .fa {
+    transition:left .2s ease-out;
+    position: absolute;
+    left:-50px;
+  }
 
-    .plain.error-page-wrapper .context {
-      font-size:16px;
-      line-height: 24px;
-     }
-    .plain.error-page-wrapper .buttons-container {
-      margin-top:35px;
+ .sign.error-page-wrapper .buttons-container .fa-warning {
+    font-size:16px;
+    top:14px;
+  }
+
+ .sign.error-page-wrapper .buttons-container a:hover .fa-warning {
+    left:0px;
+  }
+
+ .sign.error-page-wrapper .buttons-container .fa-power-off {
+    font-size:16px;
+    top:14px;
+  }
+
+ .sign.error-page-wrapper .buttons-container a:hover .fa-power-off {
+    left:0px;
+  }
+
+ .sign.error-page-wrapper .buttons-container .fa-home {
+    font-size:18px;
+    top:12px;
+  }
+
+ .sign.error-page-wrapper .buttons-container a:hover .fa-home {
+    left:25px;
+  }
+
+  @media screen and (max-width: 500px) {
+   .sign.error-page-wrapper .text-container {
+      bottom:20px;
+      left:20px;
+      right:20px;
     }
-
-    .plain.error-page-wrapper .buttons-container a {
-      font-size:13px;
-      padding:8px 0 7px;
+   .sign.error-page-wrapper .text-container .header {
+      font-size:32px;
+      line-height:40px;
+    }
+   .sign.error-page-wrapper .text-container .context {
+      font-size:15px;
+      line-height: 22px;
+    }
+   .sign.error-page-wrapper .buttons-container {
+      overflow: hidden;
+    }
+   .sign.error-page-wrapper .buttons-container a {
+      font-size:14px;
+      padding:8px 0 9px;
       width:45%;
-      text-align: center;
+      float:left;
+      margin:0;
     }
-    .plain.error-page-wrapper .buttons-container a:first-child {
-      margin-right:10%;
+   .sign.error-page-wrapper .buttons-container a + a {
+      float:right;
+    }
+   .sign.error-page-wrapper .buttons-container a:hover {
+      text-indent: 0px;
+    }
+   .sign.error-page-wrapper .buttons-container .fa {
+      display:none;
     }
   }
 </style>
@@ -188,7 +317,7 @@
     <style>
 
     .background-color {
-      background-color: #6355BC !important;
+      background-color: #179ECA !important;
     }
 
 
@@ -197,7 +326,7 @@
     }
 
     .secondary-text-color {
-      color: #8277c9 !important;
+      color: #73c5df !important;
     }
 
     .sign-text-color {
@@ -218,34 +347,44 @@
     }
     .button {
       background-color: #FFFFFF !important;
-      color:  !important;
+      color: #FFFFFF !important;
     }
 
+    .shadow {
+      box-shadow: 0 0 60px #000000;
+    }
 
 </style>
 
   </head>
-  @section('content')
-  <body class="plain error-page-wrapper background-color background-image">
-    <div class="content-container">
-	<div class="head-line secondary-text-color">
-		555+
+    @section('content')
+  <body class="sign error-page-wrapper background-color background-image">
+    <div class="sign-container">
+	<div class="nob"></div>
+	<div class="post left"></div>
+	<div class="post right"></div>
+	<div class="pane">
+		<div class="headline sign-text-color">
+			Congratulation
+		</div>
+		<div class="context sign-text-color">
+			WoW, Your File that send me to Compile <br>
+    seems it's worked !.
+		</div>
 	</div>
-	<div class="subheader primary-text-color">
-		Oops, Your File that send me to Compile <br>
-		seems it's error.
+</div>
+<div class="text-container">
+	<div class="headline secondary-text-color">
+		{{scores}}
 	</div>
-	<hr>
-	<div class="clearfix"></div>
 	<div class="context primary-text-color">
-		<!-- doesn't use context_content because it's ALWAYS the same thing -->
-    <p>
-      {{$errorpath}}
-    </p>
+		<p>
+			You may want to head back to the assignment.<br>
+		</p>
 	</div>
 	<div class="buttons-container">
-		<a class="border-button" href="{{ URL::previous() }}" f>Try Again</a>
-	<!--	<a class="border-button" href="mailto:#" target="_blank">Enough I'm back to homepage</a> -->
+		<a class="border-button" href="{{ url(user/assignment/$course) }}&quot; f" ><span class="fa fa-home"></span> Send me back</a>
+	
 	</div>
 </div>
 
@@ -354,7 +493,7 @@
        });
 
      };
-     var ep = new ErrorPage('body', "404", "plain");
+     var ep = new ErrorPage('body', "404", "sign");
      ep.initialize();
 
      // hack to make sure content stays centered >_<

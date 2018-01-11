@@ -226,7 +226,7 @@ public function push(Request $request)
 
             $command = 'python '.storage_path().'/runtime.py '.$injection;
             exec($command, $output,$return_value);
-            dd($return_value);
+            //dd($return_value);
             if($return_value == 1)
                 return  view('assignments.infinity');
             
@@ -343,11 +343,8 @@ public function push(Request $request)
         /*$user = $request->user();
         $course = $user->courses;
 **/
-        //$courses_id = $takeq->id;
-        $course = Courses::find( $asn->courses_id);
-        $course = $course->coursename;
-        $asn = \App\Assignments::where('courses_id',$asn->courses_id)->get();
-        return view('assignments.main',['asn'=>$asn,'course'=>$course])->with(Session::flash('message1','Upload Assignment Done'));
+    
+        return view('assignments.pass',['scores'=>$sum,'course'=>$asn->courses_id]));
 
             //Done Compile All
            
