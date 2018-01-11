@@ -20,10 +20,10 @@ def main():
     flag = False
     #execution = threading.Thread(target = runner,args = (MAX_RUNTIME,FREQ))
     #execution.start()
-    proc = subprocess.Popen(path)
+    proc = subprocess.Popen(path,shell=True,preexec_fn=os.setsid)
     count = 0
-    pid = proc.pid
-    print (pid)
+    #pid = proc.pid
+    #print (pid)
     while True:
         if proc.poll() is None:
             time.sleep(FREQ)
@@ -31,7 +31,7 @@ def main():
             #print(count)
             if count > MAX_RUNTIME:
                 
-                os.kill(pid, signal.SIGTERM) #or signal.SIGKILL 
+                os.killpg(os.getpgid(proc.pid), signal.SIGTERM) 
                 #print("NOT OK")
                 break
         if proc.poll() != None:
