@@ -15,7 +15,7 @@ def kill(p):
 def main():
     path =  str(sys.argv[1])
     #path = "HI"
-    MAX_RUNTIME = 3
+    MAX_RUNTIME = 2
     FREQ = 1
     flag = False
     #execution = threading.Thread(target = runner,args = (MAX_RUNTIME,FREQ))
@@ -23,12 +23,14 @@ def main():
     proc = subprocess.Popen(path,shell=True)
     count = 0
     pid = proc.pid
+    print (pid)
     while True:
         if proc.poll() is None:
             time.sleep(FREQ)
             count = count + FREQ
             #print(count)
             if count > MAX_RUNTIME:
+                
                 os.kill(pid, signal.SIGTERM) #or signal.SIGKILL 
                 #print("NOT OK")
                 break
