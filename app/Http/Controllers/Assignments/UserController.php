@@ -238,10 +238,11 @@ public function push(Request $request)
             if(!empty($errorpath) && $classpath == 0)
             {
                 
-                                $errorpath = File::get($checkpath);
+                                
                                 //$classpath = file_exists($destinationPath.$filename.'.class');
-                                unlink($checkpath);
+                               
                                 if (strpos($errorpath, '\u') !== false) {
+                                     unlink($checkpath);
                                   //  dd("come to compile normally");
                                    $executeq2 = 'javac -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
                                   //  print_r($executeq);
@@ -258,10 +259,13 @@ public function push(Request $request)
                                         return view('assignments.error',['errorpath'=>$showme]);
                                     }
                                 }
+                                else
+                                {
+                                $errorpath = File::get($checkpath);
                                 $tmper = str_replace("//",  "/", $destinationPath);
                                 $showme = str_replace($tmper, "Compiler:", $errorpath);
                                 return view('assignments.error',['errorpath'=>$showme]);
-
+                                }
 
                 
             }
