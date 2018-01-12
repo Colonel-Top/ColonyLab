@@ -280,7 +280,7 @@ public function push(Request $request)
             $savefile = $destinationPath.$filename.'.java';
             dd($savefile);
              //$file->move($destinationPath, $filename);
-            Storage::move($final, $savefile);
+            Storage::move('//assignments//'.$asn->id.'//user_upload//'.Auth::user()->pinid.'//'.$filename.'.java', $savefile);
             //move file go to place
             //done
 			$inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
