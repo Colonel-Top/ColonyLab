@@ -475,7 +475,7 @@ public function push(Request $request)
                         if($nowI <= $gmin)
                             if($nowS  <= $gsecond)
                             {
-                                if($asn->allow_send == 1)
+                                //if($asn->allow_send == 1)
                                     return view('assignments.upload',['asn'=>$asn]);
                                
                             }
