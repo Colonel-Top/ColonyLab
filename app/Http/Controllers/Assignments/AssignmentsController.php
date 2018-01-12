@@ -246,8 +246,15 @@ Config File: /etc/mysql/my.cnf
 sql-mode="STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION"
 		$data = DB::select('Select * from (select * from `assignment_work` order by id ASC, scores ASC) as v group by `pinid`');
 */
-$data = DB::select('SELECT * FROM `assignment_work` where id IN (SELECT id from `assignment_work` order by id asc , scores asc) GROUP BY `pinid` AND `assignments_id` = :id',['id'=>$id]);
-
+/*$data = DB::select('SELECT * FROM `assignment_work` where id IN (SELECT id from `assignment_work` order by id asc , scores asc) GROUP BY `pinid` AND `assignments_id` = :id',['id'=>$id]);
+*/
+$data = DB::select('SELECT id ,MIN(scores),name,`pinid`,`users_ans`,`assignments_id`,`enrollments_id`,`created_at`,`updated_at`
+FROM
+    (SELECT *
+    FROM `assignment_work`
+    ORDER BY scores ASC)
+AS employeesub
+GROUP BY employeesub.pinid WHERE assignments_id = :id',['id' => $id]);
 
 
 		$blah = Assignments::with('courses.users')->where('id',$asninfo->id)->get();
