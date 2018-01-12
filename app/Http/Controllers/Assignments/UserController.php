@@ -276,7 +276,8 @@ public function push(Request $request)
             $time = str_replace(" ", "-", $time);
             $time = str_replace(":", "-", $time);
             $filename = $time.$filename;
-            dd($filename);
+            $originalfile = $destinationPath.' '.$final;
+            dd($originalfile);
             //Storage::move('hodor/oldfile-name.jpg', 'hodor/newfile-name.jpg');
             //move file go to place
 			$inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
