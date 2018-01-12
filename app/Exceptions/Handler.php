@@ -5,7 +5,7 @@ namespace App\Exceptions;
 use Exception;
 use Illuminate\Auth\AuthenticationException;
 use Illuminate\Foundation\Exceptions\Handler as ExceptionHandler;
-
+use Illuminate\Http\Exceptions\PostTooLargeException;
 class Handler extends ExceptionHandler
 {
     /**
@@ -50,7 +50,7 @@ class Handler extends ExceptionHandler
     public function render($request, Exception $exception)
     {
         if ($exception instanceof \Illuminate\Http\Exceptions\PostTooLargeException)
-        return response()->view('post-too-large');
+        return response()->view('courses.large');
 
         return parent::render($request, $exception);
     }
@@ -73,7 +73,7 @@ class Handler extends ExceptionHandler
             $login = 'login';
             break;
         }
-        
+      //  return response()->view('courses.large');
         return redirect()->guest(route($login));
     }
   

@@ -321,17 +321,17 @@
     <center>
   <div class="content-container shadow">
     <div class="head-line secondary-text-color">
-      Error
+      Oops You just throw<br>
+      Everest Mountain <br>on me <br>>:(
     </div>
     <div class="subheader primary-text-color">
-      Oops I don't mind that you will throw
-      Everest Mountain to me ! :>
+    I don't wanna say but ... <br>But your File or Post just too LARGE.
     </div>
     <div class="hr"></div>
     <div class="clearfix"></div>
     <div class="context secondary-text-color">
       
-    <p>Sorry for the inconvenience. But your File or Post just ... too large.</p>
+    <p>Sorry for fuc* sake >~< </p>
 
     </div>
   </div>
