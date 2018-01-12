@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>Upload Assignment {{$asn->name}}</title>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
@@ -139,13 +139,13 @@
             
 
             <div class="content">
-                <div class="title m-b-md">
+                <div class="title m-b-md animated bounceInLeft">
                    Assignment
                 </div>
-                <div class="title m-b-md">
+                <div class="title m-b-md animated bounceInRight">
                     {{$asn->name}}
                 </div>
-                <div class = "midupdown semititle">Max Attempts : {{$asn->max_attempts}}</div>
+                <div class = "midupdown semititle  animated jello">Max Attempts : {{$asn->max_attempts}}</div>
                 <div class = "midupdown semititle">
                     <form action="{{ route('user.assignments.push') }}" method="POST" class="form-horizontal "enctype="multipart/form-data" >
                          {{ csrf_field() }} 
@@ -153,7 +153,7 @@
                 <input class="field" id = "users_ans" name="users_ans" type="file" required>
                 <div class="form-group">
                         <div class="col-sm-offset-3 col-sm-10">
-                            <input type="submit" class="btn btn-default"  value="Upload Assignment" />
+                            <input type="submit" class="btn btn-default animated rubberBand"  value="Upload Assignment" />
                         </div>
                     </div>
                 </form>
