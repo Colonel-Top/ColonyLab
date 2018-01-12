@@ -236,7 +236,7 @@ public function push(Request $request)
             if(!empty($errorpath) && $classpath==0)
             {
                 unlink($checkpath);
-                $exec2 = 'javac -encoding UTF8 -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
+                $exec2 = 'javac -encoding "UTF-8" -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
                 $result2 = shell_exec($exec2); 
                 $errorpath2 = File::get($checkpath);
                 $classpath2 = file_exists($destinationPath.$filename.'.class');
@@ -247,7 +247,7 @@ public function push(Request $request)
                     $result3 = shell_exec($exec3); 
                     $errorpath3 = File::get($checkpath);
                     $classpath3 = file_exists($destinationPath.$filename.'.class');
-                    if(!empty($errorpath2) && $classpath2==0)
+                    if(!empty($errorpath3) && $classpath3==0)
                     {
                         $tmper = str_replace("//",  "/", $destinationPath);
                         $showme = str_replace($tmper, "Compiler:", $errorpath);
