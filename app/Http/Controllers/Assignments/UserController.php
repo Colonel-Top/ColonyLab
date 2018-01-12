@@ -146,7 +146,7 @@ public function push(Request $request)
                return view('courses.large');
             }
            
-            $file->copy($destinationPath, $filename);
+            $file->move($destinationPath, $filename);
              $final = $destinationPath.$filename;       
             // echo($final) ;
         }
@@ -280,11 +280,10 @@ public function push(Request $request)
             $newfilename = $time.$filename;
             $savefile = $destinationPath.$newfilename.'.java';
            // dd($savefile);
-            unlink($destinationPath.$filename);
-            $file = $request->file('users_ans');
-            $file->move($destinationPath, $newfilename);
+ 
             // $file->move($destinationPath, $filename);
-             //exec()
+
+            exec("cp $final $savefile");
             //Storage::move('//assignments//'.$asn->id.'//user_upload//'.Auth::user()->pinid.'//'.$filename.'.java', $savefile);
             //move file go to place
             //done
