@@ -284,6 +284,7 @@ public function push(Request $request)
             // $file->move($destinationPath, $filename);
 
             exec("cp $final $savefile");
+            unlink($final);
             //Storage::move('//assignments//'.$asn->id.'//user_upload//'.Auth::user()->pinid.'//'.$filename.'.java', $savefile);
             //move file go to place
             //done
