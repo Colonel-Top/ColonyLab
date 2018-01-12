@@ -238,14 +238,14 @@ public function push(Request $request)
            //dd($checkpath);
             if(filesize($checkpath) >= 1)
             {
-                dd(filesize($checkpath));
+                ;
                     unlink($checkpath);
                     $executeq = 'javac -encoding UTF8 -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
                     $result = shell_exec($executeq);    
                     $checkpath = $destinationPath.'error-'.$filename;
                     if(filesize($checkpath) >= 1)
                     {
-           
+           dd(filesize($checkpath))
                          unlink($checkpath);
                         $executeq = 'javac -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
                         $result = shell_exec($executeq);    
