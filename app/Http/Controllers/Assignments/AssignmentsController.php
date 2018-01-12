@@ -259,7 +259,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 	//	dd($data);
 $data = array_map(function($tag) {
     return array(
-        'MIN(scores)' => $tag['scores']
+        'MIN\(scores\)' => $tag['scores']
     );
 }, $data);
 
