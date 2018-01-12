@@ -11,6 +11,7 @@ use Session;
 use Hash;
 use Response;
 use Auth;
+use Storage;
 use Carbon\Carbon;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
