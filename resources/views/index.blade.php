@@ -93,12 +93,20 @@
     background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    -webkit-animation: hue 60s infinite linear;
+    -webkit-animation: hue 10s infinite linear;
     font-weight: 400;
 
   
   }
-
+.bitun 
+{
+    color: #f35626;
+    background-image: -webkit-linear-gradient(92deg,#f35626,#feab3a);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    -webkit-animation: hue 10s infinite linear;
+    font-weight: 400;
+}
 .butt {
   border: 2px solid #f35626;
   line-height: 1.375;
@@ -110,7 +118,7 @@
   color: #f35626;
 
   cursor: pointer;
-  -webkit-animation: hue 60s infinite linear;
+  -webkit-animation: hue 10s infinite linear;
   padding: .75rem;
     margin: .375rem;
     background-color: transparent;
@@ -153,7 +161,16 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
-          
+          @-webkit-keyframes hue {
+  from {
+    -webkit-filter: hue-rotate(0deg);
+  }
+
+  to {
+    -webkit-filter: hue-rotate(-360deg);
+  }
+}
+
         </style>
       
     </head>
@@ -174,16 +191,16 @@
             @endif
 
             <div class="content">
-                <div class="title m-b-md">
-                    <div class = "animated bounceInUp site__title ">
+                <div class="title m-b-md animated rubberBand">
+                    <div class = "site__title  ">
                     Colony lab</div>
                 </div>
                 <div class = "midupdown semititle">
-                     <div class = "animated tada">Coding Lab Practice System
-                     </div>
+                    Coding Lab Practice System
+                  
                      <div class =links><a href="/admin">-</a></div></div>
 
-                <div class="links entersite ">
+                <div class="links entersite animated jello">
 
                  <a a href="/home"><button  class = "butt js--triggerAnimation" >Enter Site</button></a>
                 </div>
