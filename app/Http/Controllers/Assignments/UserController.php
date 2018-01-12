@@ -225,7 +225,7 @@ public function push(Request $request)
         	$per_asn = $asn->fullscore/$requireamount;
         	$sum = 0;
             $filename = str_replace(".java","",$filename);
-            $executeq = 'javac -encoding UTF8 -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
+            $executeq = 'javac -encoding "unicode" -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
            // print_r($executeq);
         	$result = shell_exec($executeq);	
             $checkpath = $destinationPath.'error-'.$filename;
