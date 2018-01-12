@@ -276,10 +276,11 @@ public function push(Request $request)
             $time = str_replace(" ", "-", $time);
             $time = str_replace(":", "-", $time);
             $filename = $time.$filename;
-            $savefile = $destinationPath.$filename;
-            dd($savefile);
-            //Storage::move($final, 'hodor/newfile-name.jpg');
+            $savefile = $destinationPath.$filename.'.java';
+            //dd($savefile);
+            Storage::move($final, $savefile);
             //move file go to place
+            //done
 			$inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
 
             /* Checking Injection Zone */
@@ -398,7 +399,7 @@ public function push(Request $request)
         unlink($destinationPath.$filename.'.class'); 
         //--------------------------   
                 $users_id = Auth::user()->id;
-                $asn->users()->attach($users_id,['scores'=>$sum,'users_ans'=>$final,'pinid'=>Auth::user()->pinid,'name'=>Auth::user()->name,'created_at'=>now()]);
+                $asn->users()->attach($users_id,['scores'=>$sum,'users_ans'=>$savefile,'pinid'=>Auth::user()->pinid,'name'=>Auth::user()->name,'created_at'=>now()]);
                 //
 
         /*$user = $request->user();
