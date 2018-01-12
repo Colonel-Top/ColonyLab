@@ -154,7 +154,7 @@
                                     <div>{{$euler->pinid}}</div>
                                 </td>
                                <td class="table-text">
-                                    <div>{{$euler}}</div>
+                                    <div>{{$euler->name}}</div>
                                 </td>
                                  <td class="table-text">
                                     <div>{{$euler->created_at}}</div>
