@@ -414,7 +414,8 @@ public function push(Request $request)
                 $users_id = Auth::user()->id;
                 $asn->users()->attach($users_id,['scores'=>$sum,'users_ans'=>$savefile,'pinid'=>Auth::user()->pinid,'name'=>Auth::user()->name,'created_at'=>now()]);
                 //
-
+                if($per_asn == 0)
+                    $sum = "Send Successfully";
         /*$user = $request->user();
         $course = $user->courses;
 **/
