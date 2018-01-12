@@ -243,19 +243,19 @@ public function push(Request $request)
                                 unlink($checkpath);
                                 if (strpos($errorpath, '\u') !== false) {
                                   //  dd("come to compile normally");
-                                   $executeq = 'javac -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
+                                   $executeq2 = 'javac -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
                                   //  print_r($executeq);
-                                    $result = shell_exec($executeq);    
-                                    $checkpath = $destinationPath.'error-'.$filename;
+                                    $result2 = shell_exec($executeq2);    
+                                    $checkpath2 = $destinationPath.'error-'.$filename;
                                    // dd($checkpath);
-                                    $errorpath = File::get($checkpath);
-                                    $classpath = file_exists($destinationPath.$filename.'.class');
-                                    if(!empty($errorpath) && $classpath == 0)
+                                    $errorpath2= File::get($checkpath2);
+                                    $classpath2 = file_exists($destinationPath.$filename.'.class');
+                                    if(!empty($errorpath2) && $classpath == 0)
                                     {
-                                    unlink($checkpath);
-                                    $tmper = str_replace("//",  "/", $destinationPath);
-                                    $showme = str_replace($tmper, "Compiler:", $errorpath);
-                                    return view('assignments.error',['errorpath'=>$showme]);
+                                        unlink($checkpath2);
+                                        $tmper = str_replace("//",  "/", $destinationPath);
+                                        $showme = str_replace($tmper, "Compiler:", $errorpath2);
+                                        return view('assignments.error',['errorpath'=>$showme]);
                                     }
                                 }
                                 $tmper = str_replace("//",  "/", $destinationPath);
