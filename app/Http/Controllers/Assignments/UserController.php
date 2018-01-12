@@ -92,10 +92,6 @@ function ExecWaitTimeout($cmd, $timeout=5) {
 
 public function push(Request $request)
 	{
-        $this->validate($request,[
-    
-            'fpath' => 'required|file|max:5000',
-        ]);
         
         $maxsecond = 6;
 		$asn = Assignments::find($request->id);
