@@ -179,6 +179,7 @@ class CoursesController extends Controller
 			'createby' =>  $this->user,
 			
 		]);
+
 		$checkregis = $request['allowregister'];
 		if(($checkregis) == "on")
 		{
@@ -204,7 +205,7 @@ class CoursesController extends Controller
         	else
         		$request['password'] = bcrypt($request->password);
         }
-        dd("Nothing");
+        dd($request);
         /*else
         {
         	$r2 = DB::table('courses')->select('password')->where('id',$request->id)->pluck('password');
