@@ -7,7 +7,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
         <title>INFINITY LOOP DETECT</title>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
 
@@ -143,10 +143,16 @@
 
             <div class="content">
                 <div class="title m-b-md">
-                   ERROR INFINITY LOOP DETECTED !
+                    <div class = "animated bounceInLeft">
+                   ERROR INFINITY
+                    </div>
+                     <div class = "animated bounceInRight">
+                   LOOP DETECTED !
+                    </div>
                 </div>
-               <div class = "entersite links">
-                <button class="button" style="vertical-align:middle" a href="{{ URL::previous() }}"><span> BRING ME BACK !  </span></button>
+               <div class = "entersite links animated bounceInUp">
+                <button class="button" style="vertical-align:middle" >
+                <a href="{{URL::previous()}}"><span> BRING ME BACK !  </span></button>
                 
                </div>
                 </div>

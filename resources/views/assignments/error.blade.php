@@ -240,7 +240,10 @@
 	<div class="context primary-text-color">
 		<!-- doesn't use context_content because it's ALWAYS the same thing -->
     <p>
-      Here's your error noob.<br>
+      Compile via Smart Colonel's Engine Compiler<br>
+      -----------------------<br>
+      Here's your error, Noob :><br>
+      <bt>
       {{$errorpath}}
     </p>
 	</div>
