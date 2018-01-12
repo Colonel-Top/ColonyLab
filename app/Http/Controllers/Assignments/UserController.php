@@ -136,6 +136,7 @@ public function push(Request $request)
 
 		$final ="";
         $filename="";
+        $file ="";
         $destinationPath = storage_path() . '//assignments//'.$asn->id.'//user_upload//'.Auth::user()->pinid.'//';
         if ($file = $request->hasFile('users_ans')) 
         {
@@ -145,7 +146,7 @@ public function push(Request $request)
                return view('courses.large');
             }
            
-            $file->move($destinationPath, $filename);
+            $file->copy($destinationPath, $filename);
              $final = $destinationPath.$filename;       
             // echo($final) ;
         }
@@ -276,11 +277,13 @@ public function push(Request $request)
             $time = now();
             $time = str_replace(" ", "-", $time);
             $time = str_replace(":", "-", $time);
-            $filename = $time.$filename;
-            $savefile = $destinationPath.$filename.'.java';
+            $newfilename = $time.$filename;
+            $savefile = $destinationPath.$newfilename.'.java';
            // dd($savefile);
-            $file = $savefile;
-             $file->move($destinationPath, $filename);
+            unlink($destinationPath.$filename)
+            $file = $request->file('users_ans');
+            $file->move($destinationPath, $newfilename);
+            // $file->move($destinationPath, $filename);
              //exec()
             //Storage::move('//assignments//'.$asn->id.'//user_upload//'.Auth::user()->pinid.'//'.$filename.'.java', $savefile);
             //move file go to place
