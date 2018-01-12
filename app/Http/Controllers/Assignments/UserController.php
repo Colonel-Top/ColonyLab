@@ -236,7 +236,7 @@ public function push(Request $request)
            // dd($checkpath);
             $errorpath = File::get($checkpath);
             $classpath = file_exists($destinationPath.$filename.'.class');
-             dd($classpath);
+            dd($classpath);
             if(!empty($errorpath) && $classpath == 0)
             {
                 
