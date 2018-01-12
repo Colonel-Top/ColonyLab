@@ -10,7 +10,7 @@
     @if(!empty($asn))
         <div class="row">
             <div class="col-lg-12 margin-tb">
-                <div class="pull-left animated bounceInRight">
+                <div class="pull-left animated fadeInRight">
                     <h2>Assignment List of {{$course}}</h2>
                     
                 </div>
@@ -19,7 +19,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <table class="table table-striped task-table animated bounceInUp">
+                <table class="table table-striped task-table animated fadeInUp">
                     <!-- Table Headings -->
                     <thead>
                         <th width="30%">Assignment Name</th>
