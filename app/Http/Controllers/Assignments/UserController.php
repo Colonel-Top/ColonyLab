@@ -242,6 +242,7 @@ public function push(Request $request)
                                 //$classpath = file_exists($destinationPath.$filename.'.class');
                                 unlink($checkpath);
                                 if (strpos($errorpath, '\u') !== false) {
+                                    dd("come to compile normally");
                                    $executeq = 'javac -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
                                   //  print_r($executeq);
                                     $result = shell_exec($executeq);    
