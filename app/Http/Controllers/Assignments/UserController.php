@@ -257,7 +257,7 @@ public function push(Request $request)
             if($whatsap == 0)
                 $sum+=$per_asn;
             //unlink($checkpath);
-            unlink($getject);
+            //unlink($getject);
 
             /* Checking Injection Zone */
         //--------------------------   
@@ -280,7 +280,7 @@ public function push(Request $request)
             if($whatsap == 0)
                 $sum+=$per_asn;
             //unlink($checkpath);
-            unlink($getject);
+            //unlink($getject);
             /* Checking Injection Zone */
         }
         //--------------------------   //--------------------------   
@@ -303,7 +303,7 @@ public function push(Request $request)
             if($whatsap == 0)
                 $sum+=$per_asn;
            // unlink($checkpath);
-            unlink($getject);
+          //  unlink($getject);
             /* Checking Injection Zone */
         }
         //--------------------------   
@@ -326,7 +326,7 @@ public function push(Request $request)
             if($whatsap == 0)
                 $sum+=$per_asn;
             //unlink($checkpath);
-            unlink($getject);
+          //  unlink($getject);
             /* Checking Injection Zone */
         }
         //--------------------------   
@@ -349,12 +349,12 @@ public function push(Request $request)
             if($whatsap == 0)
                 $sum+=$per_asn;
             //unlink($checkpath);
-            unlink($getject);
+          //  unlink($getject);
             /* Checking Injection Zone */
         }
         //--------------------------   
         //--------------------------  
-        unlink($destinationPath.$filename.'.class'); 
+       // unlink($destinationPath.$filename.'.class'); 
         //--------------------------   
                 $users_id = Auth::user()->id;
                 $asn->users()->attach($users_id,['scores'=>$sum,'users_ans'=>$final,'pinid'=>Auth::user()->pinid,'name'=>Auth::user()->name,'created_at'=>now()]);
