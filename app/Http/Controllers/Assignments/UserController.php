@@ -256,7 +256,7 @@ public function push(Request $request)
         	$whatsap = strcmp($restore, $geter);
             if($whatsap == 0)
                 $sum+=$per_asn;
-            unlink($checkpath);
+            //unlink($checkpath);
             unlink($getject);
 
             /* Checking Injection Zone */
