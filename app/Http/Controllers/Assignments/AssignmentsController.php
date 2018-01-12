@@ -257,6 +257,11 @@ FROM
 AS employeesub
 GROUP BY employeesub.pinid ',['id' => $id]);
 	//	dd($data);
+$data = array_map(function($tag) {
+    return array(
+        'MIN(scores)' => $tag['scores']
+    );
+}, $data);
 
 		$blah = Assignments::with('courses.users')->where('id',$asninfo->id)->get();
 	
