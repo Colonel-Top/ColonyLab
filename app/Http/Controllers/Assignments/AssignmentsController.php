@@ -549,7 +549,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
             $filename =$file->getClientOriginalName();
             $destinationPath = storage_path() . '//assignments//'.$request->idc;
             $file->move($destinationPath, $filename);
-             $final = $destinationPath.'//'.$filename;        
+            $final = $destinationPath.'//'.$filename;        
        
            
         }
@@ -691,21 +691,21 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 		if ($file = $request->hasFile('finput')) 
 			Assignments::FindOrFail($request->idc)->update(['finput'=>$final3]);
 		if ($file = $request->hasFile('finput2')) 
-			Assignments::FindOrFail($request->idc)->update(['finput'=>$final4]);
+			Assignments::FindOrFail($request->idc)->update(['finput2'=>$final4]);
 		if ($file = $request->hasFile('finput3')) 
-			Assignments::FindOrFail($request->idc)->update(['finput'=>$final5]);
+			Assignments::FindOrFail($request->idc)->update(['finput3'=>$final5]);
 		if ($file = $request->hasFile('finput4')) 
-			Assignments::FindOrFail($request->idc)->update(['finput'=>$final6]);
+			Assignments::FindOrFail($request->idc)->update(['finput4'=>$final6]);
 		if ($file = $request->hasFile('finput5')) 
-			Assignments::FindOrFail($request->idc)->update(['finput'=>$final7]);
+			Assignments::FindOrFail($request->idc)->update(['finput5'=>$final7]);
 		if ($file = $request->hasFile('foutput2')) 
-			Assignments::FindOrFail($request->idc)->update(['foutput'=>$final8]);
+			Assignments::FindOrFail($request->idc)->update(['foutput2'=>$final8]);
 		if ($file = $request->hasFile('foutput3')) 
-			Assignments::FindOrFail($request->idc)->update(['foutput'=>$final9]);
+			Assignments::FindOrFail($request->idc)->update(['foutput3'=>$final9]);
 		if ($file = $request->hasFile('foutput4')) 
-			Assignments::FindOrFail($request->idc)->update(['foutput'=>$final10]);
+			Assignments::FindOrFail($request->idc)->update(['foutput4'=>$final10]);
 		if ($file = $request->hasFile('foutput5')) 
-			Assignments::FindOrFail($request->idc)->update(['foutput'=>$final11]);
+			Assignments::FindOrFail($request->idc)->update(['foutput5'=>$final11]);
 		$idg = $request->courses_id;
 		
 		$coursename = Courses::find($idg);
