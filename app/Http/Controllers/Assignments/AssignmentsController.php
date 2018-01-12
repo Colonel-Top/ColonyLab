@@ -248,7 +248,7 @@ sql-mode="STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION"
 */
 /*$data = DB::select('SELECT * FROM `assignment_work` where id IN (SELECT id from `assignment_work` order by id asc , scores asc) GROUP BY `pinid` AND `assignments_id` = :id',['id'=>$id]);
 */
-$data = DB::select('SELECT id ,MIN(scores),name,`pinid`,`users_ans`,`assignments_id`,`enrollments_id`,`created_at`,`updated_at`
+$data = DB::select('SELECT id ,MIN(scores) as scores,name,`pinid`,`users_ans`,`assignments_id`,`enrollments_id`,`created_at`,`updated_at`
 FROM
     (SELECT *
     FROM `assignment_work`
@@ -257,11 +257,7 @@ FROM
 AS employeesub
 GROUP BY employeesub.pinid ',['id' => $id]);
 	//	dd($data);
-$data = array_map(function($tag) {
-    return array(
-        'MIN\(scores\)' => $tag['scores']
-    );
-}, $data);
+
 
 		$blah = Assignments::with('courses.users')->where('id',$asninfo->id)->get();
 	
