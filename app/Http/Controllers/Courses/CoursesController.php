@@ -240,6 +240,7 @@ class CoursesController extends Controller
 		}
 		if(!empty($request['confirm'] && !empty($request['password'])))
 		{
+			dd("ITS NOT EMPTY BOTH");
 			$stringgo = bcrypt($request->confirm);
 			Courses::find($id)->update(['password'=>$stringgo]);
 		}
