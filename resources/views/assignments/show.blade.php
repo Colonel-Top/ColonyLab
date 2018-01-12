@@ -163,9 +163,6 @@
                               
                           
                           
-                               
-                                 <a href="{{ route('admin.assignments.callpath', $euler->name) }}" class="label label-success">Show</a>   
-                                  <a href="{{ route('admin.assignments.droper', $euler->name) }}" class="label label-danger">Drop Assignment</a>   
 
                                 </td>
 
