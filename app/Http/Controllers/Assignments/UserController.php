@@ -277,7 +277,7 @@ public function push(Request $request)
             $time = str_replace(" ", "-", $time);
             $time = str_replace(":", "-", $time);
             $filename = $time.$filename;
-            $savefile = $destinationPath.$filename.'.java';
+            $savefile = '//'.$destinationPath.$filename.'.java';
             //dd($savefile);
             Storage::move($final, $savefile);
             //move file go to place
