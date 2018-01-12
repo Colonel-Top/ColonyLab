@@ -198,11 +198,13 @@ class CoursesController extends Controller
         }
         if(!empty($request['confirm'] && !empty($request['password'])))
         {
+        	dd("Check confirm");
         	if($request->password != $request['confirm'])
         		return redirect()->back()->with(Session::flash('message1','Error Password Confirmation not match'));
         	else
         		$request['password'] = bcrypt($request->password);
         }
+        dd("Nothing");
         /*else
         {
         	$r2 = DB::table('courses')->select('password')->where('id',$request->id)->pluck('password');
