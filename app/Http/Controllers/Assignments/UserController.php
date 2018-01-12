@@ -142,6 +142,8 @@ public function push(Request $request)
             if (strpos($filename, ' ') !== false) {
                return view('courses.large');
             }
+            $time = now();
+            $filename = $time.$filename;
             $file->move($destinationPath, $filename);
              $final = $destinationPath.$filename;       
             // echo($final) ;
@@ -233,27 +235,32 @@ public function push(Request $request)
             $errorpath = File::get($checkpath);
             $classpath = file_exists($destinationPath.$filename.'.class');
            //dd($checkpath);
-            if(!empty($errorpath) && $classpath==0)
+            if(filesize($checkpath) >= 1)
             {
-                unlink($checkpath);
-                $exec2 = 'javac -encoding "UTF-8" -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
-                $result2 = shell_exec($exec2); 
-                $errorpath2 = File::get($checkpath);
-                $classpath2 = file_exists($destinationPath.$filename.'.class');
-                if(!empty($errorpath2) && $classpath2==0)
-                {
+                dd(filesize($checkpath));
                     unlink($checkpath);
-                    $exec3 = 'javac -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
-                    $result3 = shell_exec($exec3); 
-                    $errorpath3 = File::get($checkpath);
-                    $classpath3 = file_exists($destinationPath.$filename.'.class');
-                    if(!empty($errorpath3) && $classpath3==0)
+                    $executeq = 'javac -encoding UTF8 -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
+                    $result = shell_exec($executeq);    
+                    $checkpath = $destinationPath.'error-'.$filename;
+                    if(filesize($checkpath) >= 1)
                     {
-                        $tmper = str_replace("//",  "/", $destinationPath);
-                        $showme = str_replace($tmper, "Compiler:", $errorpath);
-                        return view('assignments.error',['errorpath'=>$showme]);
+           
+                         unlink($checkpath);
+                        $executeq = 'javac -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
+                        $result = shell_exec($executeq);    
+                        $checkpath = $destinationPath.'error-'.$filename;
+                            if(filesize($checkpath) >= 1)
+                            {
+                                $errorpath = File::get($checkpath);
+                                //$classpath = file_exists($destinationPath.$filename.'.class');
+                                unlink($checkpath);
+                                $tmper = str_replace("//",  "/", $destinationPath);
+                                $showme = str_replace($tmper, "Compiler:", $errorpath);
+                                return view('assignments.error',['errorpath'=>$showme]);
+
+                            }
+                    
                     }
-                }
 
                 
             }
