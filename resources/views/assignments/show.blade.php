@@ -154,7 +154,7 @@
                                     <div>{{$euler->pinid}}</div>
                                 </td>
                                <td class="table-text">
-                                    <div>{{$euler->scores}}</div>
+                                    <div>{{$euler->MIN(scores)}}</div>
                                 </td>
                                  <td class="table-text">
                                     <div>{{$euler->created_at}}</div>
