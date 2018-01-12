@@ -241,10 +241,10 @@ class AssignmentsController extends Controller
 		$data = DB::table('assignment_work')->select()->where('assignments_id',$id)->get();
 
 
-	//problem	$data = DB::select('select * from assignment_work where assignments_id = :id, scores = (select max(scores) from users_id)  ',['id' => $id]);
+		$data = DB::select('Select * from (select * from `assignment_work` order by id ASC, scores ASC) as v group by `pinid`');
 
 
-		
+
 		$blah = Assignments::with('courses.users')->where('id',$asninfo->id)->get();
 	
 		return view('assignments.show',['asninfo'=>$asninfo,'data'=>$data,'userdetails'=>$blah]);
