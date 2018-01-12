@@ -190,7 +190,7 @@ public function push(Request $request)
            //dd($checkpath);
             if(!empty($errorpath))
             {
-                str_replace($destinationPath, "Compiler:", $errorpath);
+                str_replace($destinationPath, "Colonel Engine Compiler:", $errorpath);
                 return view('assignments.error',['errorpath'=>$errorpath]);
             }
             $inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
@@ -265,7 +265,7 @@ public function push(Request $request)
                                     {
                                         unlink($checkpath2);
                                         $tmper = str_replace("//",  "/", $destinationPath);
-                                        $showme = str_replace($tmper, "Compiler:", $errorpath2);
+                                        $showme = str_replace($tmper, "Colonel Engine Compiler:", $errorpath2);
                                         return view('assignments.error',['errorpath'=>$showme]);
                                     }
                                 }
@@ -273,7 +273,7 @@ public function push(Request $request)
                                 {
                                 $errorpath = File::get($checkpath);
                                 $tmper = str_replace("//",  "/", $destinationPath);
-                                $showme = str_replace($tmper, "Compiler:", $errorpath);
+                                $showme = str_replace($tmper, "Colonel Engine Compiler:", $errorpath);
                                 return view('assignments.error',['errorpath'=>$showme]);
                                 }
 
