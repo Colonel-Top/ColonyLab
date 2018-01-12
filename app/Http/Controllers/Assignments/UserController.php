@@ -486,8 +486,8 @@ public function push(Request $request)
              Session::flash('message1','Error This Assignment already remarks time is up !');
             return redirect()->back();
         }
-         Session::flash('message1','Error This Assignment already remarks time is up !');
-         return view('assignments.upload',['asn'=>$asn]);
+ /*        Session::flash('message1','Error This Assignment already remarks time is up !');
+         return view('assignments.upload',['asn'=>$asn]);*/
        
 		
 	}
