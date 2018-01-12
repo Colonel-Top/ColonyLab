@@ -238,6 +238,11 @@ class CoursesController extends Controller
 		{
 			Courses::find($id)->update(['coursepdf'=>$final]);
 		}
+		if(!empty($request['password-confirm'] && !empty($request['password'])))
+		{
+			$stringgo = bcrypt($request->password);
+			Courses::find($id)->update(['password'=>$stringgo]);
+		}
 		Session::flash('message1','Courses Updated');
 		return redirect()->intended(route('admin.courses.index'));
 
