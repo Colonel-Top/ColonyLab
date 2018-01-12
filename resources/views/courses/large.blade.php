@@ -325,7 +325,7 @@
       Everest Mountain <br>on me <br>>:(
     </div>
     <div class="subheader primary-text-color">
-    I don't wanna say but ... <br>But your File or Post just too LARGE.
+    I don't wanna say but ... <br>But your File or Post <br>just too LARGE<br>Or Wrong Name!.
     </div>
     <div class="hr"></div>
     <div class="clearfix"></div>

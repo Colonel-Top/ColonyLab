@@ -112,9 +112,9 @@ public function push(Request $request)
         $ghour = date('H', strtotime("$get"));
         $gmin = date('i', strtotime("$get"));
         $gsecond = date('s', strtotime("$get"));
-        
+   
         if(!(($nowY <= $gyear) && ($nowM <= $gmonth) && ($nowD <= $gday) && ($nowH <= $ghour) && ($nowI <= $gmin) && ($nowS <= $gsecond) && ($asn->allow_send == 1)))
-            view('assignments.error');
+            return view('assignments.error');
 
        // echo(Auth::user()->pinid);
 		//echo($asn);exit();
@@ -125,6 +125,9 @@ public function push(Request $request)
         {
             $file = $request->file('users_ans');
             $filename =$file->getClientOriginalName();
+            if (strpos($filename, ' ') !== false) {
+               return view('courses.large');
+            }
             $file->move($destinationPath, $filename);
              $final = $destinationPath.$filename;       
             // echo($final) ;
