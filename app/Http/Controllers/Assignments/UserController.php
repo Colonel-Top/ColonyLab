@@ -143,6 +143,7 @@ public function push(Request $request)
                return view('courses.large');
             }
             $time = now();
+            $time = str_replace(" ", "", $time);
             $filename = $time.$filename;
             $file->move($destinationPath, $filename);
              $final = $destinationPath.$filename;       
