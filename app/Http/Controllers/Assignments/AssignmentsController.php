@@ -256,7 +256,7 @@ FROM
 	ORDER BY scores ASC)
 AS employeesub
 GROUP BY employeesub.pinid ',['id' => $id]);
-		dd($data);
+	//	dd($data);
 
 		$blah = Assignments::with('courses.users')->where('id',$asninfo->id)->get();
 	
