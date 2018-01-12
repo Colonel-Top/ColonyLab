@@ -236,21 +236,25 @@ public function push(Request $request)
             $errorpath = File::get($checkpath);
             $classpath = file_exists($destinationPath.$filename.'.class');
            //dd($checkpath);
-            if(filesize($checkpath) >= 1)
+            if(!empty($errorpath) && $classpath == 0)
             {
                 
                     unlink($checkpath);
                     $executeq = 'javac -encoding UTF8 -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
                     $result = shell_exec($executeq);    
                     $checkpath = $destinationPath.'error-'.$filename;
-                    if(filesize($checkpath) >= 1)
+                     $errorpath = File::get($checkpath);
+                 $classpath = file_exists($destinationPath.$filename.'.class');
+                    if(!empty($errorpath) && $classpath == 0)
                     {
-           dd(filesize($checkpath));
+          
                          unlink($checkpath);
                         $executeq = 'javac -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
                         $result = shell_exec($executeq);    
-                        $checkpath = $destinationPath.'error-'.$filename;
-                            if(filesize($checkpath) >= 1)
+                        //$checkpath = $destinationPath.'error-'.$filename;
+                         $errorpath = File::get($checkpath);
+            $classpath = file_exists($destinationPath.$filename.'.class');
+                           if(!empty($errorpath) && $classpath == 0)
                             {
                                 $errorpath = File::get($checkpath);
                                 //$classpath = file_exists($destinationPath.$filename.'.class');
