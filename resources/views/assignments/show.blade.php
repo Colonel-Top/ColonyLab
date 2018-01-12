@@ -154,7 +154,7 @@
                                     <div>{{$euler->pinid}}</div>
                                 </td>
                                <td class="table-text">
-                                    <div>{{$euler'}}</div>
+                                    <div>{{$euler}}</div>
                                 </td>
                                  <td class="table-text">
                                     <div>{{$euler->created_at}}</div>
@@ -163,6 +163,9 @@
                               
                           
                           
+                               
+                                 <a href="{{ route('admin.assignments.callpath', $euler->id) }}" class="label label-success">Show</a>   
+                                  <a href="{{ route('admin.assignments.droper', $euler->id) }}" class="label label-danger">Drop Assignment</a>   
 
                                 </td>
 
