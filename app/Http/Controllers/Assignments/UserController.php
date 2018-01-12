@@ -132,6 +132,7 @@ public function push(Request $request)
 
        // echo(Auth::user()->pinid);
 		//echo($asn);exit();
+
 		$final ="";
         $filename="";
         $destinationPath = storage_path() . '//assignments//'.$asn->id.'//user_upload//'.Auth::user()->pinid.'//';
@@ -241,7 +242,8 @@ public function push(Request $request)
                                 
                                 //$classpath = file_exists($destinationPath.$filename.'.class');
                                
-                                if (strpos($errorpath, '\u') !== false) {
+                                if (strpos($errorpath, '\u') !== false) 
+                                {
                                      unlink($checkpath);
                                   //  dd("come to compile normally");
                                    $executeq2 = 'javac -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
@@ -269,12 +271,13 @@ public function push(Request $request)
 
                 
             }
-            echo("ok");
-            exit();
+          
             $time = now();
             $time = str_replace(" ", "-", $time);
             $time = str_replace(":", "-", $time);
             $filename = $time.$filename;
+            dd($filename);
+            //Storage::move('hodor/oldfile-name.jpg', 'hodor/newfile-name.jpg');
             //move file go to place
 			$inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
 
