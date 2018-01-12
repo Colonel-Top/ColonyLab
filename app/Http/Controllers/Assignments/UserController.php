@@ -276,7 +276,7 @@ public function push(Request $request)
             $time = str_replace(" ", "-", $time);
             $time = str_replace(":", "-", $time);
             $filename = $time.$filename;
-            $savefile = $destinationPath.$filename
+            $savefile = $destinationPath.$filename;
             dd($savefile);
             //Storage::move($final, 'hodor/newfile-name.jpg');
             //move file go to place
