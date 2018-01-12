@@ -252,9 +252,10 @@ $data = DB::select('SELECT id ,MIN(scores),name,`pinid`,`users_ans`,`assignments
 FROM
     (SELECT *
     FROM `assignment_work`
-    ORDER BY scores ASC)
+    WHERE assignments_id = :id
+	ORDER BY scores ASC)
 AS employeesub
-GROUP BY employeesub.pinid WHERE assignments_id = :id',['id' => $id]);
+GROUP BY employeesub.pinid ',['id' => $id]);
 
 
 		$blah = Assignments::with('courses.users')->where('id',$asninfo->id)->get();
