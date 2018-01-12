@@ -142,10 +142,7 @@ public function push(Request $request)
             if (strpos($filename, ' ') !== false) {
                return view('courses.large');
             }
-            $time = now();
-            $time = str_replace(" ", "-", $time);
-            $time = str_replace(":", "-", $time);
-            $filename = $time.$filename;
+           
             $file->move($destinationPath, $filename);
              $final = $destinationPath.$filename;       
             // echo($final) ;
@@ -231,33 +228,16 @@ public function push(Request $request)
             $filename = str_replace(".java","",$filename);
 
             $executeq = 'javac -encoding "unicode" -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
-            print_r($executeq);
+          //  print_r($executeq);
         	$result = shell_exec($executeq);	
             $checkpath = $destinationPath.'error-'.$filename;
            // dd($checkpath);
             $errorpath = File::get($checkpath);
             $classpath = file_exists($destinationPath.$filename.'.class');
-            dd($classpath);
+           // dd($classpath);
             if(!empty($errorpath) && $classpath == 0)
             {
                 
-                    unlink($checkpath);
-                    $executeq = 'javac -encoding UTF8 -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
-                    $result = shell_exec($executeq);    
-                    $checkpath = $destinationPath.'error-'.$filename;
-                     $errorpath = File::get($checkpath);
-                 $classpath = file_exists($destinationPath.$filename.'.class');
-                    if(!empty($errorpath) && $classpath == 0)
-                    {
-          
-                         unlink($checkpath);
-                        $executeq = 'javac -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
-                        $result = shell_exec($executeq);    
-                        //$checkpath = $destinationPath.'error-'.$filename;
-                         $errorpath = File::get($checkpath);
-                        $classpath = file_exists($destinationPath.$filename.'.class');
-                           if(!empty($errorpath) && $classpath == 0)
-                            {
                                 $errorpath = File::get($checkpath);
                                 //$classpath = file_exists($destinationPath.$filename.'.class');
                                 unlink($checkpath);
@@ -265,12 +245,19 @@ public function push(Request $request)
                                 $showme = str_replace($tmper, "Compiler:", $errorpath);
                                 return view('assignments.error',['errorpath'=>$showme]);
 
-                            }
+                            
                     
-                    }
+                    
 
                 
             }
+            echo("ok");
+            exit();
+            $time = now();
+            $time = str_replace(" ", "-", $time);
+            $time = str_replace(":", "-", $time);
+            $filename = $time.$filename;
+            //move file go to place
 			$inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
 
             /* Checking Injection Zone */
