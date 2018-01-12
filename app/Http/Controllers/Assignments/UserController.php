@@ -475,10 +475,10 @@ public function push(Request $request)
                         if($nowI <= $gmin)
                             if($nowS  <= $gsecond)
                             {
-                                Session::flash('message1','This Assignment ok!');
-                                 return redirect()->back();
+                                //Session::flash('message1','This Assignment ok!');
+                                 return view('assignments.upload',['asn'=>$asn]);
                             }
-           Session::flash('message1','Error This Assignment already remarks time is up !');
+          
            
         }
         else
@@ -486,8 +486,10 @@ public function push(Request $request)
              Session::flash('message1','Error This Assignment already remarks time is up !');
             return redirect()->back();
         }
+         Session::flash('message1','Error This Assignment already remarks time is up !');
+         return view('assignments.upload',['asn'=>$asn]);
        
-		return view('assignments.upload',['asn'=>$asn]);
+		
 	}
 	public function detail($id,Response $response)
 	{
