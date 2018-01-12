@@ -197,13 +197,13 @@ class CoursesController extends Controller
              $final = $destinationPath.'//'.$filename;        
          
         }
-        if(!empty($request['confirm'] && !empty($request['password'])))
+        if(!empty($request['password_confirmation'] && !empty($request['password'])))
         {
         	dd("Check confirm");
-        	if($request->password != $request['confirm'])
+        	if($request->password != $request['password_confirmation'])
         		return redirect()->back()->with(Session::flash('message1','Error Password Confirmation not match'));
         	else
-        		$request['password'] = bcrypt($request->password);
+        		$request['password'] = bcrypt($request->password_confirmation);
         }
         dd($request);
         /*else
