@@ -113,8 +113,22 @@ public function push(Request $request)
         $gmin = date('i', strtotime("$get"));
         $gsecond = date('s', strtotime("$get"));
    
-        if(!(($nowY <= $gyear) && ($nowM <= $gmonth) && ($nowD <= $gday) && ($nowH <= $ghour) && ($nowI <= $gmin) && ($nowS <= $gsecond) && ($asn->allow_send == 1)))
-            return view('assignments.error');
+        if($nowY <= $gyear)
+       {
+            if($nowM <= $gmonth)
+                if($nowD <= $gday)
+                    if($nowH <= $ghour)
+                        if($nowI <= $gmin)
+                            if($nowS  <= $gsecond)
+                            {
+                                if($asn->allow_send == 0)
+                                {
+                               // Session::flash('message1','This Assignment ok!');
+                                 return redirect()->back();}
+                            }
+           //Session::flash('message1','Error This Assignment already remarks time is up !');
+           
+        }
 
        // echo(Auth::user()->pinid);
 		//echo($asn);exit();
@@ -168,9 +182,10 @@ public function push(Request $request)
             $errorpath = File::get($checkpath);
            //dd($checkpath);
             if(!empty($errorpath))
+            {
                 str_replace($destinationPath, "Compiler:", $errorpath);
                 return view('assignments.error',['errorpath'=>$errorpath]);
-
+            }
             $inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
 
             /* Checking Injection Zone */
@@ -194,6 +209,7 @@ public function push(Request $request)
         }
         else if($command == "java")
         {
+
         	$allscore = $asn->fullscore;
         	$requireamount = 0;
         	if(!empty($asn->finput))
