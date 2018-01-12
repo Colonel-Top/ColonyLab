@@ -383,7 +383,7 @@
 	</div>
 	<div class="buttons-container">
     {{$course->id}}
-		<a class="border-button" href="{{ url('user/assignment/$course->id') }}&quot; f" ><span class="fa fa-home"></span> Go back</a>
+		<a class="border-button" href="{{ url('user/assignment/{{$course->id}}') }}&quot; f" ><span class="fa fa-home"></span> Go back</a>
     }
 	
 	</div>
