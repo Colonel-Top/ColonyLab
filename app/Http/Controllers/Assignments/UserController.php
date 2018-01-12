@@ -172,7 +172,10 @@ public function push(Request $request)
                 $requireamount++;
             if(!empty($asn->finput5))
                 $requireamount++;
-            $per_asn = $asn->fullscore/$requireamount;
+            if($requireamount != 0)
+                $per_asn = $asn->fullscore/$requireamount;
+            else
+                $per_asn = 0;
             $sum = 0;
             $filename = str_replace(".c","",$filename);
 
@@ -226,7 +229,10 @@ public function push(Request $request)
         		$requireamount++;
         	if(!empty($asn->finput5))
         		$requireamount++;
-        	$per_asn = $asn->fullscore/$requireamount;
+        	if($requireamount != 0)
+                $per_asn = $asn->fullscore/$requireamount;
+            else
+                $per_asn = 0;
         	$sum = 0;
             $filename = str_replace(".java","",$filename);
 
