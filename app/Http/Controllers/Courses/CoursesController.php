@@ -199,13 +199,13 @@ class CoursesController extends Controller
         }
         if(!empty($request['password_confirmation'] && !empty($request['password'])))
         {
-        	dd("Check confirm");
+        	//dd("Check confirm");
         	if($request->password != $request['password_confirmation'])
         		return redirect()->back()->with(Session::flash('message1','Error Password Confirmation not match'));
         	else
         		$request['password'] = bcrypt($request->password_confirmation);
         }
-        dd($request);
+        //dd($request);
         /*else
         {
         	$r2 = DB::table('courses')->select('password')->where('id',$request->id)->pluck('password');
@@ -241,12 +241,7 @@ class CoursesController extends Controller
 		{
 			Courses::find($id)->update(['coursepdf'=>$final]);
 		}
-		if(!empty($request['confirm'] && !empty($request['password'])))
-		{
-			dd("ITS NOT EMPTY BOTH");
-			$stringgo = bcrypt($request->confirm);
-			Courses::find($id)->update(['password'=>$stringgo]);
-		}
+		
 		Session::flash('message1','Courses Updated');
 		return redirect()->intended(route('admin.courses.index'));
 
