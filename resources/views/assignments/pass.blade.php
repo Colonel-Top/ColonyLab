@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
-<html>
-  <head>
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" />
@@ -356,7 +355,7 @@
 
 </style>
 
-  </head>
+
     @section('content')
   <body class="sign error-page-wrapper background-color background-image">
     <div class="sign-container">
@@ -375,7 +374,7 @@
 </div>
 <div class="text-container">
 	<div class="headline secondary-text-color">
-		{{$scores}}
+		Your Score for this assignment : {{$scores}}
 	</div>
 	<div class="context primary-text-color">
 		<p>
@@ -383,7 +382,9 @@
 		</p>
 	</div>
 	<div class="buttons-container">
+    {{$course->id}}
 		<a class="border-button" href="{{ url('user/assignment/$course->id') }}&quot; f" ><span class="fa fa-home"></span> Go back</a>
+    }
 	
 	</div>
 </div>
@@ -503,6 +504,4 @@
 
     </script>
 
-    
-  </body>
-</html>
+@endsection
