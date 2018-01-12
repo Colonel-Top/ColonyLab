@@ -10,7 +10,7 @@ class Courses extends Model
     protected $fillable = ['coursename','password','createby','allowregister','ider',
     'coursepdf', 'homework','assignments','midterm','final',];
     protected $hidden = [
-        'password',
+        'password','confirm',
     ];
   
     public function users()

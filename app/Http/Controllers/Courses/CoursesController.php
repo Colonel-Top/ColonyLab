@@ -196,9 +196,9 @@ class CoursesController extends Controller
              $final = $destinationPath.'//'.$filename;        
          
         }
-        if(!empty($request['password-confirm'] && !empty($request['password'])))
+        if(!empty($request['confirm'] && !empty($request['password'])))
         {
-        	if($request->password != $request['password-confirm'])
+        	if($request->password != $request['confirm'])
         		return redirect()->back()->with(Session::flash('message1','Error Password Confirmation not match'));
         	else
         		$request['password'] = bcrypt($request->password);
@@ -238,11 +238,7 @@ class CoursesController extends Controller
 		{
 			Courses::find($id)->update(['coursepdf'=>$final]);
 		}
-		if(!empty($request['password-confirm'] && !empty($request['password'])))
-		{
-			$stringgo = bcrypt($request->password);
-			Courses::find($id)->update(['password'=>$stringgo]);
-		}
+		
 		Session::flash('message1','Courses Updated');
 		return redirect()->intended(route('admin.courses.index'));
 
