@@ -235,9 +235,27 @@ public function push(Request $request)
            //dd($checkpath);
             if(!empty($errorpath) && $classpath==0)
             {
-                $tmper = str_replace("//",  "/", $destinationPath);
-                $showme = str_replace($tmper, "Compiler:", $errorpath);
-                return view('assignments.error',['errorpath'=>$showme]);
+                unlink($checkpath);
+                $exec2 = 'javac -encoding UTF8 -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
+                $result2 = shell_exec($exec2); 
+                $errorpath2 = File::get($checkpath);
+                $classpath2 = file_exists($destinationPath.$filename.'.class');
+                if(!empty($errorpath2) && $classpath2==0)
+                {
+                    unlink($checkpath);
+                    $exec3 = 'javac -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
+                    $result3 = shell_exec($exec3); 
+                    $errorpath3 = File::get($checkpath);
+                    $classpath3 = file_exists($destinationPath.$filename.'.class');
+                    if(!empty($errorpath2) && $classpath2==0)
+                    {
+                        $tmper = str_replace("//",  "/", $destinationPath);
+                        $showme = str_replace($tmper, "Compiler:", $errorpath);
+                        return view('assignments.error',['errorpath'=>$showme]);
+                    }
+                }
+
+                
             }
 			$inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
 
