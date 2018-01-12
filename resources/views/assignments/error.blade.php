@@ -228,7 +228,7 @@
   @section('content')
   <body class="plain error-page-wrapper background-color background-image">
     <div class="content-container">
-	<div class="head-line secondary-text-color animated bounce infinity">
+	<div class="head-line secondary-text-color infinity animated bounce ">
 		555+
 	</div>
 	<div class="subheader primary-text-color">
