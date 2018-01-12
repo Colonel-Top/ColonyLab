@@ -241,13 +241,23 @@ public function push(Request $request)
                                 $errorpath = File::get($checkpath);
                                 //$classpath = file_exists($destinationPath.$filename.'.class');
                                 unlink($checkpath);
+                                if (strpos($errorpath, '\u') !== false) {
+                                   $executeq = 'javac -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
+                                  //  print_r($executeq);
+                                    $result = shell_exec($executeq);    
+                                    $checkpath = $destinationPath.'error-'.$filename;
+                                   // dd($checkpath);
+                                    $errorpath = File::get($checkpath);
+                                    $classpath = file_exists($destinationPath.$filename.'.class');
+                                    unlink($checkpath);
+                                    $tmper = str_replace("//",  "/", $destinationPath);
+                                    $showme = str_replace($tmper, "Compiler:", $errorpath);
+                                    return view('assignments.error',['errorpath'=>$showme]);
+                                }
                                 $tmper = str_replace("//",  "/", $destinationPath);
                                 $showme = str_replace($tmper, "Compiler:", $errorpath);
                                 return view('assignments.error',['errorpath'=>$showme]);
 
-                            
-                    
-                    
 
                 
             }
