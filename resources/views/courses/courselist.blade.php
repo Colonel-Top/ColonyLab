@@ -20,7 +20,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <table class="table table-striped task-table animated fadeInDown">
+                <table class="table table-striped task-table animated fadeInUp">
                     <!-- Table Headings -->
                     <thead>
                         <th width="40%">Course Name</th>
@@ -34,7 +34,7 @@
                     @foreach($allCourses as $post)
                       
                         <tr>
-                            <div class = "animated bounceInUp">
+                           
                             <td class="table-text">
                                 <div>{{$post->coursename}}</div>
                             </td>
@@ -51,7 +51,7 @@
                              
                             
                             </td>
-                        </div>
+                     
                         </tr>
                     @endforeach
                     </tbody>

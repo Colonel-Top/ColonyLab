@@ -4,6 +4,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
 
       <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
@@ -324,14 +325,14 @@
       Oops You just throw<br>
       Everest Mountain <br>on me <br>>:(
     </div>
-    <div class="subheader primary-text-color">
+    <div class="subheader primary-text-color animated swing">
     I don't wanna say but ... <br>But your File or Post just too LARGE Or Wrong Name.
     </div>
     <div class="hr"></div>
     <div class="clearfix"></div>
     <div class="context secondary-text-color">
       
-    <p>Sorry for fuc* sake >~< </p>
+    <p>Sorry for good sake >~< </p>
 
     </div>
   </div>

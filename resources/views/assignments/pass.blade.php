@@ -4,6 +4,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js"></script>
     <link rel="stylesheet" media="screen" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600" />
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css" />
 
 
@@ -363,7 +364,7 @@
 	<div class="post left"></div>
 	<div class="post right"></div>
 	<div class="pane">
-		<div class="headline sign-text-color">
+		<div class="headline sign-text-color animated rubberBand">
 			Congratulation
 		</div>
 		<div class="context sign-text-color">
@@ -373,7 +374,7 @@
 	</div>
 </div>
 <div class="text-container">
-	<div class="headline secondary-text-color">
+	<div class="headline secondary-text-color animated infinity pulse">
 		Your Score for this assignment : {{$scores}}
 	</div>
 	<div class="context primary-text-color">

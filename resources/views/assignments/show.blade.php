@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 @section('content')
 <div class="container">
     <div class="col-lg-12">
@@ -11,7 +11,7 @@
     @endif
     <!-- members list -->
     
-        <div class="row">
+        <div class="row animated bounceInRight">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
                     <h2>Assignment Information</h2>

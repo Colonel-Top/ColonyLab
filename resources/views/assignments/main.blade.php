@@ -1,5 +1,5 @@
 @extends('layouts.app')
-
+ <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 @section('content')
 <div class="container">
     <div class="col-lg-12">
@@ -10,7 +10,7 @@
     @if(!empty($asn))
         <div class="row">
             <div class="col-lg-12 margin-tb">
-                <div class="pull-left">
+                <div class="pull-left animated bounceInRight">
                     <h2>Assignment List of {{$course}}</h2>
                     
                 </div>
@@ -19,7 +19,7 @@
         </div>
         <div class="row">
             <div class="col-xs-12 col-sm-12 col-md-12">
-                <table class="table table-striped task-table">
+                <table class="table table-striped task-table animated bounceInUp">
                     <!-- Table Headings -->
                     <thead>
                         <th width="30%">Assignment Name</th>
