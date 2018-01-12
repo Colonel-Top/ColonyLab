@@ -229,15 +229,15 @@ public function push(Request $request)
         	$per_asn = $asn->fullscore/$requireamount;
         	$sum = 0;
             $filename = str_replace(".java","",$filename);
-            dd($filename);
+
             $executeq = 'javac -encoding "unicode" -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
-           // print_r($executeq);
+            print_r($executeq);
         	$result = shell_exec($executeq);	
             $checkpath = $destinationPath.'error-'.$filename;
            // dd($checkpath);
             $errorpath = File::get($checkpath);
             $classpath = file_exists($destinationPath.$filename.'.class');
-            //dd($classpath);
+            dd($classpath);
             if(!empty($errorpath) && $classpath == 0)
             {
                 
