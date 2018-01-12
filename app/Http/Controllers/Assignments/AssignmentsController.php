@@ -240,8 +240,13 @@ class AssignmentsController extends Controller
     	$asninfo = Assignments::FindOrFail($id);
 		$data = DB::table('assignment_work')->select()->where('assignments_id',$id)->get();
 
-
+	//D OTH IS  FIRST !
+/*
+Config File: /etc/mysql/my.cnf
+sql-mode="STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION"
 		$data = DB::select('Select * from (select * from `assignment_work` order by id ASC, scores ASC) as v group by `pinid`');
+*/
+$data = DB::select('SELECT * FROM `assignment_work` where id IN (SELECT id from `assignment_work` order by id asc , scores asc) GROUP BY `pinid` AND `assignments_id` = :id',['id'=>$id]);
 
 
 
