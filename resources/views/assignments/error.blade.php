@@ -228,23 +228,24 @@
   @section('content')
   <body class="plain error-page-wrapper background-color background-image">
     <div class="content-container">
-	<div class="head-line secondary-text-color infinity animated bounce ">
+	<div class="head-line secondary-text-color animated tada ">
 		555+
 	</div>
 	<div class="subheader primary-text-color">
 		Oops, Your File that send me to Compile <br>
-		seems it's error.
+		seems it's error :(
 	</div>
 	<hr>
 	<div class="clearfix"></div>
 	<div class="context primary-text-color">
 		<!-- doesn't use context_content because it's ALWAYS the same thing -->
     <p>
+      Here's your error noob.<br>
       {{$errorpath}}
     </p>
 	</div>
 	<div class="buttons-container">
-		<a class="border-button" href="{{ URL::previous() }}" f>Try Again</a>
+		<a class="border-button" href="{{ URL::previous() }}" f>Try Again ?</a>
 	<!--	<a class="border-button" href="mailto:#" target="_blank">Enough I'm back to homepage</a> -->
 	</div>
 </div>
