@@ -46,7 +46,7 @@
                                 <div>{{$post->scores}}</div>
                             </td>
                             <td class="table-text">
-                                <div>{{$post->created}}</div>
+                                <div>{{$post->created_at}}</div>
                             </td>
                             <td>
                                 <a href="{{ route('user.assignments.callpath', $post->id) }}" class="btn btn-success">Show</a>   
