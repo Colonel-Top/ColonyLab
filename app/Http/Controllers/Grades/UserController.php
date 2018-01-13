@@ -56,6 +56,8 @@ class UserController extends Controller
 		$enrollmentid = ($enrollmentid->first());
 		$enrollmentid = ($enrollmentid->id);
 	//	echo($enrollmentid);exit();
+		
+		//QUERU WRONG HERE
 $data = DB::select('SELECT id ,MAX(scores) as scores,name,`pinid`,`users_ans`,`assignments_id`,`enrollments_id`,`created_at`,`updated_at`
 FROM
     (SELECT *
