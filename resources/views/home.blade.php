@@ -49,15 +49,15 @@
                     <!-- Table Body -->
                     <tbody>
                     @foreach($asn as $post)
-                
+                     @foreach($courses as $data)
+                      @if($data->id == $post->courses_id)
                         <tr>
-                            @foreach($courses as $data)
-                            @if($data->id == $post->courses_id)
+                            
+                           
                             <td class="table-text">
                                 <div>{{$data->coursename}}</div>
                             </td>
-                            @endif
-                            @endforeach
+                            
                             <td class="table-text">
                                 <div>{{$post->name}}</div>
                             </td>
@@ -76,7 +76,8 @@
                                
                             </td>
                         </tr>
-                      
+                      @endif
+                            @endforeach
                     @endforeach
                     </tbody>
                 </table>
