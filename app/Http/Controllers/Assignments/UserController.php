@@ -250,6 +250,9 @@ public function push(Request $request)
                                     $classpath2 = file_exists($destinationPath.$filename.'.class');
                                     if(!empty($errorpath2) && $classpath == 0)
                                     {
+                                            unlink($checkpath2);
+                                            $execbom = "sed -i '1s/^\xEF\xBB\xBF//' ".$final;
+                                            exec($execbom);
                                             $executeq3 = 'javac -encoding UTF8 -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
                                           //  print_r($executeq);
                                             $result3 = shell_exec($executeq3);    
