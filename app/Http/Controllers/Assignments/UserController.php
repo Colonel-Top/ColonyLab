@@ -294,8 +294,10 @@ public function push(Request $request)
             //Storage::move('//assignments//'.$asn->id.'//user_upload//'.Auth::user()->pinid.'//'.$filename.'.java', $savefile);
             //move file go to place
             //done
-			$inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
 
+			$inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
+            if (!empty($asn->finput)) 
+        {
             /* Checking Injection Zone */
 			$injection = '"java -cp '.$destinationPath.' '.$filename.' < '.$asn->finput.' > '.$destinationPath.$filename.'.txt"';
 
@@ -313,7 +315,7 @@ public function push(Request $request)
                 $sum+=$per_asn;
             unlink($checkpath);
             unlink($getject);
-
+}
             /* Checking Injection Zone */
         //--------------------------   
         if (!empty($asn->finput2)) 

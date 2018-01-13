@@ -34,7 +34,7 @@ class User extends Authenticatable
     }
     public function assignments()
     {
-        return $this->belongsToMany('App\Assignments','assignment_work','assignments_id','users_id');
+        return $this->belongsToMany('App\Assignments','assignment_work','assignments_id','enrollments_id');
     }
    
 
