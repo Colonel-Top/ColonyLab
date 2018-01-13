@@ -64,11 +64,6 @@ label {
 html, body {
   background: #2ecc71;
   font-family: Helvetica, Arial, sans-serif;
-  height: 100%;
-  width: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 </style>
 
