@@ -23,9 +23,10 @@
                 <table class="table table-striped task-table animated fadeInUp">
                     <!-- Table Headings -->
                     <thead>
-                        <th width="40%">Name</th>
-                        <th width="25%">Modified By</th>
-                        <th width="15%">Created</th>
+                        <th width="30%">ID</th>
+                        <th width="20%">Name</th>
+                        <th width="20%">Score</th>
+                        <th width="10%">Created</th>
                         <th width="20%">Action</th>
                     </thead>
     
@@ -36,16 +37,19 @@
                         <tr>
                            
                             <td class="table-text">
-                                <div>{{$post->name}}</div>
+                                <div>{{$post->pinid}}</div>
                             </td>
                             <td class="table-text">
-                                <div>{{$post->createby}} </div>
+                                <div>{{$post->name}} </div>
                             </td>
-                                <td class="table-text">
+                            <td class="table-text">
+                                <div>{{$post->scores}}</div>
+                            </td>
+                            <td class="table-text">
                                 <div>{{$post->created}}</div>
                             </td>
                             <td>
-                                <a href="{{ route('user.courses.details', $post->id) }}" class="label label-success">Show</a>
+                                <a href="{{ route('user.assignments.callpath', $post->id) }}" class="btn btn-success">Show</a>   
                               
                                  
                             
