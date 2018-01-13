@@ -253,7 +253,7 @@ public function push(Request $request)
                                             {
 
                                                  unlink($checkpath2);
-                                                 dd("Come to UTF8 now");
+                                                // dd("Come to UTF8 now");
                                               //  dd("come to compile normally");
                                                $executeq3 = 'javac -enconding UTF8 -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
                                               //  print_r($executeq);
