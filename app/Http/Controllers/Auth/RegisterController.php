@@ -66,7 +66,7 @@ class RegisterController extends Controller
     {
 
 
-$user = User::where('email','=',(getEvent()->hash.'_'.$data['email']))->first();
+$user = User::where('email','=',$data['email'])->first();
 if($user!=null){
      return back()->withInput()->with('errorMessage','Account already Exists!!');
 }
