@@ -58,7 +58,7 @@ class UserController extends Controller
 	//	echo($enrollmentid);exit();
 		
 		//QUERU WRONG HERE
-$data = DB::select('SELECT *,MAX(scores) as scores FROM `assignment_work` WHERE enrollments_id IN (SELECT * FROM `enrollment` where users_id = :users AND courses_id = :courses ) GROUP BY assignments_id,enrollments_id ORder by scores ASC',['users'=>$userid,'courses'=>$id]);
+$data = DB::select('SELECT *,MAX(scores) as scores FROM `assignment_work` WHERE enrollments_id IN (SELECT * FROM `enrollment` where users_id = :users AND courses_id = :courses ) GROUP BY assignments_id,enrollments_id ORder by scores ASC',[['users'=>$userid],['courses'=>$id]]);
 
 		dd($data);
 
