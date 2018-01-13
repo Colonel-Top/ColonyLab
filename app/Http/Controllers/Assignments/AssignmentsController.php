@@ -257,11 +257,11 @@ FROM
 AS employeesub
 GROUP BY employeesub.pinid ',['id' => $id]);
 	//	dd($data);
-
+$amount = count($data);
 
 		$blah = Assignments::with('courses.users')->where('id',$asninfo->id)->get();
 	
-		return view('assignments.show',['asninfo'=>$asninfo,'data'=>$data,'userdetails'=>$blah]);
+		return view('assignments.show',['asninfo'=>$asninfo,'data'=>$data,'userdetails'=>$blah,'amount'=>$amount]);
     }
     public function showremark($id)
     {/* // Using the Query Builder
