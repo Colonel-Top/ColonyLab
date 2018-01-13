@@ -33,17 +33,18 @@
                     <!-- Table Body -->
                     <tbody>
                     @foreach($data as $post)
-                      
+                      @foreach($asn as $asnsingle)
+                      @if($post->assignments_id == $asnsingle->id)
                         <tr>
                            
                             <td class="table-text">
-                                <div>{{$post->pinid}}</div>
+                                <div>{{$asnsingle->name}}</div>
                             </td>
                             <td class="table-text">
                                 <div>{{$post->name}} </div>
                             </td>
                             <td class="table-text">
-                                <div>{{$post->scores}}</div>
+                                <div>{{$post->mscores}}</div>
                             </td>
                             <td class="table-text">
                                 <div>{{$post->created_at}}</div>
@@ -56,6 +57,8 @@
                             </td>
                      
                         </tr>
+                        @endif
+                    @endforeach    
                     @endforeach
                     </tbody>
                 </table>
