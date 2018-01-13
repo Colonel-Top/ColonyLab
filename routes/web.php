@@ -34,6 +34,8 @@ Route::get('/courses/details/{id}', 'Courses\UserCoursesController@details')->na
 Route::post('/courses/enroll/{id}', 'Courses\UserCoursesController@enroll')->name('user.courses.enroll');
 Route::get('/courses/request/{id}', 'Courses\UserCoursesController@request')->name('user.courses.request');
 Route::get('/assignment/callpath/{id}','Assignments\UserController@callpath')->name('user.assignments.callpath');
+Route::get('/grading/','Grades\UserController@getcourse')->name('user.grades.getcourse');
+Route::get('/discover/{id}','Grades\UserController@allscore')->name('user.grades.allscore');
 Route::get('/assignment/{id}','Assignments\UserController@indexmy')->name('user.assignments.indexmy');
 Route::get('/score/{id}','Assignments\UserController@score')->name('user.assignments.score');
 Route::get('/details/{id}','Assignments\UserController@detail')->name('user.assignments.detail');

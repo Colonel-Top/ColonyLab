@@ -375,7 +375,7 @@
 </div>
 <div class="text-container">
 	<div class="headline secondary-text-color animated infinity pulse">
-		Your Score for this assignment : {{$scores}}
+		Your Score for this assignment : {{$scores}}/{{$full}}
 	</div>
 	<div class="context primary-text-color">
 		<p>
