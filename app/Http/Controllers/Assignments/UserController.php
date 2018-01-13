@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Assignments;
-ini_set('max_execution_time', 35);
+ini_set('max_execution_time', 300);
 use App\Courses;
 use App\User;
 use App\Assignments;
@@ -230,6 +230,7 @@ public function push(Request $request)
             $errorpath = File::get($checkpath);
             $classpath = file_exists($destinationPath.$filename.'.class');
            // dd($classpath);
+
             if(!empty($errorpath) && $classpath == 0)
             {
                 
@@ -238,7 +239,11 @@ public function push(Request $request)
                                
                                 if (strpos($errorpath, '\u') !== false) 
                                 {
-                                     unlink($checkpath);
+                                    $testing = mb_detect_encoding($str, 'UTF-8', true); // false
+                                    if($testing == true)
+                                        dd("true");
+                                    else
+                                        dd("false");
                                   //  dd("come to compile normally");
                                    $executeq2 = 'javac -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
                                   //  print_r($executeq);
@@ -249,35 +254,10 @@ public function push(Request $request)
                                     $classpath2 = file_exists($destinationPath.$filename.'.class');
                                     if(!empty($errorpath2) && $classpath == 0)
                                     {
-                                        if (strpos($errorpath2, 'US-ASCII') !== false) 
-                                            {
-
-                                                 unlink($checkpath2);
-                                                // dd("Come to UTF8 now");
-                                              //  dd("come to compile normally");
-                                               $executeq3 = 'javac -encoding ISO-8859-1 -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
-                                              //  print_r($executeq);
-                                                $result3 = shell_exec($executeq2);    
-                                                $checkpath3 = $destinationPath.'error-'.$filename;
-                                               // dd($checkpath);
-                                                $errorpath3= File::get($checkpath3);
-                                                $classpath3 = file_exists($destinationPath.$filename.'.class');
-                                                if(!empty($errorpath3) && $classpath == 0)
-                                                {
-                                                    unlink($checkpath3);
-                                                    $tmper = str_replace("//",  "/", $destinationPath);
-                                                    $showme = str_replace($tmper, "Colonel Engine Compiler:", $errorpath3);
-                                                    return view('assignments.error',['errorpath'=>$showme]);
-                                                }
-                                            }
-                                            else
-                                            {
-                                            $errorpath = File::get($checkpath);
-                                            $tmper = str_replace("//",  "/", $destinationPath);
-                                            $showme = str_replace($tmper, "Colonel Engine Compiler:", $errorpath);
-                                            return view('assignments.error',['errorpath'=>$showme]);
-                                            }
-
+                                        unlink($checkpath2);
+                                        $tmper = str_replace("//",  "/", $destinationPath);
+                                        $showme = str_replace($tmper, "Colonel Engine Compiler:", $errorpath2);
+                                        return view('assignments.error',['errorpath'=>$showme]);
                                     }
                                 }
                                 else
