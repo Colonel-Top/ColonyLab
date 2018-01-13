@@ -1,4 +1,5 @@
-@extends('layouts.app')
+<!DOCTYPE html>
+<html lang="{{ app()->getLocale() }}">
 
 @section('content')
 <style>
@@ -64,6 +65,11 @@ label {
 html, body {
   background: #2ecc71;
   font-family: Helvetica, Arial, sans-serif;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 </style>
 
@@ -96,3 +102,4 @@ html, body {
     </div>
 </div>
 @endsection
+</html>
