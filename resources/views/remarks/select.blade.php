@@ -3,7 +3,6 @@
 @section('content')
 <style>
 .btn {
-    margin-top: calc(50% + 25px);
     position: relative;
     display: inline-block;
     width: 277px;
