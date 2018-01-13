@@ -65,7 +65,7 @@ FROM
 AS employeesub
 GROUP BY employeesub.pinid ',['id' => $userid]);
 
-		dd($data);
+		//dd($data);
 
 		return view('remarks.show',['data'=>$data]);
     
