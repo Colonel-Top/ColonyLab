@@ -72,7 +72,7 @@
                                     <a href="{{ route('user.assignments.submit',$post->id) }}" class="label label-success">Submit</a>
                                 -->
                                 <a href="{{ route('user.assignments.detail', $post->id) }}" class="label label-warning">Question</a>
-                                 <a href="{{ route('user.assignments.indexmy',$post->id) }}" class="label label-success">See Details</a>
+                                 <a href="{{ route('user.assignments.indexmy',$data->id) }}" class="label label-success">See Details</a>
                                
                                 
                                 
