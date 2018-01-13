@@ -1,81 +1,57 @@
 @extends('layouts.app')
-
+<link href='https://fonts.googleapis.com/css?family=Lato|Roboto:400,900' rel='stylesheet' type='text/css'>
 @section('content')
 <style>
-@import url('https://fonts.googleapis.com/css?family=Barrio|Montserrat:700');
-$green: #00d166;
-
-body {
-  font-family: 'Montserrat', sans-serif;
-  display: flex;
-  height: 100vh;
-  width: 100vw;
-  background: #111;
+.btn {
+    margin-top: calc(50% + 25px);
+    position: relative;
+    display: inline-block;
+    width: 277px;
+    height: 50px;
+    font-size: 1em;
+    font-weight: bold;
+    line-height: 60px;
+    text-align: center;
+    text-transform: uppercase;
+    background-color: transparent;
+    cursor: pointer;
+    text-decoration:none;
+    font-family: 'Roboto', sans-serif;
+    font-weight:900;
+    font-size:17px;
+    letter-spacing: 0.045em;
 }
 
-button {
-  margin: auto;
-  padding: 1rem;
-  text-transform: uppercase;
-  color: #fafafa;
-  background-color: $green;
-  border: none;
-  border-radius: 3px;
-  box-shadow: 1px 1px 10px rgba(50,50,50,.4);
-  transition: .3s all ease;
-  letter-spacing: .1rem;
-  font-size: .85rem;
-  position: relative;
-  top: 0;
-  right: 0;
-  padding-left: 2.5rem;
-  
-  &:after,
-  &:before {
+.btn svg {
     position: absolute;
-    font-family: 'Barrio', sans-serif;
-    font-weight: bold;
-    font-size: 1rem;
-    color: darken($green, 20%);
-    transition: .3s all ease;
-  }
+    top: 0;
+    left: 0;
+}
+
+.btn svg rect {
+    //stroke: #EC0033;
+    stroke-width: 4;
+    stroke-dasharray: 353, 0;
+    stroke-dashoffset: 0;
+    -webkit-transition: all 600ms ease;
+    transition: all 600ms ease;
+}
+
+.btn span{
+  background: rgb(255,130,130);
+  background: -moz-linear-gradient(left,  rgba(255,130,130,1) 0%, rgba(225,120,237,1) 100%);
+  background: -webkit-linear-gradient(left,  rgba(255,130,130,1) 0%,rgba(225,120,237,1) 100%);
+  background: linear-gradient(to right,  rgba(255,130,130,1) 0%,rgba(225,120,237,1) 100%);
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff8282', endColorstr='#e178ed',GradientType=1 );
   
-  &:before {
-    content: '_';
-    position: absolute;
-    left: 1.4rem;
-    top: .9rem;
-  }
-  
-  &:after {
-    content: '>';
-    position: absolute;
-    left: .8rem;
-    top: 1rem;
-  }
-  
-  &:hover {
-    box-shadow: 1px 1px 20px rgba(150,150,150,.2);
-    top: -.1rem;
-    right: -.1rem;
-    cursor: pointer;
-    
-    
-    &:before {
-      content: '_';
-      position: absolute;
-      left: .8rem;
-      top: .7rem;
-      transform: translateY(-1px);
-    }
-  
-    &:after {
-      content: '>';
-      position: absolute;
-      left: 1.1rem;
-      top: 1rem;
-    }
-  }
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.btn:hover svg rect {
+    stroke-width: 4;
+    stroke-dasharray: 196, 543;
+    stroke-dashoffset: 437;
 }
 </style>
 <div class="container">
@@ -88,10 +64,38 @@ button {
         <div class="row">
             <h3>Select Mode to explore</h3>
             <div class = "m-b-md">
+              <a href="{{route('admin.couses.routeremark')}}" class="btn">
+              <svg width="277" height="62">
+                <defs>
+                    <linearGradient id="grad1">
+                        <stop offset="0%" stop-color="#FF8282"/>
+                        <stop offset="100%" stop-color="#E178ED" />
+                    </linearGradient>
+                </defs>
+                 <rect x="5" y="5" rx="25" fill="none" stroke="url(#grad1)" width="266" height="50"></rect>
+              </svg>
+              <!--<span>Voir mes réalisations</span>-->
+                <span>View By Courses</span>
+            </a>
+            </div>
               
-                <button>
-                    <a href = "{{route('admin.couses.routeremark')}}"><label>View By Courses</label></a>
-                </button>
+             <div class = "m-b-md">
+              <a href="{{route('admin.couses.routeremark')}}" class="btn">
+              <svg width="277" height="62">
+                <defs>
+                    <linearGradient id="grad1">
+                        <stop offset="0%" stop-color="#FF8282"/>
+                        <stop offset="100%" stop-color="#E178ED" />
+                    </linearGradient>
+                </defs>
+                 <rect x="5" y="5" rx="25" fill="none" stroke="url(#grad1)" width="266" height="50"></rect>
+              </svg>
+              <!--<span>Voir mes réalisations</span>-->
+                <span>View By Users</span>
+            </a>
+            </div>
+
+
             </div>
            </div>
            <div class = "m-b-md">
