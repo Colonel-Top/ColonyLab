@@ -63,7 +63,7 @@ FROM
     WHERE enrollments_id = :id
 	ORDER BY scores ASC)
 AS employeesub
-GROUP BY employeesub.pinid ',['id' => $enrollmentid]);
+GROUP BY employeesub.pinid ',['id' => $userid]);
 
 		dd($data);
 
