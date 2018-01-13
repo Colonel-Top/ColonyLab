@@ -1,77 +1,83 @@
-<!DOCTYPE html>
-<html lang="{{ app()->getLocale() }}">
-<body>
+@extends('layouts.app')
+
+@section('content')
 <style>
-.outer {
-  position: relative;
-  width: 80px;
-  cursor: pointer;
-}
+@import url('https://fonts.googleapis.com/css?family=Barrio|Montserrat:700');
+$green: #00d166;
 
-.inner {
-  width: inherit;
-  text-align: center;
-}
-
-label { 
-  font-size: .8em; 
-  line-height: 4em;
-  font-weight: 600;
-  letter-spacing: 4px;
-  text-transform: uppercase;
-  color: #fff;
-  transition: all .3s ease-in;
-  opacity: 0;
-  cursor: pointer;
-}
-
-.inner:before, .inner:after {
-  position: absolute;
-  content: '';
-  height: 4px;
-  width: inherit;
-  background: #2c3e50;
-  left: 0;
-  transition: all .3s ease-in;
-}
-
-.inner:before {
-  top: 45%; 
-  transform: rotate(45deg);  
-}
-
-.inner:after {  
-  bottom: 50%;
-  transform: rotate(-45deg);  
-}
-
-.outer:hover label {
-  opacity: 1;
-}
-
-.outer:hover .inner:before,
-.outer:hover .inner:after {
-  transform: rotate(0);
-}
-
-.outer:hover .inner:before {
-  top: 0;
-}
-
-.outer:hover .inner:after {
-  bottom: 0;
-}
-html, body {
-  background: #2ecc71;
-  font-family: Helvetica, Arial, sans-serif;
-  height: 100%;
-  width: 100%;
+body {
+  font-family: 'Montserrat', sans-serif;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  height: 100vh;
+  width: 100vw;
+  background: #111;
+}
+
+button {
+  margin: auto;
+  padding: 1rem;
+  text-transform: uppercase;
+  color: #fafafa;
+  background-color: $green;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 1px 1px 10px rgba(50,50,50,.4);
+  transition: .3s all ease;
+  letter-spacing: .1rem;
+  font-size: .85rem;
+  position: relative;
+  top: 0;
+  right: 0;
+  padding-left: 2.5rem;
+  
+  &:after,
+  &:before {
+    position: absolute;
+    font-family: 'Barrio', sans-serif;
+    font-weight: bold;
+    font-size: 1rem;
+    color: darken($green, 20%);
+    transition: .3s all ease;
+  }
+  
+  &:before {
+    content: '_';
+    position: absolute;
+    left: 1.4rem;
+    top: .9rem;
+  }
+  
+  &:after {
+    content: '>';
+    position: absolute;
+    left: .8rem;
+    top: 1rem;
+  }
+  
+  &:hover {
+    box-shadow: 1px 1px 20px rgba(150,150,150,.2);
+    top: -.1rem;
+    right: -.1rem;
+    cursor: pointer;
+    
+    
+    &:before {
+      content: '_';
+      position: absolute;
+      left: .8rem;
+      top: .7rem;
+      transform: translateY(-1px);
+    }
+  
+    &:after {
+      content: '>';
+      position: absolute;
+      left: 1.1rem;
+      top: 1rem;
+    }
+  }
 }
 </style>
-
 <div class="container">
     <div class="col-lg-12">
    @if (Session::has('message1'))
@@ -80,25 +86,22 @@ html, body {
     <!-- courses list -->
   
         <div class="row">
+            <h3>Select Mode to explore</h3>
             <div class = "m-b-md">
-                <div class = " outer">
-                <div class ="inner">
-
+              
+                <button>
                     <a href = "{{route('admin.couses.routeremark')}}"><label>View By Courses</label></a>
-                </div>
+                </button>
             </div>
            </div>
            <div class = "m-b-md">
-                <div class = " outer">
-                <div class ="inner">
-
+               
+<button>
                     <a href = "{{route('admin.couses.routeremark')}}"><label>View By User</label></a>
-                </div>
-            </div>
+               </button>
            </div>
         </div>
 
     </div>
 </div>
-</body>
-</html>
+@endsection
