@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="{{ app()->getLocale() }}">
-
-@section('content')
+<body>
 <style>
 .outer {
   position: relative;
@@ -101,5 +100,5 @@ html, body {
 
     </div>
 </div>
-@endsection
+</body>
 </html>
