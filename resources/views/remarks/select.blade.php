@@ -61,7 +61,17 @@ label {
 .outer:hover .inner:after {
   bottom: 0;
 }
+html, body {
+  background: #2ecc71;
+  font-family: Helvetica, Arial, sans-serif;
+  height: 100%;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 </style>
+
 <div class="container">
     <div class="col-lg-12">
    @if (Session::has('message1'))
