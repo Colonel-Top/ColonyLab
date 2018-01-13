@@ -249,9 +249,11 @@ public function push(Request $request)
                                     $classpath2 = file_exists($destinationPath.$filename.'.class');
                                     if(!empty($errorpath2) && $classpath == 0)
                                     {
-                                        if (strpos($errorpath2, 'encoding US-ASCII') !== false) 
+                                        if (strpos($errorpath2, 'US-ASCII') !== false) 
                                             {
+
                                                  unlink($checkpath2);
+                                                 dd("Come to UTF8 now");
                                               //  dd("come to compile normally");
                                                $executeq3 = 'javac -enconding UTF8 -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
                                               //  print_r($executeq);
