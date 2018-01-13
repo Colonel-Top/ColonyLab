@@ -249,7 +249,7 @@ public function push(Request $request)
                                     $classpath2 = file_exists($destinationPath.$filename.'.class');
                                     if(!empty($errorpath2) && $classpath == 0)
                                     {
-                                        if (strpos($errorpath, 'encoding US-ASCII') !== false) 
+                                        if (strpos($errorpath2, 'encoding US-ASCII') !== false) 
                                             {
                                                  unlink($checkpath2);
                                               //  dd("come to compile normally");
