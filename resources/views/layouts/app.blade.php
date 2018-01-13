@@ -64,7 +64,7 @@
                                     <a href="{{route('admin.courses.index')}}">Courses Manager</a>
                                 </li>
                                 <li>
-                                    <a href="{{route('admin.assignments.pickmode')}}">Remarks Management</a>
+                                    <a href="{{route('admin.remarks.pickmode')}}">Remarks Management</a>
                                 </li>
                           <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">

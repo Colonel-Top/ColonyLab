@@ -40,6 +40,10 @@ class AdminController extends Controller
     	$courses = Auth::user()->courses;
     	return view('remarks.courseselect',['courses'=>$courses]);
     }
+    public function selector()
+    {
+    	return view('remarks.select');
+    }
 	public function allscore($id,$id2)
 	{
 		//PROBLEM SCORE HERE

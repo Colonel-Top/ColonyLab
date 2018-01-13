@@ -66,7 +66,9 @@ Route::prefix('admin')->group(function(){
 	Route::get('/remarks/explore/{id}','Assignments\AssignmentsController@maxscoreshow')->name('admin.assignments.maxscoreshow');
 
 	Route::get('/remarks/{id}','Assignments\AssignmentsController@showremark')->name('admin.assignments.showremark') ;
-	Route::get('/selectmode','Grades\AdminController')->name('admin.assignments.pickmode');
+
+	Route::get('/selectmode','Grades\AdminController@selector')->name('admin.remarks.pickmode');
+
 	Route::get('/assignment/callmaster2/{id}','Assignments\AssignmentsController@callmaster2')->name('admin.assignments.callmaster2');
 	Route::get('/assignment/callout2/{id}','Assignments\AssignmentsController@callout2')->name('admin.assignments.callout2');
 	
