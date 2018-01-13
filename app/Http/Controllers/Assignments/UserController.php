@@ -239,11 +239,7 @@ public function push(Request $request)
                                
                                 if (strpos($errorpath, '\u') !== false) 
                                 {
-                                    $testing = mb_detect_encoding($str, 'UTF-8', true); // false
-                                    if($testing == true)
-                                        dd("true");
-                                    else
-                                        dd("false");
+
                                   //  dd("come to compile normally");
                                    $executeq2 = 'javac -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
                                   //  print_r($executeq);
@@ -254,10 +250,20 @@ public function push(Request $request)
                                     $classpath2 = file_exists($destinationPath.$filename.'.class');
                                     if(!empty($errorpath2) && $classpath == 0)
                                     {
-                                        unlink($checkpath2);
-                                        $tmper = str_replace("//",  "/", $destinationPath);
-                                        $showme = str_replace($tmper, "Colonel Engine Compiler:", $errorpath2);
-                                        return view('assignments.error',['errorpath'=>$showme]);
+                                            $executeq3 = 'javac -d -encoding UTF8 '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
+                                          //  print_r($executeq);
+                                            $result3 = shell_exec($executeq3);    
+                                            $checkpath3 = $destinationPath.'error-'.$filename;
+                                           // dd($checkpath);
+                                            $errorpath3= File::get($checkpath3);
+                                            $classpath3 = file_exists($destinationPath.$filename.'.class');
+                                            if(!empty($errorpath3) && $classpath == 0)
+                                            {
+                                                unlink($checkpath3);
+                                                $tmper = str_replace("//",  "/", $destinationPath);
+                                                $showme = str_replace($tmper, "Colonel Engine Compiler:", $errorpath3);
+                                                return view('assignments.error',['errorpath'=>$showme]);
+                                            }
                                     }
                                 }
                                 else
