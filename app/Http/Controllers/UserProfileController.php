@@ -51,7 +51,7 @@ class UserProfileController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'noid' => 'required|string|max:10|unique:users',
+            'pinid' => 'required|string|max:10|unique:users',
             'name' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
@@ -74,24 +74,26 @@ class UserProfileController extends Controller
      public function update(Request $request)
     {
         $this->validate($request,[
-        	'noid' => 'required|max:40',
+        	'pinid' => 'required|max:40',
             'name' => 'required|max:40',
             'surname' => 'required|max:40',
             'oldpass' => 'required|string|min:1',
             'email' => 'required',
         ]);
-      
-        $hashpass = bcrypt($request['oldpass']);
-      //  echo($hashpass);
+  
+        $hashpass = bcrypt($request->oldpass);
+        echo($hashpass);
 
-        //$user = User::where('noid', $request['noid']);
+        //$user = User::where('pinid', $request['pinid']);
         
       //  echo($request);
-        $passSDB = DB::table('users')->select('password')->where('noid',$request->noid)->pluck('password');
+        $passSDB = DB::table('users')->select('password')->where('pinid',$request->pinid)->pluck('password');
         $passlala = $passSDB[0];
-
+      //  echo($passlala);
+        //exit();
        	if (Hash::check($request->oldpass,$passlala) )
        	{
+        //  dd("CHECL");
        		if(!empty($request->password) && !empty($request->confirm))
           {
             if($request->password == $request->confirm)
@@ -99,7 +101,7 @@ class UserProfileController extends Controller
             else
             {
               Session::flash('error','Invalid Password & Confirm not similar');
-            return redirect()->back()->withInput($request->only('noid','name','surname','email'));
+            return redirect()->back()->withInput($request->only('pinid','name','surname','email'));
             }
           //   echo($hashpass);
           }
@@ -111,8 +113,8 @@ class UserProfileController extends Controller
        	}
     
        	DB::beginTransaction();
-      	$test = DB::update('update users set name = ? , surname = ? , email = ? , password = ? where noid = ?', [
-      		$request->name,$request->surname,$request->email,$hashpass,$request->noid
+      	$test = DB::update('update users set name = ? , surname = ? , email = ? , password = ? where pinid = ?', [
+      		$request->name,$request->surname,$request->email,$hashpass,$request->pinid
       	]);
 
  		DB::commit();
@@ -120,7 +122,7 @@ class UserProfileController extends Controller
         $user->surname = $request->surname;
         $user->password = $hashpass;
         $user->email = $request->email;
-        $user->users()->attach($noid);*/
+        $user->users()->attach($pinid);*/
 		if($test == 1)
 		{
 			Session::flash('message1','Profile Update Successfully');
@@ -133,9 +135,9 @@ class UserProfileController extends Controller
         	return redirect()->back()->withInput($request->only('name','surname','email'));
         }
 		/*$postData = $request->all();
-		echo($postData->noid);
+		echo($postData->pinid);
 
-		User::find($request->noid)->update($postData);*/
+		User::find($request->pinid)->update($postData);*/
         
 
     }

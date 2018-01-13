@@ -26,7 +26,7 @@
                         {{ csrf_field() }}
 
                  
-                        <input id="noid" type="hidden" class="form-control " name="noid" value = "{{Auth::user()->noid}}">
+                        <input id="pinid" type="hidden" class="form-control " name="pinid" value = "{{Auth::user()->pinid}}">
              
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

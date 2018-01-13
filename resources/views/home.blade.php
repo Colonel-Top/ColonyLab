@@ -3,12 +3,7 @@
 @section('content')
 <div class="container">
     <div class="row">
-        <div class="col-md-8 col-md-offset-2">
-            <div class="panel panel-default animated zoomIn">
-                <div class="panel-heading">Student Dashboard</div>
-
-                <div class="panel-body">
-                    @if (session('message1'))
+         @if (session('message1'))
                         <div class="alert alert-success">
                             {{ session('message1') }}
                         </div>
@@ -16,11 +11,75 @@
                     @if (session('error'))
                         <div class="alert alert-warning">{{ Session::get('error') }}</div>
                     @endif
+        <div class="col-md-8 ">
+            <div class="panel panel-default animated zoomIn">
+
+                <div class="panel-heading">Student Dashboard</div>
+
+                <div class="panel-body">
+                   
 
                     Welcome {{Auth::user()->pinid}} logged in as {{Auth::user()->name }} {{Auth::user()->surname}}
                 </div>
             </div>
         </div>
-    </div>
+         <div class="col-md-4">
+            <div class="panel panel-default animated zoomIn">
+                <div class="panel-heading">Current Server Date Time</div>
+
+                <div class="panel-body">
+                   Current Date: {{$date}} | Page Load at: {{$time}}
+                </div>
+            </div>
+        </div>
+
+
+        <div class="panel panel-default col-xs-12 col-sm-12 col-md-12">
+              <div class="panel-heading">Incoming Due Assignment</div>
+                <table class="table table-striped task-table animated fadeInUp">
+                    <!-- Table Headings -->
+                    <thead>
+                        <th width="20%">Course Name</th>
+                        <th width="20%">Assignment Name</th>
+                        <th width="20%">Available at</th>
+                        <th width="20%">End Date</th>
+                        <th width="20%">Action</th>
+                    </thead>
+    
+                    <!-- Table Body -->
+                    <tbody>
+                    @foreach($asn as $post)
+                
+                        <tr>
+                            @foreach($courses as $data)
+                            @if($data->id == $post->courses_id)
+                            <td class="table-text">
+                                <div>{{$data->coursename}}</div>
+                            </td>
+                            @endif
+                            @endforeach
+                            <td class="table-text">
+                                <div>{{$post->name}}</div>
+                            </td>
+                            <td class="table-text">
+                                <div>{{$post->starttime}} </div>
+                            </td>
+                                <td class="table-text">
+                                <div>{{$post->endtime}}</div>
+                            </td>
+                            <td>
+                                <a href="{{ route('user.assignments.score', $post->id) }}" class="label label-danger">Score</a>
+                                <a href="{{ route('user.assignments.detail', $post->id) }}" class="label label-warning">Question</a>
+                               
+                                <a href="{{ route('user.assignments.submit',$post->id) }}" class="label label-success">Submit</a>
+                                
+                               
+                            </td>
+                        </tr>
+                      
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
 </div>
 @endsection

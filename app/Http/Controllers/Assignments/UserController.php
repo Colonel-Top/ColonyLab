@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers\Assignments;
-ini_set('max_execution_time', 300);
+ini_set('max_execution_time', 35);
 use App\Courses;
 use App\User;
 use App\Assignments;
@@ -28,7 +28,14 @@ class UserController extends Controller
 		$courses_id = $id;
 		$course = Courses::find($id);
 		$course = $course->coursename;
-		$asn = \App\Assignments::where('courses_id',$courses_id)->get();
+		$asn = \App\Assignments::where([['courses_id',$courses_id],['endtime', '<', Carbon::today()->toDateString()]])->get();
+        foreach($asn as $data1)
+        {
+               // echo($data1->id);
+              Assignments::FindOrFail($data1->id)->update(['allow_send'=>'0']);
+        }   
+        //exit();
+        $asn = \App\Assignments::where('courses_id',$courses_id)->get();
 
 		return view('assignments.main',['asn'=>$asn,'course'=>$course]);
 	}
@@ -100,35 +107,14 @@ public function push(Request $request)
 
         $get = $asn->endtime;
 
-        $nowY = date('Y', strtotime("$ex_s"));
-        $nowM = date('m', strtotime("$ex_s"));
-        $nowD = date('d', strtotime("$ex_s"));
-        $nowH = date('H', strtotime("$ex_s"));
-        $nowI = date('i', strtotime("$ex_s"));
-        $nowS = date('s', strtotime("$ex_s"));
-
-        $gyear = date('Y', strtotime("$get"));
-        $gmonth = date('m', strtotime("$get"));
-        $gday = date('d', strtotime("$get"));
-        $ghour = date('H', strtotime("$get"));
-        $gmin = date('i', strtotime("$get"));
-        $gsecond = date('s', strtotime("$get"));
+  
    
-        if($nowY <= $gyear)
+       if($asn->allow_send == 0)
        {
-            if($nowM <= $gmonth)
-                if($nowD <= $gday)
-                    if($nowH <= $ghour)
-                        if($nowI <= $gmin)
-                            if($nowS  <= $gsecond)
-                            {
-                                if($asn->allow_send == 0)
-                                {
-                               // Session::flash('message1','This Assignment ok!');
-                                 return redirect()->back();}
-                            }
-           //Session::flash('message1','Error This Assignment already remarks time is up !');
-           
+           //Session::flash('message1','Error This Assignment time is up !');
+            Session::flash('message1','Error This Assignment time is up !');
+            dd($asn);
+            return redirect()->route('user.assignments.indexmy',$asn->courses_id);
         }
 
        // echo(Auth::user()->pinid);
@@ -263,10 +249,33 @@ public function push(Request $request)
                                     $classpath2 = file_exists($destinationPath.$filename.'.class');
                                     if(!empty($errorpath2) && $classpath == 0)
                                     {
-                                        unlink($checkpath2);
-                                        $tmper = str_replace("//",  "/", $destinationPath);
-                                        $showme = str_replace($tmper, "Colonel Engine Compiler:", $errorpath2);
-                                        return view('assignments.error',['errorpath'=>$showme]);
+                                        if (strpos($errorpath, 'encoding US-ASCII') !== false) 
+                                            {
+                                                 unlink($checkpath2);
+                                              //  dd("come to compile normally");
+                                               $executeq3 = 'javac -enconding UTF8 -d '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
+                                              //  print_r($executeq);
+                                                $result3 = shell_exec($executeq2);    
+                                                $checkpath3 = $destinationPath.'error-'.$filename;
+                                               // dd($checkpath);
+                                                $errorpath3= File::get($checkpath3);
+                                                $classpath3 = file_exists($destinationPath.$filename.'.class');
+                                                if(!empty($errorpath3) && $classpath == 0)
+                                                {
+                                                    unlink($checkpath3);
+                                                    $tmper = str_replace("//",  "/", $destinationPath);
+                                                    $showme = str_replace($tmper, "Colonel Engine Compiler:", $errorpath3);
+                                                    return view('assignments.error',['errorpath'=>$showme]);
+                                                }
+                                            }
+                                            else
+                                            {
+                                            $errorpath = File::get($checkpath);
+                                            $tmper = str_replace("//",  "/", $destinationPath);
+                                            $showme = str_replace($tmper, "Colonel Engine Compiler:", $errorpath);
+                                            return view('assignments.error',['errorpath'=>$showme]);
+                                            }
+
                                     }
                                 }
                                 else
@@ -448,48 +457,25 @@ public function push(Request $request)
 			$asn->max_attempts = 0;
 		if($asn->allow_send == 0)
 		{
-			Session::flash('message1','Error This Assignment not available to upload anymore !');
-			return redirect()->back();
+		//	Session::flash('message1','Error This Assignment not available to upload anymore !');
+			 Session::flash('message1','Error This Assignment time is up !');
+            return redirect()->route('user.assignments.indexmy',$asn->courses_id);
 		}
-        $get = $asn->endtime;
-        $ex_s = Carbon::now();
-        $nowY = date('Y', strtotime("$ex_s"));
-        $nowM = date('m', strtotime("$ex_s"));
-        $nowD = date('d', strtotime("$ex_s"));
-        $nowH = date('H', strtotime("$ex_s"));
-        $nowI = date('i', strtotime("$ex_s"));
-        $nowS = date('s', strtotime("$ex_s"));
-
-        $gyear = date('Y', strtotime("$get"));
-        $gmonth = date('m', strtotime("$get"));
-        $gday = date('d', strtotime("$get"));
-        $ghour = date('H', strtotime("$get"));
-        $gmin = date('i', strtotime("$get"));
-        $gsecond = date('s', strtotime("$get"));
-        //dd($gyear);
-       if($nowY <= $gyear)
+       if($asn->allow_send == 1)
        {
-            if($nowM <= $gmonth)
-                if($nowD <= $gday)
-                    if($nowH <= $ghour)
-                        if($nowI <= $gmin)
-                            if($nowS  <= $gsecond)
-                            {
+           
+                            
                                 //if($asn->allow_send == 1)
                                     return view('assignments.upload',['asn'=>$asn]);
-                               
-                            }
-                            else
-                            {
-                               Session::flash('message1','Error This Assignment time is up !');
-                               return redirect()->back();
-                           }
+                               //FIX THIS
+                            
+                           
            
         }
         else
         {
              Session::flash('message1','Error This Assignment time is up !');
-            return redirect()->back();
+            return redirect()->route('user.assignments.indexmy',$asn->courses_id);
         }
        
 		
