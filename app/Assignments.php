@@ -22,5 +22,5 @@ class Assignments extends Model
     public function users()
     {
         return $this->belongsToMany('App\User','assignment_work','assignments_id','enrollments_id');
-    }
+    } 
 }
