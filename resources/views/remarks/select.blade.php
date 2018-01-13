@@ -63,7 +63,7 @@
   
         <div class="row">
             <h3>Select Mode to explore</h3>
-            <div class = "m-b-md">
+          
               <a href="{{route('admin.couses.routeremark')}}" class="btn">
               <svg width="277" height="62">
                 <defs>
@@ -77,9 +77,9 @@
               <!--<span>Voir mes réalisations</span>-->
                 <span>View By Courses</span>
             </a>
-            </div>
+     
               
-             <div class = "m-b-md">
+          
               <a href="{{route('admin.couses.routeremark')}}" class="btn">
               <svg width="277" height="62">
                 <defs>
@@ -93,16 +93,10 @@
               <!--<span>Voir mes réalisations</span>-->
                 <span>View By Users</span>
             </a>
-            </div>
+         
 
 
             </div>
-           </div>
-           <div class = "m-b-md">
-               
-<button>
-                    <a href = "{{route('admin.couses.routeremark')}}"><label>View By User</label></a>
-               </button>
            </div>
         </div>
 
