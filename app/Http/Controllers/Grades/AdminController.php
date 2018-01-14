@@ -42,6 +42,7 @@ class AdminController extends Controller
     	//echo($userid);
     	$userid = User::where('pinid',$userid);
     	$userid = $userid->first()->id;
+    	
     	//echo("<br>");
 		$enrollmentdid = DB::table('enrollment')->select('id')->where([['users_id',$userid],['courses_id',$courseid]])->get();
 		//dd($enrollmentdid);
@@ -50,7 +51,7 @@ class AdminController extends Controller
 		$enrollmentid = ($enrollmentid->id);
 
 	//	echo($enrollmentid);exit();
-		$courseinfo = Courses::FindOrFail($id);
+		$courseinfo = Courses::FindOrFail($courseid);
 		//QUERU WRONG HERE
 		$data = DB::select("SELECT *,MAX(scores) as mscores FROM `assignment_work` WHERE enrollments_id = $enrollmentid GROUP BY assignments_id,enrollments_id ORder by scores ASC");
 		$asn = Assignments::all();
