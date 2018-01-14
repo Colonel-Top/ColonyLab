@@ -127,32 +127,53 @@ class AdminProfileController extends Controller
             'surname' => 'required|max:40',
             'email' => 'required',
         ]);
-        $getold = User::where('pinid',$request->pinid)->first();
-        
-        $hashpass = $getold->password;
-        $ids =$request->newid;
-        if(empty($request->newid))
-        {
-            $ids = $request->pinid;
-        }
-       		if(!empty($request->password) || !empty($request->confirm))
-       		{
-            if($request->password == $request->confirm)
-            {
-       			  $request['password'] = bcrypt($request->password);
-            }
-       		}
-          else if(empty($request->password) || empty($request->confirm))
-            $request['password'] = $hashpass;
-          else
-            $request['password'] = $hashpass;
-         $postData = $request->all();
-         
-        User::where('pinid', $request->pinid)->firstOrFail()->update($postData);
-         /*
-              User::find($request->pinid)->update($postData);*/
-              Session::flash('message1','User Profile Updated');
+       
+      //  $hashpass = bcrypt($request->oldpass);
+      //  echo($hashpass);
 
+        //$user = User::where('pinid', $request['pinid']);
+        
+      //  echo($request);
+       $hashpass = Auth::user()->password;
+      //  echo($passlala);
+        //exit();
+        
+        //  dd("CHECL");
+          if(!empty($request->password) && !empty($request->confirm))
+          {
+            if($request->password == $request->confirm)
+              $hashpass = bcrypt($request->password);
+            else
+            {
+              Session::flash('error','Invalid Password & Confirm not similar');
+            return redirect()->back()->withInput($request->only('pinid','name','surname','email'));
+            }
+          //   echo($hashpass);
+          }
+        
+       
+        DB::beginTransaction();
+        $test = DB::update('update users set name = ? , surname = ? , email = ? , password = ? where pinid = ?', [
+          $request->name,$request->surname,$request->email,$hashpass,$request->pinid
+        ]);
+
+    DB::commit();
+       /* $user->name = $request->name;
+        $user->surname = $request->surname;
+        $user->password = $hashpass;
+        $user->email = $request->email;
+        $user->users()->attach($pinid);*/
+    if($test == 1)
+    {
+      Session::flash('message1','Profile Update Successfully');
+          return redirect('home');
+        }
+        else
+        {
+          echo($request->name);
+          Session::flash('error','Profile Update unsuccessfull contact administrator');
+          return redirect()->back()->withInput($request->only('name','surname','email'));
+        }
           return redirect('/admin/courses');
         }
 }

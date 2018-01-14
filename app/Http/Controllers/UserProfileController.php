@@ -82,7 +82,7 @@ class UserProfileController extends Controller
         ]);
   
         $hashpass = bcrypt($request->oldpass);
-        echo($hashpass);
+        //echo($hashpass);
 
         //$user = User::where('pinid', $request['pinid']);
         
