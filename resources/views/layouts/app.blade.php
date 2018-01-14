@@ -50,7 +50,7 @@
                 font-size: 14px;
                 line-height: 24px;
                 position: fixed;
-                color: #22222210;
+                color: #10101021;
                 
                 user-select: none;
                 z-index: 1000;
