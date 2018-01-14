@@ -56,13 +56,13 @@ class UserController extends Controller
 		$enrollmentid = ($enrollmentid->first());
 		$enrollmentid = ($enrollmentid->id);
 	//	echo($enrollmentid);exit();
-		
+		$courseinfo = Courses::FindOrFail($id);
 		//QUERU WRONG HERE
 $data = DB::select("SELECT *,MAX(scores) as mscores FROM `assignment_work` WHERE enrollments_id = $enrollmentid GROUP BY assignments_id,enrollments_id ORder by scores ASC");
 		$asn = Assignments::all();
 		//dd($data);
 
-		return view('remarks.show',['data'=>$data,'asn'=>$asn]);
+		return view('remarks.show',['data'=>$data,'asn'=>$asn,'course'=>$courseinfo]);
     
 	}
 

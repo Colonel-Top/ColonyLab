@@ -14,7 +14,7 @@
         <div class="row">
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left animated fadeInLeft">
-                    <h2>Marks</h2>
+                    <h2>Conclude Marks for {{$course->coursename}}</h2>
                 </div>
             </div>
         </div>
