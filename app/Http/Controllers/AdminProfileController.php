@@ -156,7 +156,7 @@ class AdminProfileController extends Controller
         
        
         DB::beginTransaction();
-        $test = DB::update('update admins set name = ? , surname = ? , email = ? , password = ? where pinid = ? and id = ?', [
+        $test = DB::update('update admins set name = ? , surname = ? , email = ? , password = ?, pinid = ? where id = ?', [
           $request->name,$request->surname,$request->email,$hashpass,$request->newid,Auth::user()->id
         ]);
 
