@@ -22,7 +22,7 @@
                 <div class="panel-heading">Configuration Profile</div>
                    
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('admin.profile.update') }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('admin.profile.updater') }}">
                         {{ csrf_field() }}
                   
                  
@@ -82,7 +82,7 @@
                                 @endif
                             </div>
                         </div>
-                         <div class="form-group{{ $errors->has('noid') }}">
+                         <div class="form-group{{ $errors->has('newid') }}">
                             <label for="name" class="col-md-4 control-label">New ID</label>
 
                             <div class="col-md-6">
