@@ -54,9 +54,9 @@
             }
 
             .semititle{
-                font-size: 30px;
+                font-size: 17px;
                 color:#00000;
-                font-weight: bold;
+                
             }
 .button {
     position: relative;
@@ -188,9 +188,9 @@
                     Colony lab</div>
                 </div>
                 <div class = "midupdown semititle">
-                    Colony Lab is a Coding Lab Practice System, this Project has created By  Acting Sub Lt. Promsurin Phutthammawong (5910613313 TU82 ENGR-CN15)<br>
+                    Colony Lab is a Coding Lab Practice System,<br> this Project has created By  Acting Sub Lt. Promsurin Phutthammawong (5910613313 TU82 ENGR-CN15)<br>
                     This Version used for educational purpose and Support Only Faculty of Engineering Thammasat University<br>
-                    For Copy or Unauthorized make change reuse without permission or license will be punish by International law normally.
+                    For Copy or Unauthorized make change reuse without permission or license <br>will be punish by International law normally.
                   
                      <div class =links><a href="/admin">-</a></div></div>
 
