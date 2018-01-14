@@ -25,7 +25,7 @@
             font: normal 16px sans-serif;
 
             padding: 21px 50px;
-            margin-top: 80px;
+            margin-top: 400px;
 
 
             position: static;
@@ -226,7 +226,7 @@
                         @endguest
                     </ul>
                 </div>
-               
+
             </div>
         </nav>
 
