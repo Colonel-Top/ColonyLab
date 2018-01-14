@@ -78,7 +78,7 @@
             color: #ffffff;
             text-align: center;
             line-height: 35px;
-
+            padding-top: 7px;
             margin-left: 3px;
         }
 
