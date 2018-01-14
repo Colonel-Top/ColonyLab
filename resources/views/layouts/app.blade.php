@@ -26,6 +26,12 @@
 
             padding: 45px 50px;
             margin-top: 80px;
+
+
+            position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
         }
 
         .footer-distributed .footer-left p{
@@ -240,98 +246,14 @@
             <div class="footer-left">
 
                 <p class="footer-links">
-                    @if(Auth::guest())
-
-                            <li><a href="{{ route('login') }}">Login</a></li>
-                            <li><a href="{{ route('register') }}">Register</a></li>
-                     
-                            
-                        @elseif(Auth::guard('admin')->check())
-                           
-                                <li class>
-                                    <a href="{{route('admin.dashboard')}}">Dashboard</a>
-                                </li>
-                                <li >
-                                    <a href="{{route('admin.courses.index')}}">Courses Manager</a>
-                                </li>
-                                <li>
-                                    <a href="{{route('admin.remarks.pickmode')}}">Remarks Management</a>
-                                </li>
-                                <li>
-                                    <a href="{{route('admin.register.show')}}">Assign New Administrator</a>
-                                </li>
-                          <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li>@if(Auth::guard('admin')->check())
-                                        <a href="{{ route('admin.profile.request') }}"">
-                                            Edit Profile
-                                        </a>
-                                        @else
-                                            <a href="{{ route('user.profile.request') }}"">
-                                            Edit Profile
-                                        </a>
-                                        @endif
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                        @else
-                                
-                                <li class>
-                                    <a href="{{route('dashboard')}}">Dashboard</a>
-                                </li>
-                                <li >
-                                    <a href="{{route('user.courses.index')}}">Courses List</a>
-                                </li>
-                                <li >
-                                    <a href="{{route('user.courses.my')}}">My Courses</a>
-                                </li>
-                                <li>
-                                    
-                                <li>
-                                    <a href="{{route('user.grades.getcourse')}}">Remarks</a>
-                                </li>
-                                <li class="dropdown">
-                                <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
-                                    {{ Auth::user()->name }} <span class="caret"></span>
-                                </a>
-
-                                <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ route('user.profile.request') }}"">
-                                            Edit Profile
-                                        </a>
-                                        <a href="{{ route('logout') }}"
-                                            onclick="event.preventDefault();
-                                                     document.getElementById('logout-form').submit();">
-                                            Logout
-                                        </a>
-
-                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                            {{ csrf_field() }}
-                                        </form>
-                                    </li>
-                                </ul>
-                            </li>
-                         
-                       
-                         
-                        @endguest
+                    <a href="#">Home</a>
+                    ·
+                    <a href="#">About Lab</a>
+                    ·
+                    <a href="#">Contact</a>
                 </p>
 
-                <p>Company Name &copy; 2015</p>
+                <p>Colonel Technology &copy; 2018 : Under International Law Agreement</p>
             </div>
 
         </footer>
