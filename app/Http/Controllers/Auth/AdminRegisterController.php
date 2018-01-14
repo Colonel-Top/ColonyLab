@@ -70,7 +70,7 @@ class AdminRegisterController extends Controller
     }
     public function addnew(Request $data)
     {
-        $this->validate($request,[
+        $this->validate($data,[
             'pinid' => 'required|string|max:10|unique:admin',
             'name' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
