@@ -117,12 +117,7 @@
                     @endif
                 </div>
             </div>
-            <div class="col-md-8 ">
-                <div class="form-group">
-                    <strong>Send Amount : </strong>
-                    {{$amount}}
-                </div>
-            </div>
+            
         </div>
 
         <div class="row">
