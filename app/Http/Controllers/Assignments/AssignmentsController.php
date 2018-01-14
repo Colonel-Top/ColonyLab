@@ -89,7 +89,8 @@ class AssignmentsController extends Controller
 
 		/*$blah = \App\User::with('courses.assignments')->where('courses_id'
 			,$asninfo->courses_id)->get();
-*/
+
+*/	
 		//	dd($asninfo);
 		$blah = Assignments::with('courses.users')->where('id',$asninfo->id)->get();
 		//dd($blah);
@@ -99,11 +100,22 @@ class AssignmentsController extends Controller
 			echo($pr);
 		}	*/
 		//exit();
+$data = DB::select('SELECT id ,MAX(scores) as scores,name,`pinid`,`users_ans`,`assignments_id`,`enrollments_id`,`created_at`,`updated_at`
+FROM
+    (SELECT *
+    FROM `assignment_work`
+    WHERE assignments_id = :id
+	ORDER BY scores ASC)
+AS employeesub
+GROUP BY employeesub.pinid ',['id' => $id]);
+	//	dd($data);
 
+		$blah = Assignments::with('courses.users')->where('id',$asninfo->id)->get();
+	$amount = count($data);
 		//print_r($course->users());exit();	
 		//$blah = \App\User::all();
 		//dd($blah->courses->id);
-		return view('assignments.show',['asninfo'=>$asninfo,'data'=>$data,'userdetails'=>$blah]);
+		return view('assignments.show',['asninfo'=>$asninfo,'data'=>$data,'userdetails'=>$blah,'amount'=>$amount]);
 	
 	}
 	public function detail($id,Response $response)
