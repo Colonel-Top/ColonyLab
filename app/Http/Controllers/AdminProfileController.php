@@ -166,11 +166,11 @@ class AdminProfileController extends Controller
     if($test == 1)
     {
       Session::flash('message1','Profile Update Successfully');
-          return redirect('home');
+          return redirect('admin');
         }
         else
         {
-          echo($request->name);
+          //echo($request->name);
           Session::flash('error','Profile Update unsuccessfull contact administrator');
           return redirect()->back()->withInput($request->only('name','surname','email'));
         }
