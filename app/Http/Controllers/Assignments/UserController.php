@@ -170,16 +170,21 @@ public function push(Request $request)
             $time = str_replace(" ", "-", $time);
             $time = str_replace(":", "-", $time);
             $newfilename = $time.$filename;
-            $savefile = $destinationPath.$newfilename.'.c';
+            $savefile = $destinationPath.$newfilename;
+            echo($savefile);
+            echo("<br>");
+            echo($final);
+            $anticname = str_replace(".c","",$newfilename);
+             $executeq = 'gcc -o '.$destinationPath.' '.$savefile.' 2> '.$destinationPath.'error-'.$anticname;
+
+             
             exec("cp $final $savefile");
             unlink($final);
-
-            $executeq = 'gcc -o '.$destinationPath.' '.$savefile.' 2> '.$destinationPath.'error-'.$filename;;
 
 
           //  print_r($executeq);
             $result = shell_exec($executeq);    
-            $checkpath = $destinationPath.'error-'.$filename;
+            $checkpath = $destinationPath.'error-'.$anticname;
            // dd($checkpath);
             $errorpath = File::get($checkpath);
           //  $classpath = file_exists($destinationPath.$filename.'.class');
