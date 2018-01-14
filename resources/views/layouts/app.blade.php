@@ -226,7 +226,19 @@
                         @endguest
                     </ul>
                 </div>
-                 <footer class="footer-distributed">
+               
+            </div>
+        </nav>
+
+        @yield('content')
+         
+    </div>
+
+
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+     <footer class="footer-distributed">
 
             <div class="footer-right">
 
@@ -253,18 +265,6 @@
 
         </footer>
         
-            </div>
-        </nav>
-
-        @yield('content')
-        
-    </div>
-
-
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-
 
 </body>
 </html>
