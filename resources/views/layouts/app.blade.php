@@ -226,11 +226,7 @@
                         @endguest
                     </ul>
                 </div>
-            </div>
-        </nav>
-
-        @yield('content')
-         <footer class="footer-distributed">
+                 <footer class="footer-distributed">
 
             <div class="footer-right">
 
@@ -256,6 +252,12 @@
             </div>
 
         </footer>
+        
+            </div>
+        </nav>
+
+        @yield('content')
+        
     </div>
 
 
