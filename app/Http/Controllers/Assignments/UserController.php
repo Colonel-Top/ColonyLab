@@ -415,7 +415,7 @@ public function push(Request $request)
         //--------------------------   
          $users_id = Auth::user()->id;
          $coursething = Courses::find($asn->courses_id);
-        $queryfromenroll = DB::table('enrollment')->select('id')->where([['users_id'=>$users_id],['courses_id'=>$coursething]])->first();
+        $queryfromenroll = DB::table('enrollment')->select('id')->where(['users_id'=>$users_id,'courses_id'=>$coursething])->first();
                dd($queryfromenroll);
                 $asn->users()->attach($queryfromenroll,['scores'=>$sum,'users_ans'=>$savefile,'pinid'=>Auth::user()->pinid,'name'=>Auth::user()->name,'created_at'=>now()]);
                 //
