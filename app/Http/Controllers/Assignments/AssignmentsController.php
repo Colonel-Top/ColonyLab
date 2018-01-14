@@ -259,7 +259,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 	//	dd($data);
 
 		$blah = Assignments::with('courses.users')->where('id',$asninfo->id)->get();
-	
+	$amount = count($data);
 		return view('assignments.show',['asninfo'=>$asninfo,'data'=>$data,'userdetails'=>$blah,'amount'=>$amount]);
     }
     public function showremark($id)
