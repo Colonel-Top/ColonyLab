@@ -22,6 +22,10 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function aboutlab()
+    {
+        return view('about');
+    }
     public function index()
     {
         // $asninfo = Assignments::FindOrFail($id);

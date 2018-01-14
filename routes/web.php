@@ -23,7 +23,7 @@ Route::get('/', function () {
 
 
 Auth::routes();
-
+Route::get('aboutlab','HomeController@aboutlab')->name('aboutlab');
 Route::get('/home', 'HomeController@index')->name('dashboard');
 Route::get('/users/logout','Auth\LoginController@userLogout')->name('user.logout');
 
