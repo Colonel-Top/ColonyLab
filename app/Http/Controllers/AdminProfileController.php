@@ -199,6 +199,7 @@ public function requestupdate($id)
 
      public function update(Request $request)
     {
+
         $this->validate($request,[
         	'pinid' => 'required|max:40',
             'name' => 'required|max:40',
@@ -212,7 +213,9 @@ public function requestupdate($id)
         //$user = User::where('pinid', $request['pinid']);
         
       //  echo($request);
-       $hashpass = User::where('pinid',$request->pinid)->firstOrFail()->password;
+      //  dd($request->pinid);
+       $hashpass =Auth::user()->password;
+       //dd($hashpass);
       //  echo($passlala);
         //exit();
         if(empty($request->newid))
@@ -235,7 +238,7 @@ public function requestupdate($id)
        
         DB::beginTransaction();
         $test = DB::update('update admins set name = ? , surname = ? , email = ? , password = ?, pinid = ? where id = ?', [
-          $request->name,$request->surname,$request->email,$hashpass,$request->newid,$request->id
+          $request->name,$request->surname,$request->email,$hashpass,$request->newid,Auth::user()->id
         ]);
 
     DB::commit();
@@ -244,9 +247,10 @@ public function requestupdate($id)
         $user->password = $hashpass;
         $user->email = $request->email;
         $user->users()->attach($pinid);*/
+     
     if($test == 1)
     {
-      Session::flash('message1','Profile Update Successfully');
+        Session::flash('status','Profile Update Successfully');
           return redirect('admin');
         }
         else
