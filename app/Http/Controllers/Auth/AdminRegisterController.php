@@ -79,10 +79,11 @@ class AdminRegisterController extends Controller
         ]);
         $exists = Admin::where('pinid',$data->pinid);
         //print_r($data);
-        dd($exists);
-        if(!is_null($exists))
-            return redirect()->back()->with(Session::flash('error','Error This PIN ID already exists'));
-
+        //dd($exists);
+        foreach($exists as $tmp)
+            if($tmp)
+                return redirect()->back()->with(Session::flash('error','Error This PIN ID already exists'));
+            dd($tmp);
         $result = Admin::create([
             'name' => $data['name'],
             'email' => $data['email'],
