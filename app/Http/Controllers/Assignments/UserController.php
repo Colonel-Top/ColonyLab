@@ -225,7 +225,12 @@ public function push(Request $request)
             exec($command, $output,$return_value);
             //dd($return_value);
             if($return_value == 1)
+            {
+                $getject = $destinationPath.$filename.'.txt';
+                unlink($checkpath);
+                unlink($getject);
                 return  view('assignments.infinity');
+            }
             
             $restore = File::get($asn->foutput);
             $getject = $destinationPath.$filename.'.txt';
