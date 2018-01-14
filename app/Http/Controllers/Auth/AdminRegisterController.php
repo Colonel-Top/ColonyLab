@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\User;
 use App\Admin;
 use Auth;
+use Session;
 use Illuminate\Http\Request;
 use Password;
 use App\Http\Controllers\Controller;
@@ -70,12 +71,17 @@ class AdminRegisterController extends Controller
     public function addnew(Request $data)
     {
 
-        return Admin::create([
+        $result = Admin::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'surname' => $data['surname'],
             'pinid' => $data['pinid'],
             'password' => bcrypt($data['password']),
         ]);
+        if($result)
+            Session::flash('status','Register new Administrator Successfully! :)');
+        else
+            Session::flash('status','Register new Administrator unsuccessfully! :(');
+        return redirect()->intended(route('admin.dashboard'));
     }
 }
