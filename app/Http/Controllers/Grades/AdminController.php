@@ -37,12 +37,14 @@ class AdminController extends Controller
     }
     public function requestmark ($courseid,$userid)
     {
-    	echo($courseid);
-    	echo("<br>");
-    	echo($userid);
-    	echo("<br>");
+    	//echo($courseid);
+    	//echo("<br>");
+    	//echo($userid);
+    	$userid = User::where('pinid',$userid);
+    	$userid = $userid->first()->id;
+    	//echo("<br>");
 		$enrollmentdid = DB::table('enrollment')->select('id')->where([['users_id',$userid],['courses_id',$courseid]])->get();
-		dd($enrollmentdid);
+		//dd($enrollmentdid);
 		$enrollmentid = $enrollmentdid;
 		$enrollmentid = ($enrollmentid->first());
 		$enrollmentid = ($enrollmentid->id);
