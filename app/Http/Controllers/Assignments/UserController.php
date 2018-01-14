@@ -476,7 +476,7 @@ public function push(Request $request)
                     unlink($getject);
                 if(file_exists($destinationPath.$filename.'.class'))
                     unlink($destinationPath.$filename.'.class'); 
-                return  view('assignments.infinity','courseid'=>$asn->courses_id);
+                return  view('assignments.infinity',['courseid'=>$asn->courses_id]);
             }
         	$restore = File::get($asn->foutput);
         	$getject = $destinationPath.$filename.'.txt';
@@ -506,7 +506,7 @@ public function push(Request $request)
                     unlink($getject);
                 if(file_exists($destinationPath.$filename.'.class'))
                     unlink($destinationPath.$filename.'.class'); 
-                return  view('assignments.infinity','courseid'=>$asn->courses_id);
+                return  view('assignments.infinity',['courseid'=>$asn->courses_id]);
             }
             
             $restore = File::get($asn->foutput2);
@@ -538,7 +538,7 @@ public function push(Request $request)
                     unlink($getject);
                 if(file_exists($destinationPath.$filename.'.class'))
                     unlink($destinationPath.$filename.'.class'); 
-                return  view('assignments.infinity','courseid'=>$asn->courses_id);
+                return  view('assignments.infinity',['courseid'=>$asn->courses_id]);
             }
             
             $restore = File::get($asn->foutput3);
@@ -570,7 +570,7 @@ public function push(Request $request)
                     unlink($getject);
                 if(file_exists($destinationPath.$filename.'.class'))
                     unlink($destinationPath.$filename.'.class'); 
-                return  view('assignments.infinity','courseid'=>$asn->courses_id);
+                return  view('assignments.infinity',['courseid'=>$asn->courses_id]);
             }
             
             $restore = File::get($asn->foutput4);
@@ -602,7 +602,7 @@ public function push(Request $request)
                     unlink($getject);
                 if(file_exists($destinationPath.$filename.'.class'))
                     unlink($destinationPath.$filename.'.class'); 
-                return  view('assignments.infinity','courseid'=>$asn->courses_id);
+                return  view('assignments.infinity',['courseid'=>$asn->courses_id]);
             }
             
             $restore = File::get($asn->foutput5);
