@@ -323,7 +323,7 @@
                     ·
                     <a href="{{route('aboutlab')}}">About Lab</a>
                     ·
-                    <a href="#">Contact Developer</a>
+                  <!--<a href="#">Contact Developer</a>-->
                 </p>
 
                 <p>Colonel Technology &copy; 2018 : Under International Law Agreement</p>
