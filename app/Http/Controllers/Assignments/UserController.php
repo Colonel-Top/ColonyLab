@@ -672,7 +672,7 @@ public function push(Request $request)
            
                             
                                 //if($asn->allow_send == 1)
-                                    return view('assignments.upload',['asn'=>$asn]);
+                                    return view('assignments.upload',['asn'=>$asn,'courseid'=>$asn->courses_id]);
                                //FIX THIS
                             
                            
