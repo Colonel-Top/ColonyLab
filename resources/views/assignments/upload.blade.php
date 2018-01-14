@@ -157,6 +157,12 @@
                         </div>
                     </div>
                 </form>
+                 <div class = "entersite links animated bounceInUp">
+                <button class="button" style="vertical-align:middle" >
+                <a href="{{ route('user.assignments.indexmy',$courseid) }}"><span> Go Back  </span></button>
+                
+               </div>
+
                 </div>
               <!--  <a class="button" href="{{ route('user.assignments.push',$asn->id) }} "><span> Upload Assignment </span></button>-->
 
