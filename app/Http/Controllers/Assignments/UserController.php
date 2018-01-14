@@ -175,7 +175,7 @@ public function push(Request $request)
             echo("<br>");
             echo($final);
             $anticname = str_replace(".c","",$newfilename);
-             $executeq = 'gcc -o '.$savefile.' '.$savefile.' 2> '.$destinationPath.'error-'.$anticname;
+             $executeq = 'gcc -o '.$destinationPath.$anticname.' '.$savefile.' 2> '.$destinationPath.'error-'.$anticname;
 
              
             exec("cp $final $savefile");
