@@ -107,12 +107,12 @@ class AdminProfileController extends Controller
      * @param  array  $data
      * @return \App\User
      */
-    public function request($id)
+    public function request()
     {
-      $user = User::where('pinid',$id)->get();
+      $user = Auth::user();
     
 
-      return view('profile.adminupdateprofile',['user'=>$user->first()]);
+      return view('profile.adminupdateprofile',['user'=>$user]);
 
   
     }
