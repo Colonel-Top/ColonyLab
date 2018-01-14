@@ -48,6 +48,8 @@ Route::get('/courses/outline/{id}','Courses\UserCoursesController@outline')->nam
 
 Route::prefix('admin')->group(function(){
 
+Route::get('/courses/outline/{id}','Courses\CoursesController@outline')->name('admin.courses.detail');
+
 	Route::post('/profile/update','AdminProfileController@update')->name('admin.profile.update');
 	Route::get('/profile/request','AdminProfileController@request')->name('admin.profile.request');
 	Route::get('/profile/drop/{id}','AdminProfileController@drop')->name('admin.profile.drop');
