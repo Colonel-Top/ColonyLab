@@ -468,8 +468,16 @@ public function push(Request $request)
             exec($command, $output,$return_value);
             //dd($return_value);
             if($return_value == 1)
-                return  view('assignments.infinity');
-            
+            {
+                 $getject = $destinationPath.$filename.'.txt';
+                if(file_exists($checkpath))
+                    unlink($checkpath);
+                if(file_exists($getject))
+                    unlink($getject);
+                if(file_exists($destinationPath.$filename.'.class'))
+                    unlink($destinationPath.$filename.'.class'); 
+                return  view('assignments.infinity','courseid'=>$asn->courses_id);
+            }
         	$restore = File::get($asn->foutput);
         	$getject = $destinationPath.$filename.'.txt';
         	$geter = File::get($getject);
@@ -489,9 +497,17 @@ public function push(Request $request)
 
             $command = 'python '.storage_path().'/runtime.py '.$injection;
             exec($command, $output,$return_value);
-
             if($return_value == 1)
-                return  view('assignments.infinity');
+            {
+                 $getject = $destinationPath.$filename.'.txt';
+                if(file_exists($checkpath))
+                    unlink($checkpath);
+                if(file_exists($getject))
+                    unlink($getject);
+                if(file_exists($destinationPath.$filename.'.class'))
+                    unlink($destinationPath.$filename.'.class'); 
+                return  view('assignments.infinity','courseid'=>$asn->courses_id);
+            }
             
             $restore = File::get($asn->foutput2);
             $getject = $destinationPath.$filename.'.txt';
@@ -514,7 +530,16 @@ public function push(Request $request)
             exec($command, $output,$return_value);
 
             if($return_value == 1)
-                return  view('assignments.infinity');
+            {
+                 $getject = $destinationPath.$filename.'.txt';
+                if(file_exists($checkpath))
+                    unlink($checkpath);
+                if(file_exists($getject))
+                    unlink($getject);
+                if(file_exists($destinationPath.$filename.'.class'))
+                    unlink($destinationPath.$filename.'.class'); 
+                return  view('assignments.infinity','courseid'=>$asn->courses_id);
+            }
             
             $restore = File::get($asn->foutput3);
             $getject = $destinationPath.$filename.'.txt';
@@ -537,7 +562,16 @@ public function push(Request $request)
             exec($command, $output,$return_value);
 
             if($return_value == 1)
-                return  view('assignments.infinity');
+            {
+                 $getject = $destinationPath.$filename.'.txt';
+                if(file_exists($checkpath))
+                    unlink($checkpath);
+                if(file_exists($getject))
+                    unlink($getject);
+                if(file_exists($destinationPath.$filename.'.class'))
+                    unlink($destinationPath.$filename.'.class'); 
+                return  view('assignments.infinity','courseid'=>$asn->courses_id);
+            }
             
             $restore = File::get($asn->foutput4);
             $getject = $destinationPath.$filename.'.txt';
@@ -560,7 +594,16 @@ public function push(Request $request)
             exec($command, $output,$return_value);
 
             if($return_value == 1)
-                return  view('assignments.infinity');
+            {
+                 $getject = $destinationPath.$filename.'.txt';
+                if(file_exists($checkpath))
+                    unlink($checkpath);
+                if(file_exists($getject))
+                    unlink($getject);
+                if(file_exists($destinationPath.$filename.'.class'))
+                    unlink($destinationPath.$filename.'.class'); 
+                return  view('assignments.infinity','courseid'=>$asn->courses_id);
+            }
             
             $restore = File::get($asn->foutput5);
             $getject = $destinationPath.$filename.'.txt';
@@ -574,7 +617,10 @@ public function push(Request $request)
         }
         //--------------------------   
         //--------------------------  
-        unlink($destinationPath.$filename.'.class'); 
+        if(file_exists($checkpath))
+                    unlink($checkpath);
+        if(file_exists($destinationPath.$filename.'.class'))
+            unlink($destinationPath.$filename.'.class'); 
         //--------------------------   
          $users_id = Auth::user()->id;
          $coursething = Courses::find($asn->courses_id);

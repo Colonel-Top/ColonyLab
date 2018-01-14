@@ -1,7 +1,4 @@
-<!doctype html>
-
-<html lang="{{ app()->getLocale() }}">
-    <head>
+@extends('layouts.app')
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -49,7 +46,7 @@
             }
 
             .title {
-                font-size: 80px;
+                font-size: 70px;
                 color:#0F0;
             }
 
@@ -133,8 +130,9 @@
             }
         </style>
       
-    </head>
-    <body>
+
+
+    @section('content')
 
     <div class = "fixed"><canvas id="c" width="1366" height="1366"></canvas></div>
 
@@ -143,8 +141,11 @@
 
             <div class="content">
                 <div class="title m-b-md">
+                    <div class = "animated bounceInDown">
+                   WTF<br>
+                    </div>
                     <div class = "animated bounceInLeft">
-                   ERROR INFINITY
+                   THIS IS INFINITY
                     </div>
                      <div class = "animated bounceInRight">
                    LOOP DETECTED !
@@ -152,7 +153,7 @@
                 </div>
                <div class = "entersite links animated bounceInUp">
                 <button class="button" style="vertical-align:middle" >
-                <a href="{{URL::previous()}}"><span> BRING ME BACK !  </span></button>
+                <a href="{{ route('user.assignments.indexmy',$courseid) }}"><span> GG WP GET BACK !  </span></button>
                 
                </div>
                 </div>
@@ -226,6 +227,5 @@
         setInterval( draw, 25 );
 
         </script>
-    </body>
-</html>
+@endsectino
 

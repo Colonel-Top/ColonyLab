@@ -369,7 +369,7 @@
 		</div>
 		<div class="context sign-text-color">
 			WoW, Your File that send me  <br>
-    I've Compile seems it's worked !.
+    I've Compile seems it's worked !
 		</div>
 	</div>
 </div>
@@ -379,7 +379,13 @@
 	</div>
 	<div class="context primary-text-color">
 		<p>
-			You may want to head back to the assignment page.<br>
+      @if($scores==0 && $full != 0)
+      OMG You are so noob<br> Hmm
+      @endif
+       @if($scores==$full)
+      OMG You are so awesome<br> Yeah
+      @endif
+			You may want to head back to the assignment page. Bye Bye<br>
 		</p>
 	</div>
 	<div class="buttons-container" style = "margin-bottom: 100px">
