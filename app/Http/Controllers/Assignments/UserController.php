@@ -184,7 +184,7 @@ public function push(Request $request)
             echo("<br>");
           //  print_r($executeq);
             echo($executeq);
-            $result = shell_exec($executeq);    
+            $result = exec($executeq);    
             $checkpath = $destinationPath.'error-'.$anticname;
            // dd($checkpath);
             $errorpath = File::get($checkpath);
