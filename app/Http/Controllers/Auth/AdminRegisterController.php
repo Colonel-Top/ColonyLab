@@ -50,7 +50,7 @@ class AdminRegisterController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'pinid' => 'required|string|max:10|unique:admin',
+            'pinid' => 'required|string|max:10|unique:admins',
             'name' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
@@ -71,7 +71,7 @@ class AdminRegisterController extends Controller
     public function addnew(Request $data)
     {
         $this->validate($data,[
-            'pinid' => 'required|string|max:10|unique:admin',
+            'pinid' => 'required|string|max:10|unique:admins',
             'name' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
