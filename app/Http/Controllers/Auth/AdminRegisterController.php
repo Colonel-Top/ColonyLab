@@ -77,13 +77,14 @@ class AdminRegisterController extends Controller
             'email' => 'required|string|email|max:255',
             'password' => 'required|string|min:6|confirmed',
         ]);
-       
+
         $result = Admin::create([
             'name' => $data['name'],
             'email' => $data['email'],
             'surname' => $data['surname'],
             'pinid' => $data['pinid'],
             'password' => bcrypt($data['password']),
+            'createby' => Auth::user()->name,
         ]);
         if($result)
             Session::flash('status','Register new Administrator Successfully! :)');
