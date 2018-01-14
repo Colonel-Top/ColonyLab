@@ -20,7 +20,7 @@ body{
 	position: absolute;
 	top: -20px;
 	left: -20px;
-	right: -40px;
+	right: 0px;
 	bottom: -40px;
 	width: auto;
 	height: auto;
