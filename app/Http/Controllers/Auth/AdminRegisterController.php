@@ -78,7 +78,7 @@ class AdminRegisterController extends Controller
             'password' => 'required|string|min:6|confirmed',
         ]);
         $exists = Admin::where('pinid',$data->pinid);
-        if($exists)
+        if(!is_null($exists))
             return redirect()->back()->with(Session::flash('error','Error This PIN ID already exists'));
 
         $result = Admin::create([
