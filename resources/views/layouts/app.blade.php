@@ -230,14 +230,7 @@
         </nav>
 
         @yield('content')
-    </div>
-
-
-
-    <!-- Scripts -->
-    <script src="{{ asset('js/app.js') }}"></script>
-
-        <footer class="footer-distributed">
+         <footer class="footer-distributed">
 
             <div class="footer-right">
 
@@ -245,13 +238,10 @@
                 <!--<a href="#"><i class="fa fa-twitter"></i></a>
                 <a href="#"><i class="fa fa-linkedin"></i></a>-->
                 <a href="https://github.com/Colonel-Top"><i class="fa fa-github"></i></a>
-                @if(!Auth::guest())
-                <a class="navbar-brand animated infinite pulse" href="{{ url('/') }}">
-                        {{ config('app.name', 'Laravel') }}
-                    </a>
-                @endif
+                <a href="{{ url('/') }}"><i class="fa fa-home"></i></a>
+                
             </div>
-
+            
             <div class="footer-left">
 
                 <p class="footer-links">
@@ -266,5 +256,13 @@
             </div>
 
         </footer>
+    </div>
+
+
+
+    <!-- Scripts -->
+    <script src="{{ asset('js/app.js') }}"></script>
+
+
 </body>
 </html>
