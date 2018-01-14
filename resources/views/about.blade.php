@@ -196,7 +196,7 @@
                      <div class =links><a href="/admin">-</a></div></div>
 
                 <div class="links entersite animated jello">
-                     <a a href="#"><button  class = "butt js--triggerAnimation" >Check for Updates/Patch</button></a>
+                     <a a href="https://github.com/Colonel-Top/ColonyLab"><button  class = "butt js--triggerAnimation" >Check for Updates/Patch</button></a>
                      <br>
                  <a a href="{{URL::previous()}}"><button  class = "butt js--triggerAnimation" >Back</button></a>
                 </div>
@@ -223,7 +223,7 @@
         switch (rand)
         {
             case 2:
-                matrix =" C N 3 0 2 0 ";
+                matrix =" P R O M S U R I N ";
                 break;
             case 1:
              
