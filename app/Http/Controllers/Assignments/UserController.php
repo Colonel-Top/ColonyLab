@@ -418,7 +418,7 @@ public function push(Request $request)
          echo($users_id);
          echo($coursething->id);
         $queryfromenroll = DB::table('enrollment')->select('id')->where([['users_id',$users_id],['courses_id',$coursething->id]])->first();
-                $asn->users()->attach($queryfromenroll->id,['scores'=>$sum,'users_ans'=>$savefile,'pinid'=>Auth::user()->pinid,'name'=>Auth::user()->name,'created_at'=>now()]);
+        $asn->users()->attach($queryfromenroll->id,['scores'=>$sum,'users_ans'=>$savefile,'pinid'=>Auth::user()->pinid,'name'=>Auth::user()->name,'created_at'=>now()]);
                 //
                 if($per_asn == 0)
                     $sum = "Send Successfully";
