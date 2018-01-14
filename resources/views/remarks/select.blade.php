@@ -79,7 +79,7 @@
      
               
           
-              <a href="{{route('admin.couses.routeremark')}}" class="btn">
+              <a href="{{route('admin.courses.callcourse')}}" class="btn">
               <svg width="277" height="62">
                 <defs>
                     <linearGradient id="grad1">

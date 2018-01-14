@@ -67,7 +67,9 @@ Route::prefix('admin')->group(function(){
 
 	Route::get('/remarks/{id}','Assignments\AssignmentsController@showremark')->name('admin.assignments.showremark') ;
 
+	Route::get('/discover/{courseid}/{pinid}','Grades\AdminController@requestmark')->name('admin.remarks.requestmark');
 	Route::get('/selectmode','Grades\AdminController@selector')->name('admin.remarks.pickmode');
+	Route::get('/showuser','Grades\AdminController@showuser')->name('admin.remarks.showuser');
 
 	Route::get('/assignment/callmaster2/{id}','Assignments\AssignmentsController@callmaster2')->name('admin.assignments.callmaster2');
 	Route::get('/assignment/callout2/{id}','Assignments\AssignmentsController@callout2')->name('admin.assignments.callout2');
@@ -90,6 +92,8 @@ Route::get('/assignment/callmaster5/{id}','Assignments\AssignmentsController@cal
 	Route::get('/assignment/request/{id}','Assignments\AssignmentsController@request')->name('admin.assignments.request');
 
 	Route::get('/remarks','Courses\CoursesController@routeremark')->name('admin.couses.routeremark');
+Route::get('/callcourse','Courses\CoursesController@callcourse')->name('admin.courses.callcourse');
+
 	Route::get('/courses', 'Courses\CoursesController@index')->name('admin.courses.index');
 	Route::get('/courses/details/{id}', 'Courses\CoursesController@details')->name('admin.courses.details');
 	Route::get('/courses/add', 'Courses\CoursesController@add')->name('admin.courses.add');

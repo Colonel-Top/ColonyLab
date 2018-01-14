@@ -35,6 +35,21 @@ class AdminController extends Controller
         });
     
     }
+    public function requestmark ($courseid,$userid)
+    {
+    	$userid = $userid;
+		$enrollmentdid = DB::table('enrollment')->select('id')->where([['users_id',$userid],['courses_id',$courseid]])->get();
+		$enrollmentid = $enrollmentdid;
+		$enrollmentid = ($enrollmentid->first());
+		$enrollmentid = ($enrollmentid->id);
+	//	echo($enrollmentid);exit();
+		$courseinfo = Courses::FindOrFail($id);
+		//QUERU WRONG HERE
+		$data = DB::select("SELECT *,MAX(scores) as mscores FROM `assignment_work` WHERE enrollments_id = $enrollmentid GROUP BY assignments_id,enrollments_id ORder by scores ASC");
+		$asn = Assignments::all();
+
+		return view('remarks.show',['data'=>$data,'asn'=>$asn,'course'=>$courseinfo]);
+    }
     public function getcourse()
     {
     	$courses = Auth::user()->courses;
@@ -43,6 +58,16 @@ class AdminController extends Controller
     public function selector()
     {
     	return view('remarks.select');
+    }
+    public function showuser($id)
+    {
+    	try {
+			$courses = Courses::findOrFail($id);
+			$users = $courses->users;
+		} catch (ModelNotFoundException $e) {
+			App::error(404, 'Not found');
+		}
+		return view('remarks.listuser',['course'=> $courses,'users'=>$users]);
     }
 	public function allscore($id,$id2)
 	{

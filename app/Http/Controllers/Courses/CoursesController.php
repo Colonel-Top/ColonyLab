@@ -142,6 +142,12 @@ class CoursesController extends Controller
 		return view(' courses.index',['courses' => $courses]);
 
 	}
+	public function callcourse()
+	{
+		$courses = Courses::all();
+
+   		return view('courses.showcallcourse',['courses' => $courses]);
+	}
 	public function edit(Request $request){
 		
 		$results = DB::table('courses')->select('password')->where('id',$request->ider)->pluck('password');
