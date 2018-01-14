@@ -358,9 +358,7 @@
 
 
     @section('content')
-   <div class = "container">
-  <div class="sign error-page-wrapper background-color background-image">
-     
+  <body class="sign error-page-wrapper background-color background-image">
     <div class="sign-container">
 	<div class="nob"></div>
 	<div class="post left"></div>
@@ -376,7 +374,7 @@
 	</div>
 </div>
 <div class="text-container">
-	<div class="headline secondary-text-color animated infinity pulse">
+	<div class="headline secondary-text-color animated infinite pulse">
 		Your Score for this assignment : {{$scores}}/{{$full}}
 	</div>
 	<div class="context primary-text-color">
@@ -384,13 +382,11 @@
 			You may want to head back to the assignment page.<br>
 		</p>
 	</div>
-	<div class="buttons-container">
+	<div class="buttons-container" style = "margin-bottom: 100px">
 		<a class="border-button" href="{{ route('user.assignments.indexmy',$course->id) }}&quot; f" ><span class="fa fa-home"></span> Go back</a>
     }
 	
 	</div>
-</div>
-</div>
 </div>
 
 

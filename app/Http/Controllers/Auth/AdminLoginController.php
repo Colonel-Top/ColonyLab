@@ -20,6 +20,7 @@ class AdminLoginController extends Controller
          if (Auth::User()->is_active != 'Y')
             Auth::logout();
     	return view('auth.admin-login');
+           /* return view('assignments.pass',['scores'=>'8','course'=>\App\Courses::where('id','1'),'full'=>'10']);*/
     }
     public function login(Request $request)
     {
