@@ -65,7 +65,7 @@ class AdminRegisterController extends Controller
     {
         return view('auth.adminregister');
     }
-    public function addnew(array $data)
+    public function addnew(Request $data)
     {
 
         return Admin::create([
