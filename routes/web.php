@@ -51,9 +51,9 @@ Route::prefix('admin')->group(function(){
 	Route::post('/profile/update','AdminProfileController@update')->name('admin.profile.update');
 	Route::get('/profile/request','AdminProfileController@request')->name('admin.profile.request');
 	Route::get('/profile/drop/{id}','AdminProfileController@drop')->name('admin.profile.drop');
-	Route::get('/assign','Auth\AdminRegisterController@addnew')->name('admin.register.addnew');
+	Route::post('/assign','Auth\AdminRegisterController@addnew')->name('admin.register.addnew');
 	Route::get('/showassign','Auth\AdminRegisterController@show')->name('admin.register.show');
-	
+
 	Route::get('/login','Auth\AdminLoginController@showLoginForm')->name('admin.login');
 	Route::post('/login','Auth\AdminLoginController@login')->name('admin.login.submit');
 	Route::get('/', 'AdminController@index')->name('admin.dashboard');
