@@ -69,7 +69,7 @@ Route::prefix('admin')->group(function(){
 
 	Route::get('/discover/{courseid}/{pinid}','Grades\AdminController@requestmark')->name('admin.remarks.requestmark');
 	Route::get('/selectmode','Grades\AdminController@selector')->name('admin.remarks.pickmode');
-	Route::get('/showuser','Grades\AdminController@showuser')->name('admin.remarks.showuser');
+	Route::get('/showuser/{id}','Grades\AdminController@showuser')->name('admin.remarks.showuser');
 
 	Route::get('/assignment/callmaster2/{id}','Assignments\AssignmentsController@callmaster2')->name('admin.assignments.callmaster2');
 	Route::get('/assignment/callout2/{id}','Assignments\AssignmentsController@callout2')->name('admin.assignments.callout2');
