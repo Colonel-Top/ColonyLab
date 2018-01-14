@@ -137,7 +137,10 @@ class AdminProfileController extends Controller
        $hashpass = Auth::user()->password;
       //  echo($passlala);
         //exit();
-        
+        if(empty($request->newid))
+        {
+          $request->newid = $request->pinid;
+        }
         //  dd("CHECL");
           if(!empty($request->password) && !empty($request->confirm))
           {
@@ -154,7 +157,7 @@ class AdminProfileController extends Controller
        
         DB::beginTransaction();
         $test = DB::update('update admins set name = ? , surname = ? , email = ? , password = ? where pinid = ? id = ?', [
-          $request->name,$request->surname,$request->email,$hashpass,$request->pinid,$request->newid
+          $request->name,$request->surname,$request->email,$hashpass,$request->newid
         ]);
 
     DB::commit();
