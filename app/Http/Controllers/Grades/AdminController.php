@@ -64,7 +64,7 @@ class AdminController extends Controller
 		//QUERU WRONG HERE
 $data = DB::select("SELECT *,MAX(scores) as mscores FROM `assignment_work` WHERE enrollments_id = $enrollmentid GROUP BY assignments_id,enrollments_id ORder by scores ASC");
 		$asn = Assignments::all();
-		//dd($data);
+		dd($data);
 
 		return view('remarks.show',['data'=>$data,'asn'=>$asn]);
     
