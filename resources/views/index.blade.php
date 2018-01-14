@@ -234,7 +234,7 @@
             matrix = "C O L O N E L";
             break;
             case 3:
-             matrix = " P I N  "
+             matrix = " P P P "
              break;
             default:
             matrix = "♥   ";
@@ -284,7 +284,7 @@
         }
 
         //setInterval( draw, 35 );
-        setInterval( draw, 44 );
+        setInterval( draw, 42 );
 
         </script>
     </body>

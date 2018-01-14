@@ -24,11 +24,11 @@
             text-align: left;
             font: normal 16px sans-serif;
 
-            padding: 45px 50px;
+            padding: 21px 50px;
             margin-top: 80px;
 
 
-            position: fixed;
+            position: static;
     left: 0;
     bottom: 0;
     width: 100%;
@@ -49,7 +49,11 @@
             margin: 0 0 10px;
             padding: 0;
         }
-
+        .boldandwhiteplz
+        {
+            color: #ffffff;
+            font-weight: bold;
+        }
         .footer-distributed p.footer-links a{
             display:inline-block;
             line-height: 1.8;
@@ -98,12 +102,13 @@
         }
 
     </style>
+    <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-inverse navbar-static-top">
+        <nav class="navbar navbar-inverse navbar-static-top boldandwhiteplz">
             <div class="container">
                 <div class="navbar-header">
 
@@ -240,17 +245,19 @@
                 <!--<a href="#"><i class="fa fa-twitter"></i></a>
                 <a href="#"><i class="fa fa-linkedin"></i></a>-->
                 <a href="https://github.com/Colonel-Top"><i class="fa fa-github"></i></a>
-
+                <a class="navbar-brand animated infinite pulse" href="{{ url('/') }}">
+                        {{ config('app.name', 'Laravel') }}
+                    </a>
             </div>
 
             <div class="footer-left">
 
                 <p class="footer-links">
-                    <a href="#">Home</a>
+                    <a href="{{ url('/') }}">Home</a>
                     ·
                     <a href="#">About Lab</a>
                     ·
-                    <a href="#">Contact</a>
+                    <a href="#">Contact Developer</a>
                 </p>
 
                 <p>Colonel Technology &copy; 2018 : Under International Law Agreement</p>
