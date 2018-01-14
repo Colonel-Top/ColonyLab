@@ -1,4 +1,8 @@
 @extends('layouts.app')
+
+
+<html lang="{{ app()->getLocale() }}">
+    <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -127,10 +131,8 @@
             }
         </style>
       
-
-
-
-    @section('content')
+    </head>
+    <body>
 
     <div class = "fixed"><canvas id="c" width="1366" height="1366"></canvas></div>
 
@@ -227,5 +229,6 @@
         setInterval( draw, 44 );
 
         </script>
-@endsection
+    </body>
+</html>
 
