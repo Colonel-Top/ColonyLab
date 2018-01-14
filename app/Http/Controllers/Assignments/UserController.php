@@ -413,8 +413,11 @@ public function push(Request $request)
         //--------------------------  
         unlink($destinationPath.$filename.'.class'); 
         //--------------------------   
-                $users_id = Auth::user()->id;
-                $asn->users()->attach($users_id,['scores'=>$sum,'users_ans'=>$savefile,'pinid'=>Auth::user()->pinid,'name'=>Auth::user()->name,'created_at'=>now()]);
+         $users_id = Auth::user()->id;
+         $coursething = Courses::find($asn->courses_id);
+        $queryfromenroll = DB::table('enrollment')->select('id')->where([['users_id'=>$users_id],['courses_id'=>$coursething]])->first();
+               dd($queryfromenroll);
+                $asn->users()->attach($queryfromenroll,['scores'=>$sum,'users_ans'=>$savefile,'pinid'=>Auth::user()->pinid,'name'=>Auth::user()->name,'created_at'=>now()]);
                 //
                 if($per_asn == 0)
                     $sum = "Send Successfully";
