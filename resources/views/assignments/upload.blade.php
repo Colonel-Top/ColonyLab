@@ -70,25 +70,26 @@
                 color:#00000;
                 font-weight: 600;
             }
-            .button {
-
-  background-color: #4CAF50;
+           .button {
+  display: inline-block;
+  border-radius: 4px;
+  background-color: #1ef49b;
   border: none;
   color: #FFFFFF;
   text-align: center;
-  font-size: 22px;
-  padding: 2px;
-  
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
   transition: all 0.5s;
   cursor: pointer;
-
+  margin: 5px;
 }
 
 .button span {
   cursor: pointer;
   display: inline-block;
   position: relative;
-  transition: 0.8s;
+  transition: 0.5s;
 }
 
 .button span:after {
@@ -145,26 +146,27 @@
                 <div class="title m-b-md animated bounceInRight">
                     {{$asn->name}}
                 </div>
-                <div class = "midupdown semititle  animated jello">Max Attempts : {{$asn->max_attempts}}</div>
+                @if($asn->max_attempts != 0)
+                <div class = "midupdown semititle  animated jello">Oops Limited Max Attempts : {{$asn->max_attempts}}</div>
+                @else
+                <div class = "midupdown semititle  animated jello">Don't Give up ♥</div>
+                @endif
                 <div class = "midupdown semititle">
                     <form action="{{ route('user.assignments.push') }}" method="POST" class="form-horizontal "enctype="multipart/form-data" >
                          {{ csrf_field() }} 
                  <input type="hidden" name="id" id="id" class="form-control" required value="{{$asn->id}}">
+                 <br>
                 <input class="field" id = "users_ans" name="users_ans" type="file" required>
                 <div class="form-group">
+                    <br>
                         <div class="col-sm-offset-3 col-sm-10">
                             <input type="submit" class="btn btn-default animated rubberBand"  value="Upload Assignment" />
                         </div>
                     </div>
-                     <div class = "entersite links animated bounceInUp">
-                <button class="button" style="vertical-align:middle" >
-                <a href="{{ route('user.assignments.indexmy',$courseid) }}"><span> Go Back  </span></button>
-                
-               </div>
                 </form>
-                
-
                 </div>
+                <button class="button" style="vertical-align:middle" >
+                <a href="{{ route('user.assignments.indexmy',$courseid) }}"><span> Go Back  </span></button></a>
               <!--  <a class="button" href="{{ route('user.assignments.push',$asn->id) }} "><span> Upload Assignment </span></button>-->
 
             </div>
