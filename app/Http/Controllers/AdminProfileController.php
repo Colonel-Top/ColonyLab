@@ -6,6 +6,7 @@ use App\User;
 use DB;
 use Session;
 use Hash;
+use Auth;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Foundation\Auth\RegistersUsers;
