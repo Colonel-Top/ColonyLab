@@ -41,7 +41,7 @@
                                 <div>{{$post->created}}</div>
                             </td>
                             <td>
-                                <a href="{{ route('admin.grades.showuser', $post->id) }}" class="btn btn-success">Get Users</a>   
+                                <a href="{{ route('admin.remarks.showuser', $post->id) }}" class="btn btn-success">Get Users</a>   
                             </td>
                         </tr>
                     @endforeach
