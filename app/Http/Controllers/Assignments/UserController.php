@@ -142,10 +142,13 @@ public function push(Request $request)
         //echo("Hi");
        // echo($final);
         //echo($asn->finput);exit();
+
+        //C ZONE
+
+
         if($command == "c")
         {
-        	
-        //	$reject2 = 'gcc '.$final;
+
             $allscore = $asn->fullscore;
             $requireamount = 0;
             if(!empty($asn->finput))
@@ -163,30 +166,58 @@ public function push(Request $request)
             else
                 $per_asn = 0;
             $sum = 0;
-            $filename = str_replace(".c","",$filename);
+            $time = now();
+            $time = str_replace(" ", "-", $time);
+            $time = str_replace(":", "-", $time);
+            $newfilename = $time.$filename;
+            $savefile = $destinationPath.$newfilename.'.c';
+            exec("cp $final $savefile");
+            unlink($final);
 
-            //gcc file.c -o directory/myOutput
+            $executeq = 'gcc -o '.$destinationPath.' '.$savefile.' 2> '.$destinationPath.'error-'.$filename;;
 
-            $executeq = 'gcc -o '.$destinationPath.' '.$final.' 2> '.$destinationPath.'error-'.$filename;
-           dd($executeq);
+
+          //  print_r($executeq);
             $result = shell_exec($executeq);    
             $checkpath = $destinationPath.'error-'.$filename;
            // dd($checkpath);
             $errorpath = File::get($checkpath);
-           //dd($checkpath);
+          //  $classpath = file_exists($destinationPath.$filename.'.class');
+           // dd($classpath);
+
             if(!empty($errorpath))
             {
-                str_replace($destinationPath, "Colonel Engine Compiler:", $errorpath);
-                return view('assignments.error',['errorpath'=>$errorpath]);
+                
+                             
+                                
+                                $errorpath = File::get($checkpath);
+                                $tmper = str_replace("//",  "/", $destinationPath);
+                                $showme = str_replace($tmper, "Colonel Engine Compiler:", $errorpath);
+
+                                return view('assignments.error',['errorpath'=>$showme]);
+                                
+                
             }
+          
+            
+           // dd($savefile);
+ 
+            // $file->move($destinationPath, $filename);
+
+            //Storage::move('//assignments//'.$asn->id.'//user_upload//'.Auth::user()->pinid.'//'.$filename.'.java', $savefile);
+            //move file go to place
+            //done
+
             $inputpath = storage_path() . '//assignments//'.$request->idc.'//input//';
 
+            if (!empty($asn->finput)) 
+        {
             /* Checking Injection Zone */
-            $injection = '"java -cp '.$destinationPath.' '.$filename.' < '.$asn->finput.' > '.$destinationPath.$filename.'.txt"';
+            $injection = '"./'.$destinationPath.' '.$filename.' < '.$asn->finput.' > '.$destinationPath.$filename.'.txt"';
 
             $command = 'python '.storage_path().'/runtime.py '.$injection;
             exec($command, $output,$return_value);
-
+            //dd($return_value);
             if($return_value == 1)
                 return  view('assignments.infinity');
             
@@ -196,10 +227,131 @@ public function push(Request $request)
             $whatsap = strcmp($restore, $geter);
             if($whatsap == 0)
                 $sum+=$per_asn;
+            unlink($checkpath);
+            unlink($getject);
+}
+            /* Checking Injection Zone */
+        //--------------------------   
+        if (!empty($asn->finput2)) 
+        {
+               
+                /* Checking Injection Zone */
+            $injection = '"./'.$destinationPath.' '.$filename.' < '.$asn->finput2.' > '.$destinationPath.$filename.'.txt"';
+
+            $command = 'python '.storage_path().'/runtime.py '.$injection;
+            exec($command, $output,$return_value);
+
+            if($return_value == 1)
+                return  view('assignments.infinity');
+            
+            $restore = File::get($asn->foutput2);
+            $getject = $destinationPath.$filename.'.txt';
+            $geter = File::get($getject);
+            $whatsap = strcmp($restore, $geter);
+            if($whatsap == 0)
+                $sum+=$per_asn;
             //unlink($checkpath);
             unlink($getject);
             /* Checking Injection Zone */
         }
+        //--------------------------   //--------------------------   
+        if (!empty($asn->finput3)) 
+        {
+               
+                /* Checking Injection Zone */
+            $injection = '"./'.$destinationPath.' '.$filename.' < '.$asn->finput3.' > '.$destinationPath.$filename.'.txt"';
+
+            $command = 'python '.storage_path().'/runtime.py '.$injection;
+            exec($command, $output,$return_value);
+
+            if($return_value == 1)
+                return  view('assignments.infinity');
+            
+            $restore = File::get($asn->foutput3);
+            $getject = $destinationPath.$filename.'.txt';
+            $geter = File::get($getject);
+            $whatsap = strcmp($restore, $geter);
+            if($whatsap == 0)
+                $sum+=$per_asn;
+           // unlink($checkpath);
+            unlink($getject);
+            /* Checking Injection Zone */
+        }
+        //--------------------------   
+        if (!empty($asn->finput4)) 
+        {
+               
+                /* Checking Injection Zone */
+            $injection = '"./'.$destinationPath.' '.$filename.' < '.$asn->finput4.' > '.$destinationPath.$filename.'.txt"';
+
+            $command = 'python '.storage_path().'/runtime.py '.$injection;
+            exec($command, $output,$return_value);
+
+            if($return_value == 1)
+                return  view('assignments.infinity');
+            
+            $restore = File::get($asn->foutput4);
+            $getject = $destinationPath.$filename.'.txt';
+            $geter = File::get($getject);
+            $whatsap = strcmp($restore, $geter);
+            if($whatsap == 0)
+                $sum+=$per_asn;
+            //unlink($checkpath);
+            unlink($getject);
+            /* Checking Injection Zone */
+        }
+        //--------------------------   
+        if (!empty($asn->finput5)) 
+        {
+               
+                /* Checking Injection Zone */
+            $injection = '"./'.$destinationPath.' '.$filename.' < '.$asn->finput5.' > '.$destinationPath.$filename.'.txt"';
+
+            $command = 'python '.storage_path().'/runtime.py '.$injection;
+            exec($command, $output,$return_value);
+
+            if($return_value == 1)
+                return  view('assignments.infinity');
+            
+            $restore = File::get($asn->foutput5);
+            $getject = $destinationPath.$filename.'.txt';
+            $geter = File::get($getject);
+            $whatsap = strcmp($restore, $geter);
+            if($whatsap == 0)
+                $sum+=$per_asn;
+            //unlink($checkpath);
+            unlink($getject);
+            /* Checking Injection Zone */
+        }
+        //--------------------------   
+        //--------------------------  
+        //unlink($destinationPath.$filename.'.class'); 
+        //--------------------------   
+         $users_id = Auth::user()->id;
+         $coursething = Courses::find($asn->courses_id);
+    //     echo($users_id);
+        // echo($coursething->id);
+        $queryfromenroll = DB::table('enrollment')->select('id')->where([['users_id',$users_id],['courses_id',$coursething->id]])->first();
+        $asn->users()->attach($queryfromenroll->id,['scores'=>$sum,'users_ans'=>$savefile,'pinid'=>Auth::user()->pinid,'name'=>Auth::user()->name,'created_at'=>now()]);
+                //
+                if($per_asn == 0)
+                    $sum = "Send Successfully";
+        /*$user = $request->user();
+        $course = $user->courses;
+**/
+        $coursething = Courses::find($asn->courses_id);
+        return view('assignments.pass',['scores'=>$sum,'course'=>$coursething,'full'=>$asn->fullscore]);
+
+            //Done Compile All
+           
+        
+        }
+
+
+
+
+
+        //JAVA ZONE
         else if($command == "java")
         {
 
