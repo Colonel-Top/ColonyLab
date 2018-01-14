@@ -95,7 +95,7 @@ class AdminProfileController extends Controller
     protected function validator(array $data)
     {
         return Validator::make($data, [
-            'noid' => 'required|string|max:10|unique:users',
+            'pinid' => 'required|string|max:20|unique:users',
             'name' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
             'email' => 'required|string|email|max:255',
