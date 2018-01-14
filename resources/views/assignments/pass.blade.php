@@ -358,7 +358,9 @@
 
 
     @section('content')
+   
   <body class="sign error-page-wrapper background-color background-image">
+     <div class = "container">
     <div class="sign-container">
 	<div class="nob"></div>
 	<div class="post left"></div>
@@ -388,6 +390,8 @@
 	
 	</div>
 </div>
+</div>
+</body>
 
 
     <script>

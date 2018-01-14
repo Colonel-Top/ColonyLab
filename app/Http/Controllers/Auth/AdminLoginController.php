@@ -16,6 +16,9 @@ class AdminLoginController extends Controller
     //
     public function showLoginForm()
     {
+        if (Auth::check())
+         if (Auth::User()->is_active != 'Y')
+            Auth::logout();
     	return view('auth.admin-login');
     }
     public function login(Request $request)

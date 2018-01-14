@@ -25,6 +25,11 @@ class LoginController extends Controller
      *
      * @var string
      */
+    public function showLoginForm()
+    {
+        return view('auth.login');
+    }
+
      public function username()
     {
         return 'pinid';

@@ -37,6 +37,7 @@ class HomeController extends Controller
        // $data = DB::table('assignment_work')->select()->where('assignments_id',$id)->get();
         
       //  dd($blah);
+        Auth::guard('admin')->logout();
         $courses = Auth::user()->courses;
         $now = now();
         $date= $now->format('d-m-Y');
