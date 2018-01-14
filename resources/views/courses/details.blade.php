@@ -129,7 +129,7 @@
                                     <div>{{$euler->pinid}}</div>
                                 </td>
                                <td>
-                                    <a href="{{ route('admin.profile.request', $euler->pinid) }}" class="label label-success">Configure</a>   
+                                    <a href="{{ route('admin.profile.requestupdate', $euler->pinid) }}" class="label label-success">Configure</a>   
                                   
 
                                     <a href="{{ route('admin.profile.drop', $euler->pinid) }}" class="label label-danger" onclick= "return confirm('Are you sure to drop this user {{$euler->pinid}} ? Once you done you cannot undo')" ; style="color: #fff;">Drop User</a>
