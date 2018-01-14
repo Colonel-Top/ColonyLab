@@ -156,12 +156,13 @@
                             <input type="submit" class="btn btn-default animated rubberBand"  value="Upload Assignment" />
                         </div>
                     </div>
-                </form>
-                 <div class = "entersite links animated bounceInUp">
+                     <div class = "entersite links animated bounceInUp">
                 <button class="button" style="vertical-align:middle" >
                 <a href="{{ route('user.assignments.indexmy',$courseid) }}"><span> Go Back  </span></button>
                 
                </div>
+                </form>
+                
 
                 </div>
               <!--  <a class="button" href="{{ route('user.assignments.push',$asn->id) }} "><span> Upload Assignment </span></button>-->
