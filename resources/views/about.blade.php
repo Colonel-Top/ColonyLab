@@ -196,7 +196,7 @@
                      <div class =links><a href="/admin">-</a></div></div>
 
                 <div class="links entersite animated jello">
-                     <a a href="https://github.com/Colonel-Top/ColonyLab"><button  class = "butt js--triggerAnimation" >Check for Updates/Patch</button></a>
+                     <a href="https://github.com/Colonel-Top/ColonyLab"><button  class = "butt js--triggerAnimation" >Check for Updates/Patch</button></a>
                      <br>
                  <a a href="{{URL::previous()}}"><button  class = "butt js--triggerAnimation" >Back</button></a>
                 </div>
