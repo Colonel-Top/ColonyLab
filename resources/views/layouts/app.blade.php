@@ -72,11 +72,15 @@
                                 </a>
 
                                 <ul class="dropdown-menu">
-                                    <li>
-                                        <a href="{{ route('user.profile.request') }}"">
+                                    <li>@if(Auth::guard('admin')->check())
+                                        <a href="{{ route('admin.profile.request') }}"">
                                             Edit Profile
                                         </a>
-
+                                        @else
+                                            <a href="{{ route('user.profile.request') }}"">
+                                            Edit Profile
+                                        </a>
+                                        @endif
                                         <a href="{{ route('logout') }}"
                                             onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">
