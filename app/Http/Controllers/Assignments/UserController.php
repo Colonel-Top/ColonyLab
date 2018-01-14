@@ -181,8 +181,9 @@ public function push(Request $request)
             exec("cp $final $savefile");
             unlink($final);
 
-
+            echo("<br>");
           //  print_r($executeq);
+            echo($executeq);
             $result = shell_exec($executeq);    
             $checkpath = $destinationPath.'error-'.$anticname;
            // dd($checkpath);
