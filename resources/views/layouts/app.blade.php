@@ -66,6 +66,9 @@
                                 <li>
                                     <a href="{{route('admin.remarks.pickmode')}}">Remarks Management</a>
                                 </li>
+                                <li>
+                                    <a href="{{route('admin.register.show')}}">Assign New Administrator</a>
+                                </li>
                           <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false" aria-haspopup="true">
                                     {{ Auth::user()->name }} <span class="caret"></span>

@@ -38,7 +38,7 @@
                                 <div>{{$post->createby}} : {{$post->modifed_at}}</div>
                             </td>
                                 <td class="table-text">
-                                <div>{{$post->created}}</div>
+                                <div>{{$post->created_at}}</div>
                             </td>
                             <td>
                                 <a href="{{ route('admin.remarks.showuser', $post->id) }}" class="btn btn-success">Get Users</a>   

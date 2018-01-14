@@ -40,7 +40,7 @@
                                 <div>{{$post->createby}} : {{$post->modifed_at}}</div>
                             </td>
                                 <td class="table-text">
-                                <div>{{$post->created}}</div>
+                                <div>{{$post->created_at}}</div>
                             </td>
                             <td>
                                 <a href="{{ route('admin.courses.details', $post->id) }}" class="label label-success">Details</a>

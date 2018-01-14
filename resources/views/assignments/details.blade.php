@@ -33,7 +33,7 @@
             <div class="col-md-8">
                 <div class="form-group">
                     <strong>Created On:</strong>
-                    {{ $data->created}}
+                    {{ $data->created_at}}
                 </div>
             </div>
             <div class="col-md-8 ">

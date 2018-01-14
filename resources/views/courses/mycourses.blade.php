@@ -47,7 +47,7 @@
                                     <div>{{$course->createby}}</div>
                                 </td>
                                     <td class="table-text">
-                                    <div>{{$course->created}}</div>
+                                    <div>{{$course->created_at}}</div>
                                 </td>
                                 <td>
                                     <a href="{{ route('user.courses.details', $course->id) }}" class="label label-success">Details</a>   
