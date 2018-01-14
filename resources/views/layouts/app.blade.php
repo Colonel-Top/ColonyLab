@@ -255,7 +255,7 @@
                 <p class="footer-links">
                     <a href="{{ url('/') }}">Home</a>
                     ·
-                    <a href="#">About Lab</a>
+                    <a href="{{route('aboutlab')}}">About Lab</a>
                     ·
                     <a href="#">Contact Developer</a>
                 </p>
