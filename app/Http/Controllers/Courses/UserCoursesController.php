@@ -152,5 +152,12 @@ class UserCoursesController extends Controller
     	$course = Courses::find($id);
     	return view('courses.enroll', ['ids' => $course]);
     }
-
+    public function outline($id)
+    {
+        $course = Courses::FindOrFail($id);
+        $name = $course->coursepdf;
+        if(empty($name))
+			return redirect()->back()->with(Session::flash('error','There\'s No Files'));
+        return response()->file($name);
+    }
 }

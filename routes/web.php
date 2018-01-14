@@ -43,7 +43,7 @@ Route::get('/submit/{id}','Assignments\UserController@submit')->name('user.assig
 Route::post('/push','Assignments\UserController@push')->name('user.assignments.push');
 Route::post('/profile/update','UserProfileController@update')->name('user.profile.update');
 Route::get('/profile/request','UserProfileController@request')->name('user.profile.request');
-Route::get('/courses/outline/{id}','Courses\CoursesController@outline')->name('user.courses.detail');
+Route::get('/courses/outline/{id}','Courses\UserCoursesController@outline')->name('user.courses.detail');
 });
 
 Route::prefix('admin')->group(function(){
