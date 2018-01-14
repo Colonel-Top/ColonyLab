@@ -14,6 +14,34 @@
 
         <!-- Styles -->
         <style>
+
+
+.typewriter {
+  overflow: hidden; /* Ensures the content is not revealed until the animation */
+  border-right: .01em  solid grey; /* The typwriter cursor 0015em*/
+  white-space: nowrap; /* Keeps the content on a single line */
+  margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+  letter-spacing: 1px; /* Adjust as needed */
+  animation: 
+    typing 1.6s steps(40, end),
+    blink-caret .75s step-end infinite;
+}
+
+/* The typing effect */
+@keyframes typing {
+  from { width: 0 }
+  to { width: 100% }
+}
+
+/* The typewriter cursor effect */
+@keyframes blink-caret {
+  from, to { border-color: transparent }
+  50% { border-color: orange; }
+}
+
+
+
+
             html, body {
                
                 color: ##C2C2C2;
@@ -192,14 +220,18 @@
 
             <div class="content">
                 <div class="title m-b-md animated rubberBand">
-                    <div class = "site__title  ">
-                    Colony lab</div>
+                    <div class = "site__title ">
+                    
+                    Colony lab
+                        
+
                 </div>
-                <div class = "midupdown semititle">
+                </div>
+                <div class = "midupdown semititle typewriter">
                     Coding Lab Practice System
                   
-                     <div class =links><a href="/admin">-</a></div></div>
-
+                    </div>
+ <!--<div class ="semititle midupdown links"><a href="/admin">-</a></div>-->
                 <div class="links entersite animated jello">
 
                  <a a href="/home"><button  class = "butt js--triggerAnimation" >Enter Site</button></a>

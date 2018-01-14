@@ -12,6 +12,65 @@
 
     <!-- Styles -->
     <style>
+
+
+    /*Maple Story*/
+
+    body {
+                background-color: #D4D4D8;
+                background-color: #f5f8fa;
+               /* padding: 30px;
+                margin: 0px;*/
+            }
+            #mapleleafContainer {
+                position: absolute;
+                left: 0px;
+                top: 0px;
+            }
+            .mapleleaf {
+                padding-left: 10px;
+                font-family: Tahoma,serif;
+                font-size: 10px;
+                line-height: 20px;
+                position: fixed;
+               /*color:#C13E30;*/
+               color:#EDD;
+                user-select: none;
+                z-index: 1000;
+
+            }
+            #snowflakeContainer {
+                position: absolute;
+                left: 0px;
+                top: 0px;
+            }
+            .snowflake {
+                padding-left: 15px;
+                font-family: Cambria, Georgia, serif;
+                font-size: 14px;
+                line-height: 24px;
+                position: fixed;
+                color: #22222210;
+                
+                user-select: none;
+                z-index: 1000;
+            }
+            .snowflake:hover {
+                cursor: default;
+                
+            }
+            p,  {
+                font-family: "Franklin Gothic Medium", "Arial Narrow", sans-serif;
+                font-size: 24px;
+                color: #CCC;
+
+            }
+
+
+    /* Maple plz */
+
+
+
         .centers
         {
             padding-right: 20px;
@@ -107,9 +166,13 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body>
+
     <div id="app">
         <nav class="navbar navbar-inverse navbar-static-top boldandwhiteplz">
-            <div class="container">
+            <div class="container ">
+                  <p class="snowflake">
+                * 
+            </p>
                 <div class="navbar-header">
 
                     <!-- Collapsed Hamburger -->
@@ -237,6 +300,9 @@
 
 
     <!-- Scripts -->
+
+         <script src="//www.kirupa.com/js/fallingsnow_v6.js"></script>
+        <script src="//www.kirupa.com/js/prefixfree.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
      <footer class="footer-distributed">
 
@@ -265,6 +331,5 @@
 
         </footer>
         
-
 </body>
 </html>
