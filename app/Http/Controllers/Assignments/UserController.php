@@ -463,7 +463,7 @@ public function push(Request $request)
         {
             /* Checking Injection Zone */
 			$injection = '"java -cp '.$destinationPath.' '.$filename.' < '.$asn->finput.' > '.$destinationPath.$filename.'.txt"';
-
+            dd($injection);
             $command = 'python '.storage_path().'/runtime.py '.$injection;
             exec($command, $output,$return_value);
             //dd($return_value);
