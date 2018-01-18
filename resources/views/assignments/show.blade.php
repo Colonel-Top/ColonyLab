@@ -171,7 +171,9 @@
                           
                                
                                  <a href="{{ route('admin.assignments.callpath', $euler->id) }}" class="label label-success">Show</a>   
-                                  <a href="{{ route('admin.assignments.droper', $euler->id) }}" class=label label-danger">Drop Assignment</a>   
+                                  <a href="{{ route('admin.assignments.droper', $euler->id) }}" class="label label-danger" 
+                                  onclick="return confirm('Are you sure to delete this assignment? Once you done you cannot undo')"
+                                  >Drop Assignment</a>   
 
                                 </td>
 
