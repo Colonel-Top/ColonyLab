@@ -175,9 +175,11 @@ public function push(Request $request)
             echo("<br>");
             echo($final);
             $anticname = str_replace(".c","",$newfilename);
-             $executeq = '/usr/bin/gcc -o '.$destinationPath.$anticname.' '.$savefile.' 2> '.$destinationPath.'error-'.$anticname;
+            $executeq = 'gcc -o '.$destinationPath.$anticname.' '.$savefile.' 2> '.$destinationPath.'error-'.$anticname;
 
-             
+            $command = 'python '.storage_path().'/runtime.py '.$executeq;
+            exec($command, $output,$return_value);
+            //I Dont care return value
             exec("cp $final $savefile");
             unlink($final);
 
