@@ -16,7 +16,7 @@ class Assignments extends Migration
          Schema::create('assignments', function (Blueprint $table) {
             $table->increments('id');
             $table->string("name");
-            $table->integer("courses_id")->unsigned()->index();
+            $table->integer("courses_id")->unsigned()->size(10)->index();
             $table->string("language");
             $table->dateTime("starttime")->nullable();
             $table->dateTime("endtime")->nullable();
