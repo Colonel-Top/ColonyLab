@@ -336,125 +336,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 		//print_r($request->createby);
 		$final =$request->oldpass;
 		$postData = $request->all();
-		if ($file = $request->hasFile('fpath')) 
-		{
-
-            $file = $request->file('fpath');
-            $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->courses_id;
-            $file->move($destinationPath, $filename);
-             $final = $destinationPath.'//'.$filename;        
-       
-           
-        }
-       
-        $final2="";
-     //   $postData = $request->all();
-		if ($file = $request->hasFile('foutput')) 
-		{
-            $file = $request->file('foutput');
-            $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//master//';
-            $file->move($destinationPath, $filename);
-             $final2 = $destinationPath.'//'.$filename;        
-            
-        }
-        $final3="";
-     //   $postData = $request->all();
-		if ($file = $request->hasFile('finput')) 
-		{
-            $file = $request->file('finput');
-            $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//input//';
-            $file->move($destinationPath, $filename);
-             $final3 = $destinationPath.'//'.$filename;        
-            
-        }
-
-        $final4="";
-     //   $postData = $request->all();
-		if ($file = $request->hasFile('finput2')) 
-		{
-            $file = $request->file('finput2');
-            $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//input//';
-            $file->move($destinationPath, $filename);
-             $final4 = $destinationPath.'//'.$filename;        
-            
-        }
-         $final5="";
-      //  $postData = $request->all();
-		if ($file = $request->hasFile('finput3')) 
-		{
-            $file = $request->file('finput3');
-            $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//input//';
-            $file->move($destinationPath, $filename);
-             $final5 = $destinationPath.'//'.$filename;        
-            
-        }
-       	$final6="";
-       // $postData = $request->all();
-		if ($file = $request->hasFile('finput4')) 
-		{
-            $file = $request->file('finput4');
-            $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//input//';
-            $file->move($destinationPath, $filename);
-             $final6 = $destinationPath.'//'.$filename;        
-            
-        }
-       	$final7="";
-       // $postData = $request->all();
-		if ($file = $request->hasFile('finput5')) 
-		{
-            $file = $request->file('finput5');
-            $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//input//';
-            $file->move($destinationPath, $filename);
-             $final7 = $destinationPath.'//'.$filename;        
-        }
-        $final8="";
-        //$postData = $request->all();
-		if ($file = $request->hasFile('foutput2')) 
-		{
-            $file = $request->file('foutput2');
-            $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//master//';
-            $file->move($destinationPath, $filename);
-             $final8 = $destinationPath.'//'.$filename;        
-        }
-        $final9="";
-        //$postData = $request->all();
-		if ($file = $request->hasFile('foutput3')) 
-		{
-            $file = $request->file('foutput3');
-            $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//master//';
-            $file->move($destinationPath, $filename);
-             $final9 = $destinationPath.'//'.$filename;        
-        }
-        $final10="";
-       // $postData = $request->all();
-		if ($file = $request->hasFile('foutput4')) 
-		{
-            $file = $request->file('foutput4');
-            $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//master//';
-            $file->move($destinationPath, $filename);
-             $final10 = $destinationPath.'//'.$filename;        
-        }
-         $final11="";
-        
-		if ($file = $request->hasFile('foutput5')) 
-		{
-            $file = $request->file('foutput5');
-            $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//master//';
-            $file->move($destinationPath, $filename);
-             $final11 = $destinationPath.'//'.$filename;        
-        }
-
+		
         //$postData = $request->all();
 		
 		//2018-01-06 12:43:45
@@ -468,6 +350,126 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 	
 		$postData = $request->except('SHour','SMinute','SSecond','SDay','SMonth','SYear','EHour','EMonth','EYear','EMinute','ESecond');
 		$assignment = Assignments::create($postData);
+		$thisass = $assignment->id;
+		if ($file = $request->hasFile('fpath')) 
+		{
+
+            $file = $request->file('fpath');
+            $filename =$file->getClientOriginalName();
+            $destinationPath = storage_path() . '//assignments//'.$thisass;
+            $file->move($destinationPath, $filename);
+             $final = $destinationPath.'//'.$filename;        
+       
+           
+        }
+       
+        $final2="";
+     //   $postData = $request->all();
+		if ($file = $request->hasFile('foutput')) 
+		{
+            $file = $request->file('foutput');
+            $filename =$file->getClientOriginalName();
+            $destinationPath = storage_path() . '//assignments//'.$thisass.'//master//';
+            $file->move($destinationPath, $filename);
+             $final2 = $destinationPath.'//'.$filename;        
+            
+        }
+        $final3="";
+     //   $postData = $request->all();
+		if ($file = $request->hasFile('finput')) 
+		{
+            $file = $request->file('finput');
+            $filename =$file->getClientOriginalName();
+            $destinationPath = storage_path() . '//assignments//'.$thisass.'//input//';
+            $file->move($destinationPath, $filename);
+             $final3 = $destinationPath.'//'.$filename;        
+            
+        }
+
+        $final4="";
+     //   $postData = $request->all();
+		if ($file = $request->hasFile('finput2')) 
+		{
+            $file = $request->file('finput2');
+            $filename =$file->getClientOriginalName();
+            $destinationPath = storage_path() . '//assignments//'.$thisass.'//input//';
+            $file->move($destinationPath, $filename);
+             $final4 = $destinationPath.'//'.$filename;        
+            
+        }
+         $final5="";
+      //  $postData = $request->all();
+		if ($file = $request->hasFile('finput3')) 
+		{
+            $file = $request->file('finput3');
+            $filename =$file->getClientOriginalName();
+            $destinationPath = storage_path() . '//assignments//'.$thisass.'//input//';
+            $file->move($destinationPath, $filename);
+             $final5 = $destinationPath.'//'.$filename;        
+            
+        }
+       	$final6="";
+       // $postData = $request->all();
+		if ($file = $request->hasFile('finput4')) 
+		{
+            $file = $request->file('finput4');
+            $filename =$file->getClientOriginalName();
+            $destinationPath = storage_path() . '//assignments//'.$thisass.'//input//';
+            $file->move($destinationPath, $filename);
+             $final6 = $destinationPath.'//'.$filename;        
+            
+        }
+       	$final7="";
+       // $postData = $request->all();
+		if ($file = $request->hasFile('finput5')) 
+		{
+            $file = $request->file('finput5');
+            $filename =$file->getClientOriginalName();
+            $destinationPath = storage_path() . '//assignments//'.$thisass.'//input//';
+            $file->move($destinationPath, $filename);
+             $final7 = $destinationPath.'//'.$filename;        
+        }
+        $final8="";
+        //$postData = $request->all();
+		if ($file = $request->hasFile('foutput2')) 
+		{
+            $file = $request->file('foutput2');
+            $filename =$file->getClientOriginalName();
+            $destinationPath = storage_path() . '//assignments//'.$thisass.'//master//';
+            $file->move($destinationPath, $filename);
+             $final8 = $destinationPath.'//'.$filename;        
+        }
+        $final9="";
+        //$postData = $request->all();
+		if ($file = $request->hasFile('foutput3')) 
+		{
+            $file = $request->file('foutput3');
+            $filename =$file->getClientOriginalName();
+            $destinationPath = storage_path() . '//assignments//'.$thisass.'//master//';
+            $file->move($destinationPath, $filename);
+             $final9 = $destinationPath.'//'.$filename;        
+        }
+        $final10="";
+       // $postData = $request->all();
+		if ($file = $request->hasFile('foutput4')) 
+		{
+            $file = $request->file('foutput4');
+            $filename =$file->getClientOriginalName();
+            $destinationPath = storage_path() . '//assignments//'.$thisass.'//master//';
+            $file->move($destinationPath, $filename);
+             $final10 = $destinationPath.'//'.$filename;        
+        }
+         $final11="";
+        
+		if ($file = $request->hasFile('foutput5')) 
+		{
+            $file = $request->file('foutput5');
+            $filename =$file->getClientOriginalName();
+            $destinationPath = storage_path() . '//assignments//'.$thisass.'//master//';
+            $file->move($destinationPath, $filename);
+             $final11 = $destinationPath.'//'.$filename;        
+        }
+
 		$assignment->starttime = $starttime;
 		$assignment->endtime = $endtime;
 		$assignment->fpath = $final;
