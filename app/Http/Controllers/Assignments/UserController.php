@@ -208,7 +208,7 @@ public function push(Request $request)
                 
             }
           
-            
+            exit();
            // dd($savefile);
  
             // $file->move($destinationPath, $filename);
