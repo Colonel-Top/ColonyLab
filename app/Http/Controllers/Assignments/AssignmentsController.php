@@ -341,7 +341,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 
             $file = $request->file('fpath');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->idc;
+            $destinationPath = storage_path() . '//assignments//'.$request->courses_id;
             $file->move($destinationPath, $filename);
              $final = $destinationPath.'//'.$filename;        
        
@@ -354,7 +354,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 		{
             $file = $request->file('foutput');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->idc.'//master//';
+            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//master//';
             $file->move($destinationPath, $filename);
              $final2 = $destinationPath.'//'.$filename;        
             
@@ -365,7 +365,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 		{
             $file = $request->file('finput');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->idc.'//input//';
+            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//input//';
             $file->move($destinationPath, $filename);
              $final3 = $destinationPath.'//'.$filename;        
             
@@ -377,7 +377,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 		{
             $file = $request->file('finput2');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->idc.'//input//';
+            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//input//';
             $file->move($destinationPath, $filename);
              $final4 = $destinationPath.'//'.$filename;        
             
@@ -388,7 +388,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 		{
             $file = $request->file('finput3');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->idc.'//input//';
+            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//input//';
             $file->move($destinationPath, $filename);
              $final5 = $destinationPath.'//'.$filename;        
             
@@ -399,7 +399,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 		{
             $file = $request->file('finput4');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->idc.'//input//';
+            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//input//';
             $file->move($destinationPath, $filename);
              $final6 = $destinationPath.'//'.$filename;        
             
@@ -410,7 +410,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 		{
             $file = $request->file('finput5');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->idc.'//input//';
+            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//input//';
             $file->move($destinationPath, $filename);
              $final7 = $destinationPath.'//'.$filename;        
         }
@@ -420,7 +420,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 		{
             $file = $request->file('foutput2');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->idc.'//master//';
+            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//master//';
             $file->move($destinationPath, $filename);
              $final8 = $destinationPath.'//'.$filename;        
         }
@@ -430,7 +430,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 		{
             $file = $request->file('foutput3');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->idc.'//master//';
+            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//master//';
             $file->move($destinationPath, $filename);
              $final9 = $destinationPath.'//'.$filename;        
         }
@@ -440,7 +440,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 		{
             $file = $request->file('foutput4');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->idc.'//master//';
+            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//master//';
             $file->move($destinationPath, $filename);
              $final10 = $destinationPath.'//'.$filename;        
         }
@@ -450,7 +450,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 		{
             $file = $request->file('foutput5');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->idc.'//master//';
+            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//master//';
             $file->move($destinationPath, $filename);
              $final11 = $destinationPath.'//'.$filename;        
         }
@@ -507,7 +507,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
     public function update(Request $request)
 	{
 	//	echo($request->allow_send);exit();
-		/*$tmp = Assignments::find($request->idc);
+		/*$tmp = Assignments::find($request->courses_id);
 		$tmpstart = Carbon::parse($request->starttime);
 		$tmpend = Carbon::parse($request->endtime);
 		dd($tmpstart);dd($tmpend);exit();
@@ -529,7 +529,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 			
 		]);
 
-		$deleteold = Assignments::FindOrFail($request->idc);
+		$deleteold = Assignments::FindOrFail($request->courses_id);
 		if(file_exists($request->fname))
 			unlink($deleteold->fpath);
 		$checkregis = $request['allow_send'];
@@ -558,7 +558,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 
             $file = $request->file('fpath');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->idc;
+            $destinationPath = storage_path() . '//assignments//'.$request->courses_id;
             $file->move($destinationPath, $filename);
             $final = $destinationPath.'//'.$filename;        
        
@@ -571,7 +571,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 		{
             $file = $request->file('foutput');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->idc.'//master//';
+            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//master//';
             $file->move($destinationPath, $filename);
              $final2 = $destinationPath.'//'.$filename;        
             
@@ -582,7 +582,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 		{
             $file = $request->file('finput');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->idc.'//input//';
+            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//input//';
             $file->move($destinationPath, $filename);
              $final3 = $destinationPath.'//'.$filename;        
             
@@ -594,7 +594,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 		{
             $file = $request->file('finput2');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->idc.'//input//';
+            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//input//';
             $file->move($destinationPath, $filename);
              $final4 = $destinationPath.'//'.$filename;        
             
@@ -605,7 +605,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 		{
             $file = $request->file('finput3');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->idc.'//input//';
+            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//input//';
             $file->move($destinationPath, $filename);
              $final5 = $destinationPath.'//'.$filename;        
             
@@ -616,7 +616,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 		{
             $file = $request->file('finput4');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->idc.'//input//';
+            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//input//';
             $file->move($destinationPath, $filename);
              $final6 = $destinationPath.'//'.$filename;        
             
@@ -627,7 +627,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 		{
             $file = $request->file('finput5');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->idc.'//input//';
+            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//input//';
             $file->move($destinationPath, $filename);
              $final7 = $destinationPath.'//'.$filename;        
         }
@@ -637,7 +637,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 		{
             $file = $request->file('foutput2');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->idc.'//master//';
+            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//master//';
             $file->move($destinationPath, $filename);
              $final8 = $destinationPath.'//'.$filename;        
         }
@@ -647,7 +647,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 		{
             $file = $request->file('foutput3');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->idc.'//master//';
+            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//master//';
             $file->move($destinationPath, $filename);
              $final9 = $destinationPath.'//'.$filename;        
         }
@@ -657,7 +657,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 		{
             $file = $request->file('foutput4');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->idc.'//master//';
+            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//master//';
             $file->move($destinationPath, $filename);
              $final10 = $destinationPath.'//'.$filename;        
         }
@@ -667,7 +667,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 		{
             $file = $request->file('foutput5');
             $filename =$file->getClientOriginalName();
-            $destinationPath = storage_path() . '//assignments//'.$request->idc.'//master//';
+            $destinationPath = storage_path() . '//assignments//'.$request->courses_id.'//master//';
             $file->move($destinationPath, $filename);
              $final11 = $destinationPath.'//'.$filename;        
         }
@@ -685,38 +685,38 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 		}
 		$postData = $request->except('SHour','SMinute','SSecond','SDay','SMonth','SYear','EHour','EMonth','EYear','EMinute','ESecond');
 		
-		Assignments::find($request->idc)->update($postData);
+		Assignments::find($request->courses_id)->update($postData);
 		if($request->editdate == "on")
 		{
-		Assignments::find($request->idc)->update(['starttime'=>$request->starttime]);
-		Assignments::find($request->idc)->update(['endtime'=>$request->endtime]);
+		Assignments::find($request->courses_id)->update(['starttime'=>$request->starttime]);
+		Assignments::find($request->courses_id)->update(['endtime'=>$request->endtime]);
 		}
 		if ($file = $request->hasFile('fpath')) 
 		{
-			Assignments::FindOrFail($request->idc)->update(['fpath'=>$final]);
+			Assignments::FindOrFail($request->courses_id)->update(['fpath'=>$final]);
 		}
 		if(empty($request->max_attempts))
-			Assignments::FindOrFail($request->idc)->update(['max_attempts'=>0]);
+			Assignments::FindOrFail($request->courses_id)->update(['max_attempts'=>0]);
 		if ($file = $request->hasFile('foutput')) 
-			Assignments::FindOrFail($request->idc)->update(['foutput'=>$final2]);
+			Assignments::FindOrFail($request->courses_id)->update(['foutput'=>$final2]);
 		if ($file = $request->hasFile('finput')) 
-			Assignments::FindOrFail($request->idc)->update(['finput'=>$final3]);
+			Assignments::FindOrFail($request->courses_id)->update(['finput'=>$final3]);
 		if ($file = $request->hasFile('finput2')) 
-			Assignments::FindOrFail($request->idc)->update(['finput2'=>$final4]);
+			Assignments::FindOrFail($request->courses_id)->update(['finput2'=>$final4]);
 		if ($file = $request->hasFile('finput3')) 
-			Assignments::FindOrFail($request->idc)->update(['finput3'=>$final5]);
+			Assignments::FindOrFail($request->courses_id)->update(['finput3'=>$final5]);
 		if ($file = $request->hasFile('finput4')) 
-			Assignments::FindOrFail($request->idc)->update(['finput4'=>$final6]);
+			Assignments::FindOrFail($request->courses_id)->update(['finput4'=>$final6]);
 		if ($file = $request->hasFile('finput5')) 
-			Assignments::FindOrFail($request->idc)->update(['finput5'=>$final7]);
+			Assignments::FindOrFail($request->courses_id)->update(['finput5'=>$final7]);
 		if ($file = $request->hasFile('foutput2')) 
-			Assignments::FindOrFail($request->idc)->update(['foutput2'=>$final8]);
+			Assignments::FindOrFail($request->courses_id)->update(['foutput2'=>$final8]);
 		if ($file = $request->hasFile('foutput3')) 
-			Assignments::FindOrFail($request->idc)->update(['foutput3'=>$final9]);
+			Assignments::FindOrFail($request->courses_id)->update(['foutput3'=>$final9]);
 		if ($file = $request->hasFile('foutput4')) 
-			Assignments::FindOrFail($request->idc)->update(['foutput4'=>$final10]);
+			Assignments::FindOrFail($request->courses_id)->update(['foutput4'=>$final10]);
 		if ($file = $request->hasFile('foutput5')) 
-			Assignments::FindOrFail($request->idc)->update(['foutput5'=>$final11]);
+			Assignments::FindOrFail($request->courses_id)->update(['foutput5'=>$final11]);
 		$idg = $request->courses_id;
 		
 		$coursename = Courses::find($idg);
