@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Courses;
+use App\User;
 use Carbon\Carbon;
 class AdminController extends Controller
 {
@@ -28,6 +29,13 @@ class AdminController extends Controller
         $now = now();
         $date= $now->format('d-m-Y');
         $time=$now->format('H:i');
-        return view('admin',['courses'=>$coursesdata,'date'=>$date,'time'=>$time]);
+        $useramount = Users::all();
+        $useramount = count($useramount);
+
+        $admin = Admin::all();
+        $adminamount = count($admin);
+
+        $allamount = $useramount + $adminamount;
+        return view('admin',['courses'=>$coursesdata,'date'=>$date,'time'=>$time,'uamount'=>$useramount,'aamount'=>$adminamount,'allamount'=>$allamount,'admindata'=>$admin]);
     }
 }
