@@ -10,8 +10,8 @@
 <div class="container">
 
     <div class="row">
-
-        <div class="col-md-8 col-md-offset-2">
+<!--col-md-offset-2-->
+        <div class="col-md-8 ">
 
             <div class="panel panel-default">
 
@@ -28,6 +28,51 @@
                 </div>
             </div>
         </div>
+        <div class="col-md-4">
+            <div class="panel panel-default animated zoomIn">
+                <div class="panel-heading">Current Server Date Time</div>
+
+                <div class="panel-body">
+                   Current Date: {{$date}} | Page Load at: {{$time}}
+                </div>
+            </div>
+        </div>
+
+         <div class="panel panel-default col-xs-12 col-sm-12 col-md-12">
+              <div class="panel-heading">All Courses Open Register</div>
+                <table class="table table-striped task-table">
+                    <!-- Table Headings -->
+                    <thead>
+                        <th width="40%">Course Name</th>
+                        <th width="25%">Modified By</th>
+                        <th width="15%">Created</th>
+                        <th width="20%">Action</th>
+                    </thead>
+    
+                    <!-- Table Body -->
+                    <tbody>
+                    @foreach($courses as $post)
+                        <tr>
+                            <td class="table-text">
+                                <div>{{$post->coursename}}</div>
+                            </td>
+                            <td class="table-text">
+                                <div>{{$post->createby}} : {{$post->modifed_at}}</div>
+                            </td>
+                                <td class="table-text">
+                                <div>{{$post->created_at}}</div>
+                            </td>
+                            <td>
+                                <a href="{{ route('admin.courses.details', $post->id) }}" class="label label-success">Details</a>
+                               <!-- <a href="{{ route('admin.courses.request', $post->id) }}" class="label label-warning">Edit</a>
+                                <a href="{{ route('admin.assignments.request', $post->id) }}" class="label label-warning">Assignment</a>-->
+                               
+                            </td>
+                        </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
 
      <!--   <a href="/admin/Course/courselist">Course Management</a> -->
     </div>

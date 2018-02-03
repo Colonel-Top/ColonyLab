@@ -23,6 +23,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        return view('admin');
+        $coursesdata = Course::where('allowregister','1')->get();
+        return view('admin',['courses'=>$coursesdata]);
     }
 }
