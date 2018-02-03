@@ -6,7 +6,19 @@
 <script src="components/d3/d3.min.js"></script>
 <script src="components/jquery-match-height/dist/jquery.matchHeight-min.js"></script>
 
-
+<style>
+.modithead
+{
+    height: 33%;
+}
+.fontmodit
+{
+    width: 100%;
+    max-width: 100%;
+    margin-bottom: 0px;
+    font-size: 10;
+}
+</style>
 <div class="container">
 
     <div class="row">
@@ -42,18 +54,18 @@
                 <div class="panel-heading">Statistics Controller</div>
 
                 <div class="panel-body">
-                   Administrator: {{$aamount}} users <br>
-                   Users: {{$uamount}} users <br>
+                   Administrator: {{$aamount}} users <br><br>
+                   Users: {{$uamount}} users <br><br>
                    Total: {{$allamount}} users
                 </div>
             </div>
         </div>
-         <div class="col-md-8">
+         <div class="col-md-8 modithead">
             <div class="panel panel-default animated zoomIn">
                 <div class="panel-heading">Administrator Listing</div>
 
-                <div class="panel-body">
-                     <table class="table table-striped task-table">
+                <div class="panel-body ">
+                     <table class="table table-striped task-table fontmodit">
                   <thead>
                      <th width="20%">#</th>
                         <th width="30%">Name</th>
