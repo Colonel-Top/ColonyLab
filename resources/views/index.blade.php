@@ -231,7 +231,7 @@
                     Programming Knowledge
                   
                     </div>
-                    <br>
+                  
                      <div class = "midupdown semititle typewriter">
                  Lab Practice System
                   
