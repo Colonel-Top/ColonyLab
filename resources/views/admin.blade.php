@@ -10,6 +10,7 @@
 .modithead
 {
     height: 33%;
+    overflow-y:auto;
 }
 .fontmodit
 {
