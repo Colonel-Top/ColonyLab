@@ -51,7 +51,7 @@
                 line-height: 24px;
                 position: fixed;
                 color: #10101021;
-                color: #ffffff08;
+                /*color: #ffffff08;*/
                 user-select: none;
                 z-index: 1000;
             }
@@ -171,7 +171,8 @@
         <nav class="navbar navbar-inverse navbar-static-top boldandwhiteplz">
             <div class="container ">
                   <p class="snowflake">
-                📌 
+                <!--📌 -->
+                *
             </p>
                 <div class="navbar-header">
 
