@@ -228,7 +228,7 @@
                 </div>
                 </div>
                 <div class = "midupdown semititle typewriter">
-                    Programming Knowledge Practice System
+                    Programming Knowledge Lab Practice System
                   
                     </div>
  <!--<div class ="semititle midupdown links"><a href="/admin">-</a></div>-->

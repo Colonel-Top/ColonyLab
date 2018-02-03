@@ -154,7 +154,7 @@ body{
   <div class="body"></div>
 		<div class="grad"></div>
 		<div class="header animated bounceInLeft">
-			<div>Colony<span>Lab</span></div>
+			<div>P.K.<span>Lab</span></div>
 		</div>
 		<br>
 		<div class="login">

@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Colony Lab</title>
+        <title>P.K.Lab (Colony Lab)</title>
        
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -189,9 +189,9 @@
                 </div>
                 <br><br>
                 <div class = "midupdown semititle">
-                    Colony Lab is a Coding Lab Practice System,<br><br> this Project has created By  Acting Sub Lt. Promsurin Phutthammawong (5910613313 TU82 ENGR-CN15)<br><br>
+                    P.K. Lab is a Coding Lab Practice System (A.K.A. Colony Lab),<br><br> this Project has created By  Acting Sub Lt. Promsurin Phutthammawong (5910613313 TU82 ENGR27 CN15)<br><br>
                     This Version used for educational purpose and Support Only Faculty of Engineering Thammasat University<br><br>
-                    For Copy or Unauthorized make change including reuse without permission or license<br> <br>will be punish by International law normally.
+                    For Copy or Unauthorized make change including reuse without permission or license<br> <br>will be punish by International law.
                   
                      <div class =links><a href="/admin">-</a></div></div>
 
