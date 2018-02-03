@@ -3,7 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-
+use App\Courses;
 class AdminController extends Controller
 {
     /**
@@ -23,7 +23,7 @@ class AdminController extends Controller
      */
     public function index()
     {
-        $coursesdata = Course::where('allowregister','1')->get();
+        $coursesdata = Courses::where('allowregister','1')->get();
         return view('admin',['courses'=>$coursesdata]);
     }
 }
