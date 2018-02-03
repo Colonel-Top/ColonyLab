@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Courses;
-use App\Users;
+//
 use Carbon\Carbon;
 class AdminController extends Controller
 {
