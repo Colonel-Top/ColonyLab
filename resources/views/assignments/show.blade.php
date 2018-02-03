@@ -135,8 +135,9 @@
                 <table class="table table-striped task-table">
                     <!-- Table Headings -->
                     <thead>
-                        <th width="20%">Name</th>
-                        <th width="20%">ID</th>
+                         <th width="10%">#</th>
+                        <th width="15%">Name</th>
+                        <th width="15%">ID</th>
                         <th width="20%">Score</th>
                         <th width="20%">Upload at</th>
                         <th width="20%">Action</th>
@@ -152,7 +153,10 @@
                               
                          
                         @foreach($data as $euler)
-                        
+                         <td class="table-text">
+                                    <div>{{$euler->id}}</div>
+                                </td>
+
                                 <td class="table-text">
                                     <div>{{$euler->name}}</div>
                                 </td>
