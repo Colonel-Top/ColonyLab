@@ -69,7 +69,7 @@
                               
                               
                           
-                        @foreach($users as $euler)
+                        @foreach($admindata as $euler)
                            <td class="table-text">
                                     <div>{{$euler->id}}</div>
                                 </td>
