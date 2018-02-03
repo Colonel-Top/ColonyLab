@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Courses;
-//
+use App\User;
 use Carbon\Carbon;
 class AdminController extends Controller
 {
@@ -29,7 +29,7 @@ class AdminController extends Controller
         $now = now();
         $date= $now->format('d-m-Y');
         $time=$now->format('H:i');
-        $useramount = Users::all();
+        $useramount = User::all();
         $useramount = count($useramount);
 
         $admin = Admin::all();
