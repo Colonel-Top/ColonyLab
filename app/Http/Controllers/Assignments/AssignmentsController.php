@@ -260,6 +260,7 @@ sql-mode="STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION"
 */
 /*$data = DB::select('SELECT * FROM `assignment_work` where id IN (SELECT id from `assignment_work` order by id asc , scores asc) GROUP BY `pinid` AND `assignments_id` = :id',['id'=>$id]);
 */
+/*
 $data = DB::select('SELECT id , scores ,name,`pinid`,`users_ans`,`assignments_id`,`enrollments_id`,`created_at`,`updated_at`
 FROM
     (SELECT *
@@ -269,7 +270,7 @@ FROM
 AS employeesub
 GROUP BY employeesub.pinid ',['id' => $id]);
 	//	dd($data);
-
+*/
 		$blah = Assignments::with('courses.users')->where('id',$asninfo->id)->get();
 	$amount = count($data);
 		return view('assignments.show',['asninfo'=>$asninfo,'data'=>$data,'userdetails'=>$blah,'amount'=>$amount]);
