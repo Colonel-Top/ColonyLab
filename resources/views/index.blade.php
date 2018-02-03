@@ -7,7 +7,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <title>Colony Lab</title>
+        <title>P.K. Lab</title>
        
         <!-- Fonts -->
         <link href="https://fonts.googleapis.com/css?family=Raleway:100,600" rel="stylesheet" type="text/css">
@@ -222,13 +222,13 @@
                 <div class="title m-b-md animated rubberBand">
                     <div class = "site__title ">
                     
-                    Colony lab
+                    P.K. lab
                         
 
                 </div>
                 </div>
                 <div class = "midupdown semititle typewriter">
-                    Coding Lab Practice System
+                    Programming Knowledge Practice System
                   
                     </div>
  <!--<div class ="semititle midupdown links"><a href="/admin">-</a></div>-->
