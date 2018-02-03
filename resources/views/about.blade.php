@@ -184,8 +184,9 @@
 
             <div class="content">
                 <div class="title m-b-md animated rubberBand">
+                    <br>
                     <div class = "site__title  ">
-                    Colony lab</div>
+                    P.K.Lab || Colony lab</div>
                 </div>
                 <br><br>
                 <div class = "midupdown semititle">
