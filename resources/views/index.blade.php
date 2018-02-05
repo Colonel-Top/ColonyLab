@@ -18,7 +18,7 @@
 
 .typewriter {
   overflow: hidden; /* Ensures the content is not revealed until the animation */
-  border-right: .01em  solid grey; /* The typwriter cursor 0015em*/
+  border-right: .0001em  solid grey; /* The typwriter cursor 0015em*/
   white-space: nowrap; /* Keeps the content on a single line */
   margin: 0 auto; /* Gives that scrolling effect as the typing happens */
   letter-spacing: 1px; /* Adjust as needed */
@@ -228,7 +228,7 @@
                 </div>
                 </div>
                 <div class = "midupdown semititle typewriter">
-                    < Programming Kindle > <br> Lab Practice System
+                    < Programming Kindle > <br> <br>Lab Practice System
                   
                     </div>
                   
