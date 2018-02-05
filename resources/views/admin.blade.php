@@ -52,7 +52,7 @@
         </div>
         <div class="col-md-4">
             <div class="panel panel-default animated zoomIn">
-                <div class="panel-heading">Statistics Controller</div>
+                <div class="panel-heading">System Statistics</div>
 
                 <div class="panel-body">
                    Administrator: {{$aamount}} users <br><br>
