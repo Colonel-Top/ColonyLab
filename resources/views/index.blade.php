@@ -228,7 +228,7 @@
                 </div>
                 </div>
                 <div class = "midupdown semititle typewriter">
-                    <Programming Kindle> Lab Practice System
+                    < Programming Kindle > Lab Practice System
                   
                     </div>
                   
