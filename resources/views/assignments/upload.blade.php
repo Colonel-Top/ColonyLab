@@ -149,7 +149,7 @@
                 @if($asn->max_attempts != 0)
                 <div class = "midupdown semititle  animated jello">Oops Limited Max Attempts : {{$asn->max_attempts}}</div>
                 @else
-                <div class = "midupdown semititle  animated jello">Don't Give up ♥</div>
+                <div class = "midupdown semititle  animated jello"></div>
                 @endif
                 <div class = "midupdown semititle">
                     <form action="{{ route('user.assignments.push') }}" method="POST" class="form-horizontal "enctype="multipart/form-data" >

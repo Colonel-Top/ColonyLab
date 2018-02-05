@@ -210,11 +210,11 @@ public function requestupdate($id)
       //  $hashpass = bcrypt($request->oldpass);
       //  echo($hashpass);
 
-        //$user = User::where('pinid', $request['pinid']);
+//        $user = User::where('pinid', $request['pinid']);
         
       //  echo($request);
       //  dd($request->pinid);
-       $hashpass =Auth::user()->password;
+       $hashpass = Auth::user()->password;
        //dd($hashpass);
       //  echo($passlala);
         //exit();
