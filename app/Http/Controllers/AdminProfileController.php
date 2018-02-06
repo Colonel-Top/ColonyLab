@@ -127,7 +127,7 @@ public function requestupdate($id)
      // foreach($account as $data)
         //echo($data);
       //exit();
-      return view('profile.adminupdateprofile',['user'=>$account]);
+      return view('profile.adm_user_panel',['user'=>$user]);
 
   
     }

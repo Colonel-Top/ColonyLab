@@ -22,14 +22,14 @@
                 <div class="panel-heading">Configuration Profile</div>
                    
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('admin.profile.update') }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('admin.profile.updater') }}">
                         {{ csrf_field() }}
                   
                  
                          <div class="form-group{{ $errors->has('pinid') ? ' has-error' : '' }}">
                            
                             <div class="col-md-6">
-                                <input id="pinid" type="hidden" class="form-control" name="pinid" value="{{ $user->pinid}}" required >
+                                <input id="pinid" type="text" class="form-control" name="pinid" value="{{ $user->pinid}}" required >
 
                                 @if ($errors->has('pinid'))
                                     <span class="help-block">
@@ -111,7 +111,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Update Profile
+                                    Update User Profile
                                 </button>
                             </div>
                         </div>
