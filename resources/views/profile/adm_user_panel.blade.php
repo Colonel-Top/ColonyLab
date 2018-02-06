@@ -29,7 +29,7 @@
                          <div class="form-group{{ $errors->has('pinid') ? ' has-error' : '' }}">
                            
                             <div class="col-md-6">
-                                <input id="pinid" type="text" class="form-control" name="pinid" value="{{ $user->pinid}}" required >
+                                <input id="pinid" type="hidden" class="form-control" name="pinid" value="{{ $user->pinid}}" required >
 
                                 @if ($errors->has('pinid'))
                                     <span class="help-block">
