@@ -188,7 +188,7 @@ public function requestupdate($id)
         else
         {
           //echo($request->name);
-          Session::flash('error','Profile Update unsuccessfull contact administrator');
+          Session::flash('error','Profile Update unsuccessfull');
           return redirect()->back()->withInput($request->only('name','surname','email'));
         }
           return redirect('/admin/courses');
