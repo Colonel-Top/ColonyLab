@@ -178,12 +178,12 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body>
-
-    <div id="app" style = "
+<body style = "
     background-image: url(http://s1.bwallpapers.com/wallpapers/2014/03/04/pink-landscape_112131687.jpg);
     background-size: cover;
 ">
+
+    <div id="app" >
         <nav class="navbar navbar-inverse navbar-static-top boldandwhiteplz">
             <div class="container ">
                   <p class="snowflake">
