@@ -181,11 +181,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body >
-<div class = "newbg">
+<body id = "newbg">
 
-  
-</div>
     <div id="important app " >
         <nav class="navbar navbar-inverse navbar-static-top boldandwhiteplz">
             <div class="container ">
