@@ -167,8 +167,13 @@
     background-image: url(http://www.sngmi.com/wp-content/uploads/2015/10/background-mountain.jpg);
     background-size: cover;
       -webkit-filter: blur(5px);
+       z-index:0;
 
 
+}
+.important
+{
+    z-index: 10;
 }
 
     </style>
@@ -181,7 +186,7 @@
 
   
 </div>
-    <div id="app" >
+    <div id="important app " >
         <nav class="navbar navbar-inverse navbar-static-top boldandwhiteplz">
             <div class="container ">
                   <p class="snowflake">
