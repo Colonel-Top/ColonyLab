@@ -76,7 +76,7 @@
                     </table>
                 </div>
 
-               
+               </div>
              
         <div class="panel panel-default col-xs-12 col-sm-12 col-md-12">
               <div class="panel-heading">Incoming Due Assignment</div>
