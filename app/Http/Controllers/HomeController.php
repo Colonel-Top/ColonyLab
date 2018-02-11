@@ -45,6 +45,6 @@ class HomeController extends Controller
         $blah = \App\Assignments::where('allow_send','1')->get();
         $anndata = Auth::user()->courses;
        // $blah = \App\Assignments::where('allow_send','1' )->get();
-        return view('home',['asn'=>$blah,'courses'=>$courses,'date'=>$date,'time'=>$time,'anndata'=?$anndata]);
+        return view('home',['asn'=>$blah,'courses'=>$courses,'date'=>$date,'time'=>$time,'anndata'=>$anndata]);
     }
 }
