@@ -326,7 +326,7 @@
     }
 
     .secondary-text-color {
-      color: #73c5df !important;
+      color: #343C3F !important;
     }
 
     .sign-text-color {
@@ -342,8 +342,8 @@
     }
 
     .border-button {
-      color: #FFFFFF !important;
-      border-color: #FFFFFF !important;
+      color: #343C3F !important;
+      border-color: #343C3F !important;
     }
     .button {
       background-color: #FFFFFF !important;
