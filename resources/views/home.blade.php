@@ -48,7 +48,7 @@
                        
                          
                             <tr>
-                               COMING SOON
+                               COMING SOO
                               
                          <!--     
                           

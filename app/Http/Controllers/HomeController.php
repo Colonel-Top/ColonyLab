@@ -43,7 +43,8 @@ class HomeController extends Controller
         $date= $now->format('d-m-Y');
         $time=$now->format('H:i');
         $blah = \App\Assignments::where('allow_send','1')->get();
+        $anndata = Auth::user()->courses;
        // $blah = \App\Assignments::where('allow_send','1' )->get();
-        return view('home',['asn'=>$blah,'courses'=>$courses,'date'=>$date,'time'=>$time]);
+        return view('home',['asn'=>$blah,'courses'=>$courses,'date'=>$date,'time'=>$time,'anndata'=?$anndata]);
     }
 }
