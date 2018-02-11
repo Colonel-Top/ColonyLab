@@ -127,7 +127,7 @@ public function requestupdate($id)
      // foreach($account as $data)
         //echo($data);
       //exit();
-      return view('profile.adminupdateprofile',['user'=>$account]);
+      return view('profile.adm_user_panel',['user'=>$account]);
 
   
     }
@@ -188,7 +188,7 @@ public function requestupdate($id)
         else
         {
           //echo($request->name);
-          Session::flash('error','Profile Update unsuccessfull contact administrator');
+          Session::flash('error','Profile Update unsuccessfull');
           return redirect()->back()->withInput($request->only('name','surname','email'));
         }
           return redirect('/admin/courses');

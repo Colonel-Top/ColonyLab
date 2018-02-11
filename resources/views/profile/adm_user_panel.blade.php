@@ -22,7 +22,7 @@
                 <div class="panel-heading">Configuration Profile</div>
                    
                 <div class="panel-body">
-                    <form class="form-horizontal" method="POST" action="{{ route('admin.profile.update') }}">
+                    <form class="form-horizontal" method="POST" action="{{ route('admin.profile.updater') }}">
                         {{ csrf_field() }}
                   
                  
@@ -111,7 +111,7 @@
                         <div class="form-group">
                             <div class="col-md-6 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Update Profile
+                                    Update User Profile
                                 </button>
                             </div>
                         </div>
