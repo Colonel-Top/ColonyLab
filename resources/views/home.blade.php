@@ -4,7 +4,7 @@
 <style>
 .modithead
 {
-    height: 33%;
+    height: 24%;
     overflow-y:auto;
 }
 
@@ -26,15 +26,15 @@
 }
 .bar:nth-child(1) {
   background-color: #da4733;
-  animation: loading 3s linear infinite;
+  animation: loading 6s linear infinite;
 }
 .bar:nth-child(2) {
   background-color: #3b78e7;
-  animation: loading 3s linear 1s infinite;
+  animation: loading 6s linear 1s infinite;
 }
 .bar:nth-child(3) {
   background-color: #fdba2c;
-  animation: loading 3s linear 2s infinite;
+  animation: loading 6s linear 2s infinite;
 }
 @keyframes loading {
     from {left: 50%; width: 0;z-index:100;}
