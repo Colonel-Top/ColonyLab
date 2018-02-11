@@ -128,7 +128,7 @@
         <div class="row">
              <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
-                    <h2>Assignment</h2>
+                    <h2>Assignment [{{$amount}} Sent]</h2>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
@@ -150,11 +150,13 @@
                             <tr>
                                
                               
-                              
+                        <?php $num = 1; ?>      
                          
                         @foreach($data as $euler)
                          <td class="table-text">
-                                    <div>{{$euler->id}}</div>
+                                   <!-- <div>{{$euler->id}}</div>-->
+                                   <div>{{$num}}</div>
+                                   <?php $num++ ?>
                                 </td>
 
                                 <td class="table-text">
