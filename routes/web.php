@@ -50,7 +50,7 @@ Route::get('/courses/outline/{id}','Courses\UserCoursesController@outline')->nam
 });
 
 Route::prefix('admin')->group(function(){
-Route::get('/musers','AdminController@requestalluser')->name('admin.usercontrol')
+Route::get('/musers','AdminController@requestalluser')->name('admin.usercontrol');
 Route::get('/courses/outline/{id}','Courses\CoursesController@outline')->name('admin.courses.detail');
 
 	Route::post('/profile/updates','AdminProfileController@update')->name('admin.profile.update');
