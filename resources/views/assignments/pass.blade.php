@@ -322,7 +322,7 @@
 
 
     .primary-text-color {
-      color: #FFFFFF !important;
+      color: #73c5df !important;
     }
 
     .secondary-text-color {
