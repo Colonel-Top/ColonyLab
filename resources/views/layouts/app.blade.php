@@ -164,12 +164,10 @@
 
 .newbg{
   
-   
-    background-image: url(http://s1.bwallpapers.com/wallpapers/2014/03/04/pink-landscape_112131687.jpg);
-    
-
-    
+    background-image: url(http://www.sngmi.com/wp-content/uploads/2015/10/background-mountain.jpg);
     background-size: cover;
+      -webkit-filter: blur(5px);
+
 
 }
 
@@ -178,12 +176,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body style = "
-    background-image: url(http://www.sngmi.com/wp-content/uploads/2015/10/background-mountain.jpg);
-    background-size: cover;
-     backdrop-filter: blur(12px);
-">
+<body >
+<div class = "newbg">
 
+  
+</div>
     <div id="app" >
         <nav class="navbar navbar-inverse navbar-static-top boldandwhiteplz">
             <div class="container ">
