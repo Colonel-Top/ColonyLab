@@ -180,7 +180,8 @@
 </head>
 <body style = "
     background-image: url('/background-mountain.jpg');
-        background-size: cover;
+     background-image: url('/pexels-photo-512875.jpeg');
+      /*  background-size: cover;*/
     z-index: 0;
     
 ">
