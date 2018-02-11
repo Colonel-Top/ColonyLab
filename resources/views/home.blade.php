@@ -48,8 +48,8 @@
                        
                          
                             <tr>
-                               COMING SOO
-                              
+                               COMING SOON
+                              </tr>
                          <!--     
                           
                         @foreach($anndata as $euler)
@@ -76,7 +76,8 @@
                     </table>
                 </div>
 
-
+               
+             
         <div class="panel panel-default col-xs-12 col-sm-12 col-md-12">
               <div class="panel-heading">Incoming Due Assignment</div>
                 <table class="table table-striped task-table animated fadeInUp">
