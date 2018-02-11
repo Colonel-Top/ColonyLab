@@ -80,12 +80,12 @@
               <div class="panel-heading">Announcement</div>
                 <div class="panel-body ">
                      <table class="table table-striped task-table fontmodit">
-                  <thead>
+                  <!--<thead>
                      <th width="20%">#</th>
                         <th width="30%">Announcement</th>
                         <th width="25%">Update By</th>
                         <th width="15%">Action</th>
-                    </thead>
+                    </thead>-->
  <tbody>
                        
                          
@@ -115,12 +115,13 @@
                          
                      @endforeach
                  -->
-                    </tbody>
-                    <div class="load-bar">
+                 <div class="load-bar">
                       <div class="bar"></div>
                       <div class="bar"></div>
                       <div class="bar"></div>
                     </div>
+                    </tbody>
+                    
                     </table>
                 </div>
 
