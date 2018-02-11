@@ -164,15 +164,13 @@
 
 .newbg{
   
-    width: auto;
-    height: auto;
+   
     background-image: url(http://s1.bwallpapers.com/wallpapers/2014/03/04/pink-landscape_112131687.jpg);
     
 
     
     background-size: cover;
-    -webkit-filter: blur(12px);
-    z-index: 0;
+
 }
 
     </style>
@@ -182,7 +180,10 @@
 </head>
 <body>
 
-    <div id="app newbg">
+    <div id="app" style = "
+    background-image: url(http://s1.bwallpapers.com/wallpapers/2014/03/04/pink-landscape_112131687.jpg);
+    background-size: cover;
+">
         <nav class="navbar navbar-inverse navbar-static-top boldandwhiteplz">
             <div class="container ">
                   <p class="snowflake">
