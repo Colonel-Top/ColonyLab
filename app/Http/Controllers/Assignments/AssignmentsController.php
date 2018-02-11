@@ -267,10 +267,10 @@ FROM
     WHERE assignments_id = :id
 	ORDER BY scores ASC)
 AS employeesub
-GROUP BY employeesub.pinid ',['id' => $id]);
+GROUP BY employeesub.pinid ORDER BY created_at DESC',['id' => $id]);
 	//	dd($data);
 
-		$blah = Assignments::with('courses.users')->where('id',$asninfo->id)->get()->order_by('created_at', 'desc');
+		$blah = Assignments::with('courses.users')->where('id',$asninfo->id)->get();
 	$amount = count($data);
 		return view('assignments.show',['asninfo'=>$asninfo,'data'=>$data,'userdetails'=>$blah,'amount'=>$amount]);
     }
