@@ -180,7 +180,7 @@
 </head>
 <body style = "
     background-image: url('/background-mountain.jpg');
-    background-size: cover;
+    
     z-index: 0;
     
 ">
