@@ -130,28 +130,7 @@
                                COMING SOON
                               </tr>
 
-                         <!--     
-                          
-                        @foreach($anndata as $euler)
-                           <td class="table-text">
-                                    <div>{{$euler->id}}</div>
-                                </td>
-                                <td class="table-text">
-                                    <div>{{$euler->name}}</div>
-                                </td>
-                                <td class="table-text">
-                                    <div>{{$euler->surname}}</div>
-                                </td>
-                               <td class="table-text">
-                                    <div>{{$euler->pinid}}</div>
-                                </td>
-
-                            </tr>
-                       
-                  
-                         
-                     @endforeach
-                 -->
+                
                  <div class="load-bar">
                       <div class="bar"></div>
                       <div class="bar"></div>
