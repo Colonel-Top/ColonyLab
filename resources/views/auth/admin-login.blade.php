@@ -24,9 +24,9 @@ body{
 	bottom: -40px;
 	width: auto;
 	height: auto;
-	background-image: url("http://sc.vaesite.net/__data/a7bc0e409dcbc5b05416e23bf38f022a.jpg"); 
-	background-image: url("	http://kpopwallpaper.pannturkey.com/wp-content/uploads/2017/03/bts-young-forever-wallpaper.png"); 
 
+	background-image: url("	http://kpopwallpaper.pannturkey.com/wp-content/uploads/2017/03/bts-young-forever-wallpaper.png"); 
+	background-image: url("http://kpopwallpaper.pannturkey.com/wp-content/uploads/2017/03/bts-wallpaper-full-hd.png"); 
 	opacity: 1;
 	background-size: cover;
 	-webkit-filter: blur(5px);
