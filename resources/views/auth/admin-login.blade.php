@@ -29,7 +29,7 @@ body{
 	background-image: url("http://kpopwallpaper.pannturkey.com/wp-content/uploads/2017/03/bts-wallpaper-full-hd.png"); 
 	opacity: 1;
 	background-size: cover;
-	-webkit-filter: blur(5px);
+	-webkit-filter: blur(3px);
 	z-index: 0;
 }
 
