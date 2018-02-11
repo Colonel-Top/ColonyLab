@@ -160,6 +160,21 @@
             }
         }
 
+
+
+.newbg{
+  
+    width: auto;
+    height: auto;
+    background-image: url(http://s1.bwallpapers.com/wallpapers/2014/03/04/pink-landscape_112131687.jpg);
+    
+
+    
+    background-size: cover;
+    -webkit-filter: blur(12px);
+    z-index: 0;
+}
+
     </style>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
