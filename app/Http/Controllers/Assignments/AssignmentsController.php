@@ -359,7 +359,7 @@ GROUP BY employeesub.pinid ORDER BY created_at ASC',['id' => $id]);
             $destinationPath = storage_path() . '//assignments//'.$thisass;
             $file->move($destinationPath, $filename);
              $final = $destinationPath.'//'.$filename;        
-       
+       		
            
         }
        
@@ -372,7 +372,7 @@ GROUP BY employeesub.pinid ORDER BY created_at ASC',['id' => $id]);
             $destinationPath = storage_path() . '//assignments//'.$thisass.'//master//';
             $file->move($destinationPath, $filename);
              $final2 = $destinationPath.'//'.$filename;        
-            
+            shell_exec("dos2unix $final2");
         }
         $final3="";
      //   $postData = $request->all();
@@ -406,7 +406,6 @@ GROUP BY employeesub.pinid ORDER BY created_at ASC',['id' => $id]);
             $destinationPath = storage_path() . '//assignments//'.$thisass.'//input//';
             $file->move($destinationPath, $filename);
              $final5 = $destinationPath.'//'.$filename;        
-            
         }
        	$final6="";
        // $postData = $request->all();
@@ -427,7 +426,8 @@ GROUP BY employeesub.pinid ORDER BY created_at ASC',['id' => $id]);
             $filename =$file->getClientOriginalName();
             $destinationPath = storage_path() . '//assignments//'.$thisass.'//input//';
             $file->move($destinationPath, $filename);
-             $final7 = $destinationPath.'//'.$filename;        
+             $final7 = $destinationPath.'//'.$filename;    
+
         }
         $final8="";
         //$postData = $request->all();
@@ -438,6 +438,7 @@ GROUP BY employeesub.pinid ORDER BY created_at ASC',['id' => $id]);
             $destinationPath = storage_path() . '//assignments//'.$thisass.'//master//';
             $file->move($destinationPath, $filename);
              $final8 = $destinationPath.'//'.$filename;        
+               shell_exec("dos2unix $final8"); 
         }
         $final9="";
         //$postData = $request->all();
@@ -447,7 +448,8 @@ GROUP BY employeesub.pinid ORDER BY created_at ASC',['id' => $id]);
             $filename =$file->getClientOriginalName();
             $destinationPath = storage_path() . '//assignments//'.$thisass.'//master//';
             $file->move($destinationPath, $filename);
-             $final9 = $destinationPath.'//'.$filename;        
+             $final9 = $destinationPath.'//'.$filename;  
+               shell_exec("dos2unix $final9");       
         }
         $final10="";
        // $postData = $request->all();
@@ -457,7 +459,9 @@ GROUP BY employeesub.pinid ORDER BY created_at ASC',['id' => $id]);
             $filename =$file->getClientOriginalName();
             $destinationPath = storage_path() . '//assignments//'.$thisass.'//master//';
             $file->move($destinationPath, $filename);
-             $final10 = $destinationPath.'//'.$filename;        
+             $final10 = $destinationPath.'//'.$filename; 
+
+               shell_exec("dos2unix $final10");        
         }
          $final11="";
         
@@ -467,7 +471,8 @@ GROUP BY employeesub.pinid ORDER BY created_at ASC',['id' => $id]);
             $filename =$file->getClientOriginalName();
             $destinationPath = storage_path() . '//assignments//'.$thisass.'//master//';
             $file->move($destinationPath, $filename);
-             $final11 = $destinationPath.'//'.$filename;        
+             $final11 = $destinationPath.'//'.$filename;  
+               shell_exec("dos2unix $final11");       
         }
 
 		$assignment->starttime = $starttime;
@@ -576,7 +581,7 @@ GROUP BY employeesub.pinid ORDER BY created_at ASC',['id' => $id]);
             $destinationPath = storage_path() . '//assignments//'.$request->idc.'//master//';
             $file->move($destinationPath, $filename);
              $final2 = $destinationPath.'//'.$filename;        
-            
+              shell_exec("dos2unix $final2"); 
         }
         $final3="";
      //   $postData = $request->all();
@@ -642,6 +647,7 @@ GROUP BY employeesub.pinid ORDER BY created_at ASC',['id' => $id]);
             $destinationPath = storage_path() . '//assignments//'.$request->idc.'//master//';
             $file->move($destinationPath, $filename);
              $final8 = $destinationPath.'//'.$filename;        
+               shell_exec("dos2unix $final8"); 
         }
         $final9="";
         //$postData = $request->all();
@@ -651,7 +657,8 @@ GROUP BY employeesub.pinid ORDER BY created_at ASC',['id' => $id]);
             $filename =$file->getClientOriginalName();
             $destinationPath = storage_path() . '//assignments//'.$request->idc.'//master//';
             $file->move($destinationPath, $filename);
-             $final9 = $destinationPath.'//'.$filename;        
+             $final9 = $destinationPath.'//'.$filename;    
+               shell_exec("dos2unix $final9");     
         }
         $final10="";
        // $postData = $request->all();
@@ -661,7 +668,8 @@ GROUP BY employeesub.pinid ORDER BY created_at ASC',['id' => $id]);
             $filename =$file->getClientOriginalName();
             $destinationPath = storage_path() . '//assignments//'.$request->idc.'//master//';
             $file->move($destinationPath, $filename);
-             $final10 = $destinationPath.'//'.$filename;        
+             $final10 = $destinationPath.'//'.$filename; 
+               shell_exec("dos2unix $final10");        
         }
          $final11="";
         
@@ -671,7 +679,8 @@ GROUP BY employeesub.pinid ORDER BY created_at ASC',['id' => $id]);
             $filename =$file->getClientOriginalName();
             $destinationPath = storage_path() . '//assignments//'.$request->idc.'//master//';
             $file->move($destinationPath, $filename);
-             $final11 = $destinationPath.'//'.$filename;        
+             $final11 = $destinationPath.'//'.$filename;  \
+               shell_exec("dos2unix $final11");       
         }
         
         

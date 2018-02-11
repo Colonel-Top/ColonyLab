@@ -179,7 +179,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body style = "
-    background-image: url(http://www.sngmi.com/wp-content/uploads/2015/10/background-mountain.jpg);
+    background-image: url(http://localhost/background-mountain.jpg);
     background-size: cover;
     z-index: 0;
     
