@@ -193,7 +193,7 @@
 
 
     .primary-text-color {
-      color: #FFFFFF !important;
+      color: #8277c9 !important;
     }
 
     .secondary-text-color {
