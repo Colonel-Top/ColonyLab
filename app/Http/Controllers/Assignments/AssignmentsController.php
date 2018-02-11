@@ -265,9 +265,9 @@ FROM
     (SELECT *
     FROM `assignment_work`
     WHERE assignments_id = :id
-	ORDER BY scores DESC)
+	ORDER BY scores)
 AS employeesub
-GROUP BY employeesub.pinid ORDER BY created_at DESC',['id' => $id]);
+GROUP BY employeesub.pinid ORDER BY created_at ASC',['id' => $id]);
 	//	dd($data);
 
 		$blah = Assignments::with('courses.users')->where('id',$asninfo->id)->get();
