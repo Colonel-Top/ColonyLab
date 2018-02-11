@@ -24,6 +24,12 @@ class AdminController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public function requestalluser()
+    {
+
+        $data = User::all();
+        return view('alluser',['data'=>$data]);
+    }
     public function index()
     {
         $coursesdata = Courses::where('allowregister','1')->get();
