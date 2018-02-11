@@ -12,6 +12,11 @@
     height: 33%;
     overflow-y:auto;
 }
+.modithead2
+{
+    height: 24%;
+    overflow-y:auto;
+}
 .fontmodit
 {
     width: 100%;
@@ -106,6 +111,62 @@
                 </div>
             </div>
         </div>
+
+
+   <div class="panel panel-default col-xs-12 col-sm-12 col-md-12 modithead2">
+              <div class="panel-heading">Announcement</div>
+                <div class="panel-body ">
+                     <table class="table table-striped task-table fontmodit">
+                  <!--<thead>
+                     <th width="20%">#</th>
+                        <th width="30%">Announcement</th>
+                        <th width="25%">Update By</th>
+                        <th width="15%">Action</th>
+                    </thead>-->
+ <tbody>
+                       
+                         
+                            <tr>
+                               COMING SOON
+                              </tr>
+
+                         <!--     
+                          
+                        @foreach($anndata as $euler)
+                           <td class="table-text">
+                                    <div>{{$euler->id}}</div>
+                                </td>
+                                <td class="table-text">
+                                    <div>{{$euler->name}}</div>
+                                </td>
+                                <td class="table-text">
+                                    <div>{{$euler->surname}}</div>
+                                </td>
+                               <td class="table-text">
+                                    <div>{{$euler->pinid}}</div>
+                                </td>
+
+                            </tr>
+                       
+                  
+                         
+                     @endforeach
+                 -->
+                 <div class="load-bar">
+                      <div class="bar"></div>
+                      <div class="bar"></div>
+                      <div class="bar"></div>
+                    </div>
+                    </tbody>
+                    
+                    </table>
+                </div>
+
+               </div>
+
+
+
+
          <div class="panel panel-default col-xs-12 col-sm-12 col-md-12">
               <div class="panel-heading">All Courses Open Register</div>
                 <table class="table table-striped task-table">
