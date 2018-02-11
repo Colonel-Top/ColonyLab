@@ -179,7 +179,7 @@
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 <body style = "
-    background-image: url(http://localhost/background-mountain.jpg);
+    background-image: url('/background-mountain.jpg');
     background-size: cover;
     z-index: 0;
     
