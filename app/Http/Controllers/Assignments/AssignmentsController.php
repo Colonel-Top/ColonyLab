@@ -265,7 +265,7 @@ FROM
     (SELECT *
     FROM `assignment_work`
     WHERE assignments_id = :id
-	ORDER BY scores ASC)
+	ORDER BY scores DESC)
 AS employeesub
 GROUP BY employeesub.pinid ORDER BY created_at DESC',['id' => $id]);
 	//	dd($data);
