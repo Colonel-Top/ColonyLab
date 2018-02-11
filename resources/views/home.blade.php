@@ -35,6 +35,49 @@
 
 
         <div class="panel panel-default col-xs-12 col-sm-12 col-md-12">
+              <div class="panel-heading">Announcement</div>
+                <div class="panel-body ">
+                     <table class="table table-striped task-table fontmodit">
+                  <thead>
+                     <th width="20%">#</th>
+                        <th width="30%">Announcement</th>
+                        <th width="25%">Update By</th>
+                        <th width="15%">Action</th>
+                    </thead>
+ <tbody>
+                       
+                         
+                            <tr>
+                               COMING SOON
+                              
+                         <!--     
+                          
+                        @foreach($anndata as $euler)
+                           <td class="table-text">
+                                    <div>{{$euler->id}}</div>
+                                </td>
+                                <td class="table-text">
+                                    <div>{{$euler->name}}</div>
+                                </td>
+                                <td class="table-text">
+                                    <div>{{$euler->surname}}</div>
+                                </td>
+                               <td class="table-text">
+                                    <div>{{$euler->pinid}}</div>
+                                </td>
+
+                            </tr>
+                       
+                  
+                         
+                     @endforeach
+                 -->
+                    </tbody>
+                    </table>
+                </div>
+
+
+        <div class="panel panel-default col-xs-12 col-sm-12 col-md-12">
               <div class="panel-heading">Incoming Due Assignment</div>
                 <table class="table table-striped task-table animated fadeInUp">
                     <!-- Table Headings -->

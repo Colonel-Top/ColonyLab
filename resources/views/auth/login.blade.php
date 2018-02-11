@@ -25,6 +25,8 @@ body{
 	width: auto;
 	height: auto;
 	background-image: url(http://ginva.com/wp-content/uploads/2012/07/city-skyline-wallpapers-008.jpg);
+	background-image: url(http://www.misucell.com/data/out/10/IMG_399135.jpg);
+
 	
 	background-size: cover;
 	-webkit-filter: blur(10px);
