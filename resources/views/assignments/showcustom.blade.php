@@ -104,12 +104,14 @@
                          
                             <tr>
                                
-                              
+                               <?php $num = 1; ?>      
                               
                          
                         @foreach($data as $euler)
                          <td class="table-text">
-                                    <div>{{$euler->id}}</div>
+                                   <!-- <div>{{$euler->id}}</div>-->
+                                   <div>{{$num}}</div>
+                                   <?php $num++ ?>
                                 </td>
                                 <td class="table-text">
                                     <div>{{$euler->name}}</div>
