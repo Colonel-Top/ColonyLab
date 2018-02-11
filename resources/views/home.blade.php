@@ -1,6 +1,48 @@
 @extends('layouts.app')
  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
 @section('content')
+<style>
+.modithead
+{
+    height: 33%;
+    overflow-y:auto;
+}
+
+.load-bar {
+  position: relative;
+  margin-top: 20px;
+  width: 100%;
+  height: 6px;
+  background-color: #fdba2c;
+}
+.bar {
+  content: "";
+  display: inline;
+  position: absolute;
+  width: 0;
+  height: 100%;
+  left: 50%;
+  text-align: center;
+}
+.bar:nth-child(1) {
+  background-color: #da4733;
+  animation: loading 3s linear infinite;
+}
+.bar:nth-child(2) {
+  background-color: #3b78e7;
+  animation: loading 3s linear 1s infinite;
+}
+.bar:nth-child(3) {
+  background-color: #fdba2c;
+  animation: loading 3s linear 2s infinite;
+}
+@keyframes loading {
+    from {left: 50%; width: 0;z-index:100;}
+    33.3333% {left: 0; width: 100%;z-index: 10;}
+    to {left: 0; width: 100%;}
+}
+
+</style>
 <div class="container">
     <div class="row">
          @if (session('message1'))
@@ -34,7 +76,7 @@
         </div>
 
 
-        <div class="panel panel-default col-xs-12 col-sm-12 col-md-12">
+        <div class="panel panel-default col-xs-12 col-sm-12 col-md-12 modithead">
               <div class="panel-heading">Announcement</div>
                 <div class="panel-body ">
                      <table class="table table-striped task-table fontmodit">
@@ -50,6 +92,7 @@
                             <tr>
                                COMING SOON
                               </tr>
+
                          <!--     
                           
                         @foreach($anndata as $euler)
@@ -73,6 +116,11 @@
                      @endforeach
                  -->
                     </tbody>
+                    <div class="load-bar">
+                      <div class="bar"></div>
+                      <div class="bar"></div>
+                      <div class="bar"></div>
+                    </div>
                     </table>
                 </div>
 
