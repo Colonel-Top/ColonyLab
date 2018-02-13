@@ -188,26 +188,10 @@ public function push(Request $request)
           //  print_r($executeq);
             echo($executeq);
 			
-			$descr = array(
-    0 => array(
-        'pipe',
-        'r'
-    ) ,
-    1 => array(
-        'pipe',
-        'w'
-    ) ,
-    2 => array(
-        'pipe',
-        'w'
-    )
-);
-$pipes = array();
-$process = proc_open($executeq, $descr, $pipes);
 
 			
 			
-            //$result = shell_exec($executeq);    
+            $result = shell_exec($executeq);    
 			
 			
 			
@@ -232,10 +216,10 @@ $process = proc_open($executeq, $descr, $pipes);
                 
             }
             //dd("DONE");
-			proc_close($process);
+
            // dd($savefile);
  
-            // $file->move($destinationPath, $filename);
+            $file->move($destinationPath, $filename);
 
             //Storage::move('//assignments//'.$asn->id.'//user_upload//'.Auth::user()->pinid.'//'.$filename.'.java', $savefile);
             //move file go to place
