@@ -235,7 +235,7 @@ public function push(Request $request)
             if (!empty($asn->finput)) 
         {
             /* Checking Injection Zone */
-            $injection = '"./'.$destinationPath.$filename.' < '.$asn->finput.' > '.$destinationPath.$filename.'.txt"';
+            $injection = '".'.$destinationPath.$filename.' < '.$asn->finput.' > '.$destinationPath.$filename.'.txt"';
             echo($injection);
             echo("<br>");
             $command = 'python '.storage_path().'/runtime.py '.$injection;
@@ -269,7 +269,7 @@ public function push(Request $request)
         {
                
                 /* Checking Injection Zone */
-            $injection = '"./'.$destinationPath.$filename.' < '.$asn->finput2.' > '.$destinationPath.$filename.'.txt"';
+            $injection = '".'.$destinationPath.$filename.' < '.$asn->finput2.' > '.$destinationPath.$filename.'.txt"';
 
             $command = 'python '.storage_path().'/runtime.py '.$injection;
             exec($command, $output,$return_value);
@@ -292,7 +292,7 @@ public function push(Request $request)
         {
                
                 /* Checking Injection Zone */
-            $injection = '"./'.$destinationPath.$filename.' < '.$asn->finput3.' > '.$destinationPath.$filename.'.txt"';
+            $injection = '".'.$destinationPath.$filename.' < '.$asn->finput3.' > '.$destinationPath.$filename.'.txt"';
 
             $command = 'python '.storage_path().'/runtime.py '.$injection;
             exec($command, $output,$return_value);
@@ -315,7 +315,7 @@ public function push(Request $request)
         {
                
                 /* Checking Injection Zone */
-            $injection = '"./'.$destinationPath.$filename.' < '.$asn->finput4.' > '.$destinationPath.$filename.'.txt"';
+            $injection = '".'.$destinationPath.$filename.' < '.$asn->finput4.' > '.$destinationPath.$filename.'.txt"';
 
             $command = 'python '.storage_path().'/runtime.py '.$injection;
             exec($command, $output,$return_value);
@@ -338,7 +338,7 @@ public function push(Request $request)
         {
                
                 /* Checking Injection Zone */
-            $injection = '"./'.$destinationPath.$filename.' < '.$asn->finput5.' > '.$destinationPath.$filename.'.txt"';
+            $injection = '".'.$destinationPath.$filename.' < '.$asn->finput5.' > '.$destinationPath.$filename.'.txt"';
 
             $command = 'python '.storage_path().'/runtime.py '.$injection;
             exec($command, $output,$return_value);
