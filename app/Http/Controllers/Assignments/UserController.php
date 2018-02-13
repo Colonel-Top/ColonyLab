@@ -238,7 +238,7 @@ public function push(Request $request)
             $injection = '".'.$destinationPath.$filename.' < '.$asn->finput.' > '.$destinationPath.$filename.'.txt"';
             echo($injection);
             echo("<br>");
-            $command = 'python '.storage_path().'/runtime.py '.$injection;
+            $command = 'sudo python '.storage_path().'/runtime.py '.$injection;
             exec($command, $output,$return_value);
             //dd($return_value);
                 echo("<br>");
@@ -253,7 +253,7 @@ public function push(Request $request)
             
             $restore = File::get($asn->foutput);
             $getject = $destinationPath.$filename.'.txt';
-            dd($getject);
+           // dd($getject);
             $geter = File::get($getject);
             $whatsap = strcmp($restore, $geter);
             if($whatsap == 0)
