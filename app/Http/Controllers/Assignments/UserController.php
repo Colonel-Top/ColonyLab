@@ -200,7 +200,7 @@ public function push(Request $request)
 			
             //$result = shell_exec($executeq);    
 			
-			$filename = $destinationPath.$anticname;
+			$filename = $anticname;
 			
             $checkpath = $destinationPath.'error-'.$anticname;
            // dd($checkpath);
