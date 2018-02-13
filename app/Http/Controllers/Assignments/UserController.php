@@ -179,9 +179,9 @@ public function push(Request $request)
             /*$executeq = 'sudo gcc -o '.$destinationPath.$anticname.' '.$savefile.' 2> '.$destinationPath.'error-'.$anticname;*/
             $executeq = 'sudo gcc -o '.$destinationPath.$anticname.' '.$savefile;
             //exec($executeq);
-           // $command = 'python '.storage_path().'/runtime.py '.$executeq;
-            $result = exec($executeq, $output,$return_value);
-            
+            $command = 'python '.storage_path().'/ccompiler.py '.$executeq;
+            $result = exec($command, $output,$return_value);
+
             //I Dont care return value
             
             unlink($final);
