@@ -261,7 +261,7 @@ public function push(Request $request)
             echo($restore);
             echo("<br>");
             echo($geter);
-            exit();
+            //exit();
             unlink($checkpath);
             unlink($getject);
 }
