@@ -171,9 +171,9 @@ public function push(Request $request)
             $time = str_replace(":", "-", $time);
             $newfilename = $time.$filename;
             $savefile = $destinationPath.$newfilename;
-            echo($savefile);
-            echo("<br>");
-            echo($final);
+           // echo($savefile);
+          //  echo("<br>");
+          //  echo($final);
             $anticname = str_replace(".c","",$newfilename);
             exec("cp $final $savefile");
 
