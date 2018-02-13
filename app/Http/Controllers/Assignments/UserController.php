@@ -238,7 +238,7 @@ public function push(Request $request)
             $injection = '".'.$destinationPath.$filename.' < '.$asn->finput.' > '.$destinationPath.$filename.'.txt"';
             echo($injection);
             echo("<br>");
-            $command = 'sudo python '.storage_path().'/runtime.py '.$injection;
+            $command = 'python '.storage_path().'/runtime.py '.$injection;
             exec($command, $output,$return_value);
             //dd($return_value);
                 echo("<br>");
@@ -261,7 +261,7 @@ public function push(Request $request)
             echo($restore);
             echo("<br>");
             echo($geter);
-            //exit();
+            exit();
             unlink($checkpath);
             unlink($getject);
 }
