@@ -179,9 +179,9 @@ public function push(Request $request)
 
             $executeq = 'gcc -o '.$destinationPath.$anticname.' '.$savefile.' 2> '.$destinationPath.'error-'.$anticname;
            // $executeq = 'gcc -o '.$destinationPath.$anticname.' '.$savefile;
-            $result = exec('sudo -u top59 -S $executeq < ~/.sudopass/secret');
+           // $result = exec('sudo -u top59 -S $executeq < ~/.sudopass/secret');
             //$command = 'sudo python '.storage_path().'/ccompiler.py '.$executeq;
-            //$result = exec($command, $output,$return_value);
+            $result = exec($executeq, $output,$return_value);
 
             //I Dont care return value
             
