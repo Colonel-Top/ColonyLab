@@ -251,6 +251,7 @@ public function push(Request $request)
             
             $restore = File::get($asn->foutput);
             $getject = $destinationPath.$filename.'.txt';
+            dd($getject);
             $geter = File::get($getject);
             $whatsap = strcmp($restore, $geter);
             if($whatsap == 0)
