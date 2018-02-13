@@ -185,7 +185,7 @@ public function push(Request $request)
 
             //I Dont care return value
             
-            
+            unlink($final);
 
            // echo("<br>");
           //  print_r($executeq);
@@ -200,7 +200,7 @@ public function push(Request $request)
 			
             //$result = shell_exec($executeq);    
 			
-			
+			$filename = $savefile;
 			
             $checkpath = $destinationPath.'error-'.$anticname;
            // dd($checkpath);
@@ -358,7 +358,6 @@ public function push(Request $request)
         //--------------------------   
         //--------------------------  
         //unlink($destinationPath.$filename.'.class'); 
-        unlink($final);
         //--------------------------   
          $users_id = Auth::user()->id;
          $coursething = Courses::find($asn->courses_id);
