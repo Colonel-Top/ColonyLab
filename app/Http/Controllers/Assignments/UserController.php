@@ -187,16 +187,16 @@ public function push(Request $request)
             
             unlink($final);
 
-            echo("<br>");
+           // echo("<br>");
           //  print_r($executeq);
-            echo($executeq);
-            echo("<br>");
-			print_r($result);
-            echo("<br>");
+           /// echo($executeq);
+           // echo("<br>");
+			//print_r($result);
+         //   echo("<br>");
            // print_r($return_value);
            // dd($output);
 
-			exit();
+			//exit();
 			
             //$result = shell_exec($executeq);    
 			
@@ -222,9 +222,7 @@ public function push(Request $request)
                                 
                 
             }
-            //dd("DONE");
-
-           // dd($savefile);
+         
  
             $file->move($destinationPath, $filename);
 
