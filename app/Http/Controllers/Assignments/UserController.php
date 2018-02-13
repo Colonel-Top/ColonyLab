@@ -190,6 +190,7 @@ public function push(Request $request)
           //  print_r($executeq);
             echo($executeq);
 			print_r($result);
+            print_r($return_value);
             dd($output);
 
 			
