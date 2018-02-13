@@ -187,7 +187,30 @@ public function push(Request $request)
             echo("<br>");
           //  print_r($executeq);
             echo($executeq);
-            $result = shell_exec($executeq);    
+			
+			$descr = array(
+    0 => array(
+        'pipe',
+        'r'
+    ) ,
+    1 => array(
+        'pipe',
+        'w'
+    ) ,
+    2 => array(
+        'pipe',
+        'w'
+    )
+);
+$pipes = array();
+$process = proc_open($executeq, $descr, $pipes);
+
+			
+			
+            //$result = shell_exec($executeq);    
+			
+			
+			
             $checkpath = $destinationPath.'error-'.$anticname;
            // dd($checkpath);
            // exit();
@@ -208,8 +231,8 @@ public function push(Request $request)
                                 
                 
             }
-            dd("DONE");
-            exit();
+            //dd("DONE");
+			proc_close($process);
            // dd($savefile);
  
             // $file->move($destinationPath, $filename);
