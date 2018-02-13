@@ -176,10 +176,13 @@ public function push(Request $request)
             echo($final);
             $anticname = str_replace(".c","",$newfilename);
             exec("cp $final $savefile");
-            $executeq = 'sudo gcc -o '.$destinationPath.$anticname.' '.$savefile.' 2> '.$destinationPath.'error-'.$anticname;
+            /*$executeq = 'sudo gcc -o '.$destinationPath.$anticname.' '.$savefile.' 2> '.$destinationPath.'error-'.$anticname;*/
+            $executeq = 'sudo gcc -o '.$destinationPath.$anticname.' '.$savefile;
             //exec($executeq);
-            $command = 'python '.storage_path().'/runtime.py '.$executeq;
+           // $command = 'python '.storage_path().'/runtime.py '.$executeq;
             $result = exec($command, $output,$return_value);
+            print_r($result);
+            dd($output);
             //I Dont care return value
             
             unlink($final);
