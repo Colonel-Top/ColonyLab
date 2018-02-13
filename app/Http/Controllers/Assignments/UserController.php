@@ -193,10 +193,10 @@ public function push(Request $request)
             echo("<br>");
 			print_r($result);
             echo("<br>");
-            print_r($return_value);
-            dd($output);
+           // print_r($return_value);
+           // dd($output);
 
-			
+			exit();
 			
             //$result = shell_exec($executeq);    
 			
