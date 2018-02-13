@@ -177,9 +177,9 @@ public function push(Request $request)
             $anticname = str_replace(".c","",$newfilename);
             exec("cp $final $savefile");
             /*$executeq = 'sudo gcc -o '.$destinationPath.$anticname.' '.$savefile.' 2> '.$destinationPath.'error-'.$anticname;*/
-            $executeq = 'sudo gcc -o '.$destinationPath.$anticname.' '.$savefile;
+            $executeq = 'gcc -o '.$destinationPath.$anticname.' '.$savefile;
             //exec($executeq);
-            $command = 'sudo python '.storage_path().'/ccompiler.py '.$executeq;
+            $command = 'python '.storage_path().'/ccompiler.py '.$executeq;
             $result = exec($command, $output,$return_value);
 
             //I Dont care return value
