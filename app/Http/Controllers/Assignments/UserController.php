@@ -273,7 +273,8 @@ public function push(Request $request)
 
             $command = 'python '.storage_path().'/runtime.py '.$injection;
             exec($command, $output,$return_value);
-
+            echo("<br>");
+            echo($command);
             if($return_value == 1)
                 return  view('assignments.infinity');
             
