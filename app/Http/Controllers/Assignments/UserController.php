@@ -181,8 +181,7 @@ public function push(Request $request)
             //exec($executeq);
            // $command = 'python '.storage_path().'/runtime.py '.$executeq;
             $result = exec($command, $output,$return_value);
-            print_r($result);
-            dd($output);
+            
             //I Dont care return value
             
             unlink($final);
@@ -190,7 +189,8 @@ public function push(Request $request)
             echo("<br>");
           //  print_r($executeq);
             echo($executeq);
-			
+			print_r($result);
+            dd($output);
 
 			
 			
