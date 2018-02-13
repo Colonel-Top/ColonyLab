@@ -254,6 +254,9 @@ public function push(Request $request)
             $whatsap = strcmp($restore, $geter);
             if($whatsap == 0)
                 $sum+=$per_asn;
+            echo($restore);
+            echo("<br>");
+            echo($geter);
             unlink($checkpath);
             unlink($getject);
 }
