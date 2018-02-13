@@ -190,7 +190,7 @@ public function push(Request $request)
             $result = exec($executeq);    
             $checkpath = $destinationPath.'error-'.$anticname;
            // dd($checkpath);
-            exit();
+           // exit();
             $errorpath = File::get($checkpath);
           //  $classpath = file_exists($destinationPath.$filename.'.class');
            // dd($classpath);
