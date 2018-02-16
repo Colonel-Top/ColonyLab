@@ -238,7 +238,7 @@ public function push(Request $request)
             $injection = '".'.$destinationPath.$filename.' < '.$asn->finput.' > '.$destinationPath.$filename.'.txt"';
             echo($injection);
             echo("<br>");
-            $command = 'python '.storage_path().'/runtime.py '.$injection;
+            $command = 'python -u '.storage_path().'/runtime.py '.$injection;
             exec($command, $output,$return_value);
             //dd($return_value);
           //  print_r($output);
