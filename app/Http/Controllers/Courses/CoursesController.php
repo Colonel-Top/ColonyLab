@@ -256,9 +256,11 @@ class CoursesController extends Controller
 	 {
         //update post data
        // $account = Courses::where('courses_id', $id)->firstOrFail()->courses()->detach();
+
    		$courses = Courses::find($id);
         $courses->users()->detach();
         $courses->delete();
+
        // $courses->delete();
        
         //store status message
