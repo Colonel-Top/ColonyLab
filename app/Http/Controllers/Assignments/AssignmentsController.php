@@ -372,7 +372,7 @@ GROUP BY employeesub.pinid ORDER BY created_at ASC',['id' => $id]);
             $destinationPath = storage_path() . '//assignments//'.$thisass.'//master//';
             $file->move($destinationPath, $filename);
              $final2 = $destinationPath.'//'.$filename;        
-            exec("dos2unix  $final2", $output,$return_value););
+            exec("dos2unix  $final2", $output,$return_value);
         }
         $final3="";
      //   $postData = $request->all();
@@ -383,7 +383,7 @@ GROUP BY employeesub.pinid ORDER BY created_at ASC',['id' => $id]);
             $destinationPath = storage_path() . '//assignments//'.$thisass.'//input//';
             $file->move($destinationPath, $filename);
              $final3 = $destinationPath.'//'.$filename;        
-            exec("dos2unix  $final3", $output,$return_value););
+            exec("dos2unix  $final3", $output,$return_value);
         }
 
         $final4="";
@@ -395,7 +395,7 @@ GROUP BY employeesub.pinid ORDER BY created_at ASC',['id' => $id]);
             $destinationPath = storage_path() . '//assignments//'.$thisass.'//input//';
             $file->move($destinationPath, $filename);
              $final4 = $destinationPath.'//'.$filename;        
-            exec("dos2unix  $final4", $output,$return_value););
+            exec("dos2unix  $final4", $output,$return_value);
         }
          $final5="";
       //  $postData = $request->all();
@@ -406,7 +406,7 @@ GROUP BY employeesub.pinid ORDER BY created_at ASC',['id' => $id]);
             $destinationPath = storage_path() . '//assignments//'.$thisass.'//input//';
             $file->move($destinationPath, $filename);
              $final5 = $destinationPath.'//'.$filename;        
-             exec("dos2unix  $final5", $output,$return_value););
+             exec("dos2unix  $final5", $output,$return_value);
         }
        	$final6="";
        // $postData = $request->all();
@@ -417,7 +417,7 @@ GROUP BY employeesub.pinid ORDER BY created_at ASC',['id' => $id]);
             $destinationPath = storage_path() . '//assignments//'.$thisass.'//input//';
             $file->move($destinationPath, $filename);
              $final6 = $destinationPath.'//'.$filename;        
-            exec("dos2unix  $final6", $output,$return_value););
+            exec("dos2unix  $final6", $output,$return_value);
         }
        	$final7="";
        // $postData = $request->all();
@@ -428,7 +428,7 @@ GROUP BY employeesub.pinid ORDER BY created_at ASC',['id' => $id]);
             $destinationPath = storage_path() . '//assignments//'.$thisass.'//input//';
             $file->move($destinationPath, $filename);
              $final7 = $destinationPath.'//'.$filename;    
-exec("dos2unix  $final7", $output,$return_value););
+exec("dos2unix  $final7", $output,$return_value);
         }
         $final8="";
         //$postData = $request->all();
@@ -582,7 +582,7 @@ exec("dos2unix  $final7", $output,$return_value););
             $destinationPath = storage_path() . '//assignments//'.$thisass.'//master//';
             $file->move($destinationPath, $filename);
              $final2 = $destinationPath.'//'.$filename;        
-            exec("dos2unix  $final2", $output,$return_value););
+            exec("dos2unix  $final2", $output,$return_value);
         }
         $final3="";
      //   $postData = $request->all();
@@ -593,7 +593,7 @@ exec("dos2unix  $final7", $output,$return_value););
             $destinationPath = storage_path() . '//assignments//'.$thisass.'//input//';
             $file->move($destinationPath, $filename);
              $final3 = $destinationPath.'//'.$filename;        
-            exec("dos2unix  $final3", $output,$return_value););
+            exec("dos2unix  $final3", $output,$return_value);
         }
 
         $final4="";
@@ -605,7 +605,7 @@ exec("dos2unix  $final7", $output,$return_value););
             $destinationPath = storage_path() . '//assignments//'.$thisass.'//input//';
             $file->move($destinationPath, $filename);
              $final4 = $destinationPath.'//'.$filename;        
-            exec("dos2unix  $final4", $output,$return_value););
+            exec("dos2unix  $final4", $output,$return_value);
         }
          $final5="";
       //  $postData = $request->all();
@@ -616,7 +616,7 @@ exec("dos2unix  $final7", $output,$return_value););
             $destinationPath = storage_path() . '//assignments//'.$thisass.'//input//';
             $file->move($destinationPath, $filename);
              $final5 = $destinationPath.'//'.$filename;        
-             exec("dos2unix  $final5", $output,$return_value););
+             exec("dos2unix  $final5", $output,$return_value);
         }
        	$final6="";
        // $postData = $request->all();
@@ -627,7 +627,7 @@ exec("dos2unix  $final7", $output,$return_value););
             $destinationPath = storage_path() . '//assignments//'.$thisass.'//input//';
             $file->move($destinationPath, $filename);
              $final6 = $destinationPath.'//'.$filename;        
-            exec("dos2unix  $final6", $output,$return_value););
+            exec("dos2unix  $final6", $output,$return_value);
         }
        	$final7="";
        // $postData = $request->all();
@@ -638,7 +638,7 @@ exec("dos2unix  $final7", $output,$return_value););
             $destinationPath = storage_path() . '//assignments//'.$thisass.'//input//';
             $file->move($destinationPath, $filename);
              $final7 = $destinationPath.'//'.$filename;    
-exec("dos2unix  $final7", $output,$return_value););
+exec("dos2unix  $final7", $output,$return_value);
         }
         $final8="";
         //$postData = $request->all();
