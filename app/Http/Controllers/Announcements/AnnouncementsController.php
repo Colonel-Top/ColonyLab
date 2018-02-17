@@ -65,6 +65,7 @@ class AnnouncementsController extends Controller
         return Validator::make($data, [
            'name' => 'required|max:40',
 			'create_by' =>   $this->user,
+			
         ]);
     }
 

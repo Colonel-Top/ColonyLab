@@ -17,6 +17,8 @@ class Announcements extends Migration
             $table->increments('id');
             $table->string("name");
             $table->string("create_by");
+            $table->string("live");
+            $table->string("endtime")->nullable();
             $table->string("courses_id")->index();
             $table->timestamps();
         });

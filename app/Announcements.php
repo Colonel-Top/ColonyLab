@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Announcements extends Model
 {
     //
-    protected $fillable = ['name','create_by',];
+    protected $fillable = ['name','create_by','live'];
    
   
     public function courses()
