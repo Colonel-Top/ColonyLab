@@ -129,6 +129,21 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+
+        #myProgress {
+    width: 100%;
+    background-color: grey;
+}
+#myBar {
+    width: 10%;
+    height: 30px;
+    background-color: #4CAF50;
+    text-align: center; /* To center it horizontally (if you want) */
+    line-height: 30px; /* To center it vertically */
+    color: white; 
+}
+
         </style>
       
     </head>
@@ -164,6 +179,10 @@
                         </div>
                     </div>
                 </form>
+                <div id="myProgress">
+                  <div id="myBar">1%</div>
+                </div>
+
                 </div>
                 <button class="button" style="vertical-align:middle" >
                 <a href="{{ route('user.assignments.indexmy',$courseid) }}"><span> Go Back  </span></button></a>
@@ -235,6 +254,22 @@
 
         //setInterval( draw, 35 );
         setInterval( draw, 44 );
+
+
+       function move() {
+    var elem = document.getElementById("myBar"); 
+    var width = 10;
+    var id = setInterval(frame, 10);
+    function frame() {
+        if (width >= 100) {
+            clearInterval(id);
+        } else {
+            width++; 
+            elem.style.width = width + '%'; 
+            elem.innerHTML = width * 1 + '%';
+        }
+    }
+}
 
         </script>
     </body>
