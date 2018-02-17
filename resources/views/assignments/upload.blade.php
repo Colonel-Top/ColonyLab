@@ -129,6 +129,31 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
+
+
+            /* Button Zonrr */
+            .upload-btn-wrapper {
+  position: relative;
+  overflow: hidden;
+  display: inline-block;
+}
+
+.btn {
+  border: 2px solid gray;
+  color: gray;
+  background-color: white;
+  padding: 8px 20px;
+  border-radius: 8px;
+  font-size: 20px;
+  font-weight: bold;
+}
+
+.upload-btn-wrapper input[type=file] {
+  font-size: 100px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  opacity: 0;
         </style>
       
     </head>
@@ -156,7 +181,12 @@
                          {{ csrf_field() }} 
                  <input type="hidden" name="id" id="id" class="form-control" required value="{{$asn->id}}">
                  <br>
-                <input class="field" id = "users_ans" name="users_ans" type="file" required>
+<div class="upload-btn-wrapper">
+  <button class="btn">Upload a file</button>
+    <input class="field" id = "users_ans" name="users_ans" type="file" required>
+</div>
+              
+
                 <div class="form-group">
                     <br>
                         <div class="col-sm-offset-3 col-sm-10">

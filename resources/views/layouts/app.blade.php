@@ -173,12 +173,6 @@
 
 }
 
-
-
-/*Loadding Zone */
-.js div#preloader { position: fixed; left: 0; top: 0; z-index: 999; width: 100%; height: 100%; overflow: visible; background: #333 url('http://files.mimoymima.com/images/loading.gif') no-repeat center center; }
-
-
     </style>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
@@ -191,7 +185,7 @@
     z-index: 0;
     
 ">
-<div id="preloader"></div>
+
     <div id="app">
         <nav class="navbar navbar-inverse navbar-static-top boldandwhiteplz">
             <div class="container ">
@@ -340,16 +334,6 @@
          <script src="//www.kirupa.com/js/fallingsnow_v6.js"></script>
         <script src="//www.kirupa.com/js/prefixfree.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
-    <script> 
-        jQuery(document).ready(function($) {  
-
-// site preloader -- also uncomment the div in the header and the css style for #preloader
-$(window).load(function(){
-    $('#preloader').fadeOut('slow',function(){$(this).remove();});
-});
-
-});
-    </script>
      <footer class="footer-distributed">
 
             <div class="footer-right">
