@@ -538,6 +538,7 @@ exec("dos2unix  $final7", $output,$return_value);
 		]);
 
 		$deleteold = Assignments::FindOrFail($request->idc);
+		$thisass = $request->idc;
 		if(file_exists($request->fname))
 			unlink($deleteold->fpath);
 		$checkregis = $request['allow_send'];
@@ -559,6 +560,7 @@ exec("dos2unix  $final7", $output,$return_value);
 			$request['enddate'] = date('Y-m-d H:i:s', strtotime("$request->enddate $request->endtime"));
 		*/
 		//print_r($request->createby);
+
 		$final =$request->oldpass;
 		$postData = $request->all();
 		if ($file = $request->hasFile('fpath')) 
