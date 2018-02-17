@@ -129,114 +129,10 @@
             .m-b-md {
                 margin-bottom: 30px;
             }
-
-
-
-
-
-
-
-             { -webkit-box-sizing: border-box; box-sizing: border-box; }
-
-html, body {
-    height: 100%;
-  background: @color-dark;
-}
-
-.hwa() {
-    -webkit-transform: translate3d(0, 0, 0);
-    -moz-transform: translate3d(0, 0, 0);
-    transform: translate3d(0, 0, 0);
-}
-
-@color-dark: #151515;
-@color-grey: #858484;
-@color-gold: #e5e2d9;
-@color-brown: #a7a190;
-
-#pagetransition {
-    position: fixed;
-    top: 0;
-    z-index: 999;
-    width: 100%;
-    height: 100%;
-    .hwa();
-}
-
-#bg {
-    position: fixed;
-    top: 0;
-    z-index: 1;
-    width: 100%;
-    height: 100%;
-    background: url(http://voice-vic.cust.good-morning.no/wp-content/uploads/2013/05/03U0096.jpg) no-repeat center center fixed;
-    background-size: cover;
-
-}
-
-.square {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  .hwa();
-}
-
-.square.black {
-  background: @color-dark;
-  top: -50%;
-  left: -20%;
-  z-index: 3;
-}
-
-.square.white {
-  background: #fff;
-  height: 200%;
-  right: -50%;
-  top: -130%;
-  z-index: 5;
-}
-
-.square.gold {
-  background: @color-gold;
-  right: -20%;
-  bottom: -50%;
-  z-index: 4;
-}
-
-.square.grey {
-  background: @color-grey;
-  height: 200%;
-  left: -50%;
-  bottom: -130%;
-  z-index: 4;
-}
-
-.vic-gb {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-  margin-top: -196px/2;
-  margin-left: -287px/2;
-    z-index: 999;
-    width: 287px;
-    height: 196px;
-    background: url(https://s.cdpn.io/40480/vic-gathering-brands-emblem.png) ;
-
-}
         </style>
       
     </head>
     <body>
-        <div id="pagetransition">
-  <div class="square black"></div>
-  <div class="square white"></div>
-  <div class="square gold"></div>
-  <div class="square grey"></div>
-  
-  <div class="vic-gb"></div>
-</div>
-
-<div id="bg"></div>
 
     <div class = "fixed"><canvas id="c" width="1366" height="1366"></canvas></div>
 
@@ -339,31 +235,6 @@ html, body {
 
         //setInterval( draw, 35 );
         setInterval( draw, 44 );
-
-
-
-
-var config = {}; 
-config.window = $(window);
-config.wWidth = config.window.width();
-config.wHeight = config.window.height();
-
-config.t = 1;
-config.t2 = 3;
-config.e = Power2.easeOut;
-config.e2 = Power2.easeIn;
-
-config.pageTrans = new TimelineMax({repeat:-1, repeatDelay: 0, yoyo:true});
-
-config.pageTrans
-.fromTo('.white',config.t, { x: config.wWidth/2 }, { x: 0, ease: config.e}, "f")
-.fromTo('.grey',config.t, { x: -config.wWidth/2 }, { x: 0, ease: config.e}, "f")
-.fromTo('.black',config.t, { y: -config.wHeight }, { y: 0, ease: config.e}, "f")
-.fromTo('.gold',config.t, { y: config.wHeight }, { y: 0, ease: config.e}, "f")
-.fromTo('.grey', config.t2, { y: 0 }, { y: -config.wHeight/2, ease: config.e2}, "f+=.8")
-.fromTo('.white', config.t2, { y: 0 }, { y: config.wHeight/2, ease: config.e2}, "f+=.8")
-.fromTo('#pagetransition', 2.5, { rotation: 0 }, { rotation: 10, ease: config.e}, "f")
-.fromTo('.vic-gb', .8, { rotation: 0, scale: 0 }, { rotation: -10, scale: 1, ease: Back.easeOut}, "f+=.6")
 
         </script>
     </body>

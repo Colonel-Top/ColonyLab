@@ -173,6 +173,327 @@
 
 }
 
+/**Loading Zone **/
+
+
+.cont {
+    position: absolute;
+    top: 50%;
+    margin-top: -50px;
+/* half of #content height*/
+    left: 50%;
+    margin-left: -50px;
+    width: 105px;
+    height: 105px;
+}
+
+.square {
+    width: 100px;
+    height: 5px;
+    -webkit-animation: desno 1s infinite;
+            animation: desno 1s infinite;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+}
+
+.square2 {
+    width: 5px;
+    height: 100px;
+    opacity: 0;
+    -webkit-animation: desno2  1s infinite;
+            animation: desno2  1s infinite;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+}
+
+.square3 {
+    width: 100px;
+    height: 5px;
+    margin-top: 100px;
+    opacity: 0;
+    -webkit-animation: desno3  1s infinite;
+            animation: desno3  1s infinite;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+}
+
+.square4 {
+    width: 5px;
+    height: 100px;
+    margin-left: 100px;
+    margin-top: 0px;
+    opacity: 0;
+    -webkit-animation: desno3  1s infinite;
+            animation: desno3  1s infinite;
+    -webkit-animation-fill-mode: forwards;
+            animation-fill-mode: forwards;
+}
+
+.line {
+    border-radius: 2px;
+    background: #fff;
+    position: absolute;
+}
+
+
+
+@-webkit-keyframes desno {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    80% {
+        -webkit-transform: rotate(95deg);
+        -ms-transform: rotate(95deg);
+        transform: rotate(95deg);
+        -webkit-transform-origin: bottom left;
+        -ms-transform-origin: bottom left;
+        transform-origin: bottom left;
+    }
+
+    99.99% {
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+        -webkit-transform-origin: bottom left;
+        -ms-transform-origin: bottom left;
+        transform-origin: bottom left;
+        opacity: 0;
+    }
+}
+
+@keyframes desno {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    80% {
+        -webkit-transform: rotate(95deg);
+        -ms-transform: rotate(95deg);
+        transform: rotate(95deg);
+        -webkit-transform-origin: bottom left;
+        -ms-transform-origin: bottom left;
+        transform-origin: bottom left;
+    }
+
+    99.99% {
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+        -webkit-transform-origin: bottom left;
+        -ms-transform-origin: bottom left;
+        transform-origin: bottom left;
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes desno2 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+
+    80% {
+        -webkit-transform: rotate(95deg);
+        -ms-transform: rotate(95deg);
+        transform: rotate(95deg);
+        -webkit-transform-origin: bottom left;
+        -ms-transform-origin: bottom left;
+        transform-origin: bottom left;
+    }
+
+    99.99% {
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+        -webkit-transform-origin: bottom left;
+        -ms-transform-origin: bottom left;
+        transform-origin: bottom left;
+        opacity: 0;
+    }
+}
+
+@keyframes desno2 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+
+    80% {
+        -webkit-transform: rotate(95deg);
+        -ms-transform: rotate(95deg);
+        transform: rotate(95deg);
+        -webkit-transform-origin: bottom left;
+        -ms-transform-origin: bottom left;
+        transform-origin: bottom left;
+    }
+
+    99.99% {
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+        -webkit-transform-origin: bottom left;
+        -ms-transform-origin: bottom left;
+        transform-origin: bottom left;
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes desno3 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+
+    80% {
+        -webkit-transform: rotate(95deg);
+        -ms-transform: rotate(95deg);
+        transform: rotate(95deg);
+        -webkit-transform-origin: top right;
+        -ms-transform-origin: top right;
+        transform-origin: top right;
+    }
+
+    99.99% {
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+        -webkit-transform-origin: top right;
+        -ms-transform-origin: top right;
+        transform-origin: top right;
+        opacity: 0;
+    }
+}
+
+@keyframes desno3 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+        opacity: 1;
+    }
+
+    80% {
+        -webkit-transform: rotate(95deg);
+        -ms-transform: rotate(95deg);
+        transform: rotate(95deg);
+        -webkit-transform-origin: top right;
+        -ms-transform-origin: top right;
+        transform-origin: top right;
+    }
+
+    99.99% {
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+        -webkit-transform-origin: top right;
+        -ms-transform-origin: top right;
+        transform-origin: top right;
+        opacity: 0;
+    }
+}
+
+@-webkit-keyframes desno4 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    80% {
+        -webkit-transform: rotate(95deg);
+        -ms-transform: rotate(95deg);
+        transform: rotate(95deg);
+        -webkit-transform-origin: top right;
+        -ms-transform-origin: top right;
+        transform-origin: top right;
+    }
+
+    99.99% {
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+        -webkit-transform-origin: top right;
+        -ms-transform-origin: top right;
+        transform-origin: top right;
+        opacity: 0;
+        -webkit-animation: desno 0.5s;
+                animation: desno 0.5s;
+    }
+}
+
+@keyframes desno4 {
+    0% {
+        -webkit-transform: rotate(0deg);
+        -ms-transform: rotate(0deg);
+        transform: rotate(0deg);
+    }
+
+    80% {
+        -webkit-transform: rotate(95deg);
+        -ms-transform: rotate(95deg);
+        transform: rotate(95deg);
+        -webkit-transform-origin: top right;
+        -ms-transform-origin: top right;
+        transform-origin: top right;
+    }
+
+    99.99% {
+        opacity: 1;
+    }
+
+    100% {
+        -webkit-transform: rotate(90deg);
+        -ms-transform: rotate(90deg);
+        transform: rotate(90deg);
+        -webkit-transform-origin: top right;
+        -ms-transform-origin: top right;
+        transform-origin: top right;
+        opacity: 0;
+        -webkit-animation: desno 0.5s;
+                animation: desno 0.5s;
+    }
+}
+
+
     </style>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
@@ -185,6 +506,13 @@
     z-index: 0;
     
 ">
+<div class="cont">
+<div class="line square"></div>
+<div class="line square2"></div>
+<div class="line square3"></div>
+<div class="line square4"></div>
+    
+</div>
 
     <div id="app">
         <nav class="navbar navbar-inverse navbar-static-top boldandwhiteplz">
