@@ -131,29 +131,36 @@
             }
 
 
-            /* Button Zonrr */
-            .upload-btn-wrapper {
-  position: relative;
-  overflow: hidden;
-  display: inline-block;
+            .file-upload {
+    position: relative;
+    display: inline-block;
 }
 
-.btn {
-  border: 2px solid gray;
-  color: gray;
-  background-color: white;
-  padding: 8px 20px;
-  border-radius: 8px;
-  font-size: 20px;
-  font-weight: bold;
+.file-upload__label {
+  display: block;
+  padding: 1em 2em;
+  color: #fff;
+  background: #222;
+  border-radius: .4em;
+  transition: background .3s;
+  
+  &:hover {
+     cursor: pointer;
+     background: #000;
+  }
 }
-
-.upload-btn-wrapper input[type=file] {
-  font-size: 100px;
-  position: absolute;
-  left: 0;
-  top: 0;
-  opacity: 0;
+    
+.file-upload__input {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    font-size: 1;
+    width:0;
+    height: 100%;
+    opacity: 0;
+}
         </style>
       
     </head>
@@ -181,12 +188,14 @@
                          {{ csrf_field() }} 
                  <input type="hidden" name="id" id="id" class="form-control" required value="{{$asn->id}}">
                  <br>
-<div class="upload-btn-wrapper">
-  <button class="btn">Upload a file</button>
-    <input class="field" id = "users_ans" name="users_ans" type="file" required>
-</div>
-              
 
+                
+
+
+                <div class="file-upload">
+    <label for="upload" class="file-upload__label">Upload File</label>
+   <input class="field" id = "users_ans" name="users_ans" type="file" required>
+</div>
                 <div class="form-group">
                     <br>
                         <div class="col-sm-offset-3 col-sm-10">
