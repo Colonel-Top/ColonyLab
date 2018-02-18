@@ -223,16 +223,16 @@
 .loaded #loader-wrapper .loader-section.section-right,
 .loaded #loader-wrapper .loader-section.section-left {
  
-    -webkit-transition: all 0.3s 0.3s ease-out; 
-            transition: all 0.3s 0.3s ease-out;
+    -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000); 
+                transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
 }
 .loaded #loader-wrapper {
         -webkit-transform: translateY(-100%);
             -ms-transform: translateY(-100%);
                 transform: translateY(-100%);
  
-        -webkit-transition: all 0.3s 0.6s ease-out; 
-                transition: all 0.3s 0.6s ease-out;
+        -webkit-transition: all 0.3s 1s ease-out; 
+                transition: all 0.3s 1s ease-out;
 }
 /*Loading Zone */
     </style>
@@ -411,7 +411,7 @@ $('body').toggleClass('loaded');
     setTimeout(function(){
         $('body').addClass('loaded');
         $('h1').css('color','#222222');
-    }, 3000);
+    }, 2000);
  
 });</script>
      <footer class="footer-distributed">
