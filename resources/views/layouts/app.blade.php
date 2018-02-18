@@ -190,8 +190,8 @@
 #box {
   width: 50px;
   height: 50px;
-  background: #fff;
-  animation: animate .5s linear infinite;
+  background: #23f1f1;
+  animation: animate 1s linear infinite;
   position: absolute;
   top: 0;
   left: 0;
@@ -217,7 +217,7 @@
   top: 59px;
   left: 0;
   border-radius: 50%;
-  animation: shadow .5s linear infinite;
+  animation: shadow 1s linear infinite;
   z-index: 999;
 }
 @keyframes shadow {
@@ -257,7 +257,9 @@ h4 {
   <div id="shadow"></div>
   <div id="box"></div>
 </div>
-    <div id="app">
+    <div id="app" style="
+    visibility: hidden;
+">
         <nav class="navbar navbar-inverse navbar-static-top boldandwhiteplz">
             <div class="container ">
                   <p class="snowflake">
@@ -402,14 +404,14 @@ h4 {
 var myVar;
 
 function myFunction() {
-    myVar = setTimeout(showPage, 1200);
+    myVar = setTimeout(showPage, 3000);
 }
 
 function showPage() {
     document.getElementById("loader").style.display = "none";
   document.getElementById("box").style.display = "none";
   document.getElementById("shadow").style.display = "none";
- // document.getElementById("app").style.display = "block";
+  document.getElementById("app").visibility = "visible";
 }
 </script>
 
