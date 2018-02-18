@@ -191,7 +191,7 @@
   width: 50px;
   height: 50px;
   background: #3097d1;
-  animation: animate .25s linear infinite;
+  animation: animate .4s linear infinite;
   position: absolute;
   top: 0;
   left: 0;
@@ -217,7 +217,7 @@
   top: 59px;
   left: 0;
   border-radius: 50%;
-  animation: shadow .25s linear infinite;
+  animation: shadow .4s linear infinite;
   z-index: 999;
 }
 @keyframes shadow {
@@ -406,7 +406,7 @@ var myVar;
 function myFunction() {
     $(document).ready(function(){
 // your code
- myVar = setTimeout(showPage, 1000);
+ myVar = setTimeout(showPage, 100);
 });
    
 }
