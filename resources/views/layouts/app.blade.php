@@ -190,8 +190,8 @@
 #box {
   width: 50px;
   height: 50px;
-  background: #23f1f1;
-  animation: animate 1s linear infinite;
+  background: #3097d1;
+  animation: animate .25s linear infinite;
   position: absolute;
   top: 0;
   left: 0;
@@ -217,7 +217,7 @@
   top: 59px;
   left: 0;
   border-radius: 50%;
-  animation: shadow 1s linear infinite;
+  animation: shadow .25s linear infinite;
   z-index: 999;
 }
 @keyframes shadow {
@@ -404,7 +404,11 @@ h4 {
 var myVar;
 
 function myFunction() {
-    myVar = setTimeout(showPage, 1200);
+    $(document).ready(function(){
+// your code
+ myVar = setTimeout(showPage, 1);
+});
+   
 }
 
 function showPage() {
