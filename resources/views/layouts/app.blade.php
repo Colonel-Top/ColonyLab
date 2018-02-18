@@ -172,89 +172,91 @@
     background-size: cover;
 
 }
-
-/* Loading Zoone*/
-
-
-#loader-wrapper .loader-section {
-    position: fixed;
-    top: 0;
-    width: 51%;
-    height: 100%;
-    background: #222222;
-    z-index: 1000;
-}
- 
-#loader-wrapper .loader-section.section-left {
-    left: 0;
-}
- 
-#loader-wrapper .loader-section.section-right {
-    right: 0;
-}
-
+/* Loading */
 #loader {
-    z-index: 1001; /* anything higher than z-index: 1000 of .loader-section */
+  /* Uncomment this to make it run! */
+  /*
+     animation: loader 5s linear infinite; 
+  */
+  z-index: 1001;
+  position: absolute;
+  top: calc(50% - 20px);
+  left: calc(50% - 20px);
 }
-/* Loaded */
-.loaded #loader-wrapper .loader-section.section-left {
-    -webkit-transform: translateX(-100%);  /* Chrome, Opera 15+, Safari 3.1+ */
-    -ms-transform: translateX(-100%);  /* IE 9 */
-    transform: translateX(-100%);  /* Firefox 16+, IE 10+, Opera */
+@keyframes loader {
+  0% { left: -100px }
+  100% { left: 110%; }
 }
- 
-.loaded #loader-wrapper .loader-section.section-right {
-    -webkit-transform: translateX(100%);  /* Chrome, Opera 15+, Safari 3.1+ */
-    -ms-transform: translateX(100%);  /* IE 9 */
-    transform: translateX(100%);  /* Firefox 16+, IE 10+, Opera */
+#box {
+  width: 50px;
+  height: 50px;
+  background: #fff;
+  animation: animate .5s linear infinite;
+  position: absolute;
+  top: 0;
+  left: 0;
+  border-radius: 3px;
+  z-index: 1000;
 }
-.loaded #loader {
-    opacity: 0;
+@keyframes animate {
+  17% { border-bottom-right-radius: 3px; }
+  25% { transform: translateY(9px) rotate(22.5deg); }
+  50% {
+    transform: translateY(18px) scale(1,.9) rotate(45deg) ;
+    border-bottom-right-radius: 40px;
+  }
+  75% { transform: translateY(9px) rotate(67.5deg); }
+  100% { transform: translateY(0) rotate(90deg); }
+} 
+#shadow { 
+  width: 50px;
+  height: 5px;
+  background: #000;
+  opacity: 0.1;
+  position: absolute;
+  top: 59px;
+  left: 0;
+  border-radius: 50%;
+  animation: shadow .5s linear infinite;
+  z-index: 999;
 }
-.loaded #loader-wrapper {
-    visibility: hidden;
+@keyframes shadow {
+  50% {
+    transform: scale(1.2,1);
+  }
 }
 
-.loaded #loader {
-    opacity: 0;
-    -webkit-transition: all 0.3s ease-out; 
-            transition: all 0.3s ease-out;
+
+body {
+  background: #6997DB; 
+  overflow: hidden;
 }
-.loaded #loader-wrapper .loader-section.section-right,
-.loaded #loader-wrapper .loader-section.section-left {
- 
-    -webkit-transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000); 
-                transition: all 0.7s 0.3s cubic-bezier(0.645, 0.045, 0.355, 1.000);
+h4 {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  margin: 0;
+  font-weight: 200;
+  opacity: .5;
+    font-family: sans-serif;
+  color: #fff;
 }
-.loaded #loader-wrapper {
-        -webkit-transform: translateY(-100%);
-            -ms-transform: translateY(-100%);
-                transform: translateY(-100%);
- 
-        -webkit-transition: all 0.3s 1s ease-out; 
-                transition: all 0.3s 1s ease-out;
-}
-/*Loading Zone */
     </style>
     <link href="http://maxcdn.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.5.2/animate.min.css">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
-<body  class = "loaded" style = "
+<body onload="myFunction()" style = "
     background-image: url('/background-mountain.jpg');
      background-image: url('/pexels-photo-512875.jpeg');
       /*  background-size: cover;*/
     z-index: 0;
     
 ">
-<div id="loader-wrapper">
-    <div id="loader"></div>
- 
-    <div class="loader-section section-left"></div>
-    <div class="loader-section section-right"></div>
- 
+<div id="loader">
+  <div id="shadow"></div>
+  <div id="box"></div>
 </div>
-
     <div id="app">
         <nav class="navbar navbar-inverse navbar-static-top boldandwhiteplz">
             <div class="container ">
@@ -396,6 +398,20 @@
          
     </div>
 
+<script>
+var myVar;
+
+function myFunction() {
+    myVar = setTimeout(showPage, 1200);
+}
+
+function showPage() {
+    document.getElementById("loader").style.display = "none";
+  document.getElementById("box").style.display = "none";
+  document.getElementById("shadow").style.display = "none";
+ // document.getElementById("app").style.display = "block";
+}
+</script>
 
 
     <!-- Scripts -->
@@ -403,17 +419,6 @@
          <script src="//www.kirupa.com/js/fallingsnow_v6.js"></script>
         <script src="//www.kirupa.com/js/prefixfree.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
-
-<script type="text/javascript">
-$('body').toggleClass('loaded');
-    $(document).ready(function() {
- 
-    setTimeout(function(){
-        $('body').addClass('loaded');
-        $('h1').css('color','#222222');
-    }, 2000);
- 
-});</script>
      <footer class="footer-distributed">
 
             <div class="footer-right">
