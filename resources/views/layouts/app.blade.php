@@ -406,7 +406,7 @@ var myVar;
 function myFunction() {
     $(document).ready(function(){
 // your code
- myVar = setTimeout(showPage, 1);
+ myVar = setTimeout(showPage, 1000);
 });
    
 }
