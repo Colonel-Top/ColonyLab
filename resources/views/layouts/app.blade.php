@@ -404,14 +404,14 @@ h4 {
 var myVar;
 
 function myFunction() {
-    myVar = setTimeout(showPage, 3000);
+    myVar = setTimeout(showPage, 1200);
 }
 
 function showPage() {
     document.getElementById("loader").style.display = "none";
   document.getElementById("box").style.display = "none";
   document.getElementById("shadow").style.display = "none";
-  document.getElementById("app").visibility = "visible";
+  document.getElementById("app").style.visibility = "visible";
 }
 </script>
 
