@@ -227,10 +227,7 @@
 }
 
 
-body {
-  background: #6997DB; 
-  overflow: hidden;
-}
+
 h4 {
   position: absolute;
   bottom: 20px;
