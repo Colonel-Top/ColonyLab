@@ -250,7 +250,7 @@ h4 {
     background-image: url('/background-mountain.jpg');
      background-image: url('/pexels-photo-512875.jpeg');
       /*  background-size: cover;*/
-    z-index: 0;
+  
     
 ">
 <div id="loader">
