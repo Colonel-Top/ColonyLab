@@ -90,7 +90,8 @@
                        
                          
                             <tr>
-                               COMING SOON
+                               Announcement: Now You can access "plab.colonel-tech.com" from anywhere even from faculty! <br>
+                               *Note: programming.engr.tu.ac.th/plab can access only from Engineering Faculty
                               </tr>
 
                          <!--     
@@ -115,11 +116,11 @@
                          
                      @endforeach
                  -->
-                 <div class="load-bar">
+               <!--  <div class="load-bar">
                       <div class="bar"></div>
                       <div class="bar"></div>
                       <div class="bar"></div>
-                    </div>
+                    </div>-->
                     </tbody>
                     
                     </table>
