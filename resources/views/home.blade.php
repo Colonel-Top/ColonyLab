@@ -41,63 +41,7 @@
     33.3333% {left: 0; width: 100%;z-index: 10;}
     to {left: 0; width: 100%;}
 }
-/*Warning Zone*/
 
-.warn,
-.warn::before,
-.warn::after
-{
-  position: relative;
-  padding: 0;
-  margin: 0;
-}
-
-.warn {
-  font-size: 36px;
-  color: transparent;
-}
-
-.warn.warning {
-  display: inline-block;
-
-  top: 0.225em;
-
-  width: 1.15em;
-  height: 1.15em;
-
-  overflow: hidden;
-  border: none;
-  background-color: transparent;
-  border-radius: 0.625em;
-}
-
-.warn.warning::before {
-  content: "";
-  display: block;
-  top: -0.08em;
-  left: 0.0em;
-  position: absolute;
-  border: transparent 0.6em solid;
-  border-bottom-color: #fd3;
-  border-bottom-width: 1em;
-  border-top-width: 0;
-  box-shadow: #999 0 1px 1px;
-}
-
-.warn.warning::after {
-  display: block;
-  position: absolute;
-  top: 0.3em;
-  left: 0;
-  width: 100%;
-  padding: 0 1px;
-  text-align: center;
-  font-family: "Garamond";
-  content: "!";
-  font-size: 0.65em;
-  font-weight: bold;
-  color: #333;
-}
 </style>
 <div class="container">
     <div class="row">
@@ -144,14 +88,9 @@
                     </thead>-->
  <tbody>
                        
-                         <div 
-<span style="height:30px;"></span>
-</div>
-
-<div style=" display:block;"><i class="huge warning sign yellow icon"></i></div>
-
+                         
                             <tr>
-                               Announcement: Now You can access "plab.colonel-tech.com" from anywhere even from faculty! <br>
+                               ⚠ Announcement: Now You can access "plab.colonel-tech.com" from anywhere even from faculty! <br>
                                *Note: programming.engr.tu.ac.th/plab can access only from Engineering Faculty
                               </tr>
 
