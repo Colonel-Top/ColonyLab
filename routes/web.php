@@ -26,7 +26,7 @@ Auth::routes();
 //WASTED ROUTE
 
 //WASTED ROUTE
-Route::get('aboutlab','HomeController@aboutlab')->name('aboutlab');
+Route::get('aboutlab','LoginController@aboutlab')->name('aboutlab');
 Route::get('/home', 'HomeController@index')->name('dashboard');
 Route::get('/users/logout','Auth\LoginController@userLogout')->name('user.logout');
 

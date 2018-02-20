@@ -25,6 +25,10 @@ class LoginController extends Controller
      *
      * @var string
      */
+     public function aboutlab()
+    {
+        return view('about');
+    }
     public function showLoginForm()
     {
         return view('auth.login');

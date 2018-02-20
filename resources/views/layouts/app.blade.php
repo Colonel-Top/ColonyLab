@@ -292,7 +292,7 @@ h4 {
 
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
-                     
+                             <a href="{{route('aboutlab')}}">About Lab</a>
                             
                         @elseif(Auth::guard('admin')->check())
                            
@@ -401,6 +401,7 @@ h4 {
 var myVar;
 
 function myFunction() {
+
     $(document).ready(function(){
 // your code
  myVar = setTimeout(showPage, 100);
