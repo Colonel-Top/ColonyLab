@@ -397,25 +397,6 @@ h4 {
          
     </div>
 
-<script>
-var myVar;
-
-function myFunction() {
-
-    $(document).ready(function(){
-// your code
- myVar = setTimeout(showPage, 100);
-});
-   
-}
-
-function showPage() {
-    document.getElementById("loader").style.display = "none";
-  document.getElementById("box").style.display = "none";
-  document.getElementById("shadow").style.display = "none";
-  document.getElementById("app").style.visibility = "visible";
-}
-</script>
 
 
     <!-- Scripts -->
@@ -423,7 +404,7 @@ function showPage() {
          <script src="//www.kirupa.com/js/fallingsnow_v6.js"></script>
         <script src="//www.kirupa.com/js/prefixfree.min.js"></script>
     <script src="{{ asset('js/app.js') }}"></script>
-     <footer class="footer-distributed">
+     <footer class="footer-distributed" style = "visibility: hidden;">
 
             <div class="footer-right">
 
@@ -450,5 +431,25 @@ function showPage() {
 
         </footer>
         
+<script>
+var myVar;
+
+function myFunction() {
+
+    $(document).ready(function(){
+// your code
+ myVar = setTimeout(showPage, 100);
+});
+   
+}
+
+function showPage() {
+    document.getElementById("loader").style.display = "none";
+  document.getElementById("box").style.display = "none";
+  document.getElementById("shadow").style.display = "none";
+  document.getElementById("app").style.visibility = "visible";
+  document.getElementById("footer-distributed").style.visibility = "visible";
+}
+</script>
 </body>
 </html>
