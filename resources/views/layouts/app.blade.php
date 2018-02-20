@@ -292,7 +292,7 @@ h4 {
 
                             <li><a href="{{ route('login') }}">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
-                             <a href="{{route('aboutlab')}}">About Lab</a>
+                            <li> <a href="{{route('aboutlab')}}">About Lab</a>
                             
                         @elseif(Auth::guard('admin')->check())
                            
