@@ -216,7 +216,9 @@
                        <!--  <a href="{{ route('login') }}">Login</a>
                         <a href="{{ route('register') }}">Register</a> -->
                     @endauth
-                     <a href="{{route('aboutlab')}}">About Lab</a>
+                    <a href="{{route('admin.login')}}">COL Panel</a>
+                    <a href="{{route('aboutlab')}}">About Lab</a>
+                    <a href="colonel-tech.com">Developer Site</a>
                 </div>
             @endif
 

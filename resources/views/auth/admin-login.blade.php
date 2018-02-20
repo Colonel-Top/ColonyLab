@@ -26,7 +26,7 @@ body{
 	height: auto;
 
 	/**background-image: url("	http://kpopwallpaper.pannturkey.com/wp-content/uploads/2017/03/bts-young-forever-wallpaper.png"); */
-	background-image: url("http://plab.colonel-tech.com/713729.png"); 
+	background-image: url("http://plab.colonel-tech.com/713729.jpg"); 
 	opacity: 1;
 	background-size: cover;
 	-webkit-filter: blur(3px);
