@@ -434,10 +434,6 @@ h4 {
 <script>
 var myVar;
 
-function myFunction2()
-{
-    setTimeout(showPage,5000);
-}
 function myFunction() {
 
     $(document).ready(function(){

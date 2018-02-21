@@ -200,7 +200,7 @@ h4 {
 }
         </style>
 
-       <!-- <script>
+        <script>
 
             function setup()
             {
@@ -218,9 +218,13 @@ h4 {
                     //document.getElementById("app").style.visibility = "visible";
                 }
             }
-        </script>-->
+        </script>
     </head>
- 
+    <body onload = "setup()">
+<div id="loader">
+  <div id="shadow"></div>
+  <div id="box"></div>
+</div>
     <div class = "fixed"><canvas id="c" width="1366" height="1366"></canvas></div>
 
 <div class="flex-center position-ref full-height">
