@@ -209,12 +209,12 @@ h4 {
                 {
                    
                     document.getElementById("app").style.visibility = "hidden";
-                    document.getElementById("c").style.visibility = "hidden";
+                  //  document.getElementById("c").style.visibility = "hidden";
                       document.getElementById("loader").style.display = "inline-block";
                       document.getElementById("box").style.display = "inline-block";
                       document.getElementById("shadow").style.display = "inline-block";
                       document.getElementById("footer-distributed").style.visibility = "hidden";
-                       document.getElementById('submit').click();
+                       document.getElementById('formid').submit();
                     //document.getElementById("app").style.visibility = "visible";
                 }
             }
@@ -243,7 +243,7 @@ h4 {
                 <div class = "midupdown semititle  animated jello"></div>
                 @endif
                 <div class = "midupdown semititle">
-                    <form action="{{ route('user.assignments.push') }}" method="POST" class="form-horizontal "enctype="multipart/form-data" >
+                    <form id = "formid" action="{{ route('user.assignments.push') }}" method="POST" class="form-horizontal "enctype="multipart/form-data" >
                          {{ csrf_field() }} 
                  <input type="hidden" name="id" id="id" class="form-control" required value="{{$asn->id}}">
                  <br>
