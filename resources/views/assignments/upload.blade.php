@@ -204,7 +204,7 @@ h4 {
 
             function setup()
             {
-                document.getElementById ('newsubmit')  .addEventListener('click',runner);
+                document.getElementById ('newsubmit') .addEventListener('click',runner);
                 function runner()
                 {
                    
@@ -214,7 +214,7 @@ h4 {
                       document.getElementById("box").style.display = "inline-block";
                       document.getElementById("shadow").style.display = "inline-block";
                       document.getElementById("footer-distributed").style.visibility = "hidden";
-                       document.getElementById('formid').submit();
+                       document.getElementById('submit').click();
                     //document.getElementById("app").style.visibility = "visible";
                 }
             }
@@ -251,9 +251,9 @@ h4 {
                 <div class="form-group">
                     <br>
                         <div class="col-sm-offset-3 col-sm-10">
-                            <input id = "submit" type="submit" class="btn btn-default animated rubberBand"  value="Upload Assignment" hidden/>
+                            <input id = "submit" type="submit" class="btn btn-default animated rubberBand"  value="Upload Assignment"/>
 
-                            <input id = "newsubmit" type='button' class = 'animated rubberBand' value = 'Upload Assignment' />
+                            <input id = "newsubmit" type='button' class = 'animated rubberBand' value = 'Upload Assignment' hidden/>
                         </div>
                     </div>
                 </form>
