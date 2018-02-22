@@ -207,20 +207,20 @@
     <div class = "fixed"><canvas id="c" width="1366" height="1366"></canvas></div>
 
 <div class="flex-center position-ref full-height">
-            @if (Route::has('login'))
+           
                 <div class="top-right links">
 
-                    @auth
+                    <!--@auth
                         <a href="{{ url('/home') }}">Dashboard</a>
                     @else
-                       <!--  <a href="{{ route('login') }}">Login</a>
-                        <a href="{{ route('register') }}">Register</a> -->
-                    @endauth
+                       <!  <a href="{{ route('login') }}">Login</a>
+                        <a href="{{ route('register') }}">Register</a>
+                    @endauth -->
                     <a href="{{route('admin.login')}}">COL Panel</a>
                     <a href="{{route('aboutlab')}}">About Lab</a>
                     <a href="colonel-tech.com">Developer Site</a>
                 </div>
-            @endif
+
 
             <div class="content">
                 <div class="title m-b-md animated rubberBand">
@@ -239,8 +239,12 @@
                   
  <!--<div class ="semititle midupdown links"><a href="/admin">-</a></div>-->
                 <div class="links entersite animated jello">
-
+                    @if (Route::has('login'))
+            
                  <a a href="/home"><button  class = "butt js--triggerAnimation" >Enter Site</button></a>
+                 @else
+                 <a a href="/home"><button  class = "butt js--triggerAnimation" >My Dashboard</button></a>
+                 @endif
                 </div>
             </div>
 
