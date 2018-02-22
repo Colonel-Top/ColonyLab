@@ -220,7 +220,9 @@ h4 {
 ">
                     {{$asn->name}}
                 </div>
-                <div class = "midupdown semititle  animated jello">Language : {{$asn->language}}</div>
+                <div class = "midupdown semititle  animated jello" style="
+    font-weight:  200;
+">Language : {{$asn->language}}</div>
                 @if($asn->max_attempts != 0)
                 <div class = "midupdown semititle  animated jello">Oops Limited Max Attempts : {{$asn->max_attempts}}</div>
                 @else
