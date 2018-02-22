@@ -204,9 +204,8 @@ h4 {
 
             function setup()
             {
-                document.getElementById ('submit') .addEventListener('click',runner);
-                function runner()
-                {
+               
+               
                    
                     document.getElementById("app").style.visibility = "hidden";
                     document.getElementById("c").style.visibility = "hidden";
@@ -216,7 +215,7 @@ h4 {
                       document.getElementById("footer-distributed").style.visibility = "hidden";
                        //document.getElementById('submit').click();
                     //document.getElementById("app").style.visibility = "visible";
-                }
+                
             }
         </script>
     </head>
@@ -239,7 +238,7 @@ h4 {
                 <div class = "midupdown semititle  animated jello"></div>
                 @endif
                 <div class = "midupdown semititle">
-                    <form id = "formid" action="{{ route('user.assignments.push') }}" method="POST" class="form-horizontal "enctype="multipart/form-data" >
+                    <form id = "formid" onsubmit = "setup()" action="{{ route('user.assignments.push') }}" method="POST" class="form-horizontal "enctype="multipart/form-data" >
                          {{ csrf_field() }} 
                  <input type="hidden" name="id" id="id" class="form-control" required value="{{$asn->id}}">
                  <br>
