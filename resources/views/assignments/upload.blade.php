@@ -206,7 +206,7 @@ h4 {
             {
               // alert("The Files was submitted");
                    
-                    document.getElementById("app").style.visibility = "hidden";
+                    document.getElementById("content").style.visibility = "hidden";
                   //  document.getElementById("c").style.visibility = "hidden";
                       document.getElementById("loader").style.display = "inline-block";
                       document.getElementById("box").style.display = "inline-block";
@@ -220,7 +220,10 @@ h4 {
     </head>
  
     <div class = "fixed"><canvas id="c" width="1366" height="1366"></canvas></div>
-
+    <div id="loader">
+  <div id="shadow"></div>
+  <div id="box"></div>
+</div>
 <div class="flex-center position-ref full-height">
             
 
