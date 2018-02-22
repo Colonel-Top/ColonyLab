@@ -239,11 +239,12 @@
                   
  <!--<div class ="semititle midupdown links"><a href="/admin">-</a></div>-->
                 <div class="links entersite animated jello">
-                    @if (Route::has('login'))
+                @if (Route::has('login'))
             
-                 <a a href="/home"><button  class = "butt js--triggerAnimation" >Enter Site</button></a>
+                <a a href="/home"><button  class = "butt js--triggerAnimation" >My Dashboard</button></a>
                  @else
-                 <a a href="/home"><button  class = "butt js--triggerAnimation" >My Dashboard</button></a>
+                  <a a href="/home"><button  class = "butt js--triggerAnimation" >Enter Site</button></a>
+                 
                  @endif
                 </div>
             </div>
