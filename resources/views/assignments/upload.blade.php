@@ -208,9 +208,9 @@ h4 {
                    
                     document.getElementById("content").style.visibility = "hidden";
                   //  document.getElementById("c").style.visibility = "hidden";
-                      document.getElementById("loader").style.display = "inline-block";
-                      document.getElementById("box").style.display = "inline-block";
-                      document.getElementById("shadow").style.display = "inline-block";
+                      document.getElementById("loader").style.visibility = "visible";
+                      document.getElementById("box").style.visibility = "visible";
+                      document.getElementById("shadow").style.visibility = "visible";
                       document.getElementById("footer-distributed").style.visibility = "hidden";
                        //document.getElementById('submit').click();
                     //document.getElementById("app").style.visibility = "visible";
