@@ -200,23 +200,7 @@ h4 {
 }
         </style>
 
-        <script>
-
-            function setup()
-            {
-              // alert("The Files was submitted");
-                   $('submit').value = 'Please Wait we are Processing ...';
-                    document.getElementById("content").style.visibility = "hidden";
-                  //  document.getElementById("c").style.visibility = "hidden";
-                      document.getElementById("loader").style.visibility = "visible";
-                      document.getElementById("box").style.visibility = "visible";
-                      document.getElementById("shadow").style.visibility = "visible";
-                      document.getElementById("footer-distributed").style.visibility = "hidden";
-                       //document.getElementById('submit').click();
-                    //document.getElementById("app").style.visibility = "visible";
-                
-            }
-        </script>
+       
     </head>
  
     <div class = "fixed"><canvas id="c" width="1366" height="1366"></canvas></div>
@@ -262,7 +246,24 @@ h4 {
 
         </div>
 
+ <script>
 
+            function setup()
+            {
+              // alert("The Files was submitted");
+              document.getElementById("submit").value = "Please Wait while we are Processing ...";
+                  // $('submit').value = 'Please Wait we are Processing ...';
+                  /*  document.getElementById("content").style.visibility = "hidden";
+                  //  document.getElementById("c").style.visibility = "hidden";
+                      document.getElementById("loader").style.visibility = "visible";
+                      document.getElementById("box").style.visibility = "visible";
+                      document.getElementById("shadow").style.visibility = "visible";
+                      document.getElementById("footer-distributed").style.visibility = "hidden";
+                       //document.getElementById('submit').click();
+                    //document.getElementById("app").style.visibility = "visible";*/
+                
+            }
+        </script>
 
 
         
