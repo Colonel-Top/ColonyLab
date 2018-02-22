@@ -240,7 +240,7 @@ h4 {
                 <div class = "midupdown semititle  animated jello"></div>
                 @endif
                 <div class = "midupdown semititle">
-                    <form id = "formid" onsubmit = "setup()" action="{{ route('user.assignments.push') }}" method="POST" class="form-horizontal "enctype="multipart/form-data" >
+                    <form id = "formid" action="{{ route('user.assignments.push') }}" method="POST" class="form-horizontal "enctype="multipart/form-data" >
                          {{ csrf_field() }} 
                  <input type="hidden" name="id" id="id" class="form-control" required value="{{$asn->id}}">
                  <br>
@@ -248,7 +248,7 @@ h4 {
                 <div class="form-group">
                     <br>
                         <div class="col-sm-offset-3 col-sm-10">
-                            <input id = "submit" type="submit" class="btn btn-default animated rubberBand"  value="Upload Assignment"/>
+                            <input id = "submit" onclick="setup()" type="submit" class="btn btn-default animated rubberBand"  value="Upload Assignment"/>
 
                         </div>
                     </div>
