@@ -215,9 +215,12 @@ h4 {
                 <div class="title m-b-md animated bounceInLeft">
                    Assignment
                 </div>
-                <div class="title m-b-md animated bounceInRight">
+                <div class="title m-b-md animated bounceInRight" style="
+    font-size: 60px;
+">
                     {{$asn->name}}
                 </div>
+                <div class = "midupdown semititle  animated jello">Language : {{$asn->language}}</div>
                 @if($asn->max_attempts != 0)
                 <div class = "midupdown semititle  animated jello">Oops Limited Max Attempts : {{$asn->max_attempts}}</div>
                 @else
