@@ -238,7 +238,7 @@ h4 {
                     </div>
                 </form>
                 </div>
-                <button class="button" style="vertical-align:middle" >
+                <button class="button" style="vertical-align:middle; font-size: 20px; padding: 14px;" >
                 <a href="{{ route('user.assignments.indexmy',$courseid) }}"><span> Go Back  </span></button></a>
               <!--  <a class="button" href="{{ route('user.assignments.push',$asn->id) }} "><span> Upload Assignment </span></button>-->
 
