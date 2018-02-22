@@ -248,7 +248,7 @@ h4 {
                 <div class="form-group">
                     <br>
                         <div class="col-sm-offset-3 col-sm-10">
-                            <input id = "submit" onclick="setup()" type="submit" class="btn btn-default animated rubberBand"  value="Upload Assignment"/>
+                            <input id = "submit" onClick="setup()" type="submit" class="btn btn-default animated rubberBand"  value="Upload Assignment"/>
 
                         </div>
                     </div>
