@@ -252,6 +252,7 @@ h4 {
             {
               // alert("The Files was submitted");
               document.getElementById("submit").value = "Please Wait while we are Processing ...";
+              document.getElementById("submit").disabled = true;
                   // $('submit').value = 'Please Wait we are Processing ...';
                   /*  document.getElementById("content").style.visibility = "hidden";
                   //  document.getElementById("c").style.visibility = "hidden";
