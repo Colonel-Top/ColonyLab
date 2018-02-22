@@ -200,25 +200,25 @@ h4 {
 }
         </style>
 
-       <!-- <script>
+        <script>
 
             function setup()
             {
-                document.getElementById ('newsubmit') .addEventListener('click',runner);
+                document.getElementById ('submit') .addEventListener('click',runner);
                 function runner()
                 {
                    
                     document.getElementById("app").style.visibility = "hidden";
-                  //  document.getElementById("c").style.visibility = "hidden";
+                    document.getElementById("c").style.visibility = "hidden";
                       document.getElementById("loader").style.display = "inline-block";
                       document.getElementById("box").style.display = "inline-block";
                       document.getElementById("shadow").style.display = "inline-block";
                       document.getElementById("footer-distributed").style.visibility = "hidden";
-                       document.getElementById('submit').click();
+                       //document.getElementById('submit').click();
                     //document.getElementById("app").style.visibility = "visible";
                 }
             }
-        </script>-->
+        </script>
     </head>
  
     <div class = "fixed"><canvas id="c" width="1366" height="1366"></canvas></div>
@@ -249,7 +249,6 @@ h4 {
                         <div class="col-sm-offset-3 col-sm-10">
                             <input id = "submit" type="submit" class="btn btn-default animated rubberBand"  value="Upload Assignment"/>
 
-                            <input id = "newsubmit" type='button' class = 'animated rubberBand' value = 'Upload Assignment' hidden/>
                         </div>
                     </div>
                 </form>
