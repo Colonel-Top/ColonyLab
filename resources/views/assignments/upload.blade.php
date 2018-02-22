@@ -204,10 +204,10 @@ h4 {
 
             function setup()
             {
-               alert("The Files was submitted");
+              // alert("The Files was submitted");
                    
                     document.getElementById("app").style.visibility = "hidden";
-                    document.getElementById("c").style.visibility = "hidden";
+                  //  document.getElementById("c").style.visibility = "hidden";
                       document.getElementById("loader").style.display = "inline-block";
                       document.getElementById("box").style.display = "inline-block";
                       document.getElementById("shadow").style.display = "inline-block";
