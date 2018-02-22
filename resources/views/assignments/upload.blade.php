@@ -204,8 +204,7 @@ h4 {
 
             function setup()
             {
-               
-               
+               alert("The Files was submitted");
                    
                     document.getElementById("app").style.visibility = "hidden";
                     document.getElementById("c").style.visibility = "hidden";
