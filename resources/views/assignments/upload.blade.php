@@ -220,7 +220,7 @@ h4 {
     </head>
  
     <div class = "fixed"><canvas id="c" width="1366" height="1366"></canvas></div>
-    <div id="loader">
+    <div id="loader" style ="visibility: hidden;">
   <div id="shadow"></div>
   <div id="box"></div>
 </div>
