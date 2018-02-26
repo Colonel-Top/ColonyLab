@@ -53,7 +53,7 @@ class AdminController extends Controller
 	//	echo($enrollmentid);exit();
 		$courseinfo = Courses::FindOrFail($courseid);
 		//QUERU WRONG HERE
-		$data = DB::select("SELECT *,MAX(scores) as mscores FROM `assignment_work` WHERE enrollments_id = $enrollmentid GROUP BY assignments_id,enrollments_id ORder by scores ASC");
+		$data = DB::select("SELECT *,MAX(scores) as mscores FROM `assignment_work` WHERE enrollments_id = $enrollmentid GROUP BY assignments_id,enrollments_id ORder by created_at ASC");
 		$asn = Assignments::all();
 
 		return view('remarks.show',['data'=>$data,'asn'=>$asn,'course'=>$courseinfo]);
