@@ -33,7 +33,7 @@
                     @foreach($asn as $post)
                         <tr>
                             <td class="table-text">
-                                <div>{{$post->name}}</div>
+                                <div>{{$post->name}} : [{{$post->language}}]</div>
                             </td>
                             <td class="table-text">
                                 <div>{{$post->starttime}} </div>

@@ -26,7 +26,8 @@
                 <table class="table table-striped task-table">
                     <!-- Table Headings -->
                     <thead>
-                        <th width="40%">Assignment Name</th>
+                        <th width="20%">Assignment Name</th>
+                        <th width="20%">Language</th>
                         <th width="25%">Modified By</th>
                         <th width="15%">Created</th>
                         <th width="20%">Action</th>
@@ -38,6 +39,9 @@
                         <tr>
                             <td class="table-text">
                                 <div>{{$post->name}}</div>
+                            </td>
+                             <td class="table-text">
+                                <div>{{$post->language}}</div>
                             </td>
                             <td class="table-text">
                                 <div>{{$post->createby}} </div>
