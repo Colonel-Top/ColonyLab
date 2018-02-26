@@ -251,7 +251,13 @@ GROUP BY employeesub.pinid ',['id' => $id]);
     {
     	$asninfo = Assignments::FindOrFail($id);
     	$courseid = $asninfo->courses_id;
-    	$allenroll = count($courseid);
+    	try {
+			$courses = Courses::findOrFail($id);
+			$users = $courses->users;
+		} catch (ModelNotFoundException $e) {
+			App::error(404, 'Not found');
+		}
+    	$allenroll = count($users);
 		$data = DB::table('assignment_work')->select()->where('assignments_id',$id)->get();
 
 	//D OTH IS  FIRST !
