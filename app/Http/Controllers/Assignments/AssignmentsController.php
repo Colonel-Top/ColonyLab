@@ -250,6 +250,8 @@ GROUP BY employeesub.pinid ',['id' => $id]);
     public function maxscoreshow($id)
     {
     	$asninfo = Assignments::FindOrFail($id);
+    	$courseid = $asninfo->courses_id;
+    	$allenroll = count($courseid);
 		$data = DB::table('assignment_work')->select()->where('assignments_id',$id)->get();
 
 	//D OTH IS  FIRST !
@@ -272,7 +274,7 @@ GROUP BY employeesub.pinid ORDER BY pinid ASC',['id' => $id]);
 
 		$blah = Assignments::with('courses.users')->where('id',$asninfo->id)->get();
 	$amount = count($data);
-		return view('assignments.show',['asninfo'=>$asninfo,'data'=>$data,'userdetails'=>$blah,'amount'=>$amount]);
+		return view('assignments.show',['asninfo'=>$asninfo,'data'=>$data,'userdetails'=>$blah,'amount'=>$amount,'allenroll'=>$allenroll]);
     }
     public function showremark($id)
     {/* // Using the Query Builder

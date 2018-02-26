@@ -128,7 +128,7 @@
         <div class="row">
              <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
-                    <h2>Assignment [{{$amount}} Sent]</h2>
+                    <h2>Assignment [{{$amount}} Sent / {{$allenroll}}]</h2>
                 </div>
             </div>
             <div class="col-xs-12 col-sm-12 col-md-12">
