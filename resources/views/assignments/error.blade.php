@@ -188,7 +188,7 @@
     <style>
 
     .background-color {
-      background-color: #6355BC !important;
+      background-color: #c7c3e4 !important;
     }
 
 
