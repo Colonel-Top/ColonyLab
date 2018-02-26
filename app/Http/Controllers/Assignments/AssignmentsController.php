@@ -115,7 +115,16 @@ GROUP BY employeesub.pinid ',['id' => $id]);
 		//print_r($course->users());exit();	
 		//$blah = \App\User::all();
 		//dd($blah->courses->id);
-		return view('assignments.show',['asninfo'=>$asninfo,'data'=>$data,'userdetails'=>$blah,'amount'=>$amount]);
+		$courseid = $asninfo->courses_id;
+    	try {
+			$courses = Courses::findOrFail($courseid);
+			$users = $courses->users;
+		} catch (ModelNotFoundException $e) {
+			App::error(404, 'Not found');
+		}
+    	$allenroll = count($users);
+
+		return view('assignments.show',['asninfo'=>$asninfo,'data'=>$data,'userdetails'=>$blah,'amount'=>$amount,'allenroll'=>$allenroll]);
 	
 	}
 	public function detail($id,Response $response)
