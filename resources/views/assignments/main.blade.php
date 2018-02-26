@@ -22,7 +22,8 @@
                 <table class="table table-striped task-table animated fadeInUp">
                     <!-- Table Headings -->
                     <thead>
-                        <th width="30%">Assignment Name</th>
+                        <th width="20%">Assignment Name</th>
+                        <th width="10%">Language</th>
                         <th width="20%">Available at</th>
                         <th width="20%">End Date</th>
                         <th width="30%">Action</th>
@@ -33,8 +34,12 @@
                     @foreach($asn as $post)
                         <tr>
                             <td class="table-text">
-                                <div>{{$post->name}} : [{{$post->language}}]</div>
+                                <div>{{$post->name}}</div>
                             </td>
+                            <td class="table-text">
+                                <div>{{$post->language}}</div>
+                            </td>
+                           
                             <td class="table-text">
                                 <div>{{$post->starttime}} </div>
                             </td>
