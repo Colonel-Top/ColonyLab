@@ -252,7 +252,7 @@ GROUP BY employeesub.pinid ',['id' => $id]);
     	$asninfo = Assignments::FindOrFail($id);
     	$courseid = $asninfo->courses_id;
     	try {
-			$courses = Courses::findOrFail($id);
+			$courses = Courses::findOrFail($courseid);
 			$users = $courses->users;
 		} catch (ModelNotFoundException $e) {
 			App::error(404, 'Not found');
