@@ -42,7 +42,7 @@
                                 <div>{{$post->endtime}}</div>
                             </td>
                             <td>
-                                @if (asn->allow_send == 1)
+                                @if ($post->allow_send == 1)
                                 <a href="{{ route('admin.assignments.maxscoreshow',$post->id) }}" class="btn btn-success">Remarks - Available</a>
                                 @else
                                 <a href="{{ route('admin.assignments.maxscoreshow',$post->id) }}" class="btn btn-danger">Remarks - Times Up</a>
