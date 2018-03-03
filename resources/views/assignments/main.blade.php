@@ -51,6 +51,8 @@
                                 <a href="{{ route('user.assignments.detail', $post->id) }}" class="btn btn-warning">Question</a>
                                 @if($post->allow_send == 1)
                                 <a href="{{ route('user.assignments.submit',$post->id) }}" class="btn btn-success">Submit</a>
+                                @else
+                                <a href="#" class="btn btn-danger">Time's Up</a>
                                 @endif
                                
                             </td>

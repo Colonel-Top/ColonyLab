@@ -50,9 +50,11 @@
                                 <div>{{$post->created_at}}</div>
                             </td>
                             <td>
+                                @if($post->allow_send == 1)
                                 <a href="{{ route('user.assignments.callpath', $post->id) }}" class="btn btn-success">Show</a>   
-                              
-                                 
+                                @else
+                                <a href="{{ route('user.assignments.callpath', $post->id) }}" class="btn btn-warning">Show (Closed)</a>   
+                                @endif
                             
                             </td>
                      
