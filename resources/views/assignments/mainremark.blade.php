@@ -42,9 +42,11 @@
                                 <div>{{$post->endtime}}</div>
                             </td>
                             <td>
-                                
-                                <a href="{{ route('admin.assignments.maxscoreshow',$post->id) }}" class="btn btn-success">Remarks</a>
-                          
+                                @if (asn->allow_send == 1)
+                                <a href="{{ route('admin.assignments.maxscoreshow',$post->id) }}" class="btn btn-success">Remarks - Available</a>
+                                @else
+                                <a href="{{ route('admin.assignments.maxscoreshow',$post->id) }}" class="btn btn-danger">Remarks - Times Up</a>
+                                @endif
                                
                             </td>
                         </tr>
