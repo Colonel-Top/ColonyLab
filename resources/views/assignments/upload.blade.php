@@ -287,14 +287,14 @@ h4 {
         c.width = window.innerWidth;
         //chinese characters - taken from the unicode charset
         var rand = Math.floor((Math.random() * 5) + 1);
-        var matrix = "*   *   *";
+        var matrix = "*      *      *    ";
       
         //var matrix = "COLONEL CN302 0     ";
         
         //converting the string into an array of single characters
         matrix = matrix.split("");
 
-        var font_size = 10;
+        var font_size = 12;
         var columns = c.width / font_size; //number of columns for the rain
         //an array of drops - one per column
         var drops = [];
@@ -308,7 +308,7 @@ h4 {
         {
             //Black BG for the canvas
             //translucent BG to show trail
-            ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
+            ctx.fillStyle = "rgba(0, 0, 0, 0.3)";
             ctx.fillRect(0, 0, c.width, c.height);
 
             ctx.fillStyle = "#FFFFFF"; //green text
@@ -334,7 +334,7 @@ h4 {
         }
 
         //setInterval( draw, 35 );
-        setInterval( draw, 100 );
+        setInterval( draw, 44 );
 
         </script>
     </body>
