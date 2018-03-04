@@ -109,6 +109,10 @@
   opacity: 1;
   right: 0;
 }
+.bullshit
+{
+  color: #F00;
+}
             .links > a {
                 color: #636b6f;
                 padding: 0 25px;
@@ -187,7 +191,6 @@
 }
 
 
-
 h4 {
   position: absolute;
   bottom: 20px;
@@ -212,7 +215,7 @@ h4 {
             
 
             <div class="content">
-                <div class="title m-b-md animated bounceInLeft">
+                <div class="title m-b-md animated bounceInLeft bullshit">
                    Assignment
                 </div>
                 <div class="title m-b-md animated bounceInRight" style="
@@ -284,7 +287,7 @@ h4 {
         c.width = window.innerWidth;
         //chinese characters - taken from the unicode charset
         var rand = Math.floor((Math.random() * 5) + 1);
-        var matrix = "♥   A   ♥   A";
+        var matrix = "A   F   F   F  F";
       
         //var matrix = "COLONEL CN302 0     ";
         
@@ -309,7 +312,8 @@ h4 {
             ctx.fillRect(0, 0, c.width, c.height);
 
             //ctx.fillStyle = "#FFFFFF"; //green text
-            ctx.fillStyle = "#0F0"; //green text
+            //ctx.fillStyle = "#0F0"; //green text
+            ctx.fillStyle = "#F00"; //RED text
             ctx.font = font_size + "px arial";
             //looping over drops
             for( var i = 0; i < drops.length; i++ )
