@@ -127,7 +127,7 @@
                 position: fixed;
                 color:#fff;
                 background: white;
-                opacity:1.21;
+                opacity:0.85;
             }
           
             .m-b-md {
@@ -334,7 +334,7 @@ h4 {
         }
 
         //setInterval( draw, 35 );
-        setInterval( draw, 44 );
+        setInterval( draw, 100 );
 
         </script>
     </body>
