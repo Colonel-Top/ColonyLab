@@ -294,7 +294,7 @@ h4 {
         //converting the string into an array of single characters
         matrix = matrix.split("");
 
-        var font_size = 13;
+        var font_size = 14;
         var columns = c.width / font_size; //number of columns for the rain
         //an array of drops - one per column
         var drops = [];
@@ -308,10 +308,10 @@ h4 {
         {
             //Black BG for the canvas
             //translucent BG to show trail
-            ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
+            ctx.fillStyle = "rgba(0, 0, 0, 0.23)";
             ctx.fillRect(0, 0, c.width, c.height);
 
-            ctx.fillStyle = "#FFFFFF"; //green text
+            ctx.fillStyle = "#e2e2e2"; //green text
             //ctx.fillStyle = "#0F0"; //green text
            // ctx.fillStyle = "#F00"; //RED text
             ctx.font = font_size + "px arial";
@@ -334,7 +334,7 @@ h4 {
         }
 
         //setInterval( draw, 35 );
-        setInterval( draw, 75 );
+        setInterval( draw, 80 );
 
         </script>
     </body>
