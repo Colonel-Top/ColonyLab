@@ -368,7 +368,7 @@
 			Congratulation
 		</div>
 		<div class="context sign-text-color">
-			WoW, Your File that send me  <br>
+			Your File that send me  <br>
     I've Compile seems it's worked !
 		</div>
 	</div>
@@ -380,12 +380,12 @@
 	<div class="context primary-text-color">
 		<p>
       @if($scores==0 && $full != 0)
-      OMG You are so noob<br> Hmm
+      Karma has no Menu you get served what you deserve<br>
       @endif
-       @if($scores==$full)
-      OMG You are so awesome<br> Yeah
+      @if($scores==$full)
+      Call it fate, call it luck call it 'KARMA'<br> 
       @endif
-			You may want to head back to the assignment page. Bye Bye<br>
+			You may want to head back to the assignment page. Goodluck<br>
 		</p>
 	</div>
 	<div class="buttons-container" style = "margin-bottom: 100px">
