@@ -287,7 +287,7 @@ h4 {
         c.width = window.innerWidth;
         //chinese characters - taken from the unicode charset
         var rand = Math.floor((Math.random() * 5) + 1);
-        var matrix = "A   F   F   F  F";
+        var matrix = "A  F  F  F  F";
       
         //var matrix = "COLONEL CN302 0     ";
         
@@ -308,7 +308,7 @@ h4 {
         {
             //Black BG for the canvas
             //translucent BG to show trail
-            ctx.fillStyle = "rgba(0, 0, 0, 0.2)";
+            ctx.fillStyle = "rgba(0, 0, 0, 0.4)";
             ctx.fillRect(0, 0, c.width, c.height);
 
             //ctx.fillStyle = "#FFFFFF"; //green text
