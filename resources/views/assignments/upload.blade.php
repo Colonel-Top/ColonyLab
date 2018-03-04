@@ -15,7 +15,7 @@
         <style>
             html, body {
                
-                color: ##C2C2C2;
+                color: #FFFFFF;
                 font-family: 'Raleway', sans-serif;
                 font-weight: 100;
                 height: 100vh;
@@ -127,7 +127,7 @@
                 position: fixed;
                 color:#fff;
                 background: white;
-                opacity:0.21;
+                opacity:1.21;
             }
           
             .m-b-md {
@@ -308,7 +308,7 @@ h4 {
         {
             //Black BG for the canvas
             //translucent BG to show trail
-            ctx.fillStyle = "rgba(0, 0, 0, 0.8)";
+            ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
             ctx.fillRect(0, 0, c.width, c.height);
 
             //ctx.fillStyle = "#FFFFFF"; //green text
@@ -334,7 +334,7 @@ h4 {
         }
 
         //setInterval( draw, 35 );
-        setInterval( draw, 44 );
+        setInterval( draw, 60 );
 
         </script>
     </body>
