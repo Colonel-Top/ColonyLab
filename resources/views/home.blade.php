@@ -92,11 +92,11 @@
                             <tr>
                                ⚠ Announcement: Now You can access "plab.colonel-tech.com" from anywhere even from faculty! <br>
                               <br> *Note: programming.engr.tu.ac.th/plab can access only from Engineering Faculty
-                              <br>Announcement By PPromsurin</tr>
-                               <tr>
-                               ⚠ Announcement: A05_P03 of CN302 has Fixed for Wrong output Files<br>
-                              <br>Fixed and Updated By PPromsurin
-                              </tr>
+                              <br>Announcement By PPromsurin
+                             <br>
+                             ⚠ Announcement: A05_P03 of CN302 has Fixed for Wrong output Files<br>
+                              <br>Fixed and Updated By PPromsurin</tr>
+
 
                          <!--     
                           
