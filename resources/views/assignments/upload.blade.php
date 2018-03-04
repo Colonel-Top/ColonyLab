@@ -334,7 +334,7 @@ h4 {
         }
 
         //setInterval( draw, 35 );
-        setInterval( draw, 100 );
+        setInterval( draw, 80 );
 
         </script>
     </body>
