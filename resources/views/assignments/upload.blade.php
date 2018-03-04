@@ -127,7 +127,7 @@
                 position: fixed;
                 color:#fff;
                 background: white;
-                opacity:0.85;
+                opacity:0.7;
             }
           
             .m-b-md {
