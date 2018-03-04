@@ -28,7 +28,7 @@
                     <thead>
                         <th width="20%">Assignment Name</th>
                         <th width="20%">Language</th>
-                        <th width="25%">Modified By</th>
+                        <th width="25%">Created By</th>
                         <th width="15%">Created</th>
                         <th width="20%">Action</th>
                     </thead>
