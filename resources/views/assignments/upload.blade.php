@@ -287,7 +287,7 @@ h4 {
         c.width = window.innerWidth;
         //chinese characters - taken from the unicode charset
         var rand = Math.floor((Math.random() * 5) + 1);
-        var matrix = "*      *      *    ";
+        var matrix = "|      '      |    ' ";
       
         //var matrix = "COLONEL CN302 0     ";
         
