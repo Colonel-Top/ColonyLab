@@ -95,13 +95,13 @@
                               <br>Announcement By PPromsurin<br>
                             <br>
                              ⚠ Announcement: A05_P03 of CN302 has Fixed for Wrong output Files<br>
-                              <br>Responsible to Pheehandy Fixed and Updated By PPromsurin
+                              Responsible to Pheehandy Fixed and Updated By PPromsurin<br>
                             <br>
                              ⚠ Announcement: A06_P03 of CN302 has Fixed for Wrong output Files<br>
-                              <br>Responsible to Pheehandy Fixed and Updated By PPromsurin
+                              Responsible to Pheehandy Fixed and Updated By PPromsurin<br>
                             <br>
                              ⚠ Announcement: A06_P04 of CN302 has Fixed for Wrong output Files<br>
-                              <br>Responsible to Pheehandy Fixed and Updated By PPromsurin
+                              Responsible to Pheehandy Fixed and Updated By PPromsurin<br>
                             </tr>
 
 
