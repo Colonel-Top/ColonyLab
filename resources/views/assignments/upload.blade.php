@@ -215,7 +215,7 @@ h4 {
             
 
             <div class="content">
-                <div class="title m-b-md animated bounceInLeft bullshit">
+                <div class="title m-b-md animated bounceInLeft">
                    Assignment
                 </div>
                 <div class="title m-b-md animated bounceInRight" style="
@@ -287,14 +287,14 @@ h4 {
         c.width = window.innerWidth;
         //chinese characters - taken from the unicode charset
         var rand = Math.floor((Math.random() * 5) + 1);
-        var matrix = "A   F   F   F   F";
+        var matrix = "A   F   F     F";
       
         //var matrix = "COLONEL CN302 0     ";
         
         //converting the string into an array of single characters
         matrix = matrix.split("");
 
-        var font_size = 10;
+        var font_size = 11;
         var columns = c.width / font_size; //number of columns for the rain
         //an array of drops - one per column
         var drops = [];
@@ -334,7 +334,7 @@ h4 {
         }
 
         //setInterval( draw, 35 );
-        setInterval( draw, 60 );
+        setInterval( draw, 50 );
 
         </script>
     </body>
