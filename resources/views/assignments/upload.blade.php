@@ -287,7 +287,7 @@ h4 {
         c.width = window.innerWidth;
         //chinese characters - taken from the unicode charset
         var rand = Math.floor((Math.random() * 5) + 1);
-        var matrix = "A   F   F     F";
+        var matrix = "*   *   *";
       
         //var matrix = "COLONEL CN302 0     ";
         
@@ -311,9 +311,9 @@ h4 {
             ctx.fillStyle = "rgba(0, 0, 0, 0.5)";
             ctx.fillRect(0, 0, c.width, c.height);
 
-            //ctx.fillStyle = "#FFFFFF"; //green text
+            ctx.fillStyle = "#FFFFFF"; //green text
             //ctx.fillStyle = "#0F0"; //green text
-            ctx.fillStyle = "#F00"; //RED text
+           // ctx.fillStyle = "#F00"; //RED text
             ctx.font = font_size + "px arial";
             //looping over drops
             for( var i = 0; i < drops.length; i++ )
