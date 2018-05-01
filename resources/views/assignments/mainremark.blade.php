@@ -46,7 +46,7 @@
                                 <a href="{{ route('admin.assignments.maxscoreshow',$post->id) }}" class="btn btn-success">Remarks - Available</a>
                                 @else
                                 <a href="{{ route('admin.assignments.maxscoreshow',$post->id) }}" class="btn btn-danger">Remarks - Times Up</a>
-                                <a href="{{ route('admin.assignments.getmark',$post->id) }}" class="btn btn-danger">Remarks - Times Up</a>
+                                <a href="{{ route('admin.assignments.getmark',$post->id) }}" class="btn btn-primary">Get Data</a>
                                 @endif
                                
                             </td>
