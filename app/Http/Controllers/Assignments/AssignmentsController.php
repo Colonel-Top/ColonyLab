@@ -12,7 +12,7 @@ use Carbon\Carbon;
 use DB;
 use Hash;
 use Response;
-
+use QueryToCsv;
 class AssignmentsController extends Controller
 {
 	 protected $user;
