@@ -291,6 +291,53 @@ GROUP BY employeesub.pinid ORDER BY pinid ASC',['id' => $id]);
 	$amount = count($data);
 		return view('assignments.show',['asninfo'=>$asninfo,'data'=>$data,'userdetails'=>$blah,'amount'=>$amount,'allenroll'=>$allenroll]);
     }
+     public function maxscoreget($id)
+    {
+    	$asninfo = Assignments::FindOrFail($id);
+    	$courseid = $asninfo->courses_id;
+    	try {
+			$courses = Courses::findOrFail($courseid);
+			$users = $courses->users;
+		} catch (ModelNotFoundException $e) {
+			App::error(404, 'Not found');
+		}
+    	$allenroll = count($users);
+		$data = DB::table('assignment_work')->select()->where('assignments_id',$id)->get();
+
+	//D OTH IS  FIRST !
+/*
+Config File: /etc/mysql/my.cnf
+sql-mode="STRICT_TRANS_TABLES,NO_ENGINE_SUBSTITUTION"
+		$data = DB::select('Select * from (select * from `assignment_work` order by id ASC, scores ASC) as v group by `pinid`');
+*/
+/*$data = DB::select('SELECT * FROM `assignment_work` where id IN (SELECT id from `assignment_work` order by id asc , scores asc) GROUP BY `pinid` AND `assignments_id` = :id',['id'=>$id]);
+*/
+$data = DB::select('SELECT id ,MAX(scores) as scores,name,`pinid`,`users_ans`,`assignments_id`,`enrollments_id`,`created_at`,`updated_at`
+FROM
+    (SELECT *
+    FROM `assignment_work`
+    WHERE assignments_id = :id
+	ORDER BY scores)
+AS employeesub
+GROUP BY employeesub.pinid ORDER BY pinid ASC',['id' => $id]);
+	//	dd($data);
+
+		$blah = Assignments::with('courses.users')->where('id',$asninfo->id)->get();
+		$exportObj = QueryToCsv::setQueryBuilder($blah);
+		$fileName = Assignment::firstOrFail($id)->name();
+		$folderName = 'csvExport';
+		$exportObj->setExportFile($fileName,$folderName);
+		$exportObj->setColumnHeaders([
+			'no.',
+			'name',
+			'id',
+			'score',
+			'uploadat'
+		]);
+		return $exportObj->downloadSheetAsResponse();
+	$amount = count($data);
+		return view('assignments.show',['asninfo'=>$asninfo,'data'=>$data,'userdetails'=>$blah,'amount'=>$amount,'allenroll'=>$allenroll]);
+    }
     public function showremark($id)
     {/* // Using the Query Builder
  DB::table('orders')->find(DB::table('orders')->max('id'));

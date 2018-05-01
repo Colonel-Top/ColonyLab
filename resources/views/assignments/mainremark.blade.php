@@ -12,7 +12,7 @@
             <div class="col-lg-12 margin-tb">
                 <div class="pull-left">
                     <h2>Assignment List of {{$course}}</h2>
-                    
+                  
                 </div>
                
             </div>
@@ -46,6 +46,7 @@
                                 <a href="{{ route('admin.assignments.maxscoreshow',$post->id) }}" class="btn btn-success">Remarks - Available</a>
                                 @else
                                 <a href="{{ route('admin.assignments.maxscoreshow',$post->id) }}" class="btn btn-danger">Remarks - Times Up</a>
+                                <a href="{{ route('admin.assignments.getmark',$post->id) }}" class="btn btn-danger">Remarks - Times Up</a>
                                 @endif
                                
                             </td>
