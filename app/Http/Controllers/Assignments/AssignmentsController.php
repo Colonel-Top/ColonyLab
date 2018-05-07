@@ -291,6 +291,8 @@ GROUP BY employeesub.pinid ORDER BY pinid ASC',['id' => $id]);
 	$amount = count($data);
 		return view('assignments.show',['asninfo'=>$asninfo,'data'=>$data,'userdetails'=>$blah,'amount'=>$amount,'allenroll'=>$allenroll]);
     }
+  
+
      public function maxscoreget($id)
     {
     	$asninfo = Assignments::FindOrFail($id);
@@ -321,8 +323,39 @@ FROM
 AS employeesub
 GROUP BY employeesub.pinid ORDER BY pinid ASC',['id' => $id]);
 	//	dd($data);
-
+		
 		$blah = Assignments::with('courses.users')->where('id',$asninfo->id)->get();
+		
+
+	 $headers = array(
+        "Content-type" => "text/csv",
+        "Content-Disposition" => "attachment; filename=file.csv",
+        "Pragma" => "no-cache",
+        "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
+        "Expires" => "0"
+    );
+
+    
+    $columns = array('no.',
+			'name',
+			'id',
+			'score',
+			'uploadat');
+
+    $callback = function() use ($data, $columns)
+    {
+        $file = fopen('php://output', 'w');
+        fputcsv($file, $columns);
+
+        foreach($reviews as $review) {
+            fputcsv($file, array($review->reviewID, $review->provider, $review->title, $review->review, $review->location, $review->review_created, $review->anon, $review->escalate, $review->rating, $review->name));
+        }
+        fclose($file);
+    };
+    return Response::stream($callback, 200, $headers);
+
+
+    query_to_csv($data, Assignment::firstOrFail($id)->name);
 		$exportObj = QueryToCsv::setQueryBuilder($blah);
 		$fileName = Assignment::firstOrFail($id)->name();
 		$folderName = 'csvExport';
