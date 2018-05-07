@@ -244,6 +244,9 @@ public function push(Request $request)
           //  print_r($output);
             echo("<br>");
             echo($command);
+            echo("<br>");
+            echo($output);
+
             if($return_value == 1)
             {
                 $getject = $destinationPath.$filename.'.txt';
@@ -262,7 +265,7 @@ public function push(Request $request)
             echo($restore);
             echo("<br>");
             echo($geter);
-            exit();
+            
             unlink($checkpath);
             unlink($getject);
 }
