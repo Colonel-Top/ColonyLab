@@ -74,7 +74,7 @@ Route::get('/courses/outline/{id}','Courses\CoursesController@outline')->name('a
 	Route::get('/remarks/explore/{id}','Assignments\AssignmentsController@maxscoreshow')->name('admin.assignments.maxscoreshow');
 
 	Route::get('/remarks/{id}','Assignments\AssignmentsController@showremark')->name('admin.assignments.showremark') ;
-	Route::get('/remarks/get/{id}','Assignments\AssignmentsController@maxscoreget')->name('admin.assignments.getmark') ;
+	//Route::get('/remarks/get/{id}','Assignments\AssignmentsController@maxscoreget')->name('admin.assignments.getmark') ;
 	Route::get('/discover/{courseid}/{pinid}','Grades\AdminController@requestmark')->name('admin.remarks.requestmark');
 	Route::get('/selectmode','Grades\AdminController@selector')->name('admin.remarks.pickmode');
 	Route::get('/showuser/{id}','Grades\AdminController@showuser')->name('admin.remarks.showuser');
