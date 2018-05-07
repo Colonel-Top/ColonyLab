@@ -245,8 +245,11 @@ public function push(Request $request)
             echo("<br>");
             echo($command);
             echo("<br>");
-            echo($output);
-
+            foreach($output as $col)
+            {
+                echo($col);
+            }
+            exit();
             if($return_value == 1)
             {
                 $getject = $destinationPath.$filename.'.txt';
